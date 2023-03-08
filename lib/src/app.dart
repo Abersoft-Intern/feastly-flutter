@@ -1,5 +1,5 @@
 import 'package:feastly/src/constants/theme/theme.dart';
-import 'package:feastly/src/navigation/navigation.dart';
+import 'package:feastly/src/navigation/app_route.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
