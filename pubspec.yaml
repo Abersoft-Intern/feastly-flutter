@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.3.0
   go_router: ^6.2.0
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +33,8 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+  
+  fonts:
+    - family:  FeastlyIcon
+      fonts:
+        - asset: assets/fonts/FeastlyIcon.ttf
