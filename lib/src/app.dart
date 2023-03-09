@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       routerConfig: goRouter,
       restorationScopeId: 'app',
       theme: FeastlyTheme.light(),
-      darkTheme: FeastlyTheme.dark(),
+      darkTheme: FeastlyTheme.light(),
     );
   }
 }
