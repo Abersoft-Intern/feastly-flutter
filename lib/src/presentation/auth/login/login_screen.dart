@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final topPadding = MediaQuery.of(context).padding.top;
     final theme = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
@@ -25,6 +26,9 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: topPadding,
+                ),
                 InkWell(
                   onTap: () {
                     context.pop();
