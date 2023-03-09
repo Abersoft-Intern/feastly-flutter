@@ -17,6 +17,7 @@ dependencies:
   flutter_riverpod: ^2.3.0
   go_router: ^6.2.0
   google_fonts: ^4.0.3
+  pinput: ^2.2.31
 
 dev_dependencies:
   flutter_test:
