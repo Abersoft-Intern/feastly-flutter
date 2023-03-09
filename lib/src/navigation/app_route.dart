@@ -1,4 +1,4 @@
-import 'package:feastly/src/presentation/auth/login_screen.dart';
+import 'package:feastly/src/presentation/auth/login/login_screen.dart';
 import 'package:feastly/src/presentation/auth/otp_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
