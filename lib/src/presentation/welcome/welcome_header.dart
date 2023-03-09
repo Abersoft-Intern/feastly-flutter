@@ -6,18 +6,19 @@ class WelcomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 210,
+      height: 289,
       child: Stack(
         children: [
           Positioned(
             left: 0,
             top: 20,
-            child: Image.asset('assets/images/sushi_roll.png',
-                width: 100, fit: BoxFit.contain),
+            child: Image.asset(
+              'assets/images/sushi_roll.png',
+            ),
           ),
           Positioned(
             right: 0,
-            child: Image.asset('assets/images/burger.png', width: 200),
+            child: Image.asset('assets/images/burger.png'),
           ),
         ],
       ),
