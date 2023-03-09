@@ -61,13 +61,20 @@ class OtpScreen extends StatelessWidget {
             onCompleted: (pin) => print(pin),
              ),
              gapH48,
-
              
               SizedBox(
                 width: double.infinity,
                 child: Text(
-                  'I did not get a verification code. Send again.'.hardcoded,
+                  'I did not get a verification code.'.hardcoded,
                   style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  'Send again.'.hardcoded,
+                  style: theme.extension<CustomTextTheme>()!.body16Bold,
                   textAlign: TextAlign.center,
                 ),
               ),
