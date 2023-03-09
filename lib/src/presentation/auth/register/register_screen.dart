@@ -5,6 +5,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'register_buttons.dart';
 
@@ -21,10 +22,18 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                FeastlyIcon.arrow_back_green,
-                size: 26.0,
-                color: theme.primaryColor,
+              InkWell(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(50),
+                ),
+                child: Icon(
+                  FeastlyIcon.arrow_back_green,
+                  size: 26.0,
+                  color: theme.primaryColor,
+                ),
+                onTap: () {
+                  context.pop();
+                },
               ),
               gapH20,
               Text(
