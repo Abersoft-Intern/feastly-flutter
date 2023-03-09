@@ -1,8 +1,8 @@
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 
-class LoginSosmed extends StatelessWidget {
-  const LoginSosmed({super.key});
+class LoginButtons extends StatelessWidget {
+  const LoginButtons({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -43,14 +43,14 @@ class WelcomeScreen extends StatelessWidget {
                     gapH32,
                     Button(
                       onTap: () {
-                        context.pushNamed(RouteName.register.name);
+                        context.goNamed(RouteName.register.name);
                       },
                       text: 'Register'.hardcoded,
                     ),
                     gapH24,
                     Button(
                       onTap: () {
-                        context.pushNamed(RouteName.login.name);
+                        context.goNamed(RouteName.login.name);
                       },
                       text: 'Sign In'.hardcoded,
                       variant: ButtonVariant.outlined,
