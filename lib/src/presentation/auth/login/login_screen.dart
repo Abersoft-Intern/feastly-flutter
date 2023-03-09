@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:flutter/material.dart';
+
 import 'login_sosmed.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -12,8 +13,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-final theme = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -56,29 +56,22 @@ final theme = Theme.of(context);
                 ),
               ),
               gapH20,
-
-              Padding(
-              padding:const EdgeInsets.fromLTRB(20, 0, 30, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(onPressed: () {},
-               child: Text(
-                'Forgot password?'
-                    .hardcoded,
-                style: theme.extension<CustomTextTheme>()!.body16Regular!,
-                textAlign: TextAlign.right,
-                selectionColor: Color.fromARGB(89, 209, 202, 1),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text('Forgot password?'.hardcoded,
+                      style: theme
+                          .extension<CustomTextTheme>()!
+                          .body16Regular!
+                          .copyWith(color: theme.primaryColor)),
+                ),
               ),
-              ),
-                ],
-              ),
-            ),
               gapH24,
               Button(
                 text: 'Sign in'.hardcoded,
                 onTap: () {},
-                variant:ButtonVariant.outlined,
+                variant: ButtonVariant.outlined,
               ),
               gapH24,
               SizedBox(
