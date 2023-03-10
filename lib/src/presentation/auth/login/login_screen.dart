@@ -42,6 +42,7 @@ class LoginScreen extends StatelessWidget {
                     color: theme.primaryColor,
                   ),
                 ),
+                
                 const SizedBox(height: 210.0),
                 gapH20,
                 Text(
@@ -87,9 +88,11 @@ class LoginScreen extends StatelessWidget {
                 gapH24,
                 Button(
                   text: 'Sign in'.hardcoded,
-                  onTap: () {},
+                  onTap: () {_showDialog(context);},
                   variant: ButtonVariant.outlined,
                 ),
+                
+               
                 gapH24,
                 SizedBox(
                   width: double.infinity,
@@ -108,4 +111,49 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showDialog(BuildContext context) {
+    final theme = Theme.of(context);
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(50.0),
+                  ),
+                  child: Container(
+                 alignment: Alignment.centerRight, 
+                 width: 30,
+                  height: 30,
+                  child: Center(
+                      child: Icon(
+                    FeastlyIcon.button_close,
+                    size: 26.0,
+                    color: theme.primaryColor,
+                  ),
+                    )
+                  ),
+                  
+                ),
+                
+                titleTextStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20))
+              ),
+                   content: Text('The password or email is wrong, please try again.'.hardcoded,
+                  style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                    textAlign: TextAlign.center,),
+                    
+      );
+
+    },
+  );
+
+
 }
