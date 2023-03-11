@@ -19,6 +19,7 @@ class OtpScreen extends StatefulWidget  {
 class _OtpScreenState extends State<OtpScreen> {
   @override
   bool _isShow = true;
+  bool _iswrong = false;
   
   Widget build(BuildContext context) {
      final theme = Theme.of(context);
@@ -52,54 +53,56 @@ final focusedPinTheme = defaultPinTheme.copyDecorationWith(
                 size: 26.0,
                 color: theme.primaryColor,
               ),
+              
               gapH20,
-
-              Visibility(
-  visible: _isShow,
-  replacement: Text(
-                'Something went wrong! '.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.h2!,
-              ),
-  child: Text(
-                'Verification code'.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.h2!,
-              ),
-),
 
 //               Visibility(
 //   visible: _isShow,
+//   replacement: Text(
+//                 'Something went wrong! '.hardcoded,
+//                 style: theme.extension<CustomTextTheme>()!.h2!,
+//               ),
 //   child: Text(
 //                 'Verification code'.hardcoded,
 //                 style: theme.extension<CustomTextTheme>()!.h2!,
 //               ),
 // ),
+
+              Visibility(
+  visible: _isShow,
+  child: Text(
+                'Verification code'.hardcoded,
+                style: theme.extension<CustomTextTheme>()!.h2!,
+              ),
+),
               
           //  Text(
           //       'Verification code'.hardcoded,
           //       style: theme.extension<CustomTextTheme>()!.h2!,
           //     ),
 
-//               Visibility(
-//   visible: _iswrong,
-//   child: Text(
-//                 'Something went wrong! '.hardcoded,
-//                 style: theme.extension<CustomTextTheme>()!.h2!,
-//               ),
-// ),
+              Visibility(
+  visible: _iswrong,
+  child: Text(
+                'Something went wrong! '.hardcoded,
+                style: theme.extension<CustomTextTheme>()!.h2!,
+              ),
+),
               
                gapH12,
                Visibility(
-  visible: true,
+  visible: _isShow,
   child:Text(
                 'Enter the code we sent to you, if you do not find it check your spam folder too.'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
               ),
 ),
                 Visibility(
-  visible: false,
+  visible: _iswrong,
   child:Text(
                 'Incorrrect code, try again or let us send you another one.'.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                style: theme.extension<CustomTextTheme>()!.body16Regular!.copyWith(color:Color.fromARGB(248, 201, 13, 13)),
+                
               ),
 ),
 
@@ -107,6 +110,7 @@ final focusedPinTheme = defaultPinTheme.copyDecorationWith(
               //   'Enter the code we sent to you, if you do not find it check your spam folder too.'.hardcoded,
               //   style: theme.extension<CustomTextTheme>()!.body16Regular!,
               // ),
+              
               gapH48,
             Pinput(
               length: 4,
@@ -129,20 +133,23 @@ final focusedPinTheme = defaultPinTheme.copyDecorationWith(
                       ),
                       ),
                     ),
+                    
                     validator: (s) {
-                      if (s == '4444') {
-                      
-              return  'Pin is correct';
+                      if (s == '4444') {   
+                        setState(() {
+                        _isShow = true;
+                        _iswrong = false;                  
+                },
+              ); 
+
                }else{
-            // return  'Pin is incorrect';
-              
-                setState(
-                () {
-                   _isShow = !_isShow;
+            // return  'Pin is incorrect';             
+                setState(() {
+                   _isShow = false;
+                   _iswrong = true;
                    
                 },
-              );
-              
+              );             
               }  
                  //return s == '2222' ? null : 'Pin is incorrect';
                   return null;
@@ -177,6 +184,7 @@ final focusedPinTheme = defaultPinTheme.copyDecorationWith(
               Button(
                 text: 'Continue'.hardcoded,
                 onTap: () {
+                  
                 },
               ),
               gapH24,
