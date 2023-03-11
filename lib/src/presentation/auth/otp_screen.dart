@@ -76,10 +76,7 @@ final focusedPinTheme = defaultPinTheme.copyDecorationWith(
               ),
 ),
               
-          //  Text(
-          //       'Verification code'.hardcoded,
-          //       style: theme.extension<CustomTextTheme>()!.h2!,
-          //     ),
+        
 
               Visibility(
   visible: _iswrong,
