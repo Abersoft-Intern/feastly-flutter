@@ -27,7 +27,7 @@ class ValidationScreen extends StatelessWidget {
               ),
               gapH64,
               gapH48,
-              
+        
               gapH24,
               Text(
                 'Verified!'.hardcoded,
