@@ -4,17 +4,20 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class Input extends StatefulWidget {
-  const Input(
-      {super.key,
-      required this.icon,
-      required this.hintText,
-      required this.keyboardType,
-      this.isPassword = false});
+  const Input({
+    super.key,
+    required this.icon,
+    required this.hintText,
+    required this.keyboardType,
+    this.isPassword = false,
+    this.controller,
+  });
 
   final Icon icon;
   final String hintText;
   final TextInputType keyboardType;
   final bool isPassword;
+  final TextEditingController? controller;
 
   @override
   State<Input> createState() => _InputState();
@@ -28,6 +31,7 @@ class _InputState extends State<Input> {
     final theme = Theme.of(context);
 
     return TextFormField(
+      controller: widget.controller,
       keyboardType: widget.keyboardType,
       textAlignVertical: TextAlignVertical.center,
       obscureText: widget.isPassword ? !_showPassword : false,
