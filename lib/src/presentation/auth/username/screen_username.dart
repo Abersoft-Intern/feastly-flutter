@@ -41,6 +41,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
               gapH20,
               gapH20,
+              gapH12,
               Text(
                 'Enter your name'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.h2!,
@@ -51,9 +52,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
                     .hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
               ),
-              gapH48,
-              gapH48,
-              gapH20,
+              const SizedBox(
+                height: 104.0,
+              ),
               Input(
                 onChanged: (value) {
                   setState(() {
@@ -67,11 +68,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
                   color: theme.primaryColor,
                 ),
               ),
-              gapH20,
-              gapH20,
-              gapH48,
-              gapH48,
-              gapH24,
+              const SizedBox(
+                height: 198.0,
+              ),
               Button(
                 text: 'Continue'.hardcoded,
                 onTap: username.isEmpty ? null : () {},
