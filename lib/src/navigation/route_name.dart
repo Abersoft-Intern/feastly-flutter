@@ -4,4 +4,5 @@ enum RouteName {
   register,
   otp,
   otpSuccess,
+  username,
 }
