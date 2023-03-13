@@ -33,8 +33,9 @@ class OtpSucceesScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(
-                height: 100.0,
+                height: 256.67,
               ),
+
               Text(
                 'Verified!'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.h2!,

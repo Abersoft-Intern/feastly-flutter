@@ -54,9 +54,13 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   color: theme.primaryColor,
                 ),
               ),
-              gapH20,
+               const SizedBox(
+                height: 99.67,
+              ),
               OtpTexts(isWrong: state.hasError),
-              gapH48,
+               const SizedBox(
+                height: 95.0,
+              ),
               Pinput(
                 controller: _pinController,
                 length: 4,
@@ -66,7 +70,8 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   height: 60.0,
                   width: 60.0,
                   textStyle: TextStyle(
-                    fontSize: 24.0,
+                    fontFamily: 'nunito' ,
+                    fontSize: 32.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
@@ -74,13 +79,15 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                     color: Colors.white,
                     border: Border(
                       bottom: BorderSide(
-                          width: 1.5, color: Color.fromARGB(255, 74, 72, 72)),
+                          width: 2.0 , color: Color.fromARGB(255, 156, 152, 152)),
                     ),
                   ),
                 ),
                 showCursor: true,
               ),
-              gapH48,
+               const SizedBox(
+                height: 44.0,
+              ),
               SizedBox(
                 width: double.infinity,
                 child: Text(
@@ -102,6 +109,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 ),
               ),
               gapH24,
+              gapH32,
               Button(
                 text: 'Continue'.hardcoded,
                 onTap: () async {
