@@ -15,7 +15,15 @@ class OtpTexts extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Visibility(
+          visible: !isWrong,
+          child: Text(
+            'Verification code'.hardcoded,
+            style: theme.extension<CustomTextTheme>()!.h2!,
+          ),
+        ),
         Visibility(
           visible: isWrong,
           child: Text(

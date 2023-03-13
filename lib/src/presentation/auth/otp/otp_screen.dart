@@ -55,10 +55,6 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 ),
               ),
               gapH20,
-              Text(
-                'Verification code'.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.h2!,
-              ),
               OtpTexts(isWrong: state.hasError),
               gapH48,
               Pinput(
