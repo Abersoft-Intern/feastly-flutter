@@ -10,8 +10,26 @@ import 'package:go_router/go_router.dart';
 
 import 'login_buttons.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  String get email => _emailController.text;
+  String get password => _passwordController.text;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +60,6 @@ class LoginScreen extends StatelessWidget {
                     color: theme.primaryColor,
                   ),
                 ),
-                
                 const SizedBox(height: 210.0),
                 gapH20,
                 Text(
@@ -56,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 gapH48,
                 Input(
+                  controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'email@email.com'.hardcoded,
                   icon: Icon(
@@ -65,6 +83,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 gapH20,
                 Input(
+                  controller: _passwordController,
                   keyboardType: TextInputType.text,
                   hintText: 'Password'.hardcoded,
                   isPassword: true,
@@ -88,11 +107,13 @@ class LoginScreen extends StatelessWidget {
                 gapH24,
                 Button(
                   text: 'Sign in'.hardcoded,
-                  onTap: () {_showDialog(context);},
+                  onTap: () {
+                    if (email == password) {
+                      _showDialog(context);
+                    }
+                  },
                   variant: ButtonVariant.outlined,
                 ),
-                
-               
                 gapH24,
                 SizedBox(
                   width: double.infinity,
@@ -114,46 +135,40 @@ class LoginScreen extends StatelessWidget {
 }
 
 void _showDialog(BuildContext context) {
-    final theme = Theme.of(context);
+  final theme = Theme.of(context);
   showDialog(
     context: context,
+    useSafeArea: true,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: InkWell(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(50.0),
-                  ),
-                  child: Container(
-                 alignment: Alignment.centerRight, 
-                 width: 30,
-                  height: 30,
-                  child: Center(
-                      child: Icon(
-                    FeastlyIcon.button_close,
-                    size: 26.0,
-                    color: theme.primaryColor,
-                  ),
-                    )
-                  ),
-                  
-                ),
-                
-                titleTextStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20))
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              borderRadius: const BorderRadius.all(
+                Radius.circular(50.0),
               ),
-                   content: Text('The password or email is wrong, please try again.'.hardcoded,
-                  style: theme.extension<CustomTextTheme>()!.body16Regular!,
-                    textAlign: TextAlign.center,),
-                    
+              child: SizedBox(
+                child: Icon(
+                  FeastlyIcon.button_close,
+                  size: 26.0,
+                  color: theme.primaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        content: Text(
+          'The password or email is wrong,\nplease try again.'.hardcoded,
+          style: theme.extension<CustomTextTheme>()!.body16Regular!,
+          textAlign: TextAlign.center,
+        ),
       );
-
     },
   );
-
-
 }
