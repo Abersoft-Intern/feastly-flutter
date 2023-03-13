@@ -1,6 +1,6 @@
 import 'package:feastly/src/presentation/auth/login/login_screen.dart';
-import 'package:feastly/src/presentation/auth/otp_screen.dart';
-import 'package:feastly/src/presentation/auth/validation.dart';
+import 'package:feastly/src/presentation/auth/otp/otp_screen.dart';
+import 'package:feastly/src/presentation/auth/otp/otp_success_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -36,11 +36,13 @@ final goRouter = GoRouter(
             path: 'otp',
             name: RouteName.otp.name,
             builder: (context, state) => const OtpScreen(),
-          ),
-          GoRoute(
-            path: 'validation',
-            name: RouteName.validation.name,
-            builder: (context, state) => const ValidationScreen(),
+            routes: [
+              GoRoute(
+                path: 'success',
+                name: RouteName.otpSuccess.name,
+                builder: (context, state) => const OtpSucceesScreen(),
+              )
+            ],
           ),
         ])
   ],
