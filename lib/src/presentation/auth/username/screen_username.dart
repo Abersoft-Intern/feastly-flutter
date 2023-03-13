@@ -12,26 +12,10 @@ class UsernameScreen extends StatefulWidget {
   @override
   State<UsernameScreen> createState() => _UsernameScreenState();
 }
+
 class _UsernameScreenState extends State<UsernameScreen> {
-  final myController = TextEditingController();
-  bool submit = false;
-  @override
-void initState() {
-  super.initState();
-    myController.addListener(() {
-      setState(() {
-        submit = myController.text.isNotEmpty;
-        }
-      );
-    }
-  );
-}
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
+  var username = '';
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -63,15 +47,20 @@ void initState() {
               ),
               gapH12,
               Text(
-                'Enter your name so that your friends know who you are.'.hardcoded,
+                'Enter your name so that your friends know who you are.'
+                    .hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
               ),
               gapH48,
               gapH48,
               gapH20,
               Input(
+                onChanged: (value) {
+                  setState(() {
+                    username = value;
+                  });
+                },
                 keyboardType: TextInputType.name,
-                controller: myController,
                 hintText: 'Username'.hardcoded,
                 icon: Icon(
                   FeastlyIcon.icon_user,
@@ -79,22 +68,15 @@ void initState() {
                 ),
               ),
               gapH20,
-              gapH20,             
+              gapH20,
               gapH48,
               gapH48,
               gapH24,
               Button(
                 text: 'Continue'.hardcoded,
-                onTap: submit ? () => {} : null,
+                onTap: username.isEmpty ? null : () {},
+                variant: username.isEmpty ? ButtonVariant.disabled : null,
               ),
-              ElevatedButton(
-              onPressed: submit ? () => {} : null,
-              child: Text(
-                'Continue',
-                style: theme.extension<CustomTextTheme>()!.body16Regular!,
-              ),
-            ),
-              
               gapH24,
               gapH16,
             ],
