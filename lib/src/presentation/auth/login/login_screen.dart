@@ -164,7 +164,7 @@ void _showDialog(BuildContext context) {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         content: Text(
-          'The password or email is wrong,\nplease try again.'.hardcoded,
+          'The password or email is wrong,\n please try again.'.hardcoded,
           style: theme.extension<CustomTextTheme>()!.body16Regular!,
           textAlign: TextAlign.center,
         ),
