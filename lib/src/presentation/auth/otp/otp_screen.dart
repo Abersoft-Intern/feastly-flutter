@@ -91,12 +91,14 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(
-                  child: Text(
-                    'Send again.'.hardcoded,
-                    style: theme.extension<CustomTextTheme>()!.body16Bold,
+                child: Center(
+                  child: TextButton(
+                    child: Text(
+                      'Send again.'.hardcoded,
+                      style: theme.extension<CustomTextTheme>()!.body16Bold,
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
                 ),
               ),
               gapH24,
