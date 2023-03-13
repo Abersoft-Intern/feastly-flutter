@@ -12,19 +12,20 @@ class UsernameScreen extends StatefulWidget {
   @override
   State<UsernameScreen> createState() => _UsernameScreenState();
 }
-class _UsernameScreenState extends State<UsernameScreen>
- {
-   final myController = TextEditingController();
+class _UsernameScreenState extends State<UsernameScreen> {
+  final myController = TextEditingController();
   bool submit = false;
   @override
-   void initState() {
-    super.initState();
+void initState() {
+  super.initState();
     myController.addListener(() {
       setState(() {
         submit = myController.text.isNotEmpty;
-      });
-    });
-  }
+        }
+      );
+    }
+  );
+}
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -84,13 +85,18 @@ class _UsernameScreenState extends State<UsernameScreen>
               gapH24,
               Button(
                 text: 'Continue'.hardcoded,
-                onTap:  submit ? () => {} : null,
-                
+                onTap: submit ? () => {} : null,
               ),
+              ElevatedButton(
+              onPressed: submit ? () => {} : null,
+              child: Text(
+                'Continue',
+                style: theme.extension<CustomTextTheme>()!.body16Regular!,
+              ),
+            ),
+              
               gapH24,
-              
               gapH16,
-              
             ],
           ),
         ),
