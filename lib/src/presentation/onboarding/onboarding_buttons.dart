@@ -32,14 +32,16 @@ class OnboardingButtons extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(FeastlyIcon.button_arrow_left,
-                color: Color.fromARGB(223, 215, 215, 214)),
+                color: const Color(0xFFE0E0E0),
+                ),
                 gapW8,
                 Text(
                   'Previous'.hardcoded,
                   style: theme
                       .extension<CustomTextTheme>()!
                       .body16Bold!
-                      .copyWith(color: theme.dividerColor),
+                      .copyWith(color: const Color(0xFFE0E0E0),
+                      ),
                 )
               ],
             ),
