@@ -55,6 +55,7 @@ final goRouter = GoRouter(
             path: 'onboarding',
             name: RouteName.onboarding.name,
             builder: (context, state) => const OnboardingScreen(),
+            
           ),
         ])
   ],
