@@ -66,18 +66,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     OnboardingItem(
                       imgPath: 'assets/images/onBoarding_3.png',
                       title:
-                          'Toggle between seeing restaurants in your area or recipes'
+                          'Toggle between seeing restaurants in your area or recipes.'
                               .hardcoded,
                     ),
                     OnboardingItem(
                       imgPath: 'assets/images/onBoarding_4.png',
-                      title: 'All the food you like end up here'.hardcoded,
+                      title: 'All the food you like end up here.'.hardcoded,
                       
                     ),
                     OnboardingItem(
                       imgPath: 'assets/images/onBoarding_5.png',
                       title:
-                          'Create a Group to swipe with your friends'.hardcoded,
+                          'Create a Group to swipe with your friends.'.hardcoded,
                     ),
                   ],
                 ),

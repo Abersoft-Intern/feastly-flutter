@@ -21,7 +21,7 @@ class OnboardingItem extends StatelessWidget {
         ),
         gapH24,
         SizedBox(
-          height: 100.0,
+          height: 90.0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: Sizes.p20),
             child: Text(
