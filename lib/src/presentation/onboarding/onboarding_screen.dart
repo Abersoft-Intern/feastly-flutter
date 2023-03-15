@@ -59,23 +59,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               .hardcoded,
                     ),
                     OnboardingItem(
-                      imgPath: 'assets/images/onboarding_1.png',
+                      imgPath: 'assets/images/onBoarding_2.png',
                       title:
                           'Tap a food you want to know how to cook.'.hardcoded,
                     ),
                     OnboardingItem(
-                      imgPath: 'assets/images/onboarding_1.png',
+                      imgPath: 'assets/images/onBoarding_3.png',
                       title:
                           'Toggle between seeing restaurants in your area or recipes'
                               .hardcoded,
                     ),
                     OnboardingItem(
-                      imgPath: 'assets/images/onboarding_1.png',
+                      imgPath: 'assets/images/onBoarding_4.png',
                       title: 'All the food you like end up here'.hardcoded,
                       
                     ),
                     OnboardingItem(
-                      imgPath: 'assets/images/onboarding_1.png',
+                      imgPath: 'assets/images/onBoarding_5.png',
                       title:
                           'Create a Group to swipe with your friends'.hardcoded,
                     ),
