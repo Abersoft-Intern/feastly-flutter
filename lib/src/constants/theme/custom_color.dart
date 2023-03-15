@@ -21,6 +21,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     required this.oldGreen,
     required this.white,
     required this.black,
+    required this.red,
   });
 
   final Color? lightGrey;
@@ -29,6 +30,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
   final Color? oldGreen;
   final Color? white;
   final Color? black;
+  final Color? red;
 
   @override
   ThemeExtension<CustomColor> copyWith({
@@ -38,6 +40,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     Color? oldGreen,
     Color? white,
     Color? black,
+    Color? red,
   }) {
     return CustomColor(
       lightGrey: lightGrey ?? this.lightGrey,
@@ -46,6 +49,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
       oldGreen: oldGreen ?? this.oldGreen,
       white: white ?? this.white,
       black: black ?? this.black,
+      red: red ?? this.red,
     );
   }
 
@@ -63,6 +67,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
       oldGreen: Color.lerp(oldGreen, other.oldGreen, t),
       white: Color.lerp(white, other.white, t),
       black: Color.lerp(black, other.black, t),
+      red: Color.lerp(red, other.red, t),
     );
   }
 
@@ -74,6 +79,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     oldGreen: Color(0xFF59D1CA),
     white: Color(0xFFFFFFFF),
     black: Color(0xFF000000),
+    red: Color(0xFFF86D70),
   );
 
   static const dark = CustomColor(
@@ -83,5 +89,6 @@ class CustomColor extends ThemeExtension<CustomColor> {
     oldGreen: Color(0xFF59D1CA),
     white: Color(0xFF000000),
     black: Color(0xFFFFFFFF),
+    red: Color(0xFFF86D70),
   );
 }
