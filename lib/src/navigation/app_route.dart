@@ -44,6 +44,8 @@ final goRouter = GoRouter(
                 name: RouteName.otpSuccess.name,
                 builder: (context, state) => const OtpSucceesScreen(),
               ),
+            ],
+          ),
           GoRoute(
             path: 'username',
             name: RouteName.username.name,
@@ -53,8 +55,6 @@ final goRouter = GoRouter(
             path: 'onboarding',
             name: RouteName.onboarding.name,
             builder: (context, state) => const OnboardingScreen(),
-          ),
-            ],
           ),
         ])
   ],
