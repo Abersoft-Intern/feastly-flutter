@@ -11,6 +11,7 @@ class Input extends StatefulWidget {
     required this.keyboardType,
     this.isPassword = false,
     this.controller,
+    this.onChanged,
   });
 
   final Icon icon;
@@ -18,6 +19,7 @@ class Input extends StatefulWidget {
   final TextInputType keyboardType;
   final bool isPassword;
   final TextEditingController? controller;
+  final void Function(String)? onChanged;
 
   @override
   State<Input> createState() => _InputState();
@@ -33,6 +35,7 @@ class _InputState extends State<Input> {
     return TextFormField(
       controller: widget.controller,
       keyboardType: widget.keyboardType,
+      onChanged: widget.onChanged,
       textAlignVertical: TextAlignVertical.center,
       obscureText: widget.isPassword ? !_showPassword : false,
       decoration: InputDecoration(

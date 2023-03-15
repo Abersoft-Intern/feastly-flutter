@@ -5,4 +5,5 @@ enum RouteName {
   otp,
   otpSuccess,
   onboarding,
+  username,
 }
