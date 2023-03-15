@@ -5,6 +5,7 @@ import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:feastly/src/presentation/auth/username/screen_username.dart';
+import 'package:feastly/src/presentation/auth/settings_prompt/settings_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -54,8 +55,12 @@ final goRouter = GoRouter(
            GoRoute(
             path: 'onboarding',
             name: RouteName.onboarding.name,
-            builder: (context, state) => const OnboardingScreen(),
-            
+            builder: (context, state) => const OnboardingScreen(),            
+          ),
+           GoRoute(
+            path: 'settings',
+            name: RouteName.settings.name,
+            builder: (context, state) => const SettingsPromptScreen(),            
           ),
         ])
   ],
