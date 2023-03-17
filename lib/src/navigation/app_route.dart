@@ -2,6 +2,7 @@ import 'package:feastly/src/presentation/auth/login/login_screen.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_screen.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_success_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
+import 'package:feastly/src/presentation/discover/home/home_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:feastly/src/presentation/auth/username/screen_username.dart';
@@ -13,11 +14,12 @@ import 'route_name.dart';
 final goRouter = GoRouter(
   debugLogDiagnostics: true,
   // Change default url here
-  initialLocation: '/welcome',
+  initialLocation: '/',
   routes: [
     GoRoute(
         path: '/',
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => const HomeScreen(),
+        name: RouteName.home.name,
         routes: [
           GoRoute(
             path: 'welcome',
