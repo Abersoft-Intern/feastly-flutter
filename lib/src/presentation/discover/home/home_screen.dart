@@ -1,7 +1,9 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
+import 'package:feastly/src/common_widgets/buttons/action_button.dart';
 import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
+import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    Color bgColor = theme.primaryColor;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -59,6 +62,40 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: theme.extension<CustomTextTheme>()!.body16Regular!,
                     textAlign: TextAlign.center,
                   ),
+                ),
+                gapH32,
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ActionButton(
+                      icon:Icon(
+                          FeastlyIcon.vector_3,
+                          color: theme.extension<CustomColor>()!.red,
+                      ),
+                      variant:ActionButtonVariant.neutral,
+                      onTap: () {},
+                    ),
+                    gapW12,
+                    ActionButton(
+                      icon:Icon(
+                          FeastlyIcon.vector_3,
+                          color: theme.extension<CustomColor>()!.yellow,
+                          
+                      ),
+                      variant:ActionButtonVariant.neutral,
+                      onTap: () {},
+                    ),
+                    gapW12,
+                    ActionButton(
+                      icon:Icon(
+                          FeastlyIcon.vector_3,
+                          color: theme.extension<CustomColor>()!.oldGreen,
+                      ),
+                      variant:ActionButtonVariant.neutral,
+                      onTap: () {},
+                    ),  
+                    
+                  ],
                 ),
           ],
         ),
