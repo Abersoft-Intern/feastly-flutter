@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       variant:ActionButtonVariant.neutral,
                       onTap: () {},
                     ),
-                    gapW12,
+                    gapW32,
                     ActionButton(
                       icon:Icon(
                           FeastlyIcon.vector_3,
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       variant:ActionButtonVariant.neutral,
                       onTap: () {},
                     ),
-                    gapW12,
+                    gapW32,
                     ActionButton(
                       icon:Icon(
                           FeastlyIcon.vector_3,
