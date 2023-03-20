@@ -6,6 +6,7 @@ import 'custom_text_theme.dart';
 class FeastlyTheme {
   static ThemeData light() {
     return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
       primaryColor: primaryColor,
       primarySwatch: primaryColor,
       brightness: Brightness.light,
