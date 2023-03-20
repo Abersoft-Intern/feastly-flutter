@@ -23,6 +23,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
     required this.black,
     required this.red,
     required this.mediumGrey,
+    required this.blue,
+    required this.unselectedNav,
   });
 
   final Color? lightGrey;
@@ -33,6 +35,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
   final Color? black;
   final Color? red;
   final Color? mediumGrey;
+  final Color? blue;
+  final Color? unselectedNav;
 
   @override
   ThemeExtension<CustomColor> copyWith({
@@ -44,6 +48,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
     Color? black,
     Color? red,
     Color? mediumGrey,
+    Color? blue,
+    Color? unselectedNav,
   }) {
     return CustomColor(
       lightGrey: lightGrey ?? this.lightGrey,
@@ -54,6 +60,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
       black: black ?? this.black,
       red: red ?? this.red,
       mediumGrey: mediumGrey ?? this.mediumGrey,
+      blue: blue ?? this.blue,
+      unselectedNav: unselectedNav ?? this.unselectedNav,
     );
   }
 
@@ -73,6 +81,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
       black: Color.lerp(black, other.black, t),
       red: Color.lerp(red, other.red, t),
       mediumGrey: Color.lerp(mediumGrey, other.mediumGrey, t),
+      blue: Color.lerp(blue, other.blue, t),
+      unselectedNav: Color.lerp(unselectedNav, other.unselectedNav, t),
     );
   }
 
@@ -86,6 +96,8 @@ class CustomColor extends ThemeExtension<CustomColor> {
     white: Color(0xFFFFFFFF),
     black: Color(0xFF000000),
     red: Color(0xFFF86D70),
+    blue: Color(0xFF5EADF5),
+    unselectedNav: Color(0xFFE0E0E0),
   );
 
   static const dark = CustomColor(
@@ -97,5 +109,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     white: Color(0xFF000000),
     black: Color(0xFFFFFFFF),
     red: Color(0xFFF86D70),
+    blue: Color(0xFF5EADF5),
+    unselectedNav: Color(0xFFE0E0E0),
   );
 }
