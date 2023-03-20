@@ -49,7 +49,7 @@ class _InputState extends State<Input> {
                   child: Icon(
                     _showPassword
                         ? FeastlyIcon.icon_hide_eye
-                        : FeastlyIcon.button_copy,
+                        : Icons.visibility_outlined,
                     size: 20.0,
                     color: theme.extension<CustomColor>()!.textColor!,
                   ),

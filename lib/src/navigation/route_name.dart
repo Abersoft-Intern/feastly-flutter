@@ -7,4 +7,7 @@ enum RouteName {
   onboarding,
   username,
   home,
+  saved,
+  groups,
+  profile
 }
