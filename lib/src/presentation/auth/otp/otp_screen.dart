@@ -1,6 +1,7 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
+import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
@@ -32,6 +33,8 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final textTheme = theme.extension<CustomTextTheme>()!;
+    final colorTheme = theme.extension<CustomColor>()!;
 
     final state = ref.watch(otpControllerProvider);
     final controller = ref.read(otpControllerProvider.notifier);
@@ -54,11 +57,11 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   color: theme.primaryColor,
                 ),
               ),
-               const SizedBox(
+              const SizedBox(
                 height: 99.67,
               ),
               OtpTexts(isWrong: state.hasError),
-               const SizedBox(
+              const SizedBox(
                 height: 95.0,
               ),
               Pinput(
@@ -66,33 +69,30 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 length: 4,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                defaultPinTheme: const PinTheme(
+                defaultPinTheme: PinTheme(
                   height: 60.0,
                   width: 60.0,
-                  textStyle: TextStyle(
-                    fontFamily: 'nunito' ,
-                    fontSize: 32.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  textStyle: textTheme.h2!,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border(
                       bottom: BorderSide(
-                          width: 2.0 , color: Color.fromARGB(255, 156, 152, 152)),
+                        width: 2.0,
+                        color: colorTheme.mediumGrey!,
+                      ),
                     ),
                   ),
                 ),
                 showCursor: true,
               ),
-               const SizedBox(
+              const SizedBox(
                 height: 44.0,
               ),
               SizedBox(
                 width: double.infinity,
                 child: Text(
                   'I did not get a verification code.'.hardcoded,
-                  style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                  style: textTheme.body16Regular!,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -102,7 +102,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   child: TextButton(
                     child: Text(
                       'Send again.'.hardcoded,
-                      style: theme.extension<CustomTextTheme>()!.body16Bold,
+                      style: textTheme.body16Bold,
                     ),
                     onPressed: () {},
                   ),
@@ -116,7 +116,6 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   if (await controller.submit(pin)) {
                     if (context.mounted) {
                       context.pushNamed(RouteName.otpSuccess.name);
-                      
                     }
                   }
                 },

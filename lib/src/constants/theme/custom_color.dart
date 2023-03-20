@@ -22,6 +22,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     required this.white,
     required this.black,
     required this.red,
+    required this.mediumGrey,
     required this.blue,
     required this.unselectedNav,
   });
@@ -33,6 +34,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
   final Color? white;
   final Color? black;
   final Color? red;
+  final Color? mediumGrey;
   final Color? blue;
   final Color? unselectedNav;
 
@@ -45,6 +47,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     Color? white,
     Color? black,
     Color? red,
+    Color? mediumGrey,
     Color? blue,
     Color? unselectedNav,
   }) {
@@ -56,6 +59,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
       white: white ?? this.white,
       black: black ?? this.black,
       red: red ?? this.red,
+      mediumGrey: mediumGrey ?? this.mediumGrey,
       blue: blue ?? this.blue,
       unselectedNav: unselectedNav ?? this.unselectedNav,
     );
@@ -76,6 +80,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
       white: Color.lerp(white, other.white, t),
       black: Color.lerp(black, other.black, t),
       red: Color.lerp(red, other.red, t),
+      mediumGrey: Color.lerp(mediumGrey, other.mediumGrey, t),
       blue: Color.lerp(blue, other.blue, t),
       unselectedNav: Color.lerp(unselectedNav, other.unselectedNav, t),
     );
@@ -83,6 +88,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
 
   // Theme definition
   static const light = CustomColor(
+    mediumGrey: Color(0xFFAAAAAA),
     lightGrey: Color(0xFFF4F1F1),
     textColor: Color(0xFF2E2E2E),
     yellow: Color(0xFFFDCD2A),
@@ -95,6 +101,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
   );
 
   static const dark = CustomColor(
+    mediumGrey: Color(0xFFAAAAAA),
     lightGrey: Color(0xFFF4F1F1),
     textColor: Color(0xFF2E2E2E),
     yellow: Color(0xFFFDCD2A),
