@@ -2,6 +2,7 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SmallButton extends StatelessWidget {
   const SmallButton(
@@ -32,7 +33,7 @@ class SmallButton extends StatelessWidget {
         child: Container(
           padding:
               EdgeInsets.symmetric(horizontal: isSelected! ? Sizes.p16 : 0),
-          height: 40.0,
+          height: 40.0.h,
           width: !isSelected! ? 40.0 : null,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
@@ -42,8 +43,9 @@ class SmallButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: Sizes.p24,
-                color: isSelected! ? colorTheme.white : colorTheme.mediumGrey,
+                size: Sizes.p24.h,
+                color:
+                    isSelected! ? colorTheme.white : colorTheme.unselectedNav,
               ),
               if (isSelected!) gapW8,
               if (isSelected!)

@@ -4,6 +4,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNavbar extends StatefulWidget {
@@ -86,7 +87,7 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         unselectedItemColor: color.unselectedNav,
-        iconSize: 20.0,
+        iconSize: Sizes.p24.h,
         selectedItemColor: _getItemColor(_currentIndex, context),
         currentIndex: _currentIndex,
         onTap: (index) => _onItemTapped(context, index),

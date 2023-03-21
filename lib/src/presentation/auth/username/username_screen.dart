@@ -4,7 +4,9 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class UsernameScreen extends StatefulWidget {
@@ -32,28 +34,26 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 ),
                 child: Icon(
                   FeastlyIcon.arrow_back_green,
-                  size: 26.0,
+                  size: Sizes.backIconSize,
                   color: theme.primaryColor,
                 ),
                 onTap: () {
                   context.pop();
                 },
               ),
-              gapH20,
-              gapH20,
-              gapH12,
+              gapH48,
               Text(
                 'Enter your name'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.h2!,
               ),
-              gapH12,
+              gapH8,
               Text(
                 'Enter your name so that your friends know who you are.'
                     .hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
               ),
-              const SizedBox(
-                height: 104.0,
+              SizedBox(
+                height: 104.0.h,
               ),
               Input(
                 onChanged: (value) {
@@ -68,16 +68,21 @@ class _UsernameScreenState extends State<UsernameScreen> {
                   color: theme.primaryColor,
                 ),
               ),
-              const SizedBox(
-                height: 198.0,
+              SizedBox(
+                height: 198.0.h,
               ),
               Button(
                 text: 'Continue'.hardcoded,
-                onTap: username.isEmpty ? null : () {},
+                onTap: username.isEmpty
+                    ? null
+                    : () {
+                        context.pushReplacementNamed(
+                          RouteName.onboarding.name,
+                        );
+                      },
                 variant: username.isEmpty ? ButtonVariant.disabled : null,
               ),
               gapH24,
-              gapH16,
             ],
           ),
         ),

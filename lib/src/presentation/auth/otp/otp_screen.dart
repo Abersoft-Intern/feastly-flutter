@@ -9,6 +9,7 @@ import 'package:feastly/src/presentation/auth/otp/otp_controller.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
@@ -53,16 +54,16 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 },
                 child: Icon(
                   FeastlyIcon.arrow_back_green,
-                  size: 26.0,
+                  size: Sizes.backIconSize,
                   color: theme.primaryColor,
                 ),
               ),
-              const SizedBox(
-                height: 99.67,
+              SizedBox(
+                height: 99.0.h,
               ),
               OtpTexts(isWrong: state.hasError),
-              const SizedBox(
-                height: 95.0,
+              SizedBox(
+                height: 95.0.h,
               ),
               Pinput(
                 controller: _pinController,
@@ -85,9 +86,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 ),
                 showCursor: true,
               ),
-              const SizedBox(
-                height: 44.0,
-              ),
+              gapH40,
               SizedBox(
                 width: double.infinity,
                 child: Text(
@@ -108,14 +107,15 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                   ),
                 ),
               ),
-              gapH24,
-              gapH32,
+              SizedBox(
+                height: 76.0.h,
+              ),
               Button(
                 text: 'Continue'.hardcoded,
                 onTap: () async {
                   if (await controller.submit(pin)) {
                     if (context.mounted) {
-                      context.pushNamed(RouteName.otpSuccess.name);
+                      context.pushNamed(RouteName.username.name);
                     }
                   }
                 },

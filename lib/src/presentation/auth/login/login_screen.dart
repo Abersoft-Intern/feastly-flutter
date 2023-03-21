@@ -7,6 +7,7 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/login/login_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'login_buttons.dart';
@@ -57,12 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Icon(
                     FeastlyIcon.arrow_back_green,
-                    size: 26.0,
+                    size: Sizes.backIconSize,
                     color: theme.primaryColor,
                   ),
                 ),
-                const SizedBox(height: 210.0),
-                gapH20,
+                SizedBox(height: 250.0.h),
                 Text(
                   'Hello'.hardcoded,
                   style: theme.extension<CustomTextTheme>()!.h2!,
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             .copyWith(color: theme.primaryColor)),
                   ),
                 ),
-                gapH24,
+                gapH36,
                 Button(
                   text: 'Sign in'.hardcoded,
                   onTap: () {
@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   variant: ButtonVariant.outlined,
                 ),
-                gapH24,
+                gapH36,
                 SizedBox(
                   width: double.infinity,
                   child: Text(
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                gapH16,
+                gapH44,
                 const LoginButtons()
               ],
             ),
@@ -157,7 +157,7 @@ void _showDialog(BuildContext context) {
               child: SizedBox(
                 child: Icon(
                   FeastlyIcon.button_close,
-                  size: 26.0,
+                  size: 24.0.h,
                   color: theme.primaryColor,
                 ),
               ),

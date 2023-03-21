@@ -5,6 +5,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DiscoverRecipesNone extends StatelessWidget {
   const DiscoverRecipesNone({super.key});
@@ -27,16 +28,18 @@ class DiscoverRecipesNone extends StatelessWidget {
                 left: 0,
                 top: 20,
                 child: Image.asset(
-                  scale: 1.5,
                   'assets/images/pizza.png',
+                  height: 271.0.h,
+                  fit: BoxFit.contain,
                 ),
               ),
               Positioned(
                 right: 0,
                 bottom: 50,
                 child: Image.asset(
-                  scale: 1.5,
                   'assets/images/hotdog.png',
+                  height: 147.0.h,
+                  fit: BoxFit.contain,
                 ),
               ),
             ],
@@ -61,7 +64,7 @@ class DiscoverRecipesNone extends StatelessWidget {
                 icon: Icon(
                   FeastlyIcon.icon_delete,
                   color: colorTheme.white,
-                  size: Sizes.p36,
+                  size: Sizes.p36.h,
                 ),
                 onTap: () {},
                 variant: ActionButtonVariant.danger,
@@ -71,7 +74,7 @@ class DiscoverRecipesNone extends StatelessWidget {
                 icon: Icon(
                   FeastlyIcon.icon_go_back,
                   color: colorTheme.yellow,
-                  size: Sizes.p36,
+                  size: Sizes.p36.h,
                 ),
                 variant: ActionButtonVariant.neutral,
                 onTap: () {},
@@ -80,7 +83,7 @@ class DiscoverRecipesNone extends StatelessWidget {
               ActionButton(
                 icon: Icon(
                   FeastlyIcon.heart_alt,
-                  size: Sizes.p36,
+                  size: Sizes.p36.h,
                   color: colorTheme.white,
                 ),
                 onTap: () {},
