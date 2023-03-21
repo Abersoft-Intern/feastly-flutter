@@ -1,14 +1,8 @@
-import 'package:feastly/src/common_widgets/buttons/button.dart';
-import 'package:feastly/src/common_widgets/buttons/action_button.dart';
-import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
-import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/constants/icons/feastly_icons.dart';
-import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
