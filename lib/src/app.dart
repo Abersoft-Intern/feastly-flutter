@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: goRouter,
+      debugShowCheckedModeBanner: false,
       restorationScopeId: 'app',
       theme: FeastlyTheme.light(),
       darkTheme: FeastlyTheme.light(),

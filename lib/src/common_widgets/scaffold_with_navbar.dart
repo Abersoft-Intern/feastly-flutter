@@ -20,7 +20,7 @@ class ScaffoldWithNavbar extends StatefulWidget {
 class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
   final _tabs = const [
     ScaffoldWithNavBarTabItem(
-      initialLocation: '/home',
+      initialLocation: '/discover',
       icon: Padding(
         padding: EdgeInsets.symmetric(vertical: Sizes.p4),
         child: Icon(FeastlyIcon.button_restaurant_inactive),
@@ -83,6 +83,8 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
         selectedLabelStyle: theme.extension<CustomTextTheme>()!.bottomNav12,
         useLegacyColorScheme: false,
         showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         unselectedItemColor: color.unselectedNav,
         iconSize: 20.0,
         selectedItemColor: _getItemColor(_currentIndex, context),
