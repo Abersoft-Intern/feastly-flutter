@@ -115,7 +115,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 onTap: () async {
                   if (await controller.submit(pin)) {
                     if (context.mounted) {
-                      context.pushNamed(RouteName.username.name);
+                      context.pushNamed(RouteName.otpSuccess.name);
                     }
                   }
                 },

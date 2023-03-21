@@ -19,7 +19,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/discover',
+  initialLocation: '/',
   routes: [
     ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -30,6 +30,7 @@ final goRouter = GoRouter(
           GoRoute(
             path: '/discover',
             name: RouteName.discover.name,
+            parentNavigatorKey: _shellNavigatorKey,
             pageBuilder: (context, state) => const NoTransitionPage(
               child: DiscoverScreen(),
             ),
@@ -54,7 +55,7 @@ final goRouter = GoRouter(
           ),
         ]),
     GoRoute(
-      path: '/welcome',
+      path: '/',
       name: RouteName.welcome.name,
       builder: (context, state) => const WelcomeScreen(),
     ),

@@ -76,7 +76,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 onTap: username.isEmpty
                     ? null
                     : () {
-                        context.pushReplacementNamed(
+                        context.pushNamed(
                           RouteName.onboarding.name,
                         );
                       },

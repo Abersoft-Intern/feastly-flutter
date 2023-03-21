@@ -53,7 +53,7 @@ class OnboardingButtons extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               if (_introKey.currentState?.getCurrentPageNumber() == 4) {
-                context.pushReplacementNamed(RouteName.discover.name);
+                context.goNamed(RouteName.discover.name);
               } else {
                 _introKey.currentState?.next();
               }

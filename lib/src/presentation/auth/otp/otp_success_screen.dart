@@ -53,7 +53,7 @@ class OtpSucceesScreen extends StatelessWidget {
               Button(
                 text: 'Continue'.hardcoded,
                 onTap: () {
-                  context.pushNamed(RouteName.discover.name);
+                  context.pushNamed(RouteName.username.name);
                 },
               ),
               gapH24,
