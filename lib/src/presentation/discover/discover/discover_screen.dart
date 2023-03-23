@@ -63,6 +63,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                   ],
                 ),
               ),
+              
               gapH32,
               const Expanded(
                 child: DiscoverRecipesNone(),
