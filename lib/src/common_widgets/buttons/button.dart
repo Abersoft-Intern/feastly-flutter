@@ -1,6 +1,7 @@
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum ButtonVariant {
   outlined,
@@ -52,10 +53,10 @@ class Button extends StatelessWidget {
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.only(right: 20, left: 20),
-          height: 50.0,
+          height: 50.0.h,
           decoration: BoxDecoration(
             border: variant == ButtonVariant.outlined
-                ? Border.all(color: theme.primaryColor, width: 3)
+                ? Border.all(color: theme.primaryColor, width: 3.0)
                 : null,
             borderRadius: BorderRadius.circular(50),
           ),

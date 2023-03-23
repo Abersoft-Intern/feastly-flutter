@@ -3,7 +3,8 @@ import 'package:feastly/src/presentation/auth/login/login_screen.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_screen.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_success_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
-import 'package:feastly/src/presentation/auth/username/screen_username.dart';
+import 'package:feastly/src/presentation/auth/username/username_screen.dart';
+import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/home',
+  initialLocation: '/',
   routes: [
     ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -27,10 +28,12 @@ final goRouter = GoRouter(
         },
         routes: [
           GoRoute(
-            path: '/home',
-            name: RouteName.home.name,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: Text('Hello dasdas')),
+            path: '/discover',
+            name: RouteName.discover.name,
+            parentNavigatorKey: _shellNavigatorKey,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: DiscoverScreen(),
+            ),
           ),
           GoRoute(
             path: '/saved',
@@ -52,7 +55,7 @@ final goRouter = GoRouter(
           ),
         ]),
     GoRoute(
-      path: '/welcome',
+      path: '/',
       name: RouteName.welcome.name,
       builder: (context, state) => const WelcomeScreen(),
     ),
