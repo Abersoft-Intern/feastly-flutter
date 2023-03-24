@@ -5,6 +5,7 @@ import 'package:feastly/src/presentation/auth/otp/otp_success_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
+import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,8 @@ final goRouter = GoRouter(
             path: '/groups',
             name: RouteName.groups.name,
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: Text('Groups')),
+                const NoTransitionPage(child: GroupsScreen()
+            ),
           ),
           GoRoute(
             path: '/profile',
