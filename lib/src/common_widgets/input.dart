@@ -1,7 +1,9 @@
+import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Input extends StatefulWidget {
   const Input({
@@ -36,9 +38,11 @@ class _InputState extends State<Input> {
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       onChanged: widget.onChanged,
+      style: theme.extension<CustomTextTheme>()!.body16Regular!,
       textAlignVertical: TextAlignVertical.center,
       obscureText: widget.isPassword ? !_showPassword : false,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: Sizes.p8.h),
         isDense: true,
         hintText: widget.hintText,
         suffixIcon: widget.isPassword
@@ -49,8 +53,8 @@ class _InputState extends State<Input> {
                   child: Icon(
                     _showPassword
                         ? FeastlyIcon.icon_hide_eye
-                        : FeastlyIcon.button_copy,
-                    size: 20.0,
+                        : Icons.visibility_outlined,
+                    size: Sizes.p20.h,
                     color: theme.extension<CustomColor>()!.textColor!,
                   ),
                 ),

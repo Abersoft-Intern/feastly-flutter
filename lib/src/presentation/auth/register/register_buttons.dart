@@ -1,5 +1,6 @@
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterButtons extends StatelessWidget {
   const RegisterButtons({super.key});
@@ -8,17 +9,20 @@ class RegisterButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         Image(
-          image: AssetImage('assets/images/btn_Apple.png'),
+          image: const AssetImage('assets/images/btn_Apple.png'),
+          height: 38.0.h,
         ),
-        gapW12,
+        gapW24,
         Image(
-          image: AssetImage('assets/images/btn_Facebook.png'),
+          image: const AssetImage('assets/images/btn_Facebook.png'),
+          height: 38.0.h,
         ),
-        gapW12,
+        gapW24,
         Image(
-          image: AssetImage('assets/images/btn_Google.png'),
+          image: const AssetImage('assets/images/btn_Google.png'),
+          height: 38.0.h,
         ),
       ],
     );

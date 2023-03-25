@@ -65,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    gapH48,
+                    gapH36,
                     const WelcomeButtons()
                   ],
                 ),

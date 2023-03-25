@@ -12,10 +12,6 @@
 ///       - asset: fonts/FeastlyIcon.ttf
 ///
 /// 
-/// * Material Design Icons, Copyright (C) Google, Inc
-///         Author:    Google
-///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
-///         Homepage:  https://design.google.com/icons/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -38,13 +34,16 @@ class FeastlyIcon {
   static const IconData icon_hide_eye = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData icon_padlock = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData icon_user = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData vector = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData vector_1 = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData vector_2 = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData users_alt = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData icon_delete = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData uil_plus = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData vector_3 = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrow_back_green = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_radio_deselected = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_radio_selected = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_arrow_left = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData visibility = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData button_recipe_inactive_1 = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData heart_alt = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData icon_go_back = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData button_setting_mudassir = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
