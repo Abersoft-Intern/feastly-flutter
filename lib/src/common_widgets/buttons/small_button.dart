@@ -47,7 +47,7 @@ class SmallButton extends StatelessWidget {
                 color:
                     isSelected! ? colorTheme.white : colorTheme.unselectedNav,
               ),
-              if (isSelected!) gapW8,
+              if (isSelected!) SizedBox(width: Sizes.p8.h),
               if (isSelected!)
                 Text(
                   text,
