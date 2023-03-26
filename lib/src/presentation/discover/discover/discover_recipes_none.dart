@@ -56,7 +56,7 @@ class DiscoverRecipesNone extends StatelessWidget {
         ),
         gapH32,
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: Sizes.p36.w),
+          padding: EdgeInsets.symmetric(horizontal: Sizes.p36.r),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
