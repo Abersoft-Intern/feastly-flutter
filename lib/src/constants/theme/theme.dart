@@ -9,6 +9,7 @@ class FeastlyTheme {
       scaffoldBackgroundColor: Colors.white,
       primaryColor: primaryColor,
       primarySwatch: primaryColor,
+      unselectedWidgetColor: const Color(0xFFE0E0E0),
       brightness: Brightness.light,
       extensions: <ThemeExtension<dynamic>>[
         CustomTextTheme.light,
