@@ -29,7 +29,7 @@ class DiscoverRecipesNone extends StatelessWidget {
                 top: 20,
                 child: Image.asset(
                   'assets/images/pizza.png',
-                  height: 271.0.h,
+                  height: 271.0.r,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -38,7 +38,7 @@ class DiscoverRecipesNone extends StatelessWidget {
                 bottom: 50,
                 child: Image.asset(
                   'assets/images/hotdog.png',
-                  height: 147.0.h,
+                  height: 147.0.r,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -46,7 +46,7 @@ class DiscoverRecipesNone extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 315,
+          width: 230,
           child: Text(
             'You have reached the limit of swipes for today, come back tomorrow for more swipes!'
                 .hardcoded,
@@ -56,7 +56,7 @@ class DiscoverRecipesNone extends StatelessWidget {
         ),
         gapH32,
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizes.p36),
+          padding: EdgeInsets.symmetric(horizontal: Sizes.p36.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -64,26 +64,26 @@ class DiscoverRecipesNone extends StatelessWidget {
                 icon: Icon(
                   FeastlyIcon.icon_delete,
                   color: colorTheme.white,
-                  size: Sizes.p36.h,
+                  size: Sizes.p24.h,
                 ),
                 onTap: () {},
                 variant: ActionButtonVariant.danger,
               ),
-              gapW24,
+              gapW8,
               ActionButton(
                 icon: Icon(
                   FeastlyIcon.icon_go_back,
                   color: colorTheme.yellow,
-                  size: Sizes.p36.h,
+                  size: Sizes.p24.h,
                 ),
                 variant: ActionButtonVariant.neutral,
                 onTap: () {},
               ),
-              gapW24,
+              gapW8,
               ActionButton(
                 icon: Icon(
                   FeastlyIcon.heart_alt,
-                  size: Sizes.p36.h,
+                  size: Sizes.p24.h,
                   color: colorTheme.white,
                 ),
                 onTap: () {},

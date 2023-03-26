@@ -5,6 +5,7 @@ import 'package:feastly/src/presentation/auth/otp/otp_success_screen.dart';
 import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,45 +20,47 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/',
+  initialLocation: '/discover',
   routes: [
     ShellRoute(
-        navigatorKey: _shellNavigatorKey,
-        builder: (context, state, child) {
-          return ScaffoldWithNavbar(child: child);
-        },
-        routes: [
-          GoRoute(
-            path: '/discover',
-            name: RouteName.discover.name,
-            parentNavigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: DiscoverScreen(),
-            ),
+      navigatorKey: _shellNavigatorKey,
+      builder: (context, state, child) {
+        return ScaffoldWithNavbar(child: child);
+      },
+      routes: [
+        GoRoute(
+          path: '/discover',
+          name: RouteName.discover.name,
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: DiscoverScreen(),
           ),
-          GoRoute(
-            path: '/saved',
-            name: RouteName.saved.name,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: Text('Saved')),
-          ),
-          GoRoute(
-            path: '/groups',
-            name: RouteName.groups.name,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: Text('Groups')),
-          ),
-          GoRoute(
-            path: '/profile',
-            name: RouteName.profile.name,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: Text('Profile')),
-          ),
-        ]),
+        ),
+        GoRoute(
+          path: '/saved',
+          name: RouteName.saved.name,
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: Text('Saved')),
+        ),
+        GoRoute(
+          path: '/groups',
+          name: RouteName.groups.name,
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: Text('Groups')),
+        ),
+        GoRoute(
+          path: '/profile',
+          name: RouteName.profile.name,
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: Text('Profile')),
+        ),
+      ],
+    ),
     GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
       path: '/discover/setting',
       name: RouteName.discoverSetting.name,
-      builder: (context, state) => const WelcomeScreen(),
+      builder: (context, state) => const DiscoverSettingScreen(),
     ),
     GoRoute(
       path: '/',
