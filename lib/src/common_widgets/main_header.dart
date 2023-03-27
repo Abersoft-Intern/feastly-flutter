@@ -9,13 +9,13 @@ class MainHeader extends StatefulWidget {
     required this.selectedMenu,
     required this.onRecipesTap,
     required this.onRestaurantTap,
-    required this.child,
+    this.child,
   });
 
   final int selectedMenu;
   final VoidCallback onRecipesTap;
   final VoidCallback onRestaurantTap;
-  final Widget child;
+  final Widget? child;
 
   @override
   State<MainHeader> createState() => _MainHeaderState();
@@ -47,7 +47,7 @@ class _MainHeaderState extends State<MainHeader> {
           onTap: () => setState(() => _selectedMenu = 1),
         ),
         const Spacer(),
-        widget.child
+        widget.child == null ? Container() : widget.child!
       ],
     );
   }
