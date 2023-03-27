@@ -1,6 +1,7 @@
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
+import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_button.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,17 @@ class SavedNone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorTheme = theme.extension<CustomColor>()!;
     return Column(
       children: [
+        Divider(
+                color: colorTheme.lightGrey,
+                height: 0,
+                thickness: 1,
+                indent: 34,
+                endIndent: 34,
+                ),
+        gapH12,
         Padding(
           padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
           child: Row(
@@ -64,6 +74,14 @@ class SavedNone extends StatelessWidget {
             ],
           ),
         ),
+         gapH28,
+        Divider(
+                color: colorTheme.lightGrey,
+                height: 0,
+                thickness: 1,
+                indent: 34,
+                endIndent: 34,
+                ),
         gapH60,
         Expanded(
           child: Stack(
