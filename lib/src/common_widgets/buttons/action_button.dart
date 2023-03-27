@@ -1,5 +1,6 @@
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum ActionButtonVariant { danger, neutral }
 
@@ -19,7 +20,7 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     Color bgColor = theme.primaryColor;
-    BoxShadow shadow = const BoxShadow();
+    BoxShadow shadow = const BoxShadow(color: Colors.transparent);
 
     if (variant == ActionButtonVariant.danger) {
       bgColor = theme.extension<CustomColor>()!.red!;
@@ -39,10 +40,10 @@ class ActionButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(50.0),
         onTap: onTap,
         child: Container(
-          height: 80.0,
-          width: 80.0,
+          height: 80.0.r,
+          width: 80.0.r,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(50.0),
             boxShadow: [shadow],
           ),
           child: icon,

@@ -28,24 +28,24 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 child: Icon(
                   FeastlyIcon.arrow_back_green,
-                  size: 26.0,
+                  size: Sizes.backIconSize,
                   color: theme.primaryColor,
                 ),
                 onTap: () {
                   context.pop();
                 },
               ),
-              gapH20,
+              gapH24,
               Text(
                 'Create account'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.h2!,
               ),
-              gapH12,
+              gapH8,
               Text(
                 'It has never been easier deciding what to eat!'.hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
               ),
-              gapH48,
+              gapH64,
               Input(
                 keyboardType: TextInputType.emailAddress,
                 hintText: 'email@email.com'.hardcoded,
@@ -54,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                   color: theme.primaryColor,
                 ),
               ),
-              gapH20,
+              gapH24,
               Input(
                 keyboardType: TextInputType.text,
                 hintText: 'Password'.hardcoded,
@@ -64,7 +64,7 @@ class RegisterScreen extends StatelessWidget {
                   color: theme.primaryColor,
                 ),
               ),
-              gapH20,
+              gapH24,
               Input(
                 keyboardType: TextInputType.text,
                 hintText: 'Repeat Password'.hardcoded,
@@ -74,19 +74,19 @@ class RegisterScreen extends StatelessWidget {
                   color: theme.primaryColor,
                 ),
               ),
-              gapH48,
+              gapH64,
               Text(
                 'By creating an account you agree to our Terms of Use and Privacy Policy.'
                     .hardcoded,
                 style: theme.extension<CustomTextTheme>()!.body16Regular!,
                 textAlign: TextAlign.center,
               ),
-              gapH24,
+              gapH32,
               Button(
                 text: 'Register'.hardcoded,
                 onTap: () {},
               ),
-              gapH24,
+              gapH40,
               SizedBox(
                 width: double.infinity,
                 child: Text(
@@ -95,7 +95,7 @@ class RegisterScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              gapH16,
+              gapH36,
               const RegisterButtons()
             ],
           ),

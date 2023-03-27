@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextTheme extends ThemeExtension<CustomTextTheme> {
@@ -72,47 +73,47 @@ class CustomTextTheme extends ThemeExtension<CustomTextTheme> {
   // Theme definition
   static final light = CustomTextTheme(
     h1: GoogleFonts.nunito(
-      fontSize: 52.0,
+      fontSize: 52.0.sp,
       fontWeight: FontWeight.w800,
       color: Colors.black,
     ),
     h2: GoogleFonts.nunito(
-      fontSize: 32.0,
+      fontSize: 32.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     h3: GoogleFonts.nunito(
-      fontSize: 24.0,
+      fontSize: 24.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     h318: GoogleFonts.nunito(
-      fontSize: 18.0,
+      fontSize: 18.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     body16Regular: GoogleFonts.nunito(
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w400,
       color: Colors.black,
     ),
     body16Bold: GoogleFonts.nunito(
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     body14Bold: GoogleFonts.nunito(
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     bold12: GoogleFonts.nunito(
-      fontSize: 12.0,
+      fontSize: 12.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
     bottomNav12: GoogleFonts.nunito(
-      fontSize: 12.0,
+      fontSize: 12.0.sp,
       fontWeight: FontWeight.w400,
       color: Colors.black,
     ),
@@ -120,47 +121,47 @@ class CustomTextTheme extends ThemeExtension<CustomTextTheme> {
   // the dark theme
   static final dark = CustomTextTheme(
     h1: GoogleFonts.nunito(
-      fontSize: 52.0,
+      fontSize: 52.0.sp,
       fontWeight: FontWeight.w800,
       color: Colors.white,
     ),
     h2: GoogleFonts.nunito(
-      fontSize: 32.0,
+      fontSize: 32.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     h3: GoogleFonts.nunito(
-      fontSize: 24.0,
+      fontSize: 24.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     h318: GoogleFonts.nunito(
-      fontSize: 18.0,
+      fontSize: 18.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     body16Regular: GoogleFonts.nunito(
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w400,
       color: Colors.white,
     ),
     body16Bold: GoogleFonts.nunito(
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     body14Bold: GoogleFonts.nunito(
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     bold12: GoogleFonts.nunito(
-      fontSize: 12.0,
+      fontSize: 12.0.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     bottomNav12: GoogleFonts.nunito(
-      fontSize: 12.0,
+      fontSize: 12.0.sp,
       fontWeight: FontWeight.w400,
       color: Colors.white,
     ),
