@@ -32,7 +32,7 @@ class SmallButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           padding:
-              EdgeInsets.symmetric(horizontal: isSelected! ? Sizes.p16 : 0),
+              EdgeInsets.symmetric(horizontal: isSelected! ? Sizes.p12 : 0),
           height: 40.0.h,
           width: !isSelected! ? 40.0 : null,
           decoration: BoxDecoration(
@@ -43,11 +43,11 @@ class SmallButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: Sizes.p24.h,
+                size: Sizes.p20.h,
                 color:
                     isSelected! ? colorTheme.white : colorTheme.unselectedNav,
               ),
-              if (isSelected!) gapW8,
+              if (isSelected!) SizedBox(width: Sizes.p8.h),
               if (isSelected!)
                 Text(
                   text,

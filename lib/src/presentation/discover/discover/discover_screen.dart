@@ -2,10 +2,12 @@ import 'package:feastly/src/common_widgets/buttons/small_button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_recipes_none.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -31,7 +33,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
             children: [
               gapH32,
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Sizes.p28),
+                padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
                 child: Row(
                   children: [
                     SmallButton(
@@ -48,14 +50,16 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.pushNamed(RouteName.discoverSetting.name);
+                      },
                       borderRadius: const BorderRadius.all(
                         Radius.circular(50.0),
                       ),
                       child: Icon(
                         FeastlyIcon.button_setting_mudassir,
                         color: theme.primaryColor,
-                        size: Sizes.p40.h,
+                        size: Sizes.p32.h,
                       ),
                     )
                   ],

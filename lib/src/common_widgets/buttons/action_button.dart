@@ -40,8 +40,8 @@ class ActionButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(50.0),
         onTap: onTap,
         child: Container(
-          height: 80.0.h,
-          width: 80.0.h,
+          height: 80.0.r,
+          width: 80.0.r,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.0),
             boxShadow: [shadow],
