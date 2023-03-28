@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/discover/discover/discover_screen.dart'
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
+import 'package:feastly/src/presentation/saved/saved/saved_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -40,8 +41,9 @@ final goRouter = GoRouter(
         GoRoute(
           path: '/saved',
           name: RouteName.saved.name,
-          pageBuilder: (context, state) =>
-              const NoTransitionPage(child: Text('Saved')),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: SavedScreen(),
+          ),
         ),
         GoRoute(
           path: '/groups',
