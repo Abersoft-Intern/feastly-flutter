@@ -127,7 +127,15 @@ class ProfileScreen extends StatelessWidget {
             const ProfileTileList(),
             gapH28,
             const ProfileButtons(),
-            gapH20
+            gapH28,
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Version 1.0'.hardcoded,
+                style: textTheme.body16Regular,
+              ),
+            ),
+            gapH28
           ],
         ),
       ),

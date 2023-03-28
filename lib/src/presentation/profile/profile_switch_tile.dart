@@ -58,8 +58,8 @@ class _ProfileSwitchTileState extends State<ProfileSwitchTile> {
                 alignment:
                     enabled ? Alignment.centerRight : Alignment.centerLeft,
                 child: Container(
-                  width: 26.0,
-                  height: 26.0,
+                  width: 26.0.h,
+                  height: 26.0.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50.0),
