@@ -20,6 +20,14 @@ class _GroupsRecipesNoneState extends State<GroupsRecipesNone> {
     final colorTheme = theme.extension<CustomColor>()!;
     return Column(
       children: [
+        Divider(
+                color: colorTheme.lightGrey,
+                height: 0,
+                thickness: 1,
+                indent: 34,
+                endIndent: 34,
+                ),
+        gapH12,
         Padding(
           padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
           child: Row(
@@ -78,6 +86,14 @@ class _GroupsRecipesNoneState extends State<GroupsRecipesNone> {
           ),
         ),
         gapH24,
+        Divider(
+                color: colorTheme.lightGrey,
+                height: 0,
+                thickness: 1,
+                indent: 34,
+                endIndent: 34,
+                ),
+        gapH32,
         Expanded(
           child: Stack(
             children: [
