@@ -1,3 +1,4 @@
+import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
@@ -5,17 +6,21 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/profile/profile_buttons.dart';
 import 'package:feastly/src/presentation/profile/profile_tile_list.dart';
+import 'package:feastly/src/utils/show_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
     final colorTheme = theme.extension<CustomColor>()!;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -52,12 +57,65 @@ class ProfileScreen extends StatelessWidget {
                 width: 80.0.h,
                 height: 80.0.h,
                 decoration: BoxDecoration(
-                    color: colorTheme.unselectedNav,
-                    borderRadius: BorderRadius.circular(50.0)),
+                  color: colorTheme.unselectedNav,
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
                 child: Center(
                   child: Icon(
                     FeastlyIcon.icon_user,
                     size: 50.0.h,
+                  ),
+                ),
+              ),
+            ),
+            gapH36,
+            Align(
+              child: InkWell(
+                borderRadius: BorderRadius.circular(50.0),
+                onTap: () {
+                  ref.read(
+                    showBottomSheetProvider(
+                        context: context,
+                        title: 'Choose image source',
+                        subtitle:
+                            'Choose the image source from where you want to upload image.',
+                        customButtons: [
+                          gapH20,
+                          Button(
+                            text: 'Open Camera'.hardcoded,
+                            onTap: () {},
+                          ),
+                          gapH32,
+                          Button(
+                            onTap: () {},
+                            text: 'Choose from gallery'.hardcoded,
+                            variant: ButtonVariant.inverted,
+                          ),
+                          gapH32,
+                          Button(
+                            onTap: () {
+                              context.pop();
+                            },
+                            text: 'Close'.hardcoded,
+                            variant: ButtonVariant.danger,
+                          ),
+                          gapH16
+                        ]),
+                  )();
+                },
+                child: Ink(
+                  decoration: BoxDecoration(
+                    color: theme.primaryColor,
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    vertical: Sizes.p4.h,
+                    horizontal: Sizes.p12.h,
+                  ),
+                  child: Text(
+                    'Add image',
+                    style:
+                        textTheme.body16Bold!.copyWith(color: colorTheme.white),
                   ),
                 ),
               ),
