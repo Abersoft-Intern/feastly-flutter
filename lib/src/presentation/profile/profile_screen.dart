@@ -52,7 +52,6 @@ class ProfileScreen extends ConsumerWidget {
             ),
             gapH36,
             Align(
-              alignment: Alignment.center,
               child: Container(
                 width: 80.0.h,
                 height: 80.0.h,
