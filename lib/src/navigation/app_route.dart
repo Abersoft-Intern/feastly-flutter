@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/discover/discover/discover_screen.dart'
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
 import 'package:feastly/src/presentation/saved/saved/saved_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/discover',
+  initialLocation: '/recipes/1',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -59,6 +60,15 @@ final goRouter = GoRouter(
               const NoTransitionPage(child: Text('Profile')),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/recipes/:id',
+      name: RouteName.recipeDetail.name,
+      builder: (context, state) {
+        final recipeId = state.params['id'];
+        return const RecipeDetailScreen();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
