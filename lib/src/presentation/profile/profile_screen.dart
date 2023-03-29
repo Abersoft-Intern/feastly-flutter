@@ -63,6 +63,7 @@ class ProfileScreen extends ConsumerWidget {
                   child: Icon(
                     FeastlyIcon.icon_user,
                     size: 50.0.h,
+                    color: colorTheme.profileColor,
                   ),
                 ),
               ),
