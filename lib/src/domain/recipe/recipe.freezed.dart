@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'recipe_detail.dart';
+part of 'recipe.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-RecipeDetail _$RecipeDetailFromJson(Map<String, dynamic> json) {
-  return _RecipeDetail.fromJson(json);
+Recipe _$RecipeFromJson(Map<String, dynamic> json) {
+  return _Recipe.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RecipeDetail {
+mixin _$Recipe {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
@@ -33,15 +33,13 @@ mixin _$RecipeDetail {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RecipeDetailCopyWith<RecipeDetail> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RecipeDetailCopyWith<$Res> {
-  factory $RecipeDetailCopyWith(
-          RecipeDetail value, $Res Function(RecipeDetail) then) =
-      _$RecipeDetailCopyWithImpl<$Res, RecipeDetail>;
+abstract class $RecipeCopyWith<$Res> {
+  factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
+      _$RecipeCopyWithImpl<$Res, Recipe>;
   @useResult
   $Res call(
       {int id,
@@ -54,9 +52,9 @@ abstract class $RecipeDetailCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
-    implements $RecipeDetailCopyWith<$Res> {
-  _$RecipeDetailCopyWithImpl(this._value, this._then);
+class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
+    implements $RecipeCopyWith<$Res> {
+  _$RecipeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -108,11 +106,9 @@ class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
 }
 
 /// @nodoc
-abstract class _$$_RecipeDetailCopyWith<$Res>
-    implements $RecipeDetailCopyWith<$Res> {
-  factory _$$_RecipeDetailCopyWith(
-          _$_RecipeDetail value, $Res Function(_$_RecipeDetail) then) =
-      __$$_RecipeDetailCopyWithImpl<$Res>;
+abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
+  factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
+      __$$_RecipeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +122,10 @@ abstract class _$$_RecipeDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeDetailCopyWithImpl<$Res>
-    extends _$RecipeDetailCopyWithImpl<$Res, _$_RecipeDetail>
-    implements _$$_RecipeDetailCopyWith<$Res> {
-  __$$_RecipeDetailCopyWithImpl(
-      _$_RecipeDetail _value, $Res Function(_$_RecipeDetail) _then)
+class __$$_RecipeCopyWithImpl<$Res>
+    extends _$RecipeCopyWithImpl<$Res, _$_Recipe>
+    implements _$$_RecipeCopyWith<$Res> {
+  __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +139,7 @@ class __$$_RecipeDetailCopyWithImpl<$Res>
     Object? ingredients = null,
     Object? cookingMethod = null,
   }) {
-    return _then(_$_RecipeDetail(
+    return _then(_$_Recipe(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -179,8 +174,8 @@ class __$$_RecipeDetailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RecipeDetail implements _RecipeDetail {
-  const _$_RecipeDetail(
+class _$_Recipe implements _Recipe {
+  const _$_Recipe(
       {required this.id,
       required this.name,
       required this.rating,
@@ -190,8 +185,8 @@ class _$_RecipeDetail implements _RecipeDetail {
       @JsonKey(name: 'cooking_method') required this.cookingMethod})
       : _ingredients = ingredients;
 
-  factory _$_RecipeDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeDetailFromJson(json);
+  factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
+      _$$_RecipeFromJson(json);
 
   @override
   final int id;
@@ -219,14 +214,14 @@ class _$_RecipeDetail implements _RecipeDetail {
 
   @override
   String toString() {
-    return 'RecipeDetail(id: $id, name: $name, rating: $rating, imageUrl: $imageUrl, cookTime: $cookTime, ingredients: $ingredients, cookingMethod: $cookingMethod)';
+    return 'Recipe(id: $id, name: $name, rating: $rating, imageUrl: $imageUrl, cookTime: $cookTime, ingredients: $ingredients, cookingMethod: $cookingMethod)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecipeDetail &&
+            other is _$_Recipe &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.rating, rating) || other.rating == rating) &&
@@ -255,19 +250,19 @@ class _$_RecipeDetail implements _RecipeDetail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecipeDetailCopyWith<_$_RecipeDetail> get copyWith =>
-      __$$_RecipeDetailCopyWithImpl<_$_RecipeDetail>(this, _$identity);
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
+      __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecipeDetailToJson(
+    return _$$_RecipeToJson(
       this,
     );
   }
 }
 
-abstract class _RecipeDetail implements RecipeDetail {
-  const factory _RecipeDetail(
+abstract class _Recipe implements Recipe {
+  const factory _Recipe(
       {required final int id,
       required final String name,
       required final int rating,
@@ -277,10 +272,9 @@ abstract class _RecipeDetail implements RecipeDetail {
           required final int cookTime,
       required final List<Ingredient> ingredients,
       @JsonKey(name: 'cooking_method')
-          required final String cookingMethod}) = _$_RecipeDetail;
+          required final String cookingMethod}) = _$_Recipe;
 
-  factory _RecipeDetail.fromJson(Map<String, dynamic> json) =
-      _$_RecipeDetail.fromJson;
+  factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
 
   @override
   int get id;
@@ -301,7 +295,7 @@ abstract class _RecipeDetail implements RecipeDetail {
   String get cookingMethod;
   @override
   @JsonKey(ignore: true)
-  _$$_RecipeDetailCopyWith<_$_RecipeDetail> get copyWith =>
+  _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -21,10 +21,10 @@ class RecipeDetailScreen extends ConsumerWidget {
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
 
-    final recipeValue = ref.watch(recipeControllerProvider);
+    final recipe = ref.watch(recipeControllerProvider(1));
     return Scaffold(
-        body: recipeValue.when(
-      data: (recipe) => SingleChildScrollView(
+        body: recipe.when(
+      data: (recipeDetail) => SingleChildScrollView(
         primary: true,
         child: Column(
           children: [
@@ -36,7 +36,7 @@ class RecipeDetailScreen extends ConsumerWidget {
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.cover,
-                    imageUrl: recipe.imageUrl,
+                    imageUrl: recipeDetail.imageUrl,
                   ),
                   Padding(
                     padding: EdgeInsets.all(Sizes.p28.h),
@@ -53,14 +53,14 @@ class RecipeDetailScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    recipe.name,
+                    recipeDetail.name,
                     style: textTheme.h2,
                   ),
                   gapH8,
-                  Text(recipe.rating.toString()),
+                  Text(recipeDetail.rating.toString()),
                   gapH12,
                   Text(
-                    'Cook time: ${recipe.cookTime} min'.hardcoded,
+                    'Cook time: ${recipeDetail.cookTime} min'.hardcoded,
                     style: textTheme.body16Bold,
                   ),
                   gapH16,
@@ -119,9 +119,9 @@ class RecipeDetailScreen extends ConsumerWidget {
                     separatorBuilder: (_, index) {
                       return gapH12;
                     },
-                    itemCount: recipe.ingredients.length,
+                    itemCount: recipeDetail.ingredients.length,
                     itemBuilder: (_, index) => Text(
-                      '${recipe.ingredients[index].qty} ${recipe.ingredients[index].name}',
+                      '${recipeDetail.ingredients[index].qty} ${recipeDetail.ingredients[index].name}',
                       style: textTheme.body16Regular,
                     ),
                   ),
@@ -132,7 +132,7 @@ class RecipeDetailScreen extends ConsumerWidget {
                   ),
                   gapH8,
                   Text(
-                    recipe.cookingMethod,
+                    recipeDetail.cookingMethod,
                   ),
                   gapH32,
                   Button(

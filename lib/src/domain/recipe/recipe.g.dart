@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe_detail.dart';
+part of 'recipe.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecipeDetail _$$_RecipeDetailFromJson(Map<String, dynamic> json) =>
-    _$_RecipeDetail(
+_$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
       id: json['id'] as int,
       name: json['name'] as String,
       rating: json['rating'] as int,
@@ -19,8 +18,7 @@ _$_RecipeDetail _$$_RecipeDetailFromJson(Map<String, dynamic> json) =>
       cookingMethod: json['cooking_method'] as String,
     );
 
-Map<String, dynamic> _$$_RecipeDetailToJson(_$_RecipeDetail instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'rating': instance.rating,

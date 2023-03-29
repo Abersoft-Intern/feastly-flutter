@@ -1,13 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'recipe_detail.freezed.dart';
-// optional: Since our Person class is serializable, we must add this line.
-// But if Person was not serializable, we could skip it.
-part 'recipe_detail.g.dart';
+part 'recipe.freezed.dart';
+part 'recipe.g.dart';
 
 @freezed
-class RecipeDetail with _$RecipeDetail {
-  const factory RecipeDetail({
+class Recipe with _$Recipe {
+  const factory Recipe({
     required int id,
     required String name,
     required int rating,
@@ -15,10 +13,9 @@ class RecipeDetail with _$RecipeDetail {
     @JsonKey(name: 'cook_time') required int cookTime,
     required List<Ingredient> ingredients,
     @JsonKey(name: 'cooking_method') required String cookingMethod,
-  }) = _RecipeDetail;
+  }) = _Recipe;
 
-  factory RecipeDetail.fromJson(Map<String, Object?> json) =>
-      _$RecipeDetailFromJson(json);
+  factory Recipe.fromJson(Map<String, Object?> json) => _$RecipeFromJson(json);
 }
 
 @freezed
