@@ -42,8 +42,10 @@ class FeastlyIcon {
   static const IconData button_radio_deselected = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_radio_selected = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_arrow_left = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData button_recipe_inactive_1 = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_plus = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heart_alt = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData icon_go_back = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData button_setting_mudassir = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData icon_star_filled = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData icon_star_unfilled = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

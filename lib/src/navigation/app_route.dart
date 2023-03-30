@@ -6,7 +6,6 @@ import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
-import 'package:feastly/src/presentation/discover/discover_sweping_recipes/swiping_recipes_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -36,11 +35,6 @@ final goRouter = GoRouter(
           pageBuilder: (context, state) => const NoTransitionPage(
             child: DiscoverScreen(),
           ),
-          routes: [GoRoute(
-          path: 'swiping',
-          name: RouteName.SwipingRecipesScreen.name,
-          builder: (context, state) => const SwipingRecipesScreen(),
-        ),]
         ),
         GoRoute(
           path: '/saved',

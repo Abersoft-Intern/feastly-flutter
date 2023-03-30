@@ -7,7 +7,6 @@ enum RouteName {
   onboarding,
   username,
   discoverSetting,
-  SwipingRecipesScreen,
   discover,
   saved,
   groups,
