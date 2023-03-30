@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/discover/discover/discover_screen.dart'
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
+import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
 import 'package:feastly/src/presentation/saved/saved/saved_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
@@ -56,8 +57,9 @@ final goRouter = GoRouter(
         GoRoute(
           path: '/profile',
           name: RouteName.profile.name,
-          pageBuilder: (context, state) =>
-              const NoTransitionPage(child: Text('Profile')),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: ProfileScreen(),
+          ),
         ),
       ],
     ),
