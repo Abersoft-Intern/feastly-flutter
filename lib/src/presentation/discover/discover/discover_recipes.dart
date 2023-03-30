@@ -35,6 +35,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
           Expanded(
             child: data.recipes.isNotEmpty && !_isCardEmpty
                 ? CardSwiper(
+                    backCardOffset: 0,
                     isLoop: false,
                     padding: EdgeInsets.zero,
                     cardsCount: data.recipes.length,

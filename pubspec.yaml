@@ -26,7 +26,10 @@ dependencies:
   pinput: ^2.2.31
   riverpod_annotation: ^2.0.1
   flutter_rating_bar: ^4.0.1
-  flutter_card_swiper: ^4.1.0+2
+  flutter_card_swiper:
+    git:
+      url: https://github.com/ricardodalarme/flutter_card_swiper.git
+      ref: feat/custom-card-offset
 
 dev_dependencies:
   flutter_test:
