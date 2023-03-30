@@ -310,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  flutter_card_swiper:
+    dependency: "direct main"
+    description:
+      name: flutter_card_swiper
+      sha256: "13ccfe7d246b793d621e2f9eac02f69bf05e1101646e8755720f9f747828a0e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0+2"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:

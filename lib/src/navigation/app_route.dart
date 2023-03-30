@@ -24,7 +24,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/recipes/1',
+  initialLocation: '/discover',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

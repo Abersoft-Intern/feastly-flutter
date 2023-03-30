@@ -1,6 +1,3 @@
-import 'package:feastly/src/common_widgets/buttons/action_button.dart';
-import 'package:feastly/src/constants/app_sizes.dart';
-import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
@@ -52,43 +49,6 @@ class DiscoverRecipesNone extends StatelessWidget {
                 .hardcoded,
             style: textTheme.body16Regular,
             textAlign: TextAlign.center,
-          ),
-        ),
-        gapH32,
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: Sizes.p36.r),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ActionButton(
-                icon: Icon(
-                  FeastlyIcon.icon_delete,
-                  color: colorTheme.white,
-                  size: Sizes.p24.h,
-                ),
-                onTap: () {},
-                variant: ActionButtonVariant.danger,
-              ),
-              gapW8,
-              ActionButton(
-                icon: Icon(
-                  FeastlyIcon.icon_go_back,
-                  color: colorTheme.yellow,
-                  size: Sizes.p24.h,
-                ),
-                variant: ActionButtonVariant.neutral,
-                onTap: () {},
-              ),
-              gapW8,
-              ActionButton(
-                icon: Icon(
-                  FeastlyIcon.heart_alt,
-                  size: Sizes.p24.h,
-                  color: colorTheme.white,
-                ),
-                onTap: () {},
-              ),
-            ],
           ),
         ),
       ],
