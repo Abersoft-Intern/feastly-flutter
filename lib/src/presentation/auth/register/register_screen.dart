@@ -15,7 +15,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
+    return GestureDetector(
+    onTap: ()=> FocusScope.of(context).unfocus(),
+    child: Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(Sizes.p24),
@@ -101,6 +103,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }
