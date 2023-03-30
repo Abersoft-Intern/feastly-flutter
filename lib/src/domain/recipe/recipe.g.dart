@@ -31,7 +31,7 @@ Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
 _$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
     _$_Ingredient(
       name: json['name'] as String,
-      qty: json['qty'] as String,
+      qty: json['qty'] as int,
     );
 
 Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
