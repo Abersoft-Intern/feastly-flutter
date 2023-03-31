@@ -20,6 +20,8 @@ class DiscoverRecipes extends ConsumerStatefulWidget {
 
 class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
   var _isCardEmpty = false;
+  var _isEndReached = false;
+  final _cardController = CardSwiperController();
 
   Future<void> likeRecipe(int recipeId) async {
     await ref
@@ -36,10 +38,27 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
   @override
   Widget build(BuildContext context) {
     final recipeList = ref.watch(discoverRecipesProvider);
-    final controller = ref.watch(discoverRecipesControllerProvider);
 
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
+
+    ref.listen(discoverRecipesControllerProvider, (_, state) {
+      // Check for error operation
+      if (state.hasError && !state.isLoading) {
+        _cardController.undo();
+        setState(() => _isEndReached = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text(state.error.toString()),
+          ),
+        );
+
+        // We need to check if all cards has been swiped or not and all the operation should be succeed
+      } else if (!state.isLoading) {
+        if (_isEndReached) setState(() => _isCardEmpty = true);
+      }
+    });
 
     return recipeList.when(
       data: (data) => Column(
@@ -47,6 +66,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
           Expanded(
             child: data.recipes.isNotEmpty && !_isCardEmpty
                 ? CardSwiper(
+                    controller: _cardController,
                     backCardOffset: 0,
                     isLoop: false,
                     padding: EdgeInsets.zero,
@@ -58,24 +78,13 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                       } else if (direction == CardSwiperDirection.left) {
                         skipRecipe(recipeId);
                       }
-
-                      if (controller.hasError) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            duration: const Duration(seconds: 2),
-                            content: Text(controller.error.toString()),
-                          ),
-                        );
-                      }
-
-                      return !controller.hasError;
+                      return true;
                     },
                     onEnd: () {
                       setState(() {
-                        _isCardEmpty = true;
+                        _isEndReached = true;
                       });
                     },
-                    isDisabled: controller.isLoading,
                     cardBuilder: (_, index) =>
                         DiscoverRecipesCard(recipe: data.recipes[index]!),
                   )
@@ -93,7 +102,9 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     color: colorTheme.white,
                     size: Sizes.p24.h,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    if (!_isCardEmpty) _cardController.swipeLeft();
+                  },
                   variant: ActionButtonVariant.danger,
                 ),
                 gapW8,
@@ -113,7 +124,9 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     size: Sizes.p24.h,
                     color: colorTheme.white,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    if (!_isCardEmpty) _cardController.swipeRight();
+                  },
                 ),
               ],
             ),
