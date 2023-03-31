@@ -32,7 +32,7 @@ class DiscoverRecipesCard extends StatelessWidget {
           BoxShadow(
             offset: Offset(0, 4.0),
             blurRadius: 20.0,
-            color: Color.fromARGB(255, 77, 77, 77),
+            color: Color.fromRGBO(0, 0, 0, 0.3),
           )
         ],
         borderRadius: BorderRadius.circular(20),
