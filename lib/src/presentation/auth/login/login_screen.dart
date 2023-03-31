@@ -37,9 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.of(context).padding.top;
     final theme = Theme.of(context);
-    return GestureDetector(
-    onTap: ()=> FocusScope.of(context).unfocus(),
-    child: Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Stack(children: [
           const LoginHeader(),
@@ -135,11 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ]),
       ),
-    ),
-   );
+    );
   }
-  
-  
 }
 
 void _showDialog(BuildContext context) {

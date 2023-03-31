@@ -21,9 +21,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return GestureDetector(
-    onTap: ()=> FocusScope.of(context).unfocus(),
-    child: Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(Sizes.p24),
@@ -89,7 +87,6 @@ class _UsernameScreenState extends State<UsernameScreen> {
           ),
         ),
       ),
-    ),
     );
   }
 }
