@@ -126,6 +126,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                         )
                       ],
                     ),
+                    gapH8,
                     ListView.separated(
                       shrinkWrap: true,
                       separatorBuilder: (_, index) {
