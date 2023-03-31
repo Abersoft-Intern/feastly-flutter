@@ -8,9 +8,13 @@ class Rating extends StatelessWidget {
   const Rating({
     super.key,
     required this.rating,
+    this.fullRatingIcon,
+    this.emptyRatingIcon,
   });
 
   final int rating;
+  final Icon? fullRatingIcon;
+  final Icon? emptyRatingIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +25,25 @@ class Rating extends StatelessWidget {
       maxRating: 5,
       itemSize: Sizes.p24.h,
       ratingWidget: RatingWidget(
-        full: ShaderMask(
-          shaderCallback: (Rect bounds) {
-            return const LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [Color(0xFFFFAA2A), Color(0xFFFBFF2A)],
-              tileMode: TileMode.clamp,
-            ).createShader(bounds);
-          },
-          child: const Icon(
-            FeastlyIcon.icon_star_filled,
-            color: Colors.yellow,
-          ),
-        ),
-        half: const Icon(FeastlyIcon.icon_star_unfilled, color: Colors.white),
-        empty: const Icon(FeastlyIcon.icon_star_unfilled, color: Colors.white),
+        full: fullRatingIcon ??
+            ShaderMask(
+              shaderCallback: (Rect bounds) {
+                return const LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Color(0xFFFFAA2A), Color(0xFFFBFF2A)],
+                  tileMode: TileMode.clamp,
+                ).createShader(bounds);
+              },
+              child: const Icon(
+                FeastlyIcon.icon_star_filled,
+                color: Colors.yellow,
+              ),
+            ),
+        half: fullRatingIcon ??
+            const Icon(FeastlyIcon.icon_star_unfilled, color: Colors.white),
+        empty: emptyRatingIcon ??
+            const Icon(FeastlyIcon.icon_star_unfilled, color: Colors.white),
       ),
       itemPadding: EdgeInsets.only(right: Sizes.p8.h),
       onRatingUpdate: (rating) {},
