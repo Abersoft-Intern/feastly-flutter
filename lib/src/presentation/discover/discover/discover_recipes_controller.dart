@@ -9,11 +9,25 @@ class DiscoverRecipesController extends _$DiscoverRecipesController {
   @override
   FutureOr<void> build() {}
 
-  bool likeRecipe(int recipeId) {
+  Future<void> likeRecipe(int recipeId) async {
     state = const AsyncValue.loading();
-    Future.delayed(const Duration(seconds: 2));
-    state = const AsyncValue.data(null);
+    await Future.delayed(const Duration(seconds: 2));
 
-    return Random().nextBool();
+    if (Random().nextBool()) {
+      state = const AsyncValue.data(null);
+    } else {
+      state = AsyncValue.error('Somethin wrong la', StackTrace.current);
+    }
+  }
+
+  Future<void> skipRecipe(int recipeId) async {
+    state = const AsyncValue.loading();
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (Random().nextBool()) {
+      state = const AsyncValue.data(null);
+    } else {
+      state = AsyncValue.error('Somethin wrong la', StackTrace.current);
+    }
   }
 }

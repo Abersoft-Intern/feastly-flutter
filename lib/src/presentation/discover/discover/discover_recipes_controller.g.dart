@@ -7,7 +7,7 @@ part of 'discover_recipes_controller.dart';
 // **************************************************************************
 
 String _$discoverRecipesControllerHash() =>
-    r'09ba8d4f33636ed91070df88424447df3f66568b';
+    r'02e373c55ff1d3fdc81788c64f7f7190130b9b19';
 
 /// See also [DiscoverRecipesController].
 @ProviderFor(DiscoverRecipesController)

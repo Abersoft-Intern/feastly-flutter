@@ -21,6 +21,18 @@ class DiscoverRecipes extends ConsumerStatefulWidget {
 class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
   var _isCardEmpty = false;
 
+  Future<void> likeRecipe(int recipeId) async {
+    await ref
+        .read(discoverRecipesControllerProvider.notifier)
+        .likeRecipe(recipeId);
+  }
+
+  Future<void> skipRecipe(int recipeId) async {
+    await ref
+        .read(discoverRecipesControllerProvider.notifier)
+        .skipRecipe(recipeId);
+  }
+
   @override
   Widget build(BuildContext context) {
     final recipeList = ref.watch(discoverRecipesProvider);
@@ -40,13 +52,30 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     padding: EdgeInsets.zero,
                     cardsCount: data.recipes.length,
                     onSwipe: (index, __, direction) {
-                      return true;
+                      final recipeId = data.recipes[index]!.id;
+                      if (direction == CardSwiperDirection.right) {
+                        likeRecipe(recipeId);
+                      } else if (direction == CardSwiperDirection.left) {
+                        skipRecipe(recipeId);
+                      }
+
+                      if (controller.hasError) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            duration: const Duration(seconds: 2),
+                            content: Text(controller.error.toString()),
+                          ),
+                        );
+                      }
+
+                      return !controller.hasError;
                     },
                     onEnd: () {
                       setState(() {
                         _isCardEmpty = true;
                       });
                     },
+                    isDisabled: controller.isLoading,
                     cardBuilder: (_, index) =>
                         DiscoverRecipesCard(recipe: data.recipes[index]!),
                   )
