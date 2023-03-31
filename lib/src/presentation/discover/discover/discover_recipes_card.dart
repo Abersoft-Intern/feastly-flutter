@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feastly/src/common_widgets/rating.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
+import 'package:feastly/src/constants/theme/custom_shadow.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/domain/discover/recipe_preview.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
@@ -21,6 +22,8 @@ class DiscoverRecipesCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
     final colorTheme = theme.extension<CustomColor>()!;
+    final shadowTheme = theme.extension<CustomShadow>()!;
+
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: Sizes.p16.h,
@@ -28,13 +31,7 @@ class DiscoverRecipesCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-        boxShadow: const [
-          BoxShadow(
-            offset: Offset(0, 4.0),
-            blurRadius: 20.0,
-            color: Color.fromARGB(255, 77, 77, 77),
-          )
-        ],
+        boxShadow: [shadowTheme.cardShadow!],
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
           image: CachedNetworkImageProvider(recipe.imageUrl),
@@ -45,8 +42,13 @@ class DiscoverRecipesCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(recipe.name,
-              style: textTheme.h2!.copyWith(color: colorTheme.white)),
+          Text(
+            recipe.name,
+            style: textTheme.h2!.copyWith(
+              color: colorTheme.white,
+              shadows: [shadowTheme.textShadow!],
+            ),
+          ),
           gapH4,
           Rating(
             rating: recipe.rating,
@@ -54,7 +56,10 @@ class DiscoverRecipesCard extends StatelessWidget {
           gapH16,
           Text(
             'Cook time: ${recipe.cookTime} min'.hardcoded,
-            style: textTheme.body16Bold!.copyWith(color: colorTheme.white),
+            style: textTheme.body16Bold!.copyWith(
+              color: colorTheme.white,
+              shadows: [shadowTheme.textShadow!],
+            ),
           ),
         ],
       ),
