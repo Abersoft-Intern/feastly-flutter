@@ -69,7 +69,13 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       style: textTheme.h2,
                     ),
                     gapH8,
-                    Rating(rating: recipe.rating),
+                    Rating(
+                      rating: recipe.rating,
+                      emptyRatingIcon: Icon(
+                        FeastlyIcon.icon_star_unfilled,
+                        color: colorTheme.unselectedNav,
+                      ),
+                    ),
                     gapH12,
                     Text(
                       'Cook time: ${recipe.cookTime} min'.hardcoded,
@@ -115,7 +121,10 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                                 .map(
                                   (serving) => DropdownMenuItem(
                                     value: serving,
-                                    child: Text('$serving People'),
+                                    child: Text(
+                                      '$serving People',
+                                      style: textTheme.body16Bold,
+                                    ),
                                   ),
                                 )
                                 .toList(),
