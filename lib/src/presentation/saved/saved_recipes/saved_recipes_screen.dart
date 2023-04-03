@@ -4,18 +4,18 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/saved/saved/saved_none.dart';
+import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_list.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedScreen extends StatefulWidget {
-  const SavedScreen({super.key});
+class SavedRecipesScreen extends StatefulWidget {
+  const SavedRecipesScreen({super.key});
   @override
-  State<SavedScreen> createState() => _SavedScreenState();
+  State<SavedRecipesScreen> createState() => _SavedRecipesScreenState();
 }
 
-class _SavedScreenState extends State<SavedScreen> {
+class _SavedRecipesScreenState extends State<SavedRecipesScreen> {
   final int _selectedMenu = 0;
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class _SavedScreenState extends State<SavedScreen> {
               endIndent: 34,
             ),
             const Expanded(
-              child: SavedNone(),
+              child: SavedRecipesList(),
             )
           ],
         ),

@@ -12,7 +12,6 @@ class SavedNone extends StatelessWidget {
     final theme = Theme.of(context);
     return Column(
       children: [
-        gapH60,
         Expanded(
           child: Stack(
             children: [
