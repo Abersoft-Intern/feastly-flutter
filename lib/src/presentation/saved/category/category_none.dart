@@ -3,6 +3,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/common_widgets/rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -91,9 +92,13 @@ class CategoryNone extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text('bintang'.hardcoded,
-                        style: theme.extension<CustomTextTheme>()!.body16Bold!,
-                        ),
+                        Rating(
+                  rating: 3,
+                  emptyRatingIcon: Icon(
+                    FeastlyIcon.icon_star_unfilled,
+                    color: colorTheme.unselectedNav,
+                  ),
+                ),
                     SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: Sizes.p36.h),
                     child: Icon(
