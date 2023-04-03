@@ -8,15 +8,36 @@ class SavedRecipesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: const [
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
-        SavedItem(),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
+        SavedItem(
+          cookTime: 30,
+          name: 'Pancake',
+          rating: 4,
+        ),
       ],
     );
   }
