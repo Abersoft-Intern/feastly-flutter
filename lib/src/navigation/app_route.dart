@@ -9,6 +9,7 @@ import 'package:feastly/src/presentation/discover/discover_setting/discover_sett
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,15 @@ final goRouter = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/recipes/:id',
+      name: RouteName.recipeDetail.name,
+      builder: (context, state) {
+        final recipeId = state.params['id'];
+        return const RecipeDetailScreen();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

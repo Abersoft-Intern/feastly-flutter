@@ -1,3 +1,4 @@
+import 'package:feastly/src/constants/theme/custom_shadow.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_color.dart';
@@ -13,7 +14,8 @@ class FeastlyTheme {
       brightness: Brightness.light,
       extensions: <ThemeExtension<dynamic>>[
         CustomTextTheme.light,
-        CustomColor.light
+        CustomColor.light,
+        CustomShadow.light
       ],
     );
   }
@@ -25,7 +27,8 @@ class FeastlyTheme {
       brightness: Brightness.dark,
       extensions: <ThemeExtension<dynamic>>[
         CustomTextTheme.dark,
-        CustomColor.dark
+        CustomColor.dark,
+        CustomShadow.dark
       ],
     );
   }
