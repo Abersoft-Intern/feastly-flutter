@@ -6,7 +6,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/profile/profile_buttons.dart';
 import 'package:feastly/src/presentation/profile/profile_tile_list.dart';
-import 'package:feastly/src/utils/show_bottom_sheet.dart';
+import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,35 +73,32 @@ class ProfileScreen extends ConsumerWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(50.0),
                 onTap: () {
-                  ref.read(
-                    showBottomSheetProvider(
-                        context: context,
-                        title: 'Choose image source',
-                        subtitle:
-                            'Choose the image source from where you want to upload image.',
-                        customButtons: [
-                          gapH20,
-                          Button(
-                            text: 'Open Camera'.hardcoded,
-                            onTap: () {},
-                          ),
-                          gapH32,
-                          Button(
-                            onTap: () {},
-                            text: 'Choose from gallery'.hardcoded,
-                            variant: ButtonVariant.inverted,
-                          ),
-                          gapH32,
-                          Button(
-                            onTap: () {
-                              context.pop();
-                            },
-                            text: 'Close'.hardcoded,
-                            variant: ButtonVariant.danger,
-                          ),
-                          gapH16
-                        ]),
-                  )();
+                  showCustomBottomSheet(context,
+                      title: 'Choose image source',
+                      subtitle:
+                          'Choose the image source from where you want to upload image.',
+                      customButtons: [
+                        gapH20,
+                        Button(
+                          text: 'Open Camera'.hardcoded,
+                          onTap: () {},
+                        ),
+                        gapH32,
+                        Button(
+                          onTap: () {},
+                          text: 'Choose from gallery'.hardcoded,
+                          variant: ButtonVariant.inverted,
+                        ),
+                        gapH32,
+                        Button(
+                          onTap: () {
+                            context.pop();
+                          },
+                          text: 'Close'.hardcoded,
+                          variant: ButtonVariant.danger,
+                        ),
+                        gapH16
+                      ]);
                 },
                 child: Ink(
                   decoration: BoxDecoration(
