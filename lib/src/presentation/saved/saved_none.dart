@@ -1,56 +1,50 @@
-//import 'package:feastly/src/constants/theme/custom_color.dart';
+import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DiscoverRecipesNone extends StatelessWidget {
-  const DiscoverRecipesNone({super.key});
+class SavedNone extends StatelessWidget {
+  const SavedNone({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final textTheme = theme.extension<CustomTextTheme>()!;
-    //final colorTheme = theme.extension<CustomColor>()!;
     return Column(
       children: [
-        Text(
-          'No more swipes!'.hardcoded,
-          style: textTheme.h3,
-        ),
         Expanded(
           child: Stack(
             children: [
               Positioned(
                 left: 0,
-                top: 20,
+                bottom: 0,
                 child: Image.asset(
-                  'assets/images/pizza.png',
-                  height: 271.0.r,
-                  fit: BoxFit.contain,
+                  'assets/images/Cake.png',
+                  height: 194.0.r,
                 ),
               ),
               Positioned(
                 right: 0,
-                bottom: 50,
+                top: 0,
                 child: Image.asset(
-                  'assets/images/hotdog.png',
-                  height: 147.0.r,
-                  fit: BoxFit.contain,
+                  'assets/images/Donut.png',
+                  height: 189.0.r,
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(
-          width: 230,
+        gapH44,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
           child: Text(
-            'You have reached the limit of swipes for today, come back tomorrow for more swipes!'
+            'Looks like you have not saved anything yet. Go back to Discover and like something!'
                 .hardcoded,
-            style: textTheme.body16Regular,
+            style: theme.extension<CustomTextTheme>()!.body16Regular!,
             textAlign: TextAlign.center,
           ),
         ),
+        gapH64,
       ],
     );
   }

@@ -2,7 +2,7 @@ import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/discover/discover/discover_recipes_none.dart';
+import 'package:feastly/src/presentation/discover/discover/discover_recipes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +54,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               ),
               gapH32,
               const Expanded(
-                child: DiscoverRecipesNone(),
+                child: DiscoverRecipes(),
               ),
               gapH32
             ],

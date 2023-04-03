@@ -25,6 +25,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     required this.mediumGrey,
     required this.blue,
     required this.unselectedNav,
+    required this.profileColor,
   });
 
   final Color? lightGrey;
@@ -36,6 +37,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
   final Color? red;
   final Color? mediumGrey;
   final Color? blue;
+  final Color? profileColor;
   final Color? unselectedNav;
 
   @override
@@ -50,19 +52,20 @@ class CustomColor extends ThemeExtension<CustomColor> {
     Color? mediumGrey,
     Color? blue,
     Color? unselectedNav,
+    Color? profileColor,
   }) {
     return CustomColor(
-      lightGrey: lightGrey ?? this.lightGrey,
-      textColor: textColor ?? this.textColor,
-      yellow: yellow ?? this.yellow,
-      oldGreen: oldGreen ?? this.oldGreen,
-      white: white ?? this.white,
-      black: black ?? this.black,
-      red: red ?? this.red,
-      mediumGrey: mediumGrey ?? this.mediumGrey,
-      blue: blue ?? this.blue,
-      unselectedNav: unselectedNav ?? this.unselectedNav,
-    );
+        lightGrey: lightGrey ?? this.lightGrey,
+        textColor: textColor ?? this.textColor,
+        yellow: yellow ?? this.yellow,
+        oldGreen: oldGreen ?? this.oldGreen,
+        white: white ?? this.white,
+        black: black ?? this.black,
+        red: red ?? this.red,
+        mediumGrey: mediumGrey ?? this.mediumGrey,
+        blue: blue ?? this.blue,
+        unselectedNav: unselectedNav ?? this.unselectedNav,
+        profileColor: profileColor ?? this.profileColor);
   }
 
   @override
@@ -83,6 +86,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
       mediumGrey: Color.lerp(mediumGrey, other.mediumGrey, t),
       blue: Color.lerp(blue, other.blue, t),
       unselectedNav: Color.lerp(unselectedNav, other.unselectedNav, t),
+      profileColor: Color.lerp(profileColor, other.profileColor, t),
     );
   }
 
@@ -98,6 +102,7 @@ class CustomColor extends ThemeExtension<CustomColor> {
     red: Color(0xFFF86D70),
     blue: Color(0xFF5EADF5),
     unselectedNav: Color(0xFFE0E0E0),
+    profileColor: Color(0xFF828282),
   );
 
   static const dark = CustomColor(
@@ -111,5 +116,6 @@ class CustomColor extends ThemeExtension<CustomColor> {
     red: Color(0xFFF86D70),
     blue: Color(0xFF5EADF5),
     unselectedNav: Color(0xFFE0E0E0),
+    profileColor: Color(0xFF828282),
   );
 }

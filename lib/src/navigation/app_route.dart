@@ -9,7 +9,9 @@ import 'package:feastly/src/presentation/discover/discover_setting/discover_sett
 import 'package:feastly/src/presentation/saved/category/category_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
-import 'package:feastly/src/presentation/saved/saved/saved_screen.dart';
+import 'package:feastly/src/presentation/profile/profile_screen.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
+import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +25,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/category',
+  initialLocation: '/saved',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -43,8 +45,8 @@ final goRouter = GoRouter(
           path: '/saved',
           name: RouteName.saved.name,
           pageBuilder: (context, state) => const NoTransitionPage(
-            child: SavedScreen(),
-          ),          
+            child: SavedRecipesScreen(),
+          ),
         ),
         GoRoute(
           path: '/groups',
@@ -56,10 +58,21 @@ final goRouter = GoRouter(
         GoRoute(
           path: '/profile',
           name: RouteName.profile.name,
-          pageBuilder: (context, state) =>
-              const NoTransitionPage(child: Text('Profile')),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: ProfileScreen(),
+          ),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/recipes/:id',
+      name: RouteName.recipeDetail.name,
+      builder: (context, state) {
+        // ignore: unused_local_variable
+        final recipeId = state.params['id'];
+        return const RecipeDetailScreen();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

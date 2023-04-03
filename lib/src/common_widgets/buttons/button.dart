@@ -30,15 +30,21 @@ class Button extends StatelessWidget {
 
     Color bgColor = theme.primaryColor;
     Color textColor = colorTheme.white!;
+    BoxShadow shadow = const BoxShadow(color: Colors.transparent);
 
     if (variant == ButtonVariant.inverted) {
       bgColor = colorTheme.white!;
+      shadow = const BoxShadow(
+        blurStyle: BlurStyle.outer,
+        color: Color.fromARGB(30, 0, 0, 0),
+        blurRadius: 20.0,
+      );
       textColor = theme.primaryColor;
     } else if (variant == ButtonVariant.outlined) {
       bgColor = Colors.transparent;
       textColor = theme.primaryColor;
     } else if (variant == ButtonVariant.danger) {
-      bgColor = Colors.red;
+      bgColor = colorTheme.red!;
       textColor = colorTheme.white!;
     } else if (variant == ButtonVariant.disabled) {
       bgColor = const Color(0xFFBDBDBD);
@@ -59,6 +65,7 @@ class Button extends StatelessWidget {
                 ? Border.all(color: theme.primaryColor, width: 3.0)
                 : null,
             borderRadius: BorderRadius.circular(50),
+            boxShadow: [shadow],
           ),
           alignment: Alignment.center,
           child: Text(
