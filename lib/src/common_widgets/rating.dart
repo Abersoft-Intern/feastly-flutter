@@ -22,6 +22,7 @@ class Rating extends StatelessWidget {
       initialRating: rating.toDouble(),
       direction: Axis.horizontal,
       itemCount: 5,
+      ignoreGestures: true,
       maxRating: 5,
       itemSize: Sizes.p24.h,
       ratingWidget: RatingWidget(
