@@ -12,11 +12,13 @@ class SavedItem extends StatelessWidget {
     required this.name,
     required this.rating,
     required this.cookTime,
+    this.rightIcon,
   });
 
   final String name;
   final int rating;
   final int cookTime;
+  final IconData? rightIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class SavedItem extends StatelessWidget {
             ),
             const Spacer(),
             Icon(
-              FeastlyIcon.button_arrow_right,
+              rightIcon ?? FeastlyIcon.button_arrow_right,
               size: Sizes.p24.h,
               color: theme.primaryColor,
             )
