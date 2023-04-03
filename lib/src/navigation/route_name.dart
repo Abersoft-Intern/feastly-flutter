@@ -9,6 +9,7 @@ enum RouteName {
   discoverSetting,
   discover,
   saved,
+  category,
   groups,
   profile
 }

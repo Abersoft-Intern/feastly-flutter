@@ -6,6 +6,7 @@ import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
+import 'package:feastly/src/presentation/saved/category/category_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/saved/saved/saved_screen.dart';
@@ -22,7 +23,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/discover',
+  initialLocation: '/category',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -43,7 +44,7 @@ final goRouter = GoRouter(
           name: RouteName.saved.name,
           pageBuilder: (context, state) => const NoTransitionPage(
             child: SavedScreen(),
-          ),
+          ),          
         ),
         GoRoute(
           path: '/groups',
@@ -66,6 +67,11 @@ final goRouter = GoRouter(
       name: RouteName.discoverSetting.name,
       builder: (context, state) => const DiscoverSettingScreen(),
     ),
+    GoRoute(
+          path: '/category',
+          name: RouteName.category.name,
+          builder: (context, state) => const CategoryScreen(),
+             ),
     GoRoute(
       path: '/',
       name: RouteName.welcome.name,
