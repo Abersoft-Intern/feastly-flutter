@@ -14,6 +14,7 @@ class CategoryNone extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
+    final textTheme = theme.extension<CustomTextTheme>()!;
     return Column(
       children: [
         Divider(
@@ -58,76 +59,59 @@ class CategoryNone extends StatelessWidget {
           ),
         ),
         gapH12,
-        Card(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                border: Border(
-                ),
-              ),
-              child: Image.asset(
-                  'assets/images/pancakes.png',
-                  height: 80.0.r,
-                  width: 66.0.r,
-                ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 15),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text('Raspberry pancakes'.hardcoded,
-                        style: theme.extension<CustomTextTheme>()!.body16Bold!,
-                        ),
-                      ],
+        InkWell(
+          onTap: () {},
+          child: Padding(
+            padding:
+            EdgeInsets.symmetric(horizontal: Sizes.p28.h, vertical: Sizes.p8.h),
+            child: Row(
+              children: [
+                Ink(
+                  height: 80.0.h,
+                  width: 66.0.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25.0),
+                    image: const DecorationImage(
+                    image: AssetImage('assets/images/pancakes.png'),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Rating(
+                  ),
+                ),
+                SizedBox(
+                  width: Sizes.p24.h,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Raspberry pancakes',
+                      style: textTheme.body16Bold,
+                    ),
+                gapH8,
+                Rating(
                   rating: 3,
                   emptyRatingIcon: Icon(
                     FeastlyIcon.icon_star_unfilled,
                     color: colorTheme.unselectedNav,
                   ),
                 ),
-                    SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: Sizes.p36.h),
-                    child: Icon(
-                      FeastlyIcon.button_arrow_right,
-                      color: theme.primaryColor,
-                      size: 25.0.h,
-                    ),
-                    ),
-                      ],
-                    ), 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text('Cook time: 20 min'.hardcoded,
-                        style: theme.extension<CustomTextTheme>()!.body16Regular!,
-                        ),
-                      ],
-                    ),
-                  ],
+                gapH8,
+                Text(
+                  'Cook time: 30',
+                  style: textTheme.body16Regular,
                 ),
-              ),
+              ],
+            ),
+            const Spacer(),
+            Icon(
+              FeastlyIcon.button_arrow_right,
+              color: theme.primaryColor,
+              size: 25.0.h,
             ),
           ],
         ),
       ),
-    
-        
-        
-         gapH28,
+    ),         
+    gapH28,
         Divider(
                 color: colorTheme.lightGrey,
                 height: 0,
@@ -135,9 +119,7 @@ class CategoryNone extends StatelessWidget {
                 indent: 34,
                 endIndent: 34,
                 ),
-        gapH60,
         
-        gapH64,
       ],
     );
   }

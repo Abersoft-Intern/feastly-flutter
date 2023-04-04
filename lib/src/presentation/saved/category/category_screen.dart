@@ -1,10 +1,9 @@
-//import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/presentation/saved/category/category_none.dart';
 import 'package:flutter/material.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:go_router/go_router.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -13,13 +12,12 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  //final int _selectedMenu = 0;
+ 
   @override
   Widget build(BuildContext context) {
      final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

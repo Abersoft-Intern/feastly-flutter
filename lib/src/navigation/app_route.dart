@@ -12,6 +12,7 @@ import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
+import 'package:feastly/src/presentation/saved/category/add_food_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -84,7 +85,12 @@ final goRouter = GoRouter(
           path: '/category',
           name: RouteName.category.name,
           builder: (context, state) => const CategoryScreen(),
-             ),
+    ),
+    GoRoute(
+          path: '/addfood',
+          name: RouteName.addFood.name,
+          builder: (context, state) => const AddFoodScreen(),
+    ),
     GoRoute(
       path: '/',
       name: RouteName.welcome.name,
