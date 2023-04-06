@@ -48,4 +48,5 @@ class FeastlyIcon {
   static const IconData button_setting_mudassir = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData icon_star_filled = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData icon_star_unfilled = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData instagram_filled = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
