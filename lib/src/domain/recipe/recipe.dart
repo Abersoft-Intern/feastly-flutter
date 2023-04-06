@@ -22,7 +22,7 @@ class Recipe with _$Recipe {
 class Ingredient with _$Ingredient {
   const factory Ingredient({
     required String name,
-    required String qty,
+    required int qty,
   }) = _Ingredient;
 
   factory Ingredient.fromJson(Map<String, Object?> json) =>

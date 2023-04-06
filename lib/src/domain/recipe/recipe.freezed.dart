@@ -306,7 +306,7 @@ Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Ingredient {
   String get name => throw _privateConstructorUsedError;
-  String get qty => throw _privateConstructorUsedError;
+  int get qty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -320,7 +320,7 @@ abstract class $IngredientCopyWith<$Res> {
           Ingredient value, $Res Function(Ingredient) then) =
       _$IngredientCopyWithImpl<$Res, Ingredient>;
   @useResult
-  $Res call({String name, String qty});
+  $Res call({String name, int qty});
 }
 
 /// @nodoc
@@ -347,7 +347,7 @@ class _$IngredientCopyWithImpl<$Res, $Val extends Ingredient>
       qty: null == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -360,7 +360,7 @@ abstract class _$$_IngredientCopyWith<$Res>
       __$$_IngredientCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String qty});
+  $Res call({String name, int qty});
 }
 
 /// @nodoc
@@ -385,7 +385,7 @@ class __$$_IngredientCopyWithImpl<$Res>
       qty: null == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -401,7 +401,7 @@ class _$_Ingredient implements _Ingredient {
   @override
   final String name;
   @override
-  final String qty;
+  final int qty;
 
   @override
   String toString() {
@@ -437,7 +437,7 @@ class _$_Ingredient implements _Ingredient {
 
 abstract class _Ingredient implements Ingredient {
   const factory _Ingredient(
-      {required final String name, required final String qty}) = _$_Ingredient;
+      {required final String name, required final int qty}) = _$_Ingredient;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
       _$_Ingredient.fromJson;
@@ -445,7 +445,7 @@ abstract class _Ingredient implements Ingredient {
   @override
   String get name;
   @override
-  String get qty;
+  int get qty;
   @override
   @JsonKey(ignore: true)
   _$$_IngredientCopyWith<_$_Ingredient> get copyWith =>
