@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BackArrowButton extends StatelessWidget {
-  const BackArrowButton({super.key});
+  const BackArrowButton({super.key, this.color});
+
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class BackArrowButton extends StatelessWidget {
       child: Icon(
         FeastlyIcon.arrow_back_green,
         size: 26.0,
-        color: theme.primaryColor,
+        color: color ?? theme.primaryColor,
       ),
       onTap: () {
         context.pop();
