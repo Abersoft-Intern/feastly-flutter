@@ -11,16 +11,17 @@ enum ButtonVariant {
 }
 
 class Button extends StatelessWidget {
-  const Button({
-    super.key,
-    required this.text,
-    this.variant,
-    this.onTap,
-  });
+  const Button(
+      {super.key,
+      required this.text,
+      this.variant,
+      this.onTap,
+      this.isLoading = false});
 
   final String text;
   final ButtonVariant? variant;
   final VoidCallback? onTap;
+  final bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +69,19 @@ class Button extends StatelessWidget {
             boxShadow: [shadow],
           ),
           alignment: Alignment.center,
-          child: Text(
-            text,
-            style: textTheme?.copyWith(color: textColor),
-          ),
+          child: isLoading!
+              ? SizedBox(
+                  width: 25.0.h,
+                  height: 25.0.h,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 3,
+                    color: textColor,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: textTheme?.copyWith(color: textColor),
+                ),
         ),
       ),
     );

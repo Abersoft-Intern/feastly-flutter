@@ -24,7 +24,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/saved',
+  initialLocation: '/discover',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -69,7 +69,9 @@ final goRouter = GoRouter(
       name: RouteName.recipeDetail.name,
       builder: (context, state) {
         final recipeId = state.params['id'];
-        return const RecipeDetailScreen();
+        return RecipeDetailScreen(
+          recipeId: int.parse(recipeId!),
+        );
       },
     ),
     GoRoute(
