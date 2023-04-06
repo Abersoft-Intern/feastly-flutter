@@ -12,6 +12,7 @@ class SavedItem extends StatelessWidget {
     required this.name,
     required this.rating,
     required this.cookTime,
+    this.onTap,
     this.rightIcon,
   });
 
@@ -19,6 +20,7 @@ class SavedItem extends StatelessWidget {
   final int rating;
   final int cookTime;
   final IconData? rightIcon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class SavedItem extends StatelessWidget {
     final textTheme = theme.extension<CustomTextTheme>()!;
     final colorTheme = theme.extension<CustomColor>()!;
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: Sizes.p28.h, vertical: Sizes.p8.h),

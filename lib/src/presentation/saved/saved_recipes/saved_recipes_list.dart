@@ -7,37 +7,15 @@ class SavedRecipesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
-        SavedItem(
-          cookTime: 30,
-          name: 'Pancake',
-          rating: 4,
-        ),
+      primary: false,
+      shrinkWrap: true,
+      children: [
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
       ],
     );
   }
