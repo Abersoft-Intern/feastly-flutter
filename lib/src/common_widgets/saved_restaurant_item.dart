@@ -7,19 +7,17 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedRecipeItem extends StatelessWidget {
-  const SavedRecipeItem({
+class SavedRestaurantItem extends StatelessWidget {
+  const SavedRestaurantItem({
     super.key,
     required this.name,
     required this.rating,
-    required this.cookTime,
     this.onTap,
     this.rightIcon,
   });
 
   final String name;
   final int rating;
-  final int cookTime;
   final IconData? rightIcon;
   final VoidCallback? onTap;
 
@@ -36,8 +34,7 @@ class SavedRecipeItem extends StatelessWidget {
         child: Row(
           children: [
             CachedNetworkImage(
-              imageUrl:
-                  'https://img.taste.com.au/hMaiduT5/taste/2016/11/raspberry-and-coconut-pancakes-78984-1.jpeg',
+              imageUrl: 'https://i.ytimg.com/vi/0sn-3Mhz-Q4/mqdefault.jpg',
               imageBuilder: (context, imageProvider) {
                 return Container(
                   height: 80.0.h,
@@ -55,23 +52,41 @@ class SavedRecipeItem extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   name,
                   style: textTheme.body16Bold,
                 ),
-                gapH8,
+                gapH12,
                 Rating(
                   rating: rating,
-                  emptyRatingIcon: Icon(
-                    FeastlyIcon.icon_star_unfilled,
-                    color: colorTheme.unselectedNav,
+                  emptyRatingIcon: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2.0),
+                      color: colorTheme.mediumGrey,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        FeastlyIcon.icon_star_filled,
+                        size: 10,
+                        color: colorTheme.white,
+                      ),
+                    ),
                   ),
-                ),
-                gapH4,
-                Text(
-                  'Cook time: $cookTime',
-                  style: textTheme.body16Regular,
+                  fullRatingIcon: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2.0),
+                      color: colorTheme.red,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        FeastlyIcon.icon_star_filled,
+                        size: 10,
+                        color: colorTheme.white,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

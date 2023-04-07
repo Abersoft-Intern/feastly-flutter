@@ -1,22 +1,27 @@
-import 'package:feastly/src/common_widgets/buttons/back_arrow_button.dart';
+import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/saved/recipes_category/category_recipes_list.dart';
+import 'package:feastly/src/presentation/saved/saved_list/saved_recipes_list.dart';
+import 'package:feastly/src/presentation/saved/saved_list/saved_restaurants_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
-class CategoryRecipesScreen extends StatefulWidget {
-  const CategoryRecipesScreen({super.key});
+class SavedScreen extends StatefulWidget {
+  const SavedScreen({
+    super.key,
+  });
+
   @override
-  State<CategoryRecipesScreen> createState() => _CategoryRecipesScreenState();
+  State<SavedScreen> createState() => _SavedScreenState();
 }
 
-class _CategoryRecipesScreenState extends State<CategoryRecipesScreen> {
+class _SavedScreenState extends State<SavedScreen> {
+  var _selectedMenu = 0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -25,29 +30,46 @@ class _CategoryRecipesScreenState extends State<CategoryRecipesScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          primary: true,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              gapH32,
               Padding(
-                padding: EdgeInsets.only(left: Sizes.p28.h, top: Sizes.p28.h),
-                child: const BackArrowButton(),
+                padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
+                child: MainHeader(
+                  selectedMenu: _selectedMenu,
+                  onRecipesTap: () {
+                    setState(() {
+                      _selectedMenu = 0;
+                    });
+                  },
+                  onRestaurantTap: () {
+                    setState(() {
+                      _selectedMenu = 1;
+                    });
+                  },
+                ),
               ),
-              gapH16,
+              gapH44,
+              Divider(
+                color: colorTheme.lightGrey,
+                height: 0,
+                thickness: 1,
+                indent: 34,
+                endIndent: 34,
+              ),
+              gapH12,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Breakfast'.hardcoded,
+                      'My lists'.hardcoded,
                       style: textTheme.h3!,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        context.pushNamed(
-                            RouteName.savedRecipeCategoryAddFood.name,
-                            params: {'categoryId': '1'});
-                      },
+                      onTap: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -68,8 +90,14 @@ class _CategoryRecipesScreenState extends State<CategoryRecipesScreen> {
                   ],
                 ),
               ),
-              gapH8,
-              const CategoryRecipesList()
+              gapH12,
+              FadeIndexedStack(
+                index: _selectedMenu,
+                children: const [
+                  SavedRecipesList(),
+                  SavedRestaurantsList(),
+                ],
+              )
             ],
           ),
         ),

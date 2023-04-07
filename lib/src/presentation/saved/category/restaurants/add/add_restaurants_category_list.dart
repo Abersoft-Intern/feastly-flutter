@@ -1,9 +1,9 @@
+import 'package:feastly/src/common_widgets/saved_restaurant_item.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
-import 'package:feastly/src/presentation/saved/saved_item.dart';
 import 'package:flutter/material.dart';
 
-class AddCategoryRecipesList extends StatelessWidget {
-  const AddCategoryRecipesList({super.key});
+class AddRestaurantsCategoryList extends StatelessWidget {
+  const AddRestaurantsCategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +11,9 @@ class AddCategoryRecipesList extends StatelessWidget {
       shrinkWrap: true,
       primary: false,
       children: [
-        SavedItem(
-          name: 'Raspberry Pancakes',
+        SavedRestaurantItem(
+          name: 'Bebek Madura Abah Farouq',
           rating: 3,
-          cookTime: 30,
           onTap: () {},
           rightIcon: FeastlyIcon.uil_plus,
         ),
