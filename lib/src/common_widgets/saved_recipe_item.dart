@@ -6,8 +6,8 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedItem extends StatelessWidget {
-  const SavedItem({
+class SavedRecipeItem extends StatelessWidget {
+  const SavedRecipeItem({
     super.key,
     required this.name,
     required this.rating,

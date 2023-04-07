@@ -1,8 +1,8 @@
+import 'package:feastly/src/common_widgets/saved_recipe_item.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/saved/saved_item.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -41,7 +41,7 @@ class SavedRecipesList extends StatelessWidget {
               )
             ],
           ),
-          child: SavedItem(
+          child: SavedRecipeItem(
             cookTime: 30,
             name: 'Pancake',
             rating: 4,
@@ -51,11 +51,11 @@ class SavedRecipesList extends StatelessWidget {
             },
           ),
         ),
-        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
-        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
-        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
-        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
-        SavedItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedRecipeItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedRecipeItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedRecipeItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedRecipeItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
+        SavedRecipeItem(cookTime: 30, name: 'Pancake', rating: 4, onTap: () {}),
       ],
     );
   }
