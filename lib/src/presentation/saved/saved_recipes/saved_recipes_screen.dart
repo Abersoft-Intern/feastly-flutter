@@ -4,10 +4,12 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_list.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class SavedRecipesScreen extends StatefulWidget {
   const SavedRecipesScreen({super.key});
@@ -86,7 +88,15 @@ class _SavedRecipesScreenState extends State<SavedRecipesScreen> {
                     SizedBox(
                       width: Sizes.p28.h,
                     ),
-                    const SavedTileButton(label: 'Lunch Places'),
+                    SavedTileButton(
+                      label: 'Lunch Places',
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.savedRecipeCategory.name,
+                          params: {'categoryId': '1'},
+                        );
+                      },
+                    ),
                     SizedBox(
                       width: Sizes.p12.h,
                     ),

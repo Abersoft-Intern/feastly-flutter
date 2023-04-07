@@ -10,8 +10,8 @@ import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
-import 'package:feastly/src/presentation/saved/category/add_food_screen.dart';
-import 'package:feastly/src/presentation/saved/category/category_screen.dart';
+import 'package:feastly/src/presentation/saved/recipes_category/add_category_recipes_screen.dart';
+import 'package:feastly/src/presentation/saved/recipes_category/category_recipes_screen.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -82,14 +82,16 @@ final goRouter = GoRouter(
       builder: (context, state) => const DiscoverSettingScreen(),
     ),
     GoRoute(
-      path: '/saved/category',
-      name: RouteName.category.name,
-      builder: (context, state) => const CategoryScreen(),
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/saved/recipe_categories/:categoryId',
+      name: RouteName.savedRecipeCategory.name,
+      builder: (context, state) => const CategoryRecipesScreen(),
     ),
     GoRoute(
-      path: '/saved/addfood',
-      name: RouteName.addFood.name,
-      builder: (context, state) => const AddFoodScreen(),
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/saved/recipe_categories/:categoryId/add',
+      name: RouteName.savedRecipeCategoryAddFood.name,
+      builder: (context, state) => const AddCategoryRecipesScreen(),
     ),
     GoRoute(
       path: '/',
