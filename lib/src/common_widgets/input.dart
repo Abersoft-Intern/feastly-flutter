@@ -8,16 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Input extends StatefulWidget {
   const Input({
     super.key,
-    required this.icon,
-    required this.hintText,
+    this.icon,
+    this.hintText,
     required this.keyboardType,
     this.isPassword = false,
     this.controller,
     this.onChanged,
   });
 
-  final Icon icon;
-  final String hintText;
+  final Icon? icon;
+  final String? hintText;
   final TextInputType keyboardType;
   final bool isPassword;
   final TextEditingController? controller;
@@ -42,7 +42,9 @@ class _InputState extends State<Input> {
       textAlignVertical: TextAlignVertical.center,
       obscureText: widget.isPassword ? !_showPassword : false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: Sizes.p8.h),
+        contentPadding: widget.icon != null
+            ? EdgeInsets.symmetric(vertical: Sizes.p8.h)
+            : EdgeInsets.symmetric(vertical: Sizes.p20.h, horizontal: 15.0),
         isDense: true,
         hintText: widget.hintText,
         suffixIcon: widget.isPassword
@@ -61,10 +63,12 @@ class _InputState extends State<Input> {
               )
             : null,
         hintStyle: theme.extension<CustomTextTheme>()!.body16Regular!,
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 10.0),
-          child: widget.icon,
-        ),
+        prefixIcon: widget.icon != null
+            ? Padding(
+                padding: const EdgeInsets.only(left: 20, right: 10.0),
+                child: widget.icon,
+              )
+            : null,
         enabledBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(
             Radius.circular(50),
