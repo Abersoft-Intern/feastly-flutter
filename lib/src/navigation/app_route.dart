@@ -6,13 +6,13 @@ import 'package:feastly/src/presentation/auth/register/register_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
 import 'package:feastly/src/presentation/discover/discover/discover_screen.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
-import 'package:feastly/src/presentation/saved/category/category_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
-import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
 import 'package:feastly/src/presentation/saved/category/add_food_screen.dart';
+import 'package:feastly/src/presentation/saved/category/category_screen.dart';
+import 'package:feastly/src/presentation/saved/saved_recipes/saved_recipes_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -82,14 +82,14 @@ final goRouter = GoRouter(
       builder: (context, state) => const DiscoverSettingScreen(),
     ),
     GoRoute(
-          path: '/category',
-          name: RouteName.category.name,
-          builder: (context, state) => const CategoryScreen(),
+      path: '/saved/category',
+      name: RouteName.category.name,
+      builder: (context, state) => const CategoryScreen(),
     ),
     GoRoute(
-          path: '/addfood',
-          name: RouteName.addFood.name,
-          builder: (context, state) => const AddFoodScreen(),
+      path: '/saved/addfood',
+      name: RouteName.addFood.name,
+      builder: (context, state) => const AddFoodScreen(),
     ),
     GoRoute(
       path: '/',
