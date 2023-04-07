@@ -7,9 +7,9 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
-import 'package:feastly/src/data/recipe_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_controller.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +36,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
 
-    final recipeVal = ref.watch(recipeProvider(recipeId: widget.recipeId));
+    final recipeVal = ref.watch(recipeDetailStateProvider(widget.recipeId));
     final controller = ref.watch(recipeDetailControllerProvider);
 
     return Scaffold(

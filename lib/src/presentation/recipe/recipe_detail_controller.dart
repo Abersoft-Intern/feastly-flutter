@@ -1,5 +1,5 @@
-import 'package:feastly/src/data/recipe_repository.dart';
 import 'package:feastly/src/domain/recipe/recipe.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -13,8 +13,8 @@ class RecipeDetailController extends _$RecipeDetailController {
   Future<void> saveRecipe(int recipeId) async {
     state = const AsyncValue.loading();
     await Future.delayed(const Duration(seconds: 1));
+    ref.read(recipeDetailStateProvider(recipeId).notifier).saveRecipe();
     state = const AsyncValue.data(null);
-    ref.invalidate(recipeProvider(recipeId: recipeId));
   }
 
   Future<void> shareRecipe(Recipe recipe) {

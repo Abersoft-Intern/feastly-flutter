@@ -19,9 +19,3 @@ class RecipeRepository {
 RecipeRepository recipeRepository(RecipeRepositoryRef ref) {
   return RecipeRepository();
 }
-
-@riverpod
-Future<Recipe> recipe(RecipeRef ref, {required int recipeId}) {
-  final recipeRepository = ref.watch(recipeRepositoryProvider);
-  return recipeRepository.getRecipe(recipeId);
-}

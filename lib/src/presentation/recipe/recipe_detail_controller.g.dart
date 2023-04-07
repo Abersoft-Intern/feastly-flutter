@@ -7,7 +7,7 @@ part of 'recipe_detail_controller.dart';
 // **************************************************************************
 
 String _$recipeDetailControllerHash() =>
-    r'c132553d1404cc752047171c2b8dc6b4ae6bb777';
+    r'b5a97c547e9785e5fbfb98281d081474ff7b928d';
 
 /// See also [RecipeDetailController].
 @ProviderFor(RecipeDetailController)
