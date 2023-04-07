@@ -46,7 +46,7 @@ class SavedNone extends StatelessWidget {
                         Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            'Hello'.hardcoded,
+                            'Create a new list'.hardcoded,
                             style: textTheme.h3,
                           ),
                         ),
@@ -54,7 +54,7 @@ class SavedNone extends StatelessWidget {
                         Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            'Create a new group to swipe with \nyour friends.'
+                            'Create a new list so you can \norganize your foods.'
                                 .hardcoded,
                             style: textTheme.body16Regular,
                             textAlign: TextAlign.center,
