@@ -1,7 +1,9 @@
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
+import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/saved/saved_item.dart';
+import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +25,16 @@ class SavedRecipesList extends StatelessWidget {
             motion: const BehindMotion(),
             children: [
               SlidableAction(
-                onPressed: null,
+                autoClose: false,
+                onPressed: (context) {
+                  showCustomBottomSheet(
+                    context,
+                    title: 'Delete match'.hardcoded,
+                    subtitle:
+                        'Are you sure you want to delete this match?'.hardcoded,
+                    onYesTap: () {},
+                  );
+                },
                 backgroundColor: colorTheme.red!,
                 foregroundColor: colorTheme.white,
                 icon: FeastlyIcon.vector_3,
