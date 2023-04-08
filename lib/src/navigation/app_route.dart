@@ -28,7 +28,7 @@ final goRouter = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   // Change default url here
-  initialLocation: '/saved',
+  initialLocation: '/',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
