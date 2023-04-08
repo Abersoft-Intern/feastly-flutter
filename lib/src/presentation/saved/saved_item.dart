@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feastly/src/common_widgets/rating.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
@@ -34,15 +35,20 @@ class SavedItem extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: Sizes.p28.h, vertical: Sizes.p8.h),
         child: Row(
           children: [
-            Ink(
-              height: 80.0.h,
-              width: 66.0.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/pancakes.png'),
-                ),
-              ),
+            CachedNetworkImage(
+              imageUrl:
+                  'https://img.taste.com.au/hMaiduT5/taste/2016/11/raspberry-and-coconut-pancakes-78984-1.jpeg',
+              imageBuilder: (context, imageProvider) {
+                return Ink(
+                  height: 80.0.h,
+                  width: 66.0.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                        image: imageProvider, fit: BoxFit.cover),
+                  ),
+                );
+              },
             ),
             SizedBox(
               width: Sizes.p24.h,

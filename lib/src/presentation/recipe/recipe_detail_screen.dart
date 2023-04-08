@@ -32,6 +32,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
     final textTheme = theme.extension<CustomTextTheme>()!;
 
     final recipeVal = ref.watch(recipeProvider(recipeId: 1));
+    // ignore: unused_local_variable
     final controller = ref.watch(recipeDetailControllerProvider);
 
     return Scaffold(
