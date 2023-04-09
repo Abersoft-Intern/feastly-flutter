@@ -7,15 +7,20 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
-import 'package:feastly/src/data/recipe_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_controller.dart';
+import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecipeDetailScreen extends ConsumerStatefulWidget {
-  const RecipeDetailScreen({super.key});
+  const RecipeDetailScreen({
+    super.key,
+    required this.recipeId,
+  });
+
+  final int recipeId;
 
   @override
   ConsumerState<RecipeDetailScreen> createState() => _RecipeDetailScreenState();
@@ -31,8 +36,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
 
-    final recipeVal = ref.watch(recipeProvider(recipeId: 1));
-    // ignore: unused_local_variable
+    final recipeVal = ref.watch(recipeDetailStateProvider(widget.recipeId));
     final controller = ref.watch(recipeDetailControllerProvider);
 
     return Scaffold(
@@ -52,7 +56,11 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       imageUrl: recipe.imageUrl,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(Sizes.p28.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Sizes.p28.h,
+                        vertical:
+                            Sizes.p28.h + MediaQuery.of(context).padding.top,
+                      ),
                       child: BackArrowButton(
                         color: colorTheme.white,
                       ),
@@ -138,6 +146,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                     ),
                     gapH8,
                     ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       separatorBuilder: (_, index) {
                         return gapH12;
@@ -158,16 +167,53 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       recipe.cookingMethod,
                     ),
                     gapH32,
-                    Button(
-                      text: 'Save'.hardcoded,
-                      onTap: () {},
-                    ),
+                    // TODO Change saved status based on api
+                    if (!recipe.isSaved)
+                      Button(
+                        isLoading: controller.isLoading,
+                        text: 'Save'.hardcoded,
+                        onTap: () async {
+                          await ref
+                              .read(recipeDetailControllerProvider.notifier)
+                              .saveRecipe(recipe.id);
+                        },
+                      ),
                     gapH24,
                     Button(
                       text: 'Share with friend'.hardcoded,
                       variant: ButtonVariant.outlined,
-                      onTap: () {},
+                      onTap: () async {
+                        await ref
+                            .read(recipeDetailControllerProvider.notifier)
+                            .shareRecipe(recipe);
+                      },
                     ),
+                    gapH28,
+                    Padding(
+                      padding: EdgeInsets.only(left: Sizes.p16.h),
+                      child: Text(
+                        'Recipe credits'.hardcoded,
+                        style: textTheme.body16Bold,
+                      ),
+                    ),
+                    gapH16,
+                    Padding(
+                      padding: EdgeInsets.only(left: Sizes.p16.h),
+                      child: Row(
+                        children: [
+                          Icon(
+                            FeastlyIcon.instagram_filled,
+                            color: colorTheme.blue,
+                            size: 26.0,
+                          ),
+                          gapW12,
+                          Text(
+                            'foodbydidizz'.hardcoded,
+                            style: textTheme.body16Bold,
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               )

@@ -72,7 +72,9 @@ final goRouter = GoRouter(
       builder: (context, state) {
         // ignore: unused_local_variable
         final recipeId = state.params['id'];
-        return const RecipeDetailScreen();
+        return RecipeDetailScreen(
+          recipeId: int.parse(recipeId!),
+        );
       },
     ),
     GoRoute(

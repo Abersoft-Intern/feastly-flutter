@@ -27,6 +27,8 @@ mixin _$Recipe {
   String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'cook_time')
   int get cookTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_saved')
+  bool get isSaved => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   @JsonKey(name: 'cooking_method')
   String get cookingMethod => throw _privateConstructorUsedError;
@@ -47,6 +49,7 @@ abstract class $RecipeCopyWith<$Res> {
       int rating,
       @JsonKey(name: 'image_url') String imageUrl,
       @JsonKey(name: 'cook_time') int cookTime,
+      @JsonKey(name: 'is_saved') bool isSaved,
       List<Ingredient> ingredients,
       @JsonKey(name: 'cooking_method') String cookingMethod});
 }
@@ -69,6 +72,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? rating = null,
     Object? imageUrl = null,
     Object? cookTime = null,
+    Object? isSaved = null,
     Object? ingredients = null,
     Object? cookingMethod = null,
   }) {
@@ -93,6 +97,10 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.cookTime
           : cookTime // ignore: cast_nullable_to_non_nullable
               as int,
+      isSaved: null == isSaved
+          ? _value.isSaved
+          : isSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -117,6 +125,7 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       int rating,
       @JsonKey(name: 'image_url') String imageUrl,
       @JsonKey(name: 'cook_time') int cookTime,
+      @JsonKey(name: 'is_saved') bool isSaved,
       List<Ingredient> ingredients,
       @JsonKey(name: 'cooking_method') String cookingMethod});
 }
@@ -136,6 +145,7 @@ class __$$_RecipeCopyWithImpl<$Res>
     Object? rating = null,
     Object? imageUrl = null,
     Object? cookTime = null,
+    Object? isSaved = null,
     Object? ingredients = null,
     Object? cookingMethod = null,
   }) {
@@ -160,6 +170,10 @@ class __$$_RecipeCopyWithImpl<$Res>
           ? _value.cookTime
           : cookTime // ignore: cast_nullable_to_non_nullable
               as int,
+      isSaved: null == isSaved
+          ? _value.isSaved
+          : isSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -181,6 +195,7 @@ class _$_Recipe implements _Recipe {
       required this.rating,
       @JsonKey(name: 'image_url') required this.imageUrl,
       @JsonKey(name: 'cook_time') required this.cookTime,
+      @JsonKey(name: 'is_saved') required this.isSaved,
       required final List<Ingredient> ingredients,
       @JsonKey(name: 'cooking_method') required this.cookingMethod})
       : _ingredients = ingredients;
@@ -200,6 +215,9 @@ class _$_Recipe implements _Recipe {
   @override
   @JsonKey(name: 'cook_time')
   final int cookTime;
+  @override
+  @JsonKey(name: 'is_saved')
+  final bool isSaved;
   final List<Ingredient> _ingredients;
   @override
   List<Ingredient> get ingredients {
@@ -214,7 +232,7 @@ class _$_Recipe implements _Recipe {
 
   @override
   String toString() {
-    return 'Recipe(id: $id, name: $name, rating: $rating, imageUrl: $imageUrl, cookTime: $cookTime, ingredients: $ingredients, cookingMethod: $cookingMethod)';
+    return 'Recipe(id: $id, name: $name, rating: $rating, imageUrl: $imageUrl, cookTime: $cookTime, isSaved: $isSaved, ingredients: $ingredients, cookingMethod: $cookingMethod)';
   }
 
   @override
@@ -229,6 +247,7 @@ class _$_Recipe implements _Recipe {
                 other.imageUrl == imageUrl) &&
             (identical(other.cookTime, cookTime) ||
                 other.cookTime == cookTime) &&
+            (identical(other.isSaved, isSaved) || other.isSaved == isSaved) &&
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
             (identical(other.cookingMethod, cookingMethod) ||
@@ -244,6 +263,7 @@ class _$_Recipe implements _Recipe {
       rating,
       imageUrl,
       cookTime,
+      isSaved,
       const DeepCollectionEquality().hash(_ingredients),
       cookingMethod);
 
@@ -270,6 +290,8 @@ abstract class _Recipe implements Recipe {
           required final String imageUrl,
       @JsonKey(name: 'cook_time')
           required final int cookTime,
+      @JsonKey(name: 'is_saved')
+          required final bool isSaved,
       required final List<Ingredient> ingredients,
       @JsonKey(name: 'cooking_method')
           required final String cookingMethod}) = _$_Recipe;
@@ -288,6 +310,9 @@ abstract class _Recipe implements Recipe {
   @override
   @JsonKey(name: 'cook_time')
   int get cookTime;
+  @override
+  @JsonKey(name: 'is_saved')
+  bool get isSaved;
   @override
   List<Ingredient> get ingredients;
   @override

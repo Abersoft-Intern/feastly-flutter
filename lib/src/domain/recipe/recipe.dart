@@ -11,6 +11,7 @@ class Recipe with _$Recipe {
     required int rating,
     @JsonKey(name: 'image_url') required String imageUrl,
     @JsonKey(name: 'cook_time') required int cookTime,
+    @JsonKey(name: 'is_saved') required bool isSaved,
     required List<Ingredient> ingredients,
     @JsonKey(name: 'cooking_method') required String cookingMethod,
   }) = _Recipe;

@@ -24,22 +24,22 @@ class Sizes {
 }
 
 /// Constant gap widths
-final gapW4 = SizedBox(width: Sizes.p4.w);
-final gapW8 = SizedBox(width: Sizes.p8.w);
-final gapW12 = SizedBox(width: Sizes.p12.w);
-final gapW16 = SizedBox(width: Sizes.p16.w);
-final gapW20 = SizedBox(width: Sizes.p20.w);
-final gapW24 = SizedBox(width: Sizes.p24.w);
-final gapW28 = SizedBox(width: Sizes.p28.w);
-final gapW32 = SizedBox(width: Sizes.p32.w);
-final gapW36 = SizedBox(width: Sizes.p36.w);
-final gapW40 = SizedBox(width: Sizes.p40.w);
-final gapW44 = SizedBox(width: Sizes.p44.w);
-final gapW48 = SizedBox(width: Sizes.p48.w);
-final gapW52 = SizedBox(width: Sizes.p52.w);
-final gapW56 = SizedBox(width: Sizes.p56.w);
-final gapW60 = SizedBox(width: Sizes.p60.w);
-final gapW64 = SizedBox(width: Sizes.p64.w);
+final gapW4 = SizedBox(width: Sizes.p4.h);
+final gapW8 = SizedBox(width: Sizes.p8.h);
+final gapW12 = SizedBox(width: Sizes.p12.h);
+final gapW16 = SizedBox(width: Sizes.p16.h);
+final gapW20 = SizedBox(width: Sizes.p20.h);
+final gapW24 = SizedBox(width: Sizes.p24.h);
+final gapW28 = SizedBox(width: Sizes.p28.h);
+final gapW32 = SizedBox(width: Sizes.p32.h);
+final gapW36 = SizedBox(width: Sizes.p36.h);
+final gapW40 = SizedBox(width: Sizes.p40.h);
+final gapW44 = SizedBox(width: Sizes.p44.h);
+final gapW48 = SizedBox(width: Sizes.p48.h);
+final gapW52 = SizedBox(width: Sizes.p52.h);
+final gapW56 = SizedBox(width: Sizes.p56.h);
+final gapW60 = SizedBox(width: Sizes.p60.h);
+final gapW64 = SizedBox(width: Sizes.p64.h);
 
 /// Constant gap heights
 final gapH4 = SizedBox(height: Sizes.p4.h);
