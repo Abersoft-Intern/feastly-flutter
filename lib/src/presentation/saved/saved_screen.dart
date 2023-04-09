@@ -1,3 +1,5 @@
+import 'package:feastly/src/common_widgets/buttons/button.dart';
+import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
@@ -6,6 +8,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/saved/saved_list/saved_recipes_list.dart';
 import 'package:feastly/src/presentation/saved/saved_list/saved_restaurants_list.dart';
+import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
@@ -69,7 +72,40 @@ class _SavedScreenState extends State<SavedScreen> {
                       style: textTheme.h3!,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showPrompt(
+                          context,
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Text(
+                                  'Create a new list'.hardcoded,
+                                  style: textTheme.h3,
+                                ),
+                              ),
+                              gapH4,
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Text(
+                                  'Create a new list so you can \norganize your foods.'
+                                      .hardcoded,
+                                  style: textTheme.body16Regular,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              gapH20,
+                              const Input(keyboardType: TextInputType.text),
+                              gapH40,
+                              Button(
+                                text: 'Save new list'.hardcoded,
+                                onTap: () {},
+                              ),
+                              gapH12
+                            ],
+                          ),
+                        );
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
