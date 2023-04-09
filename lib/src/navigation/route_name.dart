@@ -10,6 +10,8 @@ enum RouteName {
   discoverSetting,
   discover,
   saved,
+  savedRecipeCategory,
+  savedRecipeCategoryAddFood,
   groups,
   profile
 }
