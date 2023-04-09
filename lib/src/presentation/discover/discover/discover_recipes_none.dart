@@ -1,4 +1,4 @@
-import 'package:feastly/src/constants/theme/custom_color.dart';
+//import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class DiscoverRecipesNone extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
-    final colorTheme = theme.extension<CustomColor>()!;
+    //final colorTheme = theme.extension<CustomColor>()!;
     return Column(
       children: [
         Text(
