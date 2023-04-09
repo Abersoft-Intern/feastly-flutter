@@ -32,6 +32,7 @@ dependencies:
       url: https://github.com/ricardodalarme/flutter_card_swiper.git
       ref: feat/custom-card-offset
   share_plus: ^6.3.1
+  flutter_slidable: ^2.0.0
 
 dev_dependencies:
   flutter_test:
