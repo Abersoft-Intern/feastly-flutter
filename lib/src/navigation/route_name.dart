@@ -11,7 +11,9 @@ enum RouteName {
   discover,
   saved,
   savedRecipeCategory,
-  savedRecipeCategoryAddFood,
+  savedRecipeCategoryAdd,
+  savedRestaurantCategory,
+  savedRestaurantCategoryAdd,
   groups,
   profile
 }

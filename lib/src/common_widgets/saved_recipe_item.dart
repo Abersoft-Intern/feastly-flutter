@@ -7,8 +7,8 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedItem extends StatelessWidget {
-  const SavedItem({
+class SavedRecipeItem extends StatelessWidget {
+  const SavedRecipeItem({
     super.key,
     required this.name,
     required this.rating,
@@ -39,7 +39,7 @@ class SavedItem extends StatelessWidget {
               imageUrl:
                   'https://img.taste.com.au/hMaiduT5/taste/2016/11/raspberry-and-coconut-pancakes-78984-1.jpeg',
               imageBuilder: (context, imageProvider) {
-                return Ink(
+                return Container(
                   height: 80.0.h,
                   width: 66.0.h,
                   decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class SavedItem extends StatelessWidget {
                     color: colorTheme.unselectedNav,
                   ),
                 ),
-                gapH8,
+                gapH4,
                 Text(
                   'Cook time: $cookTime',
                   style: textTheme.body16Regular,

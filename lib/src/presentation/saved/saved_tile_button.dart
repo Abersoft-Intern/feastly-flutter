@@ -15,7 +15,7 @@ class SavedTileButton extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(10.0),
       onTap: onTap,
-      child: Ink(
+      child: Container(
         width: 134.0.h,
         height: 73.0.h,
         decoration: BoxDecoration(

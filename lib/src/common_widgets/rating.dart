@@ -13,8 +13,8 @@ class Rating extends StatelessWidget {
   });
 
   final int rating;
-  final Icon? fullRatingIcon;
-  final Icon? emptyRatingIcon;
+  final Widget? fullRatingIcon;
+  final Widget? emptyRatingIcon;
 
   @override
   Widget build(BuildContext context) {
