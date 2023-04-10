@@ -33,7 +33,6 @@ dependencies:
       ref: feat/custom-card-offset
   share_plus: ^6.3.1
   flutter_slidable: ^2.0.0
-  transitioned_indexed_stack: ^1.0.2
   flutter_svg: ^2.0.4
 
 dev_dependencies:

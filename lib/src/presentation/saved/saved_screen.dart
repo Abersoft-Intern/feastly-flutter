@@ -1,4 +1,5 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
+import 'package:feastly/src/common_widgets/fade_indexed_stack.dart';
 import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
@@ -11,7 +12,6 @@ import 'package:feastly/src/presentation/saved/saved_list/saved_restaurants_list
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 class SavedScreen extends StatefulWidget {
   const SavedScreen({
