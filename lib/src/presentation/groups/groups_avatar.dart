@@ -5,6 +5,7 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class GroupsAvatar extends StatelessWidget {
   const GroupsAvatar({
@@ -32,8 +33,9 @@ class GroupsAvatar extends StatelessWidget {
                   if (isActive)
                     Align(
                       alignment: Alignment.center,
-                      child: SvgPicture.asset(
-                        'assets/images/avatar_border.svg.vec',
+                      child: SvgPicture(
+                        const AssetBytesLoader(
+                            'assets/images/avatar_border.svg.vec'),
                         height: 55.0.h,
                         colorFilter: ColorFilter.mode(
                           theme.primaryColor,
