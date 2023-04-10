@@ -8,6 +8,7 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/group/member_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GroupScreen extends StatelessWidget {
   const GroupScreen({super.key});
@@ -154,7 +155,9 @@ class GroupScreen extends StatelessWidget {
                 gapH36,
                 Button(
                   text: 'Invite friends'.hardcoded,
-                  onTap: () {},
+                  onTap: () {
+                    Share.share('Join me on feastly');
+                  },
                 ),
                 gapH24,
                 Button(
