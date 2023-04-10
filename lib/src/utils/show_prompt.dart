@@ -2,6 +2,7 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 void showPrompt(BuildContext context, {required Widget child}) {
   final theme = Theme.of(context);
@@ -20,19 +21,15 @@ void showPrompt(BuildContext context, {required Widget child}) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            InkWell(
+            InkResponse(
+              radius: 20.0,
               onTap: () {
-                Navigator.of(context).pop();
+                context.pop();
               },
-              borderRadius: const BorderRadius.all(
-                Radius.circular(50.0),
-              ),
-              child: Ink(
-                child: Icon(
-                  FeastlyIcon.button_close,
-                  size: 24.0.h,
-                  color: theme.primaryColor,
-                ),
+              child: Icon(
+                FeastlyIcon.button_close,
+                size: 24.0.h,
+                color: theme.primaryColor,
               ),
             ),
             child
