@@ -5,11 +5,13 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_list.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_recipes.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_restaurants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class GroupsScreen extends StatefulWidget {
   const GroupsScreen({super.key});
@@ -77,7 +79,12 @@ class _GroupsScreenState extends State<GroupsScreen> {
                       style: textTheme.h3!,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.groupDetail.name,
+                          params: {'groupId': '1'},
+                        );
+                      },
                       child: Text(
                         'Edit Group'.hardcoded,
                         style: textTheme.body16Bold!
