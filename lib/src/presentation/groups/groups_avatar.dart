@@ -33,8 +33,12 @@ class GroupsAvatar extends StatelessWidget {
                     Align(
                       alignment: Alignment.center,
                       child: SvgPicture.asset(
-                        'assets/images/avatar_border.svg',
+                        'assets/images/avatar_border.svg.vec',
                         height: 55.0.h,
+                        colorFilter: ColorFilter.mode(
+                          theme.primaryColor,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   Align(
