@@ -1,9 +1,12 @@
+import 'package:feastly/src/common_widgets/buttons/button.dart';
+import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/groups_avatar.dart';
+import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +28,40 @@ class GroupsList extends StatelessWidget {
             width: 80.0.h,
             child: InkResponse(
               radius: 40.0,
-              onTap: () {},
+              onTap: () {
+                showPrompt(
+                  context,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Create a new group'.hardcoded,
+                          style: textTheme.h3,
+                        ),
+                      ),
+                      gapH4,
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Create a new group to swipe with \nyour friends.'
+                              .hardcoded,
+                          style: textTheme.body16Regular,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      gapH20,
+                      const Input(keyboardType: TextInputType.text),
+                      gapH40,
+                      Button(
+                        text: 'Create group'.hardcoded,
+                        onTap: () {},
+                      ),
+                      gapH12
+                    ],
+                  ),
+                );
+              },
               child: Column(
                 children: [
                   Expanded(
