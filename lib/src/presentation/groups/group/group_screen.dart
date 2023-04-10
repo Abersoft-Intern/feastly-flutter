@@ -146,7 +146,7 @@ class GroupScreen extends StatelessWidget {
                 ),
                 gapH24,
                 Button(
-                  text: 'Leave group'.hardcoded,
+                  text: 'Disband group'.hardcoded,
                   variant: ButtonVariant.danger,
                   onTap: () {
                     showCustomBottomSheet(context,
