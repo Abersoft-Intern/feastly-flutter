@@ -31,8 +31,8 @@ class SavedRecipeItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: Sizes.p28.h, vertical: Sizes.p8.h),
+        padding: EdgeInsets.symmetric(
+            horizontal: Sizes.p28.h, vertical: Sizes.p12.h),
         child: Row(
           children: [
             CachedNetworkImage(
@@ -50,9 +50,7 @@ class SavedRecipeItem extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(
-              width: Sizes.p24.h,
-            ),
+            gapW24,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
