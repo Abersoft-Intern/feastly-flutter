@@ -3,9 +3,9 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/data/discover_repository.dart';
-import 'package:feastly/src/presentation/discover/discover/discover_recipes_card.dart';
-import 'package:feastly/src/presentation/discover/discover/discover_recipes_controller.dart';
-import 'package:feastly/src/presentation/discover/discover/discover_recipes_none.dart';
+import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_card.dart';
+import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_controller.dart';
+import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_none.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,18 +22,6 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
   var _isCardEmpty = false;
   var _isEndReached = false;
   final _cardController = CardSwiperController();
-
-  Future<void> likeRecipe(int recipeId) async {
-    await ref
-        .read(discoverRecipesControllerProvider.notifier)
-        .likeRecipe(recipeId);
-  }
-
-  Future<void> skipRecipe(int recipeId) async {
-    await ref
-        .read(discoverRecipesControllerProvider.notifier)
-        .skipRecipe(recipeId);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +62,13 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     onSwipe: (index, __, direction) {
                       final recipeId = data.recipes[index]!.id;
                       if (direction == CardSwiperDirection.right) {
-                        likeRecipe(recipeId);
+                        ref
+                            .read(discoverRecipesControllerProvider.notifier)
+                            .likeRecipe(recipeId);
                       } else if (direction == CardSwiperDirection.left) {
-                        skipRecipe(recipeId);
+                        ref
+                            .read(discoverRecipesControllerProvider.notifier)
+                            .skipRecipe(recipeId);
                       }
                       return true;
                     },

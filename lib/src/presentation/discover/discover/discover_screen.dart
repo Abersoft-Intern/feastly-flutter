@@ -1,8 +1,10 @@
+import 'package:feastly/src/common_widgets/fade_indexed_stack.dart';
 import 'package:feastly/src/common_widgets/main_header.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/discover/discover/discover_recipes.dart';
+import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes.dart';
+import 'package:feastly/src/presentation/discover/discover/restaurants/discover_restaurants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +17,7 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  var selectedMenu = 0;
+  var _selectedMenu = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
                 child: MainHeader(
-                  selectedMenu: selectedMenu,
-                  onRecipesTap: () => setState(() => selectedMenu = 0),
-                  onRestaurantTap: () => setState(() => selectedMenu = 1),
+                  selectedMenu: _selectedMenu,
+                  onRecipesTap: () => setState(() => _selectedMenu = 0),
+                  onRestaurantTap: () => setState(() => _selectedMenu = 1),
                   child: InkWell(
                     onTap: () {
                       context.pushNamed(RouteName.discoverSetting.name);
@@ -53,8 +55,14 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 ),
               ),
               gapH32,
-              const Expanded(
-                child: DiscoverRecipes(),
+              Expanded(
+                child: FadeIndexedStack(
+                  index: _selectedMenu,
+                  children: const [
+                    DiscoverRecipes(),
+                    DiscoverRestaurants(),
+                  ],
+                ),
               ),
               gapH32
             ],
