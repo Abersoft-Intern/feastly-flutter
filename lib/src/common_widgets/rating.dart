@@ -10,9 +10,11 @@ class Rating extends StatelessWidget {
     required this.rating,
     this.fullRatingIcon,
     this.emptyRatingIcon,
+    this.iconSize,
   });
 
   final int rating;
+  final double? iconSize;
   final Widget? fullRatingIcon;
   final Widget? emptyRatingIcon;
 
@@ -24,7 +26,7 @@ class Rating extends StatelessWidget {
       itemCount: 5,
       ignoreGestures: true,
       maxRating: 5,
-      itemSize: Sizes.p24.h,
+      itemSize: iconSize ?? Sizes.p24.h,
       ratingWidget: RatingWidget(
         full: fullRatingIcon ??
             ShaderMask(
