@@ -5,9 +5,11 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/groups/group/member_avatar.dart';
+import 'package:feastly/src/presentation/groups/group/group_members.dart';
+import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GroupScreen extends StatelessWidget {
   const GroupScreen({super.key});
@@ -134,33 +136,24 @@ class GroupScreen extends StatelessWidget {
                   style: textTheme.h3,
                 ),
                 gapH28,
-                ListView(
-                  primary: false,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    MemberAvatar(
-                      isDeleteable: true,
-                      isActive: true,
-                    ),
-                    MemberAvatar(
-                      isDeleteable: true,
-                    ),
-                    MemberAvatar(
-                      isDeleteable: true,
-                    )
-                  ],
-                ),
+                const GroupMembers(),
                 gapH36,
                 Button(
                   text: 'Invite friends'.hardcoded,
-                  onTap: () {},
+                  onTap: () {
+                    Share.share('Join me on feastly');
+                  },
                 ),
                 gapH24,
                 Button(
-                  text: 'Leave group'.hardcoded,
+                  text: 'Disband group'.hardcoded,
                   variant: ButtonVariant.danger,
-                  onTap: () {},
+                  onTap: () {
+                    showCustomBottomSheet(context,
+                        title: 'Disband Group'.hardcoded,
+                        subtitle: 'Are you sure you want to disband this group?'
+                            .hardcoded);
+                  },
                 ),
               ],
             ),

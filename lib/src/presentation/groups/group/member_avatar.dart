@@ -3,6 +3,8 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
+import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -70,7 +72,14 @@ class MemberAvatar extends StatelessWidget {
         const Spacer(),
         if (isDeleteable)
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showCustomBottomSheet(
+                context,
+                title: 'Remove member'.hardcoded,
+                subtitle:
+                    'Are you sure you want to remove this\nmember?'.hardcoded,
+              );
+            },
             borderRadius: BorderRadius.circular(25.0),
             child: Ink(
               width: 40.0.h,
