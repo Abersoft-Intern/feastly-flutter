@@ -81,15 +81,7 @@ class GroupScreen extends StatelessWidget {
                 //   style: textTheme.body16Bold,
                 // ),
                 gapH28,
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    'The group leader can choose the location of where you swipe.'
-                        .hardcoded,
-                    style: textTheme.body16Regular,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                
                 gapH48,
                 Text(
                   'Group members'.hardcoded,
