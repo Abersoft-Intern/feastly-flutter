@@ -7,14 +7,13 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'register_buttons.dart';
-
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final textTheme = theme.extension<CustomTextTheme>()!;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -38,12 +37,12 @@ class RegisterScreen extends StatelessWidget {
               gapH24,
               Text(
                 'Create account'.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.h2!,
+                style: textTheme.h2!,
               ),
               gapH8,
               Text(
                 'It has never been easier deciding what to eat!'.hardcoded,
-                style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                style: textTheme.body16Regular!,
               ),
               gapH64,
               Input(
@@ -78,7 +77,7 @@ class RegisterScreen extends StatelessWidget {
               Text(
                 'By creating an account you agree to our Terms of Use and Privacy Policy.'
                     .hardcoded,
-                style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                style: textTheme.body16Regular!,
                 textAlign: TextAlign.center,
               ),
               gapH32,
@@ -86,17 +85,6 @@ class RegisterScreen extends StatelessWidget {
                 text: 'Register'.hardcoded,
                 onTap: () {},
               ),
-              gapH40,
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                  'Or Sign In using Social Media'.hardcoded,
-                  style: theme.extension<CustomTextTheme>()!.body16Regular!,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              gapH36,
-              const RegisterButtons()
             ],
           ),
         ),
