@@ -1,6 +1,7 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,12 +22,22 @@ class ProfileButtons extends StatelessWidget {
           gapH32,
           Button(
             text: 'Logout'.hardcoded,
-            onTap: () {},
+            onTap: () {
+              showCustomBottomSheet(context,
+                  title: 'Logout'.hardcoded,
+                  subtitle: 'Are you sure you want to log out?'.hardcoded);
+            },
           ),
           gapH32,
           Button(
             text: 'Remove Account'.hardcoded,
-            onTap: () {},
+            onTap: () {
+              showCustomBottomSheet(context,
+                  title: 'Remove account'.hardcoded,
+                  subtitle:
+                      'Are you sure you want to remove your account? This cannot be undone.'
+                          .hardcoded);
+            },
             variant: ButtonVariant.danger,
           ),
         ],
