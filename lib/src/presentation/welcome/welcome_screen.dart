@@ -3,7 +3,6 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/welcome/welcome_buttons.dart';
 import 'package:feastly/src/presentation/welcome/welcome_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,18 +54,6 @@ class WelcomeScreen extends StatelessWidget {
                       text: 'Sign In'.hardcoded,
                       variant: ButtonVariant.outlined,
                     ),
-                    gapH48,
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        'Or Sign In using Social Media'.hardcoded,
-                        style:
-                            theme.extension<CustomTextTheme>()!.body16Regular!,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    gapH36,
-                    const WelcomeButtons()
                   ],
                 ),
               )

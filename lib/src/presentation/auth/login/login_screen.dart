@@ -6,11 +6,10 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/login/login_header.dart';
+import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
-import 'login_buttons.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,6 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.of(context).padding.top;
     final theme = Theme.of(context);
+
+    final textTheme = theme.extension<CustomTextTheme>()!;
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(children: [
@@ -65,12 +66,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 250.0.h),
                 Text(
                   'Hello'.hardcoded,
-                  style: theme.extension<CustomTextTheme>()!.h2!,
+                  style: textTheme.h2!,
                 ),
                 gapH12,
                 Text(
                   'Sign into your account.'.hardcoded,
-                  style: theme.extension<CustomTextTheme>()!.body16Regular!,
+                  style: textTheme.body16Regular!,
                 ),
                 gapH48,
                 Input(
@@ -99,9 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextButton(
                     onPressed: () {},
                     child: Text('Forgot password?'.hardcoded,
-                        style: theme
-                            .extension<CustomTextTheme>()!
-                            .body16Regular!
+                        style: textTheme.body16Regular!
                             .copyWith(color: theme.primaryColor)),
                   ),
                 ),
@@ -110,24 +109,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: 'Sign in'.hardcoded,
                   onTap: () {
                     if (email == password) {
-                      _showDialog(context);
+                      showPrompt(
+                        context,
+                        child: Column(
+                          children: [
+                            gapH20,
+                            Center(
+                              child: Text(
+                                'The password or email is wrong,\n please try again.'
+                                    .hardcoded,
+                                style: textTheme.body16Regular!,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            gapH40
+                          ],
+                        ),
+                      );
                     } else {
                       context.pushNamed(RouteName.otp.name);
                     }
                   },
                   variant: ButtonVariant.outlined,
                 ),
-                gapH36,
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    'Or Sign in using Social Media'.hardcoded,
-                    style: theme.extension<CustomTextTheme>()!.body16Regular!,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                gapH44,
-                const LoginButtons()
               ],
             ),
           ),
@@ -135,43 +139,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-void _showDialog(BuildContext context) {
-  final theme = Theme.of(context);
-  showDialog(
-    context: context,
-    useSafeArea: true,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              borderRadius: const BorderRadius.all(
-                Radius.circular(50.0),
-              ),
-              child: SizedBox(
-                child: Icon(
-                  FeastlyIcon.button_close,
-                  size: 24.0.h,
-                  color: theme.primaryColor,
-                ),
-              ),
-            ),
-          ],
-        ),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        content: Text(
-          'The password or email is wrong,\n please try again.'.hardcoded,
-          style: theme.extension<CustomTextTheme>()!.body16Regular!,
-          textAlign: TextAlign.center,
-        ),
-      );
-    },
-  );
 }
