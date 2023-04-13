@@ -132,16 +132,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   variant: ButtonVariant.outlined,
                 ),
-                gapH36,
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    'Or Sign in using Social Media'.hardcoded,
-                    style: textTheme.body16Regular!,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                gapH44,
               ],
             ),
           ),
