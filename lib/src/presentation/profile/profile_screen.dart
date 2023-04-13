@@ -5,6 +5,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/profile/profile_buttons.dart';
+import 'package:feastly/src/presentation/profile/profile_controller.dart';
 import 'package:feastly/src/presentation/profile/profile_tile_list.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -84,11 +85,19 @@ class ProfileScreen extends ConsumerWidget {
                           gapH20,
                           Button(
                             text: 'Open Camera'.hardcoded,
-                            onTap: () {},
+                            onTap: () {
+                              ref
+                                  .read(profileControllerProvider.notifier)
+                                  .getPhotoCamera();
+                            },
                           ),
                           gapH32,
                           Button(
-                            onTap: () {},
+                            onTap: () {
+                              ref
+                                  .read(profileControllerProvider.notifier)
+                                  .getPhotoGallery();
+                            },
                             text: 'Choose from gallery'.hardcoded,
                             variant: ButtonVariant.inverted,
                           ),
