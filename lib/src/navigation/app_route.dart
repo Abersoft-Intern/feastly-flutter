@@ -12,10 +12,8 @@ import 'package:feastly/src/presentation/groups/join/join_group_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
-import 'package:feastly/src/presentation/saved/category/recipes/add/add_recipes_category_screen.dart';
-import 'package:feastly/src/presentation/saved/category/recipes/list/recipes_category_screen.dart';
-import 'package:feastly/src/presentation/saved/category/restaurants/add/add_restaurants_category_screen.dart';
-import 'package:feastly/src/presentation/saved/category/restaurants/list/restaurants_category_screen.dart';
+import 'package:feastly/src/presentation/saved/category/add/add_recipes_category_screen.dart';
+import 'package:feastly/src/presentation/saved/category/list/recipes_category_screen.dart';
 import 'package:feastly/src/presentation/saved/saved_screen.dart';
 import 'package:feastly/src/presentation/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +103,7 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: '/saved/recipes/:categoryId',
+      path: '/saved/:categoryId',
       name: RouteName.savedRecipeCategory.name,
       builder: (context, state) {
         return const RecipesCategoryScreen();
@@ -113,26 +111,10 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: '/saved/restaurants/:categoryId',
-      name: RouteName.savedRestaurantCategory.name,
-      builder: (context, state) {
-        return const RestaurantsCategoryScreen();
-      },
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: '/saved/recipes/:categoryId/add',
+      path: '/saved/:categoryId/add',
       name: RouteName.savedRecipeCategoryAdd.name,
       builder: (context, state) {
         return const AddRecipesCategoryScreen();
-      },
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: '/saved/restaurants/:categoryId/add',
-      name: RouteName.savedRestaurantCategoryAdd.name,
-      builder: (context, state) {
-        return const AddRestauransCategoryScreen();
       },
     ),
     GoRoute(
