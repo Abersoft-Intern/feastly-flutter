@@ -118,61 +118,6 @@ class ProfileScreen extends ConsumerWidget {
               ),
             ),
             gapH40,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Location'.hardcoded,
-                    style: textTheme.h3,
-                  ),
-                  gapH8,
-                  Text(
-                    'You can pick a different location to see restaurants all around the world.'
-                        .hardcoded,
-                    style: textTheme.body16Regular,
-                  ),
-                  gapH20,
-                  InkWell(
-                    onTap: () => {},
-                    borderRadius: BorderRadius.circular(50.0),
-                    child: Ink(
-                      height: 50.0.h,
-                      padding: EdgeInsets.symmetric(horizontal: Sizes.p24.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50.0),
-                        border: Border.all(
-                            color: colorTheme.lightGrey!, width: 2.0),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            FeastlyIcon.icon_distance,
-                            color: theme.primaryColor,
-                            size: 24.0.h,
-                          ),
-                          const SizedBox(
-                            width: 16.0,
-                          ),
-                          Text(
-                            'Current Location',
-                            style: textTheme.body16Regular,
-                          ),
-                          const Spacer(),
-                          Icon(
-                            FeastlyIcon.button_arrow_right,
-                            color: theme.primaryColor,
-                            size: 24.0.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             gapH32,
             Container(
               height: 1.0,

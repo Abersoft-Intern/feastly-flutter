@@ -75,61 +75,13 @@ class GroupScreen extends StatelessWidget {
                   indent: 34,
                 ),
                 gapH16,
-                Text(
-                  'Group Location'.hardcoded,
-                  style: textTheme.h3,
-                ),
-                gapH24,
-                InkWell(
-                  onTap: () => {},
-                  borderRadius: BorderRadius.circular(50.0),
-                  child: Ink(
-                    height: 50.0.h,
-                    padding: EdgeInsets.symmetric(horizontal: Sizes.p24.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0),
-                      border:
-                          Border.all(color: colorTheme.lightGrey!, width: 2.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FeastlyIcon.icon_distance,
-                          color: theme.primaryColor,
-                          size: 24.0.h,
-                        ),
-                        const SizedBox(
-                          width: 16.0,
-                        ),
-                        Text(
-                          'Current Location',
-                          style: textTheme.body16Regular,
-                        ),
-                        const Spacer(),
-                        Icon(
-                          FeastlyIcon.button_arrow_right,
-                          color: theme.primaryColor,
-                          size: 24.0.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                
                 // Text(
                 //   'Stockholm'.hardcoded,
                 //   style: textTheme.body16Bold,
                 // ),
                 gapH28,
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    'The group leader can choose the location of where you swipe.'
-                        .hardcoded,
-                    style: textTheme.body16Regular,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                
                 gapH48,
                 Text(
                   'Group members'.hardcoded,
