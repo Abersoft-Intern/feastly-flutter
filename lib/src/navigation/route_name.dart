@@ -15,6 +15,7 @@ enum RouteName {
   savedRestaurantCategory,
   savedRestaurantCategoryAdd,
   groups,
+  joinGroup,
   groupDetail,
   profile
 }
