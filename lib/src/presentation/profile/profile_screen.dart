@@ -22,121 +22,125 @@ class ProfileScreen extends ConsumerWidget {
     final colorTheme = theme.extension<CustomColor>()!;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            gapH24,
-            Stack(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    'Johan hellberg'.hardcoded,
-                    style: textTheme.h3,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Positioned(
-                  right: Sizes.p28.h,
-                  top: 0,
-                  bottom: 0,
-                  child: InkWell(
-                    child: Icon(
-                      FeastlyIcon.icon_edit,
-                      color: theme.primaryColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              gapH24,
+              Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      'Johan hellberg'.hardcoded,
+                      style: textTheme.h3,
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                )
-              ],
-            ),
-            gapH36,
-            Align(
-              child: Container(
-                width: 80.0.h,
-                height: 80.0.h,
-                decoration: BoxDecoration(
-                  color: colorTheme.unselectedNav,
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                child: Center(
-                  child: Icon(
-                    FeastlyIcon.icon_user,
-                    size: 50.0.h,
-                    color: colorTheme.profileColor,
-                  ),
-                ),
+                  Positioned(
+                    right: Sizes.p28.h,
+                    top: 0,
+                    bottom: 0,
+                    child: InkResponse(
+                      onTap: () {},
+                      radius: 25.0,
+                      child: Icon(
+                        FeastlyIcon.icon_edit,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ),
-            gapH36,
-            Align(
-              child: InkWell(
-                borderRadius: BorderRadius.circular(50.0),
-                onTap: () {
-                  showCustomBottomSheet(context,
-                      title: 'Choose image source',
-                      subtitle:
-                          'Choose the image source from where you want to upload image.',
-                      customButtons: [
-                        gapH20,
-                        Button(
-                          text: 'Open Camera'.hardcoded,
-                          onTap: () {},
-                        ),
-                        gapH32,
-                        Button(
-                          onTap: () {},
-                          text: 'Choose from gallery'.hardcoded,
-                          variant: ButtonVariant.inverted,
-                        ),
-                        gapH32,
-                        Button(
-                          onTap: () {
-                            context.pop();
-                          },
-                          text: 'Close'.hardcoded,
-                          variant: ButtonVariant.danger,
-                        ),
-                        gapH16
-                      ]);
-                },
-                child: Ink(
+              gapH36,
+              Align(
+                child: Container(
+                  width: 80.0.h,
+                  height: 80.0.h,
                   decoration: BoxDecoration(
-                    color: theme.primaryColor,
+                    color: colorTheme.unselectedNav,
                     borderRadius: BorderRadius.circular(50.0),
                   ),
-                  padding: EdgeInsets.symmetric(
-                    vertical: Sizes.p4.h,
-                    horizontal: Sizes.p12.h,
-                  ),
-                  child: Text(
-                    'Add image',
-                    style:
-                        textTheme.body16Bold!.copyWith(color: colorTheme.white),
+                  child: Center(
+                    child: Icon(
+                      FeastlyIcon.icon_user,
+                      size: 50.0.h,
+                      color: colorTheme.profileColor,
+                    ),
                   ),
                 ),
               ),
-            ),
-            gapH40,
-            gapH32,
-            Container(
-              height: 1.0,
-              color: colorTheme.lightGrey,
-            ),
-            gapH28,
-            const ProfileTileList(),
-            gapH28,
-            const ProfileButtons(),
-            gapH28,
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Version 1.0'.hardcoded,
-                style: textTheme.body16Regular,
+              gapH36,
+              Align(
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(50.0),
+                  onTap: () {
+                    showCustomBottomSheet(context,
+                        title: 'Choose image source',
+                        subtitle:
+                            'Choose the image source from where you want to upload image.',
+                        customButtons: [
+                          gapH20,
+                          Button(
+                            text: 'Open Camera'.hardcoded,
+                            onTap: () {},
+                          ),
+                          gapH32,
+                          Button(
+                            onTap: () {},
+                            text: 'Choose from gallery'.hardcoded,
+                            variant: ButtonVariant.inverted,
+                          ),
+                          gapH32,
+                          Button(
+                            onTap: () {
+                              context.pop();
+                            },
+                            text: 'Close'.hardcoded,
+                            variant: ButtonVariant.danger,
+                          ),
+                          gapH16
+                        ]);
+                  },
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      color: theme.primaryColor,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      vertical: Sizes.p4.h,
+                      horizontal: Sizes.p12.h,
+                    ),
+                    child: Text(
+                      'Add image',
+                      style: textTheme.body16Bold!
+                          .copyWith(color: colorTheme.white),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            gapH28
-          ],
+              gapH36,
+              Divider(
+                color: colorTheme.lightGrey,
+                endIndent: Sizes.p28.h,
+                indent: Sizes.p28.h,
+              ),
+              gapH4,
+              const ProfileTileList(),
+              gapH28,
+              const ProfileButtons(),
+              gapH28,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Version 1.0'.hardcoded,
+                  style: textTheme.body16Regular,
+                ),
+              ),
+              gapH28
+            ],
+          ),
         ),
       ),
     );
