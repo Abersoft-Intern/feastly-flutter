@@ -10,10 +10,8 @@ class BackArrowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return InkWell(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(50),
-      ),
+    return InkResponse(
+      radius: 20.0,
       child: Icon(
         FeastlyIcon.arrow_back_green,
         size: 26.0,

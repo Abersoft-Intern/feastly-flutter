@@ -42,7 +42,9 @@ class _GroupsScreenState extends State<GroupsScreen> {
                   onRestaurantTap: () => setState(() => _selectedMenu = 1),
                   child: InkResponse(
                     radius: 35.0,
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(RouteName.joinGroup.name);
+                    },
                     child: Column(
                       children: [
                         Icon(

@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/discover/discover/discover_screen.dart'
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_screen.dart';
 import 'package:feastly/src/presentation/groups/group/group_screen.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_screen.dart';
+import 'package:feastly/src/presentation/groups/join/join_group_screen.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_screen.dart';
 import 'package:feastly/src/presentation/profile/profile_screen.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_screen.dart';
@@ -67,6 +68,14 @@ final goRouter = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/groups/join',
+      name: RouteName.joinGroup.name,
+      builder: (context, state) {
+        return const JoinGroupScreen();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
