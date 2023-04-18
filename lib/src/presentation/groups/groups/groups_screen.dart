@@ -11,14 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class GroupsScreen extends StatefulWidget {
+class GroupsScreen extends StatelessWidget {
   const GroupsScreen({super.key});
-  @override
-  State<GroupsScreen> createState() => _GroupsScreenState();
-}
-
-class _GroupsScreenState extends State<GroupsScreen> {
-  var _selectedMenu = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +29,6 @@ class _GroupsScreenState extends State<GroupsScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
                 child: MainHeader(
-                  selectedMenu: _selectedMenu,
-                  onRecipesTap: () => setState(() => _selectedMenu = 0),
-                  onRestaurantTap: () => setState(() => _selectedMenu = 1),
                   child: InkResponse(
                     radius: 35.0,
                     onTap: () {

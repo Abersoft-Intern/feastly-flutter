@@ -11,17 +11,10 @@ import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedScreen extends StatefulWidget {
+class SavedScreen extends StatelessWidget {
   const SavedScreen({
     super.key,
   });
-
-  @override
-  State<SavedScreen> createState() => _SavedScreenState();
-}
-
-class _SavedScreenState extends State<SavedScreen> {
-  var _selectedMenu = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +30,7 @@ class _SavedScreenState extends State<SavedScreen> {
               gapH32,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
-                child: MainHeader(
-                  selectedMenu: _selectedMenu,
-                  onRecipesTap: () {
-                    setState(() {
-                      _selectedMenu = 0;
-                    });
-                  },
-                  onRestaurantTap: () {
-                    setState(() {
-                      _selectedMenu = 1;
-                    });
-                  },
-                ),
+                child: const MainHeader(),
               ),
               gapH44,
               Divider(

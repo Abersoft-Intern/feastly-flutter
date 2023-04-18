@@ -8,14 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class DiscoverScreen extends StatefulWidget {
+class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
-  @override
-  State<DiscoverScreen> createState() => _DiscoverScreenState();
-}
-
-class _DiscoverScreenState extends State<DiscoverScreen> {
-  var _selectedMenu = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +28,11 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
                 child: MainHeader(
-                  selectedMenu: _selectedMenu,
-                  onRecipesTap: () => setState(() => _selectedMenu = 0),
-                  onRestaurantTap: () => setState(() => _selectedMenu = 1),
-                  child: InkWell(
+                  child: InkResponse(
                     onTap: () {
                       context.pushNamed(RouteName.discoverSetting.name);
                     },
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(50.0),
-                    ),
+                    radius: 20.0,
                     child: Icon(
                       FeastlyIcon.button_setting_mudassir,
                       color: theme.primaryColor,
