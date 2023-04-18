@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_controller.dart';
+part of 'secure_storage.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileControllerHash() => r'01985326937320fa39ea4cdf58a2138c1cc8f9d8';
+String _$secureStorageHash() => r'56fb52e25a3098caf235f30661aa8931d24d546b';
 
-/// See also [ProfileController].
-@ProviderFor(ProfileController)
-final profileControllerProvider =
-    AutoDisposeNotifierProvider<ProfileController, void>.internal(
-  ProfileController.new,
-  name: r'profileControllerProvider',
+/// See also [SecureStorage].
+@ProviderFor(SecureStorage)
+final secureStorageProvider = AutoDisposeAsyncNotifierProvider<SecureStorage,
+    Map<String, String>>.internal(
+  SecureStorage.new,
+  name: r'secureStorageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$profileControllerHash,
+      : _$secureStorageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileController = AutoDisposeNotifier<void>;
+typedef _$SecureStorage = AutoDisposeAsyncNotifier<Map<String, String>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

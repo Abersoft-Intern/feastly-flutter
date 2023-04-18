@@ -2,12 +2,12 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/utils/secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-class OnboardingButtons extends StatelessWidget {
+class OnboardingButtons extends ConsumerWidget {
   const OnboardingButtons({
     super.key,
     required GlobalKey<IntroductionScreenState> introKey,
@@ -19,7 +19,7 @@ class OnboardingButtons extends StatelessWidget {
   final bool _isFirstItem;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
     return Row(
@@ -53,7 +53,9 @@ class OnboardingButtons extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               if (_introKey.currentState?.getCurrentPageNumber() == 4) {
-                context.goNamed(RouteName.discover.name);
+                ref
+                    .read(secureStorageProvider.notifier)
+                    .write('token', 'testdsf');
               } else {
                 _introKey.currentState?.next();
               }
