@@ -1,8 +1,8 @@
 import 'package:feastly/src/common_widgets/buttons/back_arrow_button.dart';
+import 'package:feastly/src/common_widgets/custom_chip.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_chip.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -92,11 +92,8 @@ class _DiscoverSettingState extends State<DiscoverSettingScreen> {
                       spacing: Sizes.p8,
                       runSpacing: Sizes.p8,
                       children: const [
-                        DiscoverSettingChip(label: 'Restaurant'),
-                        DiscoverSettingChip(
-                          label: 'Test',
-                          selected: true,
-                        ),
+                        CustomChip(label: 'American Food', selected: true),
+                        CustomChip(label: 'Brunch'),
                       ],
                     )
                   ],
