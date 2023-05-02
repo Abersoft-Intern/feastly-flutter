@@ -19,7 +19,6 @@ class DiscoverRecipes extends ConsumerStatefulWidget {
 }
 
 class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
-  var _isCardEmpty = false;
   var _isEndReached = false;
   final _cardController = CardSwiperController();
 
@@ -33,7 +32,6 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
     ref.listen(discoverRecipesControllerProvider, (_, state) {
       // Check for error operation
       if (state.hasError && !state.isLoading) {
-        _cardController.undo();
         setState(() => _isEndReached = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -41,10 +39,6 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
             content: Text(state.error.toString()),
           ),
         );
-
-        // We need to check if all cards has been swiped or not and all the operation should be succeed
-      } else if (!state.isLoading) {
-        if (_isEndReached) setState(() => _isCardEmpty = true);
       }
     });
 
@@ -52,25 +46,26 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
       data: (data) => Column(
         children: [
           Expanded(
-            child: data.recipes.isNotEmpty && !_isCardEmpty
+            child: data.recipes.isNotEmpty && !_isEndReached
                 ? CardSwiper(
                     controller: _cardController,
-                    backCardOffset: 0,
+                    backCardOffset: const Offset(0, 0),
                     isLoop: false,
                     padding: EdgeInsets.zero,
                     cardsCount: data.recipes.length,
-                    onSwipe: (index, __, direction) {
+                    onSwipe: (index, __, direction) async {
                       final recipeId = data.recipes[index]!.id;
                       if (direction == CardSwiperDirection.right) {
-                        ref
+                        return await ref
                             .read(discoverRecipesControllerProvider.notifier)
                             .likeRecipe(recipeId);
                       } else if (direction == CardSwiperDirection.left) {
-                        ref
+                        return await ref
                             .read(discoverRecipesControllerProvider.notifier)
                             .skipRecipe(recipeId);
                       }
-                      return true;
+
+                      return false;
                     },
                     onEnd: () {
                       setState(() {
@@ -95,7 +90,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     size: Sizes.p24.h,
                   ),
                   onTap: () {
-                    if (!_isCardEmpty) _cardController.swipeLeft();
+                    if (!_isEndReached) _cardController.swipeLeft();
                   },
                   variant: ActionButtonVariant.danger,
                 ),
@@ -117,7 +112,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     color: colorTheme.white,
                   ),
                   onTap: () {
-                    if (!_isCardEmpty) _cardController.swipeRight();
+                    if (!_isEndReached) _cardController.swipeRight();
                   },
                 ),
               ],

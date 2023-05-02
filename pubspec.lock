@@ -329,12 +329,11 @@ packages:
   flutter_card_swiper:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "feat/custom-card-offset"
-      resolved-ref: "7eb7177d36c313d3c1f8c2fc6e4eb9f3f9ded9a8"
-      url: "https://github.com/ricardodalarme/flutter_card_swiper.git"
-    source: git
-    version: "4.1.0+2"
+      name: flutter_card_swiper
+      sha256: eed212311cfff23c45addbe4ad714cf9be3417bb58e9b019a51085b1f1991698
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.0"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
