@@ -14,6 +14,11 @@ class ScaffoldWithNavbar extends StatefulWidget {
   });
   final Widget child;
 
+  static const discoverTabKey = Key('discover-tab');
+  static const savedTabKey = Key('saved-tab');
+  static const groupsTabKey = Key('groups-tab');
+  static const profileTabKey = Key('profile-tab');
+
   @override
   State<ScaffoldWithNavbar> createState() => _ScaffoldWithNavbarState();
 }
@@ -24,7 +29,10 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
       initialLocation: '/discover',
       icon: Padding(
         padding: EdgeInsets.symmetric(vertical: Sizes.p4),
-        child: Icon(FeastlyIcon.button_restaurant_inactive),
+        child: Icon(
+          FeastlyIcon.button_restaurant_inactive,
+          key: ScaffoldWithNavbar.discoverTabKey,
+        ),
       ),
       label: 'Discover',
     ),
@@ -32,7 +40,10 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
       initialLocation: '/saved',
       icon: Padding(
         padding: EdgeInsets.symmetric(vertical: Sizes.p4),
-        child: Icon(FeastlyIcon.heart_alt),
+        child: Icon(
+          FeastlyIcon.heart_alt,
+          key: ScaffoldWithNavbar.savedTabKey,
+        ),
       ),
       label: 'Saved',
     ),
@@ -40,7 +51,10 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
       initialLocation: '/groups',
       icon: Padding(
         padding: EdgeInsets.symmetric(vertical: Sizes.p4),
-        child: Icon(FeastlyIcon.users_alt),
+        child: Icon(
+          FeastlyIcon.users_alt,
+          key: ScaffoldWithNavbar.groupsTabKey,
+        ),
       ),
       label: 'Groups',
     ),
@@ -48,7 +62,10 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> {
       initialLocation: '/profile',
       icon: Padding(
         padding: EdgeInsets.symmetric(vertical: Sizes.p4),
-        child: Icon(FeastlyIcon.icon_user),
+        child: Icon(
+          FeastlyIcon.icon_user,
+          key: ScaffoldWithNavbar.profileTabKey,
+        ),
       ),
       label: 'Profile',
     ),

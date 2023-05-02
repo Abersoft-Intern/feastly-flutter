@@ -16,6 +16,8 @@ import 'package:pinput/pinput.dart';
 class OtpScreen extends ConsumerStatefulWidget {
   const OtpScreen({super.key});
 
+  static const otpKey = Key('otp-input');
+
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _OtpScreenState();
 }
@@ -66,6 +68,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 height: 95.0.h,
               ),
               Pinput(
+                key: OtpScreen.otpKey,
                 controller: _pinController,
                 length: 4,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

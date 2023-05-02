@@ -14,6 +14,9 @@ import 'package:go_router/go_router.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  static const emailKey = Key('email-input');
+  static const passwordKey = Key('password-input');
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -75,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 gapH48,
                 Input(
+                  key: LoginScreen.emailKey,
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   hintText: 'email@email.com'.hardcoded,
@@ -85,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 gapH20,
                 Input(
+                  key: LoginScreen.passwordKey,
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
                   hintText: 'Password'.hardcoded,

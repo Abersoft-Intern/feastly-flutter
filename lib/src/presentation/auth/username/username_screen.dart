@@ -11,6 +11,9 @@ import 'package:go_router/go_router.dart';
 
 class UsernameScreen extends StatefulWidget {
   const UsernameScreen({super.key});
+
+  static const usernameKey = Key('username-input');
+
   @override
   State<UsernameScreen> createState() => _UsernameScreenState();
 }
@@ -56,6 +59,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 height: 104.0.h,
               ),
               Input(
+                key: UsernameScreen.usernameKey,
                 onChanged: (value) {
                   setState(() {
                     username = value;
