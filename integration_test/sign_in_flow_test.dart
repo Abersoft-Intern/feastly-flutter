@@ -17,9 +17,21 @@ void main() {
       }
 
       await r.auth.goToLoginScreen();
+      // Incorrect password/email
+      await r.auth.enterEmail('wrong');
+      await r.auth.enterPassword('wrong');
+      await r.auth.tapLoginButton();
+      r.auth.expectErrorAlert();
+      await r.auth.closeAlert();
+
+      await r.auth.enterEmail('');
+      await r.auth.enterPassword('');
+
+      // Correct password/email
       await r.auth.enterEmail('famsd');
       await r.auth.enterPassword('fams');
       await r.auth.tapLoginButton();
+
       await r.auth.enterOtp('4444');
       await r.auth.tapContinue();
       await r.auth.tapContinue();

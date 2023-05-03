@@ -29,7 +29,7 @@ class OtpTexts extends StatelessWidget {
         Visibility(
           visible: isWrong,
           child: Text(
-            'Something went wrong! '.hardcoded,
+            'Something went wrong!'.hardcoded,
             style: textTheme.h2,
           ),
         ),

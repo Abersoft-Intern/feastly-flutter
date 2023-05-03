@@ -1,7 +1,9 @@
 import 'package:feastly/src/common_widgets/scaffold_with_navbar.dart';
+import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/presentation/auth/login/login_screen.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_screen.dart';
 import 'package:feastly/src/presentation/auth/username/username_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class AuthRobot {
@@ -40,6 +42,16 @@ class AuthRobot {
   Future<void> enterUsername(String username) async {
     final usernameField = find.byKey(UsernameScreen.usernameKey);
     await tester.enterText(usernameField, username);
+  }
+
+  void expectErrorAlert() {
+    final alert = find.byType(AlertDialog);
+    expect(alert, findsOneWidget);
+  }
+
+  Future<void> closeAlert() async {
+    final closeButton = find.byIcon(FeastlyIcon.button_close);
+    await tester.tap(closeButton);
   }
 
   Future<void> enterOtp(String otp) async {
