@@ -14,7 +14,7 @@ class DiscoverSettingScreen extends StatefulWidget {
 }
 
 class _DiscoverSettingState extends State<DiscoverSettingScreen> {
-  String _selectedGroup = 'soloSwipe';
+  String _selectedGroup = 'groupSwipe';
 
   @override
   Widget build(BuildContext context) {
