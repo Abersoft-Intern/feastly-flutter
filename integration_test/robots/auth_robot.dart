@@ -17,13 +17,15 @@ class AuthRobot {
     return navbar.isNotEmpty;
   }
 
-  Future<void> goToLoginScreen() async {
+  Future<void> goToSignInScreen() async {
     final button = find.text('Sign In');
     await tester.tap(button);
     await tester.pumpAndSettle();
+    final signInScreen = find.byType(LoginScreen);
+    expect(signInScreen, findsOneWidget);
   }
 
-  Future<void> tapLoginButton() async {
+  Future<void> tapSignInButton() async {
     final button = find.text('Sign in');
     await tester.tap(button);
     await tester.pumpAndSettle();
