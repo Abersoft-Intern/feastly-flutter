@@ -46,7 +46,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
-          padding: const EdgeInsets.all(Sizes.p24),
+          padding: EdgeInsets.all(Sizes.p28.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

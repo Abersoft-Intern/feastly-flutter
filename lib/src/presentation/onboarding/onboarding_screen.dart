@@ -3,6 +3,7 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_buttons.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: Sizes.p24),
+          padding: EdgeInsets.symmetric(vertical: Sizes.p28.h),
           child: Column(
             children: [
               Expanded(
@@ -72,12 +73,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     OnboardingItem(
                       imgPath: 'assets/images/onBoarding_4.png',
                       title: 'All the food you like end up here.'.hardcoded,
-                      
                     ),
                     OnboardingItem(
                       imgPath: 'assets/images/onBoarding_5.png',
-                      title:
-                          'Create a Group to swipe with your friends.'.hardcoded,
+                      title: 'Create a Group to swipe with your friends.'
+                          .hardcoded,
                     ),
                   ],
                 ),

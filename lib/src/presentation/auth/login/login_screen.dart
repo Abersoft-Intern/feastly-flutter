@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(children: [
           const LoginHeader(),
           Padding(
-            padding: const EdgeInsets.all(Sizes.p24),
+            padding: EdgeInsets.all(Sizes.p28.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

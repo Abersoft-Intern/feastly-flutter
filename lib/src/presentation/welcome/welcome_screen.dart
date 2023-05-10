@@ -6,6 +6,7 @@ import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/welcome/welcome_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               const WelcomeHeader(),
               Padding(
-                padding: const EdgeInsets.all(Sizes.p24),
+                padding: EdgeInsets.all(Sizes.p28.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
