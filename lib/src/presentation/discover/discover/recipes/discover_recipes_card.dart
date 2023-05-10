@@ -41,7 +41,7 @@ class DiscoverRecipesCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        children: [
           Text(
             recipe.name,
             style: textTheme.h2!.copyWith(

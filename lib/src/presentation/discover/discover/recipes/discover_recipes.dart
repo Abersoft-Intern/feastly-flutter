@@ -5,6 +5,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/data/discover_repository.dart';
 import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_card.dart';
 import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_controller.dart';
+import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_loading.dart';
 import 'package:feastly/src/presentation/discover/discover/recipes/discover_recipes_none.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
@@ -121,9 +122,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
         ],
       ),
       error: (error, st) => Text(error.toString()),
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      loading: () => const DiscoverRecipesLoading(),
     );
   }
 }
