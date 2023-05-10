@@ -4,7 +4,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/saved/saved_tile_button.dart';
+import 'package:feastly/src/presentation/saved/saved_tile.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +28,7 @@ class SavedRecipesList extends StatelessWidget {
               SizedBox(
                 width: Sizes.p28.h,
               ),
-              SavedTileButton(
+              SavedTile(
                 label: 'Lunch Places',
                 onTap: () {
                   context.pushNamed(

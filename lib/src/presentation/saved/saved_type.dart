@@ -1,1 +1,0 @@
-enum SavedType { restaurants, recipes }

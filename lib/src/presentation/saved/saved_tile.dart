@@ -3,8 +3,8 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedTileButton extends StatelessWidget {
-  const SavedTileButton({super.key, required this.label, this.onTap});
+class SavedTile extends StatelessWidget {
+  const SavedTile({super.key, required this.label, this.onTap});
 
   final String label;
   final VoidCallback? onTap;
