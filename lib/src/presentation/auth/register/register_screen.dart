@@ -17,6 +17,7 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           padding: const EdgeInsets.all(Sizes.p24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

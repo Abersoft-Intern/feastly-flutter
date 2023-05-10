@@ -75,13 +75,13 @@ class GroupScreen extends StatelessWidget {
                   indent: 34,
                 ),
                 gapH16,
-                
+
                 // Text(
                 //   'Stockholm'.hardcoded,
                 //   style: textTheme.body16Bold,
                 // ),
                 gapH28,
-                
+
                 gapH48,
                 Text(
                   'Group members'.hardcoded,

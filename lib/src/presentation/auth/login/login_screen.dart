@@ -43,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final textTheme = theme.extension<CustomTextTheme>()!;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         child: Stack(children: [
           const LoginHeader(),
           Padding(

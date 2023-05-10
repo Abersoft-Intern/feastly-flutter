@@ -18,6 +18,7 @@ class JoinGroupScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           padding: EdgeInsets.all(Sizes.p28.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

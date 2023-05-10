@@ -21,6 +21,7 @@ class WelcomeScreen extends StatelessWidget {
           statusBarIconBrightness: Brightness.dark,
         ),
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           child: Column(
             children: [
               const WelcomeHeader(),
