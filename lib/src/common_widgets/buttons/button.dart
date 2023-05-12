@@ -11,17 +11,20 @@ enum ButtonVariant {
 }
 
 class Button extends StatelessWidget {
-  const Button(
-      {super.key,
-      required this.text,
-      this.variant,
-      this.onTap,
-      this.isLoading = false});
+  const Button({
+    super.key,
+    required this.text,
+    this.variant,
+    this.onTap,
+    this.isLoading = false,
+    this.disabled = false,
+  });
 
   final String text;
   final ButtonVariant? variant;
   final VoidCallback? onTap;
   final bool? isLoading;
+  final bool? disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,7 @@ class Button extends StatelessWidget {
       borderRadius: BorderRadius.circular(50.0),
       child: InkWell(
         borderRadius: BorderRadius.circular(50.0),
-        onTap: onTap,
+        onTap: disabled! ? () {} : onTap,
         child: Container(
           padding: const EdgeInsets.only(right: 20, left: 20),
           height: 50.0.h,
