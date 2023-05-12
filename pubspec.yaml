@@ -35,6 +35,7 @@ dependencies:
   image_cropper: ^3.0.2
   dio: ^5.1.1
   flutter_secure_storage: ^8.0.0
+  envied: ^0.3.0+3
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,7 @@ dev_dependencies:
   riverpod_lint: ^1.1.5
   json_serializable: ^6.6.1
   freezed: ^2.3.2
+  envied_generator: ^0.3.0+3
 
 flutter:
   uses-material-design: true
