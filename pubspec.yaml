@@ -63,6 +63,7 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/images/
     - assets/fonts/
+    - google_fonts/
   
   fonts:
     - family:  FeastlyIcon
