@@ -36,6 +36,7 @@ dependencies:
   dio: ^5.1.1
   flutter_secure_storage: ^8.0.0
   envied: ^0.3.0+3
+  vector_graphics: ^1.1.5+1
 
 dev_dependencies:
   flutter_test:

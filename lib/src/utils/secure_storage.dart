@@ -3,12 +3,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'secure_storage.g.dart';
 
+const storage = FlutterSecureStorage(
+  aOptions: AndroidOptions(encryptedSharedPreferences: true),
+);
+
 @riverpod
 class SecureStorage extends _$SecureStorage {
-  final storage = const FlutterSecureStorage(
-    aOptions: AndroidOptions(encryptedSharedPreferences: true),
-  );
-
   @override
   Future<Map<String, String>> build() {
     return storage.readAll();
