@@ -32,6 +32,9 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 GoRouter goRouter(GoRouterRef ref) {
   final secureStorage = ref.watch(secureStorageProvider);
   final token = secureStorage.valueOrNull?['token'];
+  final name = secureStorage.valueOrNull?['name'];
+  final confirmed =
+      secureStorage.valueOrNull?['confirmed']; // 0 OR 1 in string;
 
   return GoRouter(
     debugLogDiagnostics: true,
@@ -40,13 +43,21 @@ GoRouter goRouter(GoRouterRef ref) {
     initialLocation: '/',
     redirect: (context, state) {
       final isLoggedIn = token != null;
-      if (isLoggedIn) {
-        if (state.location == '/') {
+      final userHasName = name != null;
+      final emailConfirmed = confirmed != null && confirmed == '1';
+
+      if (state.location == '/') {
+        if (isLoggedIn) {
+          return '/otp';
+        }
+
+        if (isLoggedIn && userHasName && emailConfirmed) {
           return '/discover';
         }
       }
       return null;
     },
+
     routes: [
       ShellRoute(
         navigatorKey: _shellNavigatorKey,

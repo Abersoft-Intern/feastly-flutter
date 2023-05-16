@@ -4,6 +4,7 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/register/register_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final state = ref.watch(registerControllerProvider);
 
     ref.listen(registerControllerProvider, (_, state) {
+      if (!state.hasError && !state.isLoading) {
+        context.pushNamed(RouteName.otp.name);
+      }
+
       state.showAlertDialogOnError(context);
     });
 
@@ -116,10 +121,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   disabled: state.isLoading,
                   isLoading: state.isLoading,
                   text: 'Register'.hardcoded,
-                  onTap: () async {
-                    final controller =
-                        ref.read(registerControllerProvider.notifier);
-                    await controller.register(email, password);
+                  onTap: () {
+                    ref
+                        .read(registerControllerProvider.notifier)
+                        .register(email, password);
                   }),
             ],
           ),

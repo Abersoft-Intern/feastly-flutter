@@ -14,6 +14,8 @@ class User with _$User {
     required bool blocked,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @JsonKey(name: 'email_confirmed') required bool emailConfirmed,
+    required String? name,
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);

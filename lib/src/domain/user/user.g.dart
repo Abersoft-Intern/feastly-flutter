@@ -15,6 +15,8 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       blocked: json['blocked'] as bool,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      emailConfirmed: json['email_confirmed'] as bool,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -26,6 +28,8 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'blocked': instance.blocked,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'email_confirmed': instance.emailConfirmed,
+      'name': instance.name,
     };
 
 _$_UserWithToken _$$_UserWithTokenFromJson(Map<String, dynamic> json) =>

@@ -9,7 +9,7 @@ class RegisterController extends _$RegisterController {
   @override
   FutureOr<void> build() {}
 
-  Future<bool> register(String email, String password) async {
+  Future<void> register(String email, String password) async {
     final authRepository = ref.watch(authRepositoryProvider);
     final secureStorage = ref.watch(secureStorageProvider.notifier);
     try {
@@ -19,13 +19,11 @@ class RegisterController extends _$RegisterController {
 
       await secureStorage.write('token', user.jwt);
       state = const AsyncData(null);
-      return true;
     } catch (e) {
       state = AsyncError(
         'Ops, something went wrong, try again.',
         StackTrace.current,
       );
-      return false;
     }
   }
 }
