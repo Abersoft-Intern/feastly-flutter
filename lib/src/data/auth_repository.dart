@@ -16,13 +16,25 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final req = await client.post('/auth/local/register', data: {
+    final res = await client.post('/auth/local/register', data: {
       'email': email,
       'password': password,
       'username': email,
     });
 
-    return UserWithToken.fromJson(req.data);
+    return UserWithToken.fromJson(res.data);
+  }
+
+  Future<UserWithToken> login({
+    required String email,
+    required String password,
+  }) async {
+    final res = await client.post('/auth/local', data: {
+      'identifier': email,
+      'password': password,
+    });
+
+    return UserWithToken.fromJson(res.data);
   }
 }
 

@@ -5,23 +5,25 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/auth/login/login_controller.dart';
 import 'package:feastly/src/presentation/auth/login/login_header.dart';
-import 'package:feastly/src/utils/show_prompt.dart';
+import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   static const emailKey = Key('email-input');
   static const passwordKey = Key('password-input');
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -39,6 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.of(context).padding.top;
     final theme = Theme.of(context);
+    final controller = ref.watch(loginControllerProvider);
+
+    ref.listen(loginControllerProvider, (_, state) {
+      state.showAlertDialogOnError(context);
+    });
 
     final textTheme = theme.extension<CustomTextTheme>()!;
     return Scaffold(
@@ -112,28 +119,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 gapH36,
                 Button(
+                  isLoading: controller.isLoading,
+                  disabled: controller.isLoading,
                   text: 'Sign in'.hardcoded,
-                  onTap: () {
-                    if (email == password) {
-                      showPrompt(
-                        context,
-                        child: Column(
-                          children: [
-                            gapH20,
-                            Center(
-                              child: Text(
-                                'The password or email is wrong,\n please try again.'
-                                    .hardcoded,
-                                style: textTheme.body16Regular!,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            gapH40
-                          ],
-                        ),
-                      );
-                    } else {
-                      context.pushNamed(RouteName.otp.name);
+                  onTap: () async {
+                    final data = await ref
+                        .read(loginControllerProvider.notifier)
+                        .login(email, password);
+
+                    if (context.mounted && data != null) {
+                      if (!data.user.emailConfirmed) {
+                        context.pushNamed(RouteName.otp.name);
+                      } else if (data.user.emailConfirmed &&
+                          data.user.name == null) {
+                        context.pushNamed(RouteName.username.name);
+                      }
                     }
                   },
                   variant: ButtonVariant.outlined,
