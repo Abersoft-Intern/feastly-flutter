@@ -114,7 +114,7 @@ GoRouter goRouter(GoRouterRef ref) {
         name: RouteName.recipeDetail.name,
         builder: (context, state) {
           // ignore: unused_local_variable
-          final recipeId = state.params['id'];
+          final recipeId = state.pathParameters['id'];
           return RecipeDetailScreen(
             recipeId: int.parse(recipeId!),
           );

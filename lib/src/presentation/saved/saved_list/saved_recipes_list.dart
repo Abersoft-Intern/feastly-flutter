@@ -33,7 +33,7 @@ class SavedRecipesList extends StatelessWidget {
                 onTap: () {
                   context.pushNamed(
                     RouteName.savedRecipeCategory.name,
-                    params: {'categoryId': '1'},
+                    pathParameters: {'categoryId': '1'},
                   );
                 },
               ),
@@ -81,7 +81,7 @@ class SavedRecipesList extends StatelessWidget {
                 rating: 4,
                 onTap: () {
                   context.pushNamed(RouteName.recipeDetail.name,
-                      params: {'id': '1'});
+                      pathParameters: {'id': '1'});
                 },
               ),
             ),

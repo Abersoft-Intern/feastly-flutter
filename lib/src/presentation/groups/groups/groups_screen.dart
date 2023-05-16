@@ -73,7 +73,7 @@ class GroupsScreen extends StatelessWidget {
                       onTap: () {
                         context.pushNamed(
                           RouteName.groupDetail.name,
-                          params: {'groupId': '1'},
+                          pathParameters: {'groupId': '1'},
                         );
                       },
                       child: Text(

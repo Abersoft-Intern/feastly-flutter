@@ -19,7 +19,8 @@ class RecipesCategoryList extends StatelessWidget {
           rating: 3,
           cookTime: 30,
           onTap: () {
-            context.pushNamed(RouteName.recipeDetail.name, params: {'id': '1'});
+            context.pushNamed(RouteName.recipeDetail.name,
+                pathParameters: {'id': '1'});
           },
         ),
       ],

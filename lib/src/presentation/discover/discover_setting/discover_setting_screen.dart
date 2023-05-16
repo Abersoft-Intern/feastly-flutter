@@ -88,10 +88,10 @@ class _DiscoverSettingState extends State<DiscoverSettingScreen> {
                       style: textTheme.body16Regular,
                     ),
                     gapH24,
-                    Wrap(
+                    const Wrap(
                       spacing: Sizes.p8,
                       runSpacing: Sizes.p8,
-                      children: const [
+                      children: [
                         CustomChip(label: 'American Food', selected: true),
                         CustomChip(label: 'Brunch'),
                       ],
