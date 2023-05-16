@@ -40,10 +40,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final state = ref.watch(registerControllerProvider);
 
     ref.listen(registerControllerProvider, (_, state) {
-      if (!state.hasError && !state.isLoading) {
-        context.pushNamed(RouteName.otp.name);
-      }
-
       state.showAlertDialogOnError(context);
     });
 
@@ -121,10 +117,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   disabled: state.isLoading,
                   isLoading: state.isLoading,
                   text: 'Register'.hardcoded,
-                  onTap: () {
-                    ref
+                  onTap: () async {
+                    final registered = await ref
                         .read(registerControllerProvider.notifier)
                         .register(email, password);
+
+                    if (registered) {
+                      if (context.mounted) {
+                        context.pushNamed(RouteName.otp.name);
+                      }
+                    }
                   }),
             ],
           ),

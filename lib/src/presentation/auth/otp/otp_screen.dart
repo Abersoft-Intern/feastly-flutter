@@ -7,7 +7,6 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_controller.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_texts.dart';
-import 'package:feastly/src/utils/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +53,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               InkWell(
                 borderRadius: const BorderRadius.all(Radius.circular(50.0)),
                 onTap: () {
-                  ref.read(secureStorageProvider.notifier).remove('token');
+                  context.pop();
                 },
                 child: Icon(
                   FeastlyIcon.arrow_back_green,

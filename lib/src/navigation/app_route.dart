@@ -30,7 +30,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
-  final secureStorage = ref.watch(secureStorageProvider);
+  final secureStorage = ref.read(secureStorageProvider);
   final token = secureStorage.valueOrNull?['token'];
   final name = secureStorage.valueOrNull?['name'];
   final confirmed =
@@ -47,10 +47,6 @@ GoRouter goRouter(GoRouterRef ref) {
       final emailConfirmed = confirmed != null && confirmed == '1';
 
       if (state.location == '/') {
-        if (isLoggedIn) {
-          return '/otp';
-        }
-
         if (isLoggedIn && userHasName && emailConfirmed) {
           return '/discover';
         }
