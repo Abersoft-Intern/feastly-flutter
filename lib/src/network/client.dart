@@ -24,6 +24,8 @@ Dio client(ClientRef ref) {
       onError: (e, handler) {
         if (e.response?.statusCode == 401) {
           ref.read(secureStorageProvider.notifier).remove('token');
+        } else {
+          handler.next(e);
         }
       },
     ),
