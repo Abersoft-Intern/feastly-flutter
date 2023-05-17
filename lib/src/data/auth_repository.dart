@@ -36,6 +36,20 @@ class AuthRepository {
 
     return UserWithToken.fromJson(res.data);
   }
+
+  Future<User> getProfile() async {
+    final res = await client.get('/users/me');
+    return User.fromJson(res.data);
+  }
+
+  Future<User> updateName(String name) async {
+    final user = await getProfile();
+    final res = await client.put('/users/${user.id}', data: {
+      'name': name,
+    });
+
+    return User.fromJson(res.data);
+  }
 }
 
 @riverpod

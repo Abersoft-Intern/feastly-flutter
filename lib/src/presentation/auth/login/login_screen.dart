@@ -133,6 +133,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       } else if (data.user.emailConfirmed &&
                           data.user.name == null) {
                         context.pushNamed(RouteName.username.name);
+                      } else {
+                        context.pushNamed(RouteName.onboarding.name);
                       }
                     }
                   },

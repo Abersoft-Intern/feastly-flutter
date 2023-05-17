@@ -29,12 +29,9 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
-GoRouter goRouter(GoRouterRef ref) {
-  final secureStorage = ref.read(secureStorageProvider);
+Raw<GoRouter> goRouter(GoRouterRef ref) {
+  final secureStorage = ref.watch(secureStorageProvider);
   final token = secureStorage.valueOrNull?['token'];
-  final name = secureStorage.valueOrNull?['name'];
-  final confirmed =
-      secureStorage.valueOrNull?['confirmed']; // 0 OR 1 in string;
 
   return GoRouter(
     debugLogDiagnostics: true,
@@ -43,11 +40,9 @@ GoRouter goRouter(GoRouterRef ref) {
     initialLocation: '/',
     redirect: (context, state) {
       final isLoggedIn = token != null;
-      final userHasName = name != null;
-      final emailConfirmed = confirmed != null && confirmed == '1';
 
       if (state.location == '/') {
-        if (isLoggedIn && userHasName && emailConfirmed) {
+        if (isLoggedIn) {
           return '/discover';
         }
       }

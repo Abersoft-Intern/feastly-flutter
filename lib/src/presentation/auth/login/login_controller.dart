@@ -1,6 +1,6 @@
 import 'package:feastly/src/data/auth_repository.dart';
 import 'package:feastly/src/domain/user/user.dart';
-import 'package:feastly/src/utils/secure_storage.dart';
+import 'package:feastly/src/navigation/auth_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_controller.g.dart';
@@ -12,16 +12,12 @@ class LoginController extends _$LoginController {
 
   Future<UserWithToken?> login(String email, String password) async {
     final authRepository = ref.watch(authRepositoryProvider);
-    final secureStorage = ref.read(secureStorageProvider.notifier);
     try {
-      await secureStorage.remove('token');
       state = const AsyncLoading();
       final data = await authRepository.login(email: email, password: password);
 
-      await secureStorage.write('token', data.jwt);
-      await secureStorage.write('name', data.user.name);
-      await secureStorage.write(
-          'confirmed', data.user.emailConfirmed.toString());
+      ref.read(authStateProvider.notifier).update(token: data.jwt);
+
       state = const AsyncData(null);
       return data;
     } catch (e) {

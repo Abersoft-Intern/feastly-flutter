@@ -1,7 +1,7 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/utils/secure_storage.dart';
+import 'package:feastly/src/presentation/profile/profile_controller.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +30,7 @@ class ProfileButtons extends ConsumerWidget {
                 title: 'Logout'.hardcoded,
                 subtitle: 'Are you sure you want to log out?'.hardcoded,
                 onYesTap: () =>
-                    ref.read(secureStorageProvider.notifier).remove('token'),
+                    ref.read(profileControllerProvider.notifier).logout(),
               );
             },
           ),

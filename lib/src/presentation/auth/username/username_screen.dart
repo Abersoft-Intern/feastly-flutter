@@ -5,25 +5,35 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/auth/username/username_controller.dart';
+import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class UsernameScreen extends StatefulWidget {
+class UsernameScreen extends ConsumerStatefulWidget {
   const UsernameScreen({super.key});
 
   static const usernameKey = Key('username-input');
 
   @override
-  State<UsernameScreen> createState() => _UsernameScreenState();
+  ConsumerState<UsernameScreen> createState() => _UsernameScreenState();
 }
 
-class _UsernameScreenState extends State<UsernameScreen> {
-  var username = '';
+class _UsernameScreenState extends ConsumerState<UsernameScreen> {
+  var _name = '';
 
   @override
   Widget build(BuildContext context) {
+    final controller = ref.watch(usernameControllerProvider);
+
     final theme = Theme.of(context);
+
+    ref.listen(usernameControllerProvider, (_, state) {
+      state.showAlertDialogOnError(context);
+    });
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,7 +73,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 key: UsernameScreen.usernameKey,
                 onChanged: (value) {
                   setState(() {
-                    username = value;
+                    _name = value;
                   });
                 },
                 keyboardType: TextInputType.name,
@@ -77,15 +87,23 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 height: 198.0.h,
               ),
               Button(
+                isLoading: controller.isLoading,
+                disabled: controller.isLoading,
                 text: 'Continue'.hardcoded,
-                onTap: username.isEmpty
-                    ? null
-                    : () {
-                        context.pushNamed(
-                          RouteName.onboarding.name,
-                        );
-                      },
-                variant: username.isEmpty ? ButtonVariant.disabled : null,
+                onTap: () async {
+                  final userUpdated = await ref
+                      .read(usernameControllerProvider.notifier)
+                      .submit(_name);
+
+                  if (userUpdated) {
+                    if (context.mounted) {
+                      context.pushNamed(
+                        RouteName.onboarding.name,
+                      );
+                    }
+                  }
+                },
+                variant: _name.isEmpty ? ButtonVariant.disabled : null,
               ),
               gapH24,
             ],

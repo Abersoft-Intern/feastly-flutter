@@ -14,8 +14,8 @@ class SecureStorage extends _$SecureStorage {
     return storage.readAll();
   }
 
-  String? read(String key) {
-    return state.value?[key];
+  Future<String?> read(String key) async {
+    return await storage.read(key: key);
   }
 
   Future<void> write(String key, String? value) async {
