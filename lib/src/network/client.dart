@@ -12,10 +12,22 @@ Dio client(ClientRef ref) {
   final token = secureStorage.valueOrNull?['token'];
   final tempAuth = ref.watch(authStateProvider);
 
-  return Dio(
+  final dio = Dio(
     BaseOptions(
       baseUrl: Env.baseUrl,
       headers: {'Authorization': 'Bearer ${token ?? tempAuth.token}'},
     ),
   );
+
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onError: (e, handler) {
+        if (e.response?.statusCode == 401) {
+          ref.read(secureStorageProvider.notifier).remove('token');
+        }
+      },
+    ),
+  );
+
+  return dio;
 }
