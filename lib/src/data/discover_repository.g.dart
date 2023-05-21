@@ -7,7 +7,7 @@ part of 'discover_repository.dart';
 // **************************************************************************
 
 String _$discoverRepositoryHash() =>
-    r'4f5f1f601921989f3a1e1cf29193f4ed84865dff';
+    r'c55cdf44ebadc3d6237cc89f4c614d46b80a266c';
 
 /// See also [discoverRepository].
 @ProviderFor(discoverRepository)
@@ -23,12 +23,12 @@ final discoverRepositoryProvider =
 );
 
 typedef DiscoverRepositoryRef = AutoDisposeProviderRef<DiscoverRepository>;
-String _$discoverRecipesHash() => r'aa3c2f8476c22eaa4f717d613b8684a82a0e0534';
+String _$discoverRecipesHash() => r'a9c3a1df7c04b26604ba0bce8151a001c0f4232b';
 
 /// See also [discoverRecipes].
 @ProviderFor(discoverRecipes)
 final discoverRecipesProvider =
-    AutoDisposeFutureProvider<RecipePreviewList>.internal(
+    AutoDisposeFutureProvider<List<RecipePreview>>.internal(
   discoverRecipes,
   name: r'discoverRecipesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -38,5 +38,5 @@ final discoverRecipesProvider =
   allTransitiveDependencies: null,
 );
 
-typedef DiscoverRecipesRef = AutoDisposeFutureProviderRef<RecipePreviewList>;
+typedef DiscoverRecipesRef = AutoDisposeFutureProviderRef<List<RecipePreview>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -23,10 +23,10 @@ mixin _$RecipePreview {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
-  @JsonKey(name: 'image_url')
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get thumbnail => throw _privateConstructorUsedError;
   @JsonKey(name: 'cook_time')
   int get cookTime => throw _privateConstructorUsedError;
+  String get blurhash => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,8 +44,9 @@ abstract class $RecipePreviewCopyWith<$Res> {
       {int id,
       String name,
       int rating,
-      @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'cook_time') int cookTime});
+      String thumbnail,
+      @JsonKey(name: 'cook_time') int cookTime,
+      String blurhash});
 }
 
 /// @nodoc
@@ -64,8 +65,9 @@ class _$RecipePreviewCopyWithImpl<$Res, $Val extends RecipePreview>
     Object? id = null,
     Object? name = null,
     Object? rating = null,
-    Object? imageUrl = null,
+    Object? thumbnail = null,
     Object? cookTime = null,
+    Object? blurhash = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,14 +82,18 @@ class _$RecipePreviewCopyWithImpl<$Res, $Val extends RecipePreview>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       cookTime: null == cookTime
           ? _value.cookTime
           : cookTime // ignore: cast_nullable_to_non_nullable
               as int,
+      blurhash: null == blurhash
+          ? _value.blurhash
+          : blurhash // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -104,8 +110,9 @@ abstract class _$$_RecipePreviewCopyWith<$Res>
       {int id,
       String name,
       int rating,
-      @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'cook_time') int cookTime});
+      String thumbnail,
+      @JsonKey(name: 'cook_time') int cookTime,
+      String blurhash});
 }
 
 /// @nodoc
@@ -122,8 +129,9 @@ class __$$_RecipePreviewCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? rating = null,
-    Object? imageUrl = null,
+    Object? thumbnail = null,
     Object? cookTime = null,
+    Object? blurhash = null,
   }) {
     return _then(_$_RecipePreview(
       id: null == id
@@ -138,14 +146,18 @@ class __$$_RecipePreviewCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       cookTime: null == cookTime
           ? _value.cookTime
           : cookTime // ignore: cast_nullable_to_non_nullable
               as int,
+      blurhash: null == blurhash
+          ? _value.blurhash
+          : blurhash // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -157,8 +169,9 @@ class _$_RecipePreview implements _RecipePreview {
       {required this.id,
       required this.name,
       required this.rating,
-      @JsonKey(name: 'image_url') required this.imageUrl,
-      @JsonKey(name: 'cook_time') required this.cookTime});
+      required this.thumbnail,
+      @JsonKey(name: 'cook_time') required this.cookTime,
+      required this.blurhash});
 
   factory _$_RecipePreview.fromJson(Map<String, dynamic> json) =>
       _$$_RecipePreviewFromJson(json);
@@ -170,15 +183,16 @@ class _$_RecipePreview implements _RecipePreview {
   @override
   final int rating;
   @override
-  @JsonKey(name: 'image_url')
-  final String imageUrl;
+  final String thumbnail;
   @override
   @JsonKey(name: 'cook_time')
   final int cookTime;
+  @override
+  final String blurhash;
 
   @override
   String toString() {
-    return 'RecipePreview(id: $id, name: $name, rating: $rating, imageUrl: $imageUrl, cookTime: $cookTime)';
+    return 'RecipePreview(id: $id, name: $name, rating: $rating, thumbnail: $thumbnail, cookTime: $cookTime, blurhash: $blurhash)';
   }
 
   @override
@@ -189,16 +203,18 @@ class _$_RecipePreview implements _RecipePreview {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.thumbnail, thumbnail) ||
+                other.thumbnail == thumbnail) &&
             (identical(other.cookTime, cookTime) ||
-                other.cookTime == cookTime));
+                other.cookTime == cookTime) &&
+            (identical(other.blurhash, blurhash) ||
+                other.blurhash == blurhash));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, rating, imageUrl, cookTime);
+      Object.hash(runtimeType, id, name, rating, thumbnail, cookTime, blurhash);
 
   @JsonKey(ignore: true)
   @override
@@ -216,12 +232,12 @@ class _$_RecipePreview implements _RecipePreview {
 
 abstract class _RecipePreview implements RecipePreview {
   const factory _RecipePreview(
-          {required final int id,
-          required final String name,
-          required final int rating,
-          @JsonKey(name: 'image_url') required final String imageUrl,
-          @JsonKey(name: 'cook_time') required final int cookTime}) =
-      _$_RecipePreview;
+      {required final int id,
+      required final String name,
+      required final int rating,
+      required final String thumbnail,
+      @JsonKey(name: 'cook_time') required final int cookTime,
+      required final String blurhash}) = _$_RecipePreview;
 
   factory _RecipePreview.fromJson(Map<String, dynamic> json) =
       _$_RecipePreview.fromJson;
@@ -233,11 +249,12 @@ abstract class _RecipePreview implements RecipePreview {
   @override
   int get rating;
   @override
-  @JsonKey(name: 'image_url')
-  String get imageUrl;
+  String get thumbnail;
   @override
   @JsonKey(name: 'cook_time')
   int get cookTime;
+  @override
+  String get blurhash;
   @override
   @JsonKey(ignore: true)
   _$$_RecipePreviewCopyWith<_$_RecipePreview> get copyWith =>

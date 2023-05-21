@@ -9,8 +9,9 @@ class RecipePreview with _$RecipePreview {
     required int id,
     required String name,
     required int rating,
-    @JsonKey(name: 'image_url') required String imageUrl,
+    required String thumbnail,
     @JsonKey(name: 'cook_time') required int cookTime,
+    required String blurhash,
   }) = _RecipePreview;
 
   factory RecipePreview.fromJson(Map<String, Object?> json) =>

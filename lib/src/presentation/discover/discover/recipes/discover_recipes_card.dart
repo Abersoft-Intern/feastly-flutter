@@ -6,7 +6,9 @@ import 'package:feastly/src/constants/theme/custom_shadow.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/domain/discover/recipe_preview.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/utils/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DiscoverRecipesCard extends StatelessWidget {
@@ -24,45 +26,75 @@ class DiscoverRecipesCard extends StatelessWidget {
     final colorTheme = theme.extension<CustomColor>()!;
     final shadowTheme = theme.extension<CustomShadow>()!;
 
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: Sizes.p16.h,
-      ),
-      width: double.infinity,
-      padding: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        boxShadow: [shadowTheme.cardShadow!],
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(recipe.imageUrl),
+    return Stack(
+      children: [
+        CachedNetworkImage(
+          imageUrl: "${Env.baseUrl}${recipe.thumbnail}",
           fit: BoxFit.cover,
+          placeholder: (context, url) => Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: Sizes.p16.h,
+            ),
+            width: double.infinity,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: BlurHash(
+                hash: recipe.blurhash,
+                imageFit: BoxFit.cover,
+              ),
+            ),
+          ),
+          imageBuilder: (context, imageProvider) => Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: Sizes.p16.h,
+            ),
+            width: double.infinity,
+            padding: const EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            recipe.name,
-            style: textTheme.h2!.copyWith(
-              color: colorTheme.white,
-              shadows: [shadowTheme.textShadow!],
-            ),
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: Sizes.p16.h,
           ),
-          gapH4,
-          Rating(
-            rating: recipe.rating,
+          width: double.infinity,
+          padding: const EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
           ),
-          gapH16,
-          Text(
-            'Cook time: ${recipe.cookTime} min'.hardcoded,
-            style: textTheme.body16Bold!.copyWith(
-              color: colorTheme.white,
-              shadows: [shadowTheme.textShadow!],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                recipe.name,
+                style: textTheme.h2!.copyWith(
+                  color: colorTheme.white,
+                  shadows: [shadowTheme.textShadow!],
+                ),
+              ),
+              gapH4,
+              Rating(
+                rating: recipe.rating,
+              ),
+              gapH16,
+              Text(
+                'Cook time: ${recipe.cookTime} min'.hardcoded,
+                style: textTheme.body16Bold!.copyWith(
+                  color: colorTheme.white,
+                  shadows: [shadowTheme.textShadow!],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }

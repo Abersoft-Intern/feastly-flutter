@@ -44,18 +44,18 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
     });
 
     return recipeList.when(
-      data: (data) => Column(
+      data: (recipes) => Column(
         children: [
           Expanded(
-            child: data.recipes.isNotEmpty && !_isEndReached
+            child: recipes.isNotEmpty && !_isEndReached
                 ? CardSwiper(
                     controller: _cardController,
                     backCardOffset: const Offset(0, 0),
                     isLoop: false,
                     padding: EdgeInsets.zero,
-                    cardsCount: data.recipes.length,
+                    cardsCount: recipes.length,
                     onSwipe: (index, __, direction) async {
-                      final recipeId = data.recipes[index]!.id;
+                      final recipeId = recipes[index].id;
                       if (direction == CardSwiperDirection.right) {
                         return await ref
                             .read(discoverRecipesControllerProvider.notifier)
@@ -74,7 +74,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                       });
                     },
                     cardBuilder: (_, index) =>
-                        DiscoverRecipesCard(recipe: data.recipes[index]!),
+                        DiscoverRecipesCard(recipe: recipes[index]),
                   )
                 : const DiscoverRecipesNone(),
           ),

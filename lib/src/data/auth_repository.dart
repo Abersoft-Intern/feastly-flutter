@@ -38,13 +38,13 @@ class AuthRepository {
   }
 
   Future<User> getProfile() async {
-    final res = await client.get('/users/me');
+    final res = await client.get('/api/users/me');
     return User.fromJson(res.data);
   }
 
   Future<User> updateName(String name) async {
     final user = await getProfile();
-    final res = await client.put('/users/${user.id}', data: {
+    final res = await client.put('/api/users/${user.id}', data: {
       'name': name,
     });
 

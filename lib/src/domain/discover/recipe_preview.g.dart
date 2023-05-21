@@ -11,8 +11,9 @@ _$_RecipePreview _$$_RecipePreviewFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       name: json['name'] as String,
       rating: json['rating'] as int,
-      imageUrl: json['image_url'] as String,
+      thumbnail: json['thumbnail'] as String,
       cookTime: json['cook_time'] as int,
+      blurhash: json['blurhash'] as String,
     );
 
 Map<String, dynamic> _$$_RecipePreviewToJson(_$_RecipePreview instance) =>
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$_RecipePreviewToJson(_$_RecipePreview instance) =>
       'id': instance.id,
       'name': instance.name,
       'rating': instance.rating,
-      'image_url': instance.imageUrl,
+      'thumbnail': instance.thumbnail,
       'cook_time': instance.cookTime,
+      'blurhash': instance.blurhash,
     };
