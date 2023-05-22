@@ -4,22 +4,21 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
+import 'package:feastly/src/domain/saved/saved_recipe.dart';
+import 'package:feastly/src/utils/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SavedRecipeItem extends StatelessWidget {
   const SavedRecipeItem({
     super.key,
-    required this.name,
-    required this.rating,
-    required this.cookTime,
     this.onTap,
     this.rightIcon,
+    required this.recipe,
   });
 
-  final String name;
-  final int rating;
-  final int cookTime;
+  final SavedRecipe recipe;
   final IconData? rightIcon;
   final VoidCallback? onTap;
 
@@ -36,8 +35,7 @@ class SavedRecipeItem extends StatelessWidget {
         child: Row(
           children: [
             CachedNetworkImage(
-              imageUrl:
-                  'https://img.taste.com.au/hMaiduT5/taste/2016/11/raspberry-and-coconut-pancakes-78984-1.jpeg',
+              imageUrl: "${Env.baseUrl}${recipe.thumbnail}",
               imageBuilder: (context, imageProvider) {
                 return Container(
                   height: 80.0.h,
@@ -45,22 +43,35 @@ class SavedRecipeItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                        image: imageProvider, fit: BoxFit.cover),
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               },
+              placeholder: (context, url) => SizedBox(
+                height: 80.0.h,
+                width: 66.0.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: BlurHash(
+                    hash: recipe.blurhash,
+                    imageFit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
             gapW24,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  recipe.name,
                   style: textTheme.body16Bold,
                 ),
                 gapH8,
                 Rating(
-                  rating: rating,
+                  rating: recipe.rating,
                   emptyRatingIcon: Icon(
                     FeastlyIcon.icon_star_unfilled,
                     color: colorTheme.unselectedNav,
@@ -68,7 +79,7 @@ class SavedRecipeItem extends StatelessWidget {
                 ),
                 gapH4,
                 Text(
-                  'Cook time: $cookTime',
+                  'Cook time: ${recipe.cookTime}',
                   style: textTheme.body16Regular,
                 ),
               ],

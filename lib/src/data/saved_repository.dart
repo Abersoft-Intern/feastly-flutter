@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:feastly/src/domain/discover/recipe_preview.dart';
+import 'package:feastly/src/domain/saved/saved_recipe.dart';
 import 'package:feastly/src/domain/saved/user_category.dart';
 import 'package:feastly/src/network/client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -11,11 +12,11 @@ class SavedRepository {
 
   Dio client;
 
-  Future<List<RecipePreview>> getSavedRecipes() async {
+  Future<List<SavedRecipe>> getSavedRecipes() async {
     final res = await client.get('/api/saved-recipes');
     return List.from(
       res.data.map(
-        (i) => RecipePreview.fromJson(i),
+        (i) => SavedRecipe.fromJson(i),
       ),
     );
   }
@@ -59,7 +60,7 @@ Future<List<UserCategory>> userCategories(UserCategoriesRef ref) {
 }
 
 @riverpod
-Future<List<RecipePreview>> savedRecipes(SavedRecipesRef ref) {
+Future<List<SavedRecipe>> savedRecipes(SavedRecipesRef ref) {
   SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
   return savedRepository.getSavedRecipes();
 }

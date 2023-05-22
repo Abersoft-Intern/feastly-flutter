@@ -1,4 +1,3 @@
-import 'package:feastly/src/common_widgets/saved_recipe_item.dart';
 import 'package:flutter/material.dart';
 
 class GroupsRecipes extends StatelessWidget {
@@ -11,12 +10,7 @@ class GroupsRecipes extends StatelessWidget {
       primary: false,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return SavedRecipeItem(
-          name: 'Test',
-          rating: 5,
-          cookTime: 6,
-          onTap: () {},
-        );
+        return null;
       },
       itemCount: 5,
     );

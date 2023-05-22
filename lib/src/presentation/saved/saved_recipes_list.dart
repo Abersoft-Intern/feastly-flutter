@@ -106,14 +106,12 @@ class SavedRecipesList extends ConsumerWidget {
                           ],
                         ),
                         child: SavedRecipeItem(
-                          cookTime: recipes[index].cookTime,
-                          name: recipes[index].name,
-                          rating: recipes[index].rating,
+                          recipe: recipes[index],
                           onTap: () {
                             context.pushNamed(
                               RouteName.recipeDetail.name,
                               pathParameters: {
-                                'id': recipes[index].id.toString()
+                                'id': recipes[index].recipeId.toString()
                               },
                             );
                           },
@@ -125,7 +123,7 @@ class SavedRecipesList extends ConsumerWidget {
                     height: 400.0.h,
                     child: const SavedNone(),
                   ),
-            error: (error, st) => const Text('Errorr'),
+            error: (error, st) => Text(error.toString()),
             loading: () => const ShimmerLoading(
               isLoading: true,
               child: Column(
