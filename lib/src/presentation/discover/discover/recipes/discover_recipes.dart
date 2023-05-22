@@ -49,10 +49,12 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
           Expanded(
             child: recipes.isNotEmpty && !_isEndReached
                 ? CardSwiper(
+                    allowedSwipeDirection:
+                        AllowedSwipeDirection.symmetric(horizontal: true),
+                    numberOfCardsDisplayed: recipes.length == 1 ? 1 : 2,
                     controller: _cardController,
                     backCardOffset: const Offset(0, 0),
                     isLoop: false,
-                    padding: EdgeInsets.zero,
                     cardsCount: recipes.length,
                     onSwipe: (index, __, direction) async {
                       final recipeId = recipes[index].id;

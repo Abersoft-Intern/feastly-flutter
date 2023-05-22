@@ -12,10 +12,9 @@ class DiscoverRepository {
 
   Future<List<RecipePreview>> getDiscoverRecipes() async {
     final res = await client.get('/api/discover');
-
-    return List<RecipePreview>.from(
-      res.data.map<RecipePreview>(
-        (dynamic i) => RecipePreview.fromJson(i),
+    return List.from(
+      res.data.map(
+        (i) => RecipePreview.fromJson(i),
       ),
     );
   }

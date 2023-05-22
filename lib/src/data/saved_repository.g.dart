@@ -37,4 +37,19 @@ final userCategoriesProvider =
 );
 
 typedef UserCategoriesRef = AutoDisposeFutureProviderRef<List<UserCategory>>;
+String _$savedRecipesHash() => r'c25600b34af95405a40fd03bba5717c9aab070bd';
+
+/// See also [savedRecipes].
+@ProviderFor(savedRecipes)
+final savedRecipesProvider =
+    AutoDisposeFutureProvider<List<RecipePreview>>.internal(
+  savedRecipes,
+  name: r'savedRecipesProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$savedRecipesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SavedRecipesRef = AutoDisposeFutureProviderRef<List<RecipePreview>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

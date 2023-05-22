@@ -11,9 +11,8 @@ class SavedTileLoading extends StatelessWidget {
     return ShimmerLoading(
       isLoading: true,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          gapW28,
-          _buildTile(),
           gapW28,
           _buildTile(),
           gapW28,

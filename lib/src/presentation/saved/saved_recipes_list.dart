@@ -1,11 +1,14 @@
 import 'package:feastly/src/common_widgets/saved_recipe_item.dart';
+import 'package:feastly/src/common_widgets/saved_recipe_item_loading.dart';
 import 'package:feastly/src/common_widgets/shimmer.dart';
+import 'package:feastly/src/common_widgets/shimmer_loading.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/data/saved_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/saved/saved_none.dart';
 import 'package:feastly/src/presentation/saved/saved_tile.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_loading.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
@@ -23,10 +26,12 @@ class SavedRecipesList extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
     final categoriesState = ref.watch(userCategoriesProvider);
+    final savedRecipesState = ref.watch(savedRecipesProvider);
 
     return Shimmer(
       child: Column(
         children: [
+          // Saved categories
           SizedBox(
             height: 73.0.h,
             child: categoriesState.when(
@@ -68,45 +73,72 @@ class SavedRecipesList extends ConsumerWidget {
             endIndent: 34,
           ),
           gapH32,
-          ListView(
-            primary: false,
-            shrinkWrap: true,
-            children: [
-              Slidable(
-                endActionPane: ActionPane(
-                  extentRatio: 0.3,
-                  motion: const BehindMotion(),
-                  children: [
-                    SlidableAction(
-                      autoClose: false,
-                      onPressed: (context) {
-                        showCustomBottomSheet(
-                          context,
-                          title: 'Delete match'.hardcoded,
-                          subtitle:
-                              'Are you sure you want to delete this match?'
-                                  .hardcoded,
-                          onYesTap: () {},
-                        );
-                      },
-                      backgroundColor: colorTheme.red!,
-                      foregroundColor: colorTheme.white,
-                      icon: FeastlyIcon.vector_3,
-                    )
-                  ],
-                ),
-                child: SavedRecipeItem(
-                  cookTime: 30,
-                  name: 'Pancake',
-                  rating: 4,
-                  onTap: () {
-                    context.pushNamed(RouteName.recipeDetail.name,
-                        pathParameters: {'id': '1'});
-                  },
-                ),
+
+          // Saved Recipe
+          savedRecipesState.when(
+            data: (recipes) => recipes.isNotEmpty
+                ? ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: recipes.length,
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        endActionPane: ActionPane(
+                          extentRatio: 0.3,
+                          motion: const BehindMotion(),
+                          children: [
+                            SlidableAction(
+                              autoClose: false,
+                              onPressed: (context) {
+                                showCustomBottomSheet(
+                                  context,
+                                  title: 'Delete match'.hardcoded,
+                                  subtitle:
+                                      'Are you sure you want to delete this match?'
+                                          .hardcoded,
+                                  onYesTap: () {},
+                                );
+                              },
+                              backgroundColor: colorTheme.red!,
+                              foregroundColor: colorTheme.white,
+                              icon: FeastlyIcon.vector_3,
+                            )
+                          ],
+                        ),
+                        child: SavedRecipeItem(
+                          cookTime: recipes[index].cookTime,
+                          name: recipes[index].name,
+                          rating: recipes[index].rating,
+                          onTap: () {
+                            context.pushNamed(
+                              RouteName.recipeDetail.name,
+                              pathParameters: {
+                                'id': recipes[index].id.toString()
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  )
+                : SizedBox(
+                    height: 400.0.h,
+                    child: const SavedNone(),
+                  ),
+            error: (error, st) => const Text('Errorr'),
+            loading: () => const ShimmerLoading(
+              isLoading: true,
+              child: Column(
+                children: [
+                  SavedRecipeItemLoading(),
+                  SavedRecipeItemLoading(),
+                  SavedRecipeItemLoading(),
+                  SavedRecipeItemLoading(),
+                  SavedRecipeItemLoading(),
+                ],
               ),
-            ],
-          ),
+            ),
+          )
         ],
       ),
     );

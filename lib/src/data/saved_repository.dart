@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:feastly/src/domain/discover/recipe_preview.dart';
 import 'package:feastly/src/domain/saved/user_category.dart';
 import 'package:feastly/src/network/client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -10,11 +11,29 @@ class SavedRepository {
 
   Dio client;
 
+  Future<List<RecipePreview>> getSavedRecipes() async {
+    final res = await client.get('/api/saved-recipes');
+    return List.from(
+      res.data.map(
+        (i) => RecipePreview.fromJson(i),
+      ),
+    );
+  }
+
+  Future<List<RecipePreview>> getSavedRecipesByCategory(int categoryId) async {
+    final res = await client.get('/api/saved-recipes/$categoryId');
+    return List.from(
+      res.data.map(
+        (i) => RecipePreview.fromJson(i),
+      ),
+    );
+  }
+
   Future<List<UserCategory>> getCategories() async {
     final res = await client.get('/api/user-categories');
-    return List<UserCategory>.from(
-      res.data.map<UserCategory>(
-        (dynamic i) => UserCategory.fromJson(i),
+    return List.from(
+      res.data.map(
+        (i) => UserCategory.fromJson(i),
       ),
     );
   }
@@ -37,4 +56,10 @@ SavedRepository savedRepository(SavedRepositoryRef ref) {
 Future<List<UserCategory>> userCategories(UserCategoriesRef ref) {
   SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
   return savedRepository.getCategories();
+}
+
+@riverpod
+Future<List<RecipePreview>> savedRecipes(SavedRecipesRef ref) {
+  SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
+  return savedRepository.getSavedRecipes();
 }
