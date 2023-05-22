@@ -10,7 +10,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class RecipesCategoryScreen extends StatefulWidget {
-  const RecipesCategoryScreen({super.key});
+  final int id;
+  final String name;
+
+  const RecipesCategoryScreen({
+    super.key,
+    required this.id,
+    required this.name,
+  });
   @override
   State<RecipesCategoryScreen> createState() => _RecipesCategoryScreenState();
 }
@@ -37,7 +44,7 @@ class _RecipesCategoryScreenState extends State<RecipesCategoryScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Breakfast'.hardcoded,
+                      widget.name,
                       style: textTheme.h3!,
                     ),
                     GestureDetector(

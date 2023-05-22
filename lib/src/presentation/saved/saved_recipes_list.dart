@@ -32,9 +32,7 @@ class SavedRecipesList extends ConsumerWidget {
             child: categoriesState.when(
               data: (categories) => ListView.separated(
                 primary: false,
-                separatorBuilder: (context, index) => SizedBox(
-                  width: Sizes.p28.h,
-                ),
+                separatorBuilder: (context, index) => gapW28,
                 itemBuilder: (context, index) {
                   if (index == 0 || index == categories.length + 1) {
                     return const SizedBox.shrink();
@@ -47,6 +45,7 @@ class SavedRecipesList extends ConsumerWidget {
                         pathParameters: {
                           'categoryId': categories[index - 1].id.toString()
                         },
+                        extra: categories[index - 1].name,
                       );
                     },
                   );
