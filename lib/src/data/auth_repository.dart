@@ -16,7 +16,7 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final res = await client.post('/auth/local/register', data: {
+    final res = await client.post('/api/auth/local/register', data: {
       'email': email,
       'password': password,
       'username': email,
@@ -29,7 +29,7 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final res = await client.post('/auth/local', data: {
+    final res = await client.post('/api/auth/local', data: {
       'identifier': email,
       'password': password,
     });

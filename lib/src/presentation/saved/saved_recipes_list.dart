@@ -30,6 +30,7 @@ class SavedRecipesList extends ConsumerWidget {
 
     return Shimmer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Saved categories
           SizedBox(
