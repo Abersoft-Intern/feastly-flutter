@@ -30,7 +30,6 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
     final preferenceController = ref.watch(preferenceControllerProvider);
 
     final categoriesState = ref.watch(categoriesStateProvider);
-    final categoriesController = ref.watch(categoriesControllerProvider);
 
     ref.listen(preferenceStateProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {

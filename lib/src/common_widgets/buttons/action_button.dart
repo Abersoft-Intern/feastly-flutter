@@ -1,3 +1,4 @@
+import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,21 +6,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 enum ActionButtonVariant { danger, neutral }
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({
-    super.key,
-    this.onTap,
-    this.variant,
-    required this.icon,
-  });
+  const ActionButton(
+      {super.key,
+      this.onTap,
+      this.variant,
+      required this.icon,
+      this.isLoading = false});
 
   final VoidCallback? onTap;
   final ActionButtonVariant? variant;
   final Icon icon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     Color bgColor = theme.primaryColor;
+
+    final colorTheme = theme.extension<CustomColor>()!;
     BoxShadow shadow = const BoxShadow(color: Colors.transparent);
 
     if (variant == ActionButtonVariant.danger) {
@@ -46,7 +50,17 @@ class ActionButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(50.0),
             boxShadow: [shadow],
           ),
-          child: icon,
+          child: isLoading
+              ? Center(
+                  child: SizedBox.square(
+                    dimension: Sizes.p24.h,
+                    child: CircularProgressIndicator(
+                      color: colorTheme.white,
+                      strokeWidth: 3.0.h,
+                    ),
+                  ),
+                )
+              : icon,
         ),
       ),
     );

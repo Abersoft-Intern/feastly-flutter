@@ -30,6 +30,8 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
 
+    final controller = ref.watch(discoverRecipesControllerProvider);
+
     ref.listen(discoverRecipesControllerProvider, (_, state) {
       // Check for error operation
       if (state.hasError && !state.isLoading) {
@@ -55,7 +57,9 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     controller: _cardController,
                     backCardOffset: const Offset(0, 0),
                     isLoop: false,
+                    isDisabled: controller.isLoading,
                     cardsCount: recipes.length,
+                    threshold: 100,
                     onSwipe: (index, __, direction) async {
                       final recipeId = recipes[index].id;
                       if (direction == CardSwiperDirection.right) {
@@ -65,7 +69,7 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                       } else if (direction == CardSwiperDirection.left) {
                         return await ref
                             .read(discoverRecipesControllerProvider.notifier)
-                            .skipRecipe(recipeId);
+                            .dislikeRecipe(recipeId);
                       }
 
                       return false;
@@ -93,8 +97,11 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                     size: Sizes.p24.h,
                   ),
                   onTap: () {
-                    if (!_isEndReached) _cardController.swipeLeft();
+                    if (!_isEndReached && !controller.isLoading) {
+                      _cardController.swipeLeft();
+                    }
                   },
+                  isLoading: controller.isLoading,
                   variant: ActionButtonVariant.danger,
                 ),
                 gapW8,
@@ -109,13 +116,16 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                 ),
                 gapW8,
                 ActionButton(
+                  isLoading: controller.isLoading,
                   icon: Icon(
                     FeastlyIcon.heart_alt,
                     size: Sizes.p24.h,
                     color: colorTheme.white,
                   ),
                   onTap: () {
-                    if (!_isEndReached) _cardController.swipeRight();
+                    if (!_isEndReached && !controller.isLoading) {
+                      _cardController.swipeRight();
+                    }
                   },
                 ),
               ],

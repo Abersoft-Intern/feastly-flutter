@@ -18,6 +18,14 @@ class DiscoverRepository {
       ),
     );
   }
+
+  Future<void> likeRecipe(int id) async {
+    await client.post('/api/like-recipe/$id');
+  }
+
+  Future<void> dislikeRecipe(int id) async {
+    await client.post('/api/dislike-recipe/$id');
+  }
 }
 
 @riverpod

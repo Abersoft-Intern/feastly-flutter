@@ -29,6 +29,9 @@ class DiscoverRecipesCard extends StatelessWidget {
     return Stack(
       children: [
         CachedNetworkImage(
+          fadeInDuration: Duration.zero,
+          fadeOutDuration: Duration.zero,
+          placeholderFadeInDuration: Duration.zero,
           imageUrl: "${Env.baseUrl}${recipe.thumbnail}",
           fit: BoxFit.cover,
           placeholder: (context, url) => Container(
