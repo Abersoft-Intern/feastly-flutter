@@ -3,6 +3,8 @@ import 'package:feastly/src/common_widgets/custom_chip.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/categories_controller.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/categories_state.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_tile.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/preference_controller.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/preference_state.dart';
@@ -26,6 +28,9 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
 
     final preferenceState = ref.watch(preferenceStateProvider);
     final preferenceController = ref.watch(preferenceControllerProvider);
+
+    final categoriesState = ref.watch(categoriesStateProvider);
+    final categoriesController = ref.watch(categoriesControllerProvider);
 
     ref.listen(preferenceStateProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
@@ -117,13 +122,30 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                       style: textTheme.body16Regular,
                     ),
                     gapH24,
-                    const Wrap(
-                      spacing: Sizes.p8,
-                      runSpacing: Sizes.p8,
-                      children: [
-                        CustomChip(label: 'American Food', selected: true),
-                        CustomChip(label: 'Brunch'),
-                      ],
+                    categoriesState.when(
+                      data: (categories) => Wrap(
+                        spacing: Sizes.p8,
+                        runSpacing: Sizes.p8,
+                        children: categories
+                            .map(
+                              (category) => CustomChip(
+                                id: category.id,
+                                label: category.name,
+                                selected: category.active,
+                                onTap: () {
+                                  ref
+                                      .read(
+                                          categoriesControllerProvider.notifier)
+                                      .changeCategory(category.id);
+                                },
+                              ),
+                            )
+                            .toList(),
+                      ),
+                      error: (error, st) => const Text('Error'),
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     )
                   ],
                 ),

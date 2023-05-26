@@ -8,11 +8,15 @@ class CustomChip extends StatelessWidget {
   const CustomChip({
     super.key,
     required this.label,
+    this.id,
     this.selected = false,
+    this.onTap,
   });
 
   final String label;
+  final int? id;
   final bool? selected;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class CustomChip extends StatelessWidget {
     final textTheme = theme.extension<CustomTextTheme>()!;
     final colorTheme = theme.extension<CustomColor>()!;
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       borderRadius: BorderRadius.circular(25.0),
       child: AnimatedContainer(
         padding: EdgeInsets.symmetric(

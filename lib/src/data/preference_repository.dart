@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:feastly/src/domain/swiping_preference/swiping_category.dart';
 import 'package:feastly/src/domain/swiping_preference/swiping_preference.dart';
 import 'package:feastly/src/network/client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -23,6 +24,25 @@ class PreferenceRepository {
     return List.from(
       res.data.map(
         (i) => SwipingPreference.fromJson(i),
+      ),
+    );
+  }
+
+  Future<List<SwipingCategory>> getCategories() async {
+    final res = await client.get('/api/swipe-preference/categories');
+    return List.from(
+      res.data.map(
+        (i) => SwipingCategory.fromJson(i),
+      ),
+    );
+  }
+
+  Future<List<SwipingCategory>> changeCategory(int categoryId) async {
+    final res =
+        await client.patch('/api/swipe-preference/categories/$categoryId');
+    return List.from(
+      res.data.map(
+        (i) => SwipingCategory.fromJson(i),
       ),
     );
   }
