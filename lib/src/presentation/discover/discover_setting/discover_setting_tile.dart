@@ -9,14 +9,14 @@ class DiscoverSettingTile extends StatelessWidget {
     super.key,
     required this.value,
     required this.selectedValue,
-    required this.onChanged,
+    required this.onTap,
     required this.label,
   });
 
   final String value;
   final String label;
   final String selectedValue;
-  final Function(String?) onChanged;
+  final Function(String) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class DiscoverSettingTile extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        onChanged(value);
+        onTap(value);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(

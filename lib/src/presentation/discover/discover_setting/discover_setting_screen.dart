@@ -4,22 +4,38 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_tile.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/preference_controller.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/preference_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DiscoverSettingScreen extends StatefulWidget {
+class DiscoverSettingScreen extends ConsumerStatefulWidget {
   const DiscoverSettingScreen({super.key});
   @override
-  State<DiscoverSettingScreen> createState() => _DiscoverSettingState();
+  ConsumerState<DiscoverSettingScreen> createState() => _DiscoverSettingState();
 }
 
-class _DiscoverSettingState extends State<DiscoverSettingScreen> {
-  String _selectedGroup = 'groupSwipe';
+class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
+  int _activeGroup = 0;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
+
+    final preferenceState = ref.watch(preferenceStateProvider);
+    final preferenceController = ref.watch(preferenceControllerProvider);
+
+    ref.listen(preferenceStateProvider, (_, state) {
+      if (!state.isLoading && !state.hasError) {
+        setState(() {
+          _activeGroup =
+              state.asData!.value.firstWhere((group) => group.active).id;
+        });
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,12 +43,7 @@ class _DiscoverSettingState extends State<DiscoverSettingScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                  top: Sizes.p28.h,
-                  left: Sizes.p28.h,
-                  right: Sizes.p28.h,
-                  bottom: Sizes.p8.h,
-                ),
+                padding: EdgeInsets.all(Sizes.p28.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -51,25 +62,43 @@ class _DiscoverSettingState extends State<DiscoverSettingScreen> {
                   ],
                 ),
               ),
-              DiscoverSettingTile(
-                label: 'Solo Swipe',
-                value: 'soloSwipe',
-                selectedValue: _selectedGroup,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedGroup = value!;
-                  });
-                },
-              ),
-              DiscoverSettingTile(
-                label: 'Group Swipe',
-                value: 'groupSwipe',
-                selectedValue: _selectedGroup,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedGroup = value!;
-                  });
-                },
+              Stack(
+                children: [
+                  preferenceState.when(
+                    data: (preferences) => ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      itemCount: preferences.length,
+                      itemBuilder: (context, index) => DiscoverSettingTile(
+                        label: preferences[index].name,
+                        value: preferences[index].id.toString(),
+                        selectedValue: _activeGroup.toString(),
+                        onTap: (value) {
+                          if (int.parse(value) != _activeGroup) {
+                            ref
+                                .read(preferenceControllerProvider.notifier)
+                                .changeSwipingPreference(int.parse(value));
+                          }
+                        },
+                      ),
+                    ),
+                    error: (e, st) => Text(e.toString()),
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                  ),
+                  if (preferenceController.isLoading)
+                    Positioned.fill(
+                      child: Container(
+                        color: const Color.fromARGB(158, 255, 255, 255),
+                        child: Center(
+                          child: SizedBox.square(
+                            dimension: 35.0.h,
+                            child: const CircularProgressIndicator(),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
               gapH24,
               Padding(
