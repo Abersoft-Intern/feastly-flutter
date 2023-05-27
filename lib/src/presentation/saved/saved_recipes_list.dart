@@ -33,10 +33,10 @@ class SavedRecipesList extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Saved categories
-          SizedBox(
-            height: 73.0.h,
-            child: categoriesState.when(
-              data: (categories) => ListView.separated(
+          categoriesState.when(
+            data: (categories) => SizedBox(
+              height: categories.isNotEmpty ? 73.0.h : 0,
+              child: ListView.separated(
                 primary: false,
                 separatorBuilder: (context, index) => gapW28,
                 itemBuilder: (context, index) {
@@ -59,11 +59,11 @@ class SavedRecipesList extends ConsumerWidget {
                 itemCount: categories.length + 2,
                 scrollDirection: Axis.horizontal,
               ),
-              error: (error, st) => const Center(
-                child: Text('ERRORR'),
-              ),
-              loading: () => const SavedTileLoading(),
             ),
+            error: (error, st) => const Center(
+              child: Text('ERRORR'),
+            ),
+            loading: () => const SavedTileLoading(),
           ),
           gapH28,
           Divider(
