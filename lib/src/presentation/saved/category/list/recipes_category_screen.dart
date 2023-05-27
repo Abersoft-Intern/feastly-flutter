@@ -6,10 +6,11 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/saved/category/list/recipes_category_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class RecipesCategoryScreen extends StatefulWidget {
+class RecipesCategoryScreen extends ConsumerWidget {
   final int id;
   final String name;
 
@@ -18,15 +19,12 @@ class RecipesCategoryScreen extends StatefulWidget {
     required this.id,
     required this.name,
   });
-  @override
-  State<RecipesCategoryScreen> createState() => _RecipesCategoryScreenState();
-}
 
-class _RecipesCategoryScreenState extends State<RecipesCategoryScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,14 +42,14 @@ class _RecipesCategoryScreenState extends State<RecipesCategoryScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.name,
+                      name,
                       style: textTheme.h3!,
                     ),
                     GestureDetector(
                       onTap: () {
                         context.pushNamed(
                           RouteName.savedRecipeCategoryAdd.name,
-                          pathParameters: {'categoryId': widget.id.toString()},
+                          pathParameters: {'categoryId': id.toString()},
                         );
                       },
                       child: Row(
@@ -75,7 +73,9 @@ class _RecipesCategoryScreenState extends State<RecipesCategoryScreen> {
                 ),
               ),
               gapH8,
-              const RecipesCategoryList()
+              RecipesCategoryList(
+                categoryId: id,
+              )
             ],
           ),
         ),

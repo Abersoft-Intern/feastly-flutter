@@ -52,6 +52,24 @@ final savedRecipesProvider =
 );
 
 typedef SavedRecipesRef = AutoDisposeFutureProviderRef<List<SavedRecipe>>;
+String _$savedRecipesWithoutCategoryHash() =>
+    r'7717314d09db7aa473d93c1d89e44427308c476a';
+
+/// See also [savedRecipesWithoutCategory].
+@ProviderFor(savedRecipesWithoutCategory)
+final savedRecipesWithoutCategoryProvider =
+    AutoDisposeFutureProvider<List<SavedRecipe>>.internal(
+  savedRecipesWithoutCategory,
+  name: r'savedRecipesWithoutCategoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$savedRecipesWithoutCategoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SavedRecipesWithoutCategoryRef
+    = AutoDisposeFutureProviderRef<List<SavedRecipe>>;
 String _$savedRecipesByCategoryHash() =>
     r'6f600739e82a09560a7b5c1966bbf0e8897fc85c';
 

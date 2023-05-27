@@ -20,11 +20,12 @@ class AddRecipesCategoryList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recipes = ref.watch(savedRecipesProvider);
+    final recipes = ref.watch(savedRecipesWithoutCategoryProvider);
 
     ref.listen(addRecipesControllerProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
         context.pop();
+        ref.invalidate(savedRecipesByCategoryProvider(categoryId));
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Recipe successfully added'),
         ));

@@ -11,6 +11,15 @@ class SavedRepository {
 
   Dio client;
 
+  Future<List<SavedRecipe>> getSavedRecipesWithoutCategory() async {
+    final res = await client.get('/api/saved-recipes?with_category=true');
+    return List.from(
+      res.data.map(
+        (i) => SavedRecipe.fromJson(i),
+      ),
+    );
+  }
+
   Future<List<SavedRecipe>> getSavedRecipes() async {
     final res = await client.get('/api/saved-recipes');
     return List.from(
@@ -21,7 +30,7 @@ class SavedRepository {
   }
 
   Future<List<SavedRecipe>> getSavedRecipesByCategory(int categoryId) async {
-    final res = await client.get('/api/saved-recipes/$categoryId');
+    final res = await client.get('/api/saved-recipes/categories/$categoryId');
     return List.from(
       res.data.map(
         (i) => SavedRecipe.fromJson(i),
@@ -67,6 +76,13 @@ Future<List<UserCategory>> userCategories(UserCategoriesRef ref) {
 Future<List<SavedRecipe>> savedRecipes(SavedRecipesRef ref) {
   SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
   return savedRepository.getSavedRecipes();
+}
+
+@riverpod
+Future<List<SavedRecipe>> savedRecipesWithoutCategory(
+    SavedRecipesWithoutCategoryRef ref) {
+  SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
+  return savedRepository.getSavedRecipesWithoutCategory();
 }
 
 @riverpod
