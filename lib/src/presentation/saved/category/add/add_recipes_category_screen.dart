@@ -7,7 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddRecipesCategoryScreen extends StatefulWidget {
-  const AddRecipesCategoryScreen({super.key});
+  const AddRecipesCategoryScreen({
+    super.key,
+    required this.categoryId,
+  });
+
+  final int categoryId;
+
   @override
   State<AddRecipesCategoryScreen> createState() =>
       _AddRecipesCategoryScreenState();
@@ -18,6 +24,7 @@ class _AddRecipesCategoryScreenState extends State<AddRecipesCategoryScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -42,7 +49,9 @@ class _AddRecipesCategoryScreenState extends State<AddRecipesCategoryScreen> {
                 ),
               ),
               gapH8,
-              const AddRecipesCategoryList()
+              AddRecipesCategoryList(
+                categoryId: widget.categoryId,
+              )
             ],
           ),
         ),

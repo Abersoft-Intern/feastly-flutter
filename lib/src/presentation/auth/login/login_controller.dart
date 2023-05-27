@@ -1,7 +1,6 @@
 import 'package:feastly/src/data/auth_repository.dart';
 import 'package:feastly/src/domain/user/user.dart';
 import 'package:feastly/src/navigation/auth_state.dart';
-import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_controller.g.dart';
@@ -22,7 +21,6 @@ class LoginController extends _$LoginController {
       state = const AsyncData(null);
       return data;
     } catch (e) {
-      debugPrint(e.toString());
       state = AsyncError(
         'The password or email is wrong,\nplease try again.',
         StackTrace.current,

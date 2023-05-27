@@ -140,7 +140,10 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
         path: '/saved/:categoryId/add',
         name: RouteName.savedRecipeCategoryAdd.name,
         builder: (context, state) {
-          return const AddRecipesCategoryScreen();
+          final categoryId = state.pathParameters['categoryId']!;
+          return AddRecipesCategoryScreen(
+            categoryId: int.parse(categoryId),
+          );
         },
       ),
       GoRoute(

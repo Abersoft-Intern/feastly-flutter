@@ -44,6 +44,11 @@ class SavedRepository {
     });
     return UserCategory.fromJson(res.data);
   }
+
+  Future<void> addRecipeToCategory(int savedRecipeId, int categoryId) async {
+    await client
+        .post('/api/saved-recipes/$savedRecipeId/categories/$categoryId');
+  }
 }
 
 @riverpod

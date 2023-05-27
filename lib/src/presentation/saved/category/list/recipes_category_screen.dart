@@ -49,8 +49,10 @@ class _RecipesCategoryScreenState extends State<RecipesCategoryScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.pushNamed(RouteName.savedRecipeCategoryAdd.name,
-                            pathParameters: {'categoryId': '1'});
+                        context.pushNamed(
+                          RouteName.savedRecipeCategoryAdd.name,
+                          pathParameters: {'categoryId': widget.id.toString()},
+                        );
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
