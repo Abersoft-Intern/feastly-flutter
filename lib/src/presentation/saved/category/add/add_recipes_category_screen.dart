@@ -20,29 +20,31 @@ class _AddRecipesCategoryScreenState extends State<AddRecipesCategoryScreen> {
     final textTheme = theme.extension<CustomTextTheme>()!;
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: Sizes.p28.h, top: Sizes.p28.h),
-              child: const BackArrowButton(),
-            ),
-            gapH16,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Add food to list'.hardcoded,
-                    style: textTheme.h3!,
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: Sizes.p28.h, top: Sizes.p28.h),
+                child: const BackArrowButton(),
               ),
-            ),
-            gapH8,
-            const AddRecipesCategoryList()
-          ],
+              gapH16,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Add food to list'.hardcoded,
+                      style: textTheme.h3!,
+                    ),
+                  ],
+                ),
+              ),
+              gapH8,
+              const AddRecipesCategoryList()
+            ],
+          ),
         ),
       ),
     );
