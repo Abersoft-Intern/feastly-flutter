@@ -1,12 +1,13 @@
 import 'package:feastly/src/common_widgets/main_header.dart';
+import 'package:feastly/src/common_widgets/shimmer.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/groups/groups/group_recipes.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_list.dart';
-import 'package:feastly/src/presentation/groups/groups/groups_recipes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -22,82 +23,84 @@ class GroupsScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              gapH32,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
-                child: MainHeader(
-                  child: InkResponse(
-                    radius: 35.0,
-                    onTap: () {
-                      context.pushNamed(RouteName.joinGroup.name);
-                    },
-                    child: Column(
-                      children: [
-                        Icon(
-                          FeastlyIcon.user_plus,
-                          color: theme.primaryColor,
-                          size: Sizes.p20.h,
-                        ),
-                        Text(
-                          'Join Group'.hardcoded,
-                          style: textTheme.bold12!
-                              .copyWith(color: theme.primaryColor),
-                        )
-                      ],
+          child: Shimmer(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                gapH32,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Sizes.p28.r),
+                  child: MainHeader(
+                    child: InkResponse(
+                      radius: 35.0,
+                      onTap: () {
+                        context.pushNamed(RouteName.joinGroup.name);
+                      },
+                      child: Column(
+                        children: [
+                          Icon(
+                            FeastlyIcon.user_plus,
+                            color: theme.primaryColor,
+                            size: Sizes.p20.h,
+                          ),
+                          Text(
+                            'Join Group'.hardcoded,
+                            style: textTheme.bold12!
+                                .copyWith(color: theme.primaryColor),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              gapH44,
-              Divider(
-                color: colorTheme.lightGrey,
-                height: 0,
-                thickness: 1,
-                indent: 34,
-                endIndent: 34,
-              ),
-              gapH12,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'My Groups'.hardcoded,
-                      style: textTheme.h3!,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        context.pushNamed(
-                          RouteName.groupDetail.name,
-                          pathParameters: {'groupId': '1'},
-                        );
-                      },
-                      child: Text(
-                        'Edit Group'.hardcoded,
-                        style: textTheme.body16Bold!
-                            .copyWith(color: theme.primaryColor),
-                      ),
-                    ),
-                  ],
+                gapH44,
+                Divider(
+                  color: colorTheme.lightGrey,
+                  height: 0,
+                  thickness: 1,
+                  indent: 34,
+                  endIndent: 34,
                 ),
-              ),
-              gapH16,
-              const GroupsList(),
-              gapH24,
-              Divider(
-                color: colorTheme.lightGrey,
-                height: 0,
-                thickness: 1,
-                indent: 34,
-                endIndent: 34,
-              ),
-              gapH32,
-              const GroupsRecipes(),
-            ],
+                gapH12,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Sizes.p28.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'My Groups'.hardcoded,
+                        style: textTheme.h3!,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.pushNamed(
+                            RouteName.groupDetail.name,
+                            pathParameters: {'groupId': '1'},
+                          );
+                        },
+                        child: Text(
+                          'Edit Group'.hardcoded,
+                          style: textTheme.body16Bold!
+                              .copyWith(color: theme.primaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                gapH16,
+                const GroupsList(),
+                gapH24,
+                Divider(
+                  color: colorTheme.lightGrey,
+                  height: 0,
+                  thickness: 1,
+                  indent: 34,
+                  endIndent: 34,
+                ),
+                gapH32,
+                const GroupRecipes(),
+              ],
+            ),
           ),
         ),
       ),

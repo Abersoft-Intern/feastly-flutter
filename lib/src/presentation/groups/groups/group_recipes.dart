@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GroupsRecipes extends StatelessWidget {
-  const GroupsRecipes({super.key});
+class GroupRecipes extends StatelessWidget {
+  const GroupRecipes({super.key});
 
   @override
   Widget build(BuildContext context) {
