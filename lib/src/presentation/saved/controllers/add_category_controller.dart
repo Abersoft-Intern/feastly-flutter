@@ -1,10 +1,10 @@
 import 'package:feastly/src/data/saved_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'saved_controller.g.dart';
+part 'add_category_controller.g.dart';
 
 @riverpod
-class SavedController extends _$SavedController {
+class AddCategoryController extends _$AddCategoryController {
   @override
   FutureOr<void> build() {}
 

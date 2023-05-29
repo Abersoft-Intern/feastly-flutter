@@ -16,6 +16,7 @@ Future<dynamic> showCustomBottomSheet(
   String? noText,
   VoidCallback? onNoTap,
   List<Widget>? customButtons,
+  bool isLoading = false,
 }) {
   final theme = Theme.of(context);
   final textTheme = theme.extension<CustomTextTheme>()!;
@@ -24,11 +25,15 @@ Future<dynamic> showCustomBottomSheet(
   final buttons = [
     gapH20,
     Button(
+      disabled: isLoading,
+      isLoading: isLoading,
       text: yesText ?? 'Yes'.hardcoded,
       onTap: onYesTap,
     ),
     gapH32,
     Button(
+      disabled: isLoading,
+      isLoading: isLoading,
       onTap: onNoTap ??
           () {
             context.pop();

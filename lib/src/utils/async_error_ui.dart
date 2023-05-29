@@ -9,4 +9,14 @@ extension AsyncValueUI on AsyncValue {
       showErrorAlert(context, message);
     }
   }
+
+  void showSnackbarOnError(BuildContext context) {
+    final message = error.toString();
+    if (!isLoading && hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: const Duration(seconds: 2),
+        content: Text(message),
+      ));
+    }
+  }
 }

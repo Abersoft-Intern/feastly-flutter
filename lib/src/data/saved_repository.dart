@@ -38,6 +38,10 @@ class SavedRepository {
     );
   }
 
+  Future<void> deleteRecipe(int id) async {
+    await client.delete('/api/saved-recipes/$id');
+  }
+
   Future<List<UserCategory>> getCategories() async {
     final res = await client.get('/api/user-categories');
     return List.from(

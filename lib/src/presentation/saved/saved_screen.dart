@@ -7,7 +7,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/data/saved_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/saved/saved_controller.dart';
+import 'package:feastly/src/presentation/saved/controllers/add_category_controller.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes_list.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +40,9 @@ class _SavedScreenState extends ConsumerState<SavedScreen> {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
-    final controller = ref.watch(savedControllerProvider);
+    final controller = ref.watch(addCategoryControllerProvider);
 
-    ref.listen(savedControllerProvider, (_, state) {
+    ref.listen(addCategoryControllerProvider, (_, state) {
       if (!state.isLoading && state.hasError) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(state.error.toString()),
@@ -124,7 +124,8 @@ class _SavedScreenState extends ConsumerState<SavedScreen> {
                                 text: 'Save new list'.hardcoded,
                                 onTap: () {
                                   ref
-                                      .read(savedControllerProvider.notifier)
+                                      .read(addCategoryControllerProvider
+                                          .notifier)
                                       .addCategory(name);
                                 },
                               ),

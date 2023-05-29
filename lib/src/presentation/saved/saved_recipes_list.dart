@@ -8,9 +8,11 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/data/saved_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/saved/controllers/delete_recipe_controller.dart';
 import 'package:feastly/src/presentation/saved/saved_none.dart';
 import 'package:feastly/src/presentation/saved/saved_tile.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_loading.dart';
+import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,6 +29,16 @@ class SavedRecipesList extends ConsumerWidget {
     final colorTheme = theme.extension<CustomColor>()!;
     final categoriesState = ref.watch(userCategoriesProvider);
     final savedRecipesState = ref.watch(savedRecipesProvider);
+
+    final controller = ref.watch(deleteRecipeControllerProvider);
+
+    ref.listen(deleteRecipeControllerProvider, (_, state) {
+      if (!state.isLoading && !state.hasError) {
+        context.pop();
+      }
+
+      state.showSnackbarOnError(context);
+    });
 
     return Shimmer(
       child: Column(
@@ -93,11 +105,18 @@ class SavedRecipesList extends ConsumerWidget {
                               onPressed: (context) {
                                 showCustomBottomSheet(
                                   context,
+                                  isLoading: controller.isLoading,
                                   title: 'Delete match'.hardcoded,
                                   subtitle:
                                       'Are you sure you want to delete this match?'
                                           .hardcoded,
-                                  onYesTap: () {},
+                                  onYesTap: () {
+                                    debugPrint('test');
+                                    ref
+                                        .read(deleteRecipeControllerProvider
+                                            .notifier)
+                                        .delete(recipes[index].id);
+                                  },
                                 );
                               },
                               backgroundColor: colorTheme.red!,
