@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:feastly/src/domain/recipe/category.dart';
 import 'package:feastly/src/domain/saved/saved_recipe.dart';
-import 'package:feastly/src/domain/saved/user_category.dart';
 import 'package:feastly/src/network/client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -42,20 +42,20 @@ class SavedRepository {
     await client.delete('/api/saved-recipes/$id');
   }
 
-  Future<List<UserCategory>> getCategories() async {
+  Future<List<Category>> getCategories() async {
     final res = await client.get('/api/user-categories');
     return List.from(
       res.data.map(
-        (i) => UserCategory.fromJson(i),
+        (i) => Category.fromJson(i),
       ),
     );
   }
 
-  Future<UserCategory> addCategory(String name) async {
+  Future<Category> addCategory(String name) async {
     final res = await client.post('/api/user-categories', data: {
       'name': name,
     });
-    return UserCategory.fromJson(res.data);
+    return Category.fromJson(res.data);
   }
 
   Future<void> addRecipeToCategory(int savedRecipeId, int categoryId) async {
@@ -71,7 +71,7 @@ SavedRepository savedRepository(SavedRepositoryRef ref) {
 }
 
 @riverpod
-Future<List<UserCategory>> userCategories(UserCategoriesRef ref) {
+Future<List<Category>> userCategories(UserCategoriesRef ref) {
   SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
   return savedRepository.getCategories();
 }

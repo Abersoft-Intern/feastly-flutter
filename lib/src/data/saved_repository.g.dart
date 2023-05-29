@@ -21,12 +21,12 @@ final savedRepositoryProvider = AutoDisposeProvider<SavedRepository>.internal(
 );
 
 typedef SavedRepositoryRef = AutoDisposeProviderRef<SavedRepository>;
-String _$userCategoriesHash() => r'f690c1d6d9802a41d66acd7798bd00fc4a1c2d33';
+String _$userCategoriesHash() => r'54a00b73f69fd71b0c0d34f400df50914b75c435';
 
 /// See also [userCategories].
 @ProviderFor(userCategories)
 final userCategoriesProvider =
-    AutoDisposeFutureProvider<List<UserCategory>>.internal(
+    AutoDisposeFutureProvider<List<Category>>.internal(
   userCategories,
   name: r'userCategoriesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -36,7 +36,7 @@ final userCategoriesProvider =
   allTransitiveDependencies: null,
 );
 
-typedef UserCategoriesRef = AutoDisposeFutureProviderRef<List<UserCategory>>;
+typedef UserCategoriesRef = AutoDisposeFutureProviderRef<List<Category>>;
 String _$savedRecipesHash() => r'e37e329b83950a8d2458fcfd47e0f1fd9a2ee823';
 
 /// See also [savedRecipes].

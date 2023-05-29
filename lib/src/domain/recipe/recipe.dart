@@ -1,3 +1,4 @@
+import 'package:feastly/src/domain/recipe/category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe.freezed.dart';
@@ -9,11 +10,12 @@ class Recipe with _$Recipe {
     required int id,
     required String name,
     required int rating,
-    @JsonKey(name: 'image_url') required String imageUrl,
     @JsonKey(name: 'cook_time') required int cookTime,
-    @JsonKey(name: 'is_saved') required bool isSaved,
+    required String thumbnail,
     required List<Ingredient> ingredients,
+    required List<Category> categories,
     @JsonKey(name: 'cooking_method') required String cookingMethod,
+    required String blurhash,
   }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, Object?> json) => _$RecipeFromJson(json);
@@ -22,7 +24,7 @@ class Recipe with _$Recipe {
 @freezed
 class Ingredient with _$Ingredient {
   const factory Ingredient({
-    required String name,
+    @JsonKey(name: 'item') required String name,
     required int qty,
   }) = _Ingredient;
 

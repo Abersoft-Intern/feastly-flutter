@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_category.dart';
+part of 'category.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UserCategory _$UserCategoryFromJson(Map<String, dynamic> json) {
-  return _UserCategory.fromJson(json);
+Category _$CategoryFromJson(Map<String, dynamic> json) {
+  return _Category.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserCategory {
+mixin _$Category {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCategoryCopyWith<UserCategory> get copyWith =>
+  $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCategoryCopyWith<$Res> {
-  factory $UserCategoryCopyWith(
-          UserCategory value, $Res Function(UserCategory) then) =
-      _$UserCategoryCopyWithImpl<$Res, UserCategory>;
+abstract class $CategoryCopyWith<$Res> {
+  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
+      _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class _$UserCategoryCopyWithImpl<$Res, $Val extends UserCategory>
-    implements $UserCategoryCopyWith<$Res> {
-  _$UserCategoryCopyWithImpl(this._value, this._then);
+class _$CategoryCopyWithImpl<$Res, $Val extends Category>
+    implements $CategoryCopyWith<$Res> {
+  _$CategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +67,21 @@ class _$UserCategoryCopyWithImpl<$Res, $Val extends UserCategory>
 }
 
 /// @nodoc
-abstract class _$$_UserCategoryCopyWith<$Res>
-    implements $UserCategoryCopyWith<$Res> {
-  factory _$$_UserCategoryCopyWith(
-          _$_UserCategory value, $Res Function(_$_UserCategory) then) =
-      __$$_UserCategoryCopyWithImpl<$Res>;
+abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
+  factory _$$_CategoryCopyWith(
+          _$_Category value, $Res Function(_$_Category) then) =
+      __$$_CategoryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_UserCategoryCopyWithImpl<$Res>
-    extends _$UserCategoryCopyWithImpl<$Res, _$_UserCategory>
-    implements _$$_UserCategoryCopyWith<$Res> {
-  __$$_UserCategoryCopyWithImpl(
-      _$_UserCategory _value, $Res Function(_$_UserCategory) _then)
+class __$$_CategoryCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$_Category>
+    implements _$$_CategoryCopyWith<$Res> {
+  __$$_CategoryCopyWithImpl(
+      _$_Category _value, $Res Function(_$_Category) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +90,7 @@ class __$$_UserCategoryCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_UserCategory(
+    return _then(_$_Category(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,11 +105,11 @@ class __$$_UserCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserCategory implements _UserCategory {
-  const _$_UserCategory({required this.id, required this.name});
+class _$_Category implements _Category {
+  const _$_Category({required this.id, required this.name});
 
-  factory _$_UserCategory.fromJson(Map<String, dynamic> json) =>
-      _$$_UserCategoryFromJson(json);
+  factory _$_Category.fromJson(Map<String, dynamic> json) =>
+      _$$_CategoryFromJson(json);
 
   @override
   final int id;
@@ -120,14 +118,14 @@ class _$_UserCategory implements _UserCategory {
 
   @override
   String toString() {
-    return 'UserCategory(id: $id, name: $name)';
+    return 'Category(id: $id, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserCategory &&
+            other is _$_Category &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -139,23 +137,22 @@ class _$_UserCategory implements _UserCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCategoryCopyWith<_$_UserCategory> get copyWith =>
-      __$$_UserCategoryCopyWithImpl<_$_UserCategory>(this, _$identity);
+  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserCategoryToJson(
+    return _$$_CategoryToJson(
       this,
     );
   }
 }
 
-abstract class _UserCategory implements UserCategory {
-  const factory _UserCategory(
-      {required final int id, required final String name}) = _$_UserCategory;
+abstract class _Category implements Category {
+  const factory _Category({required final int id, required final String name}) =
+      _$_Category;
 
-  factory _UserCategory.fromJson(Map<String, dynamic> json) =
-      _$_UserCategory.fromJson;
+  factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
 
   @override
   int get id;
@@ -163,6 +160,6 @@ abstract class _UserCategory implements UserCategory {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCategoryCopyWith<_$_UserCategory> get copyWith =>
+  _$$_CategoryCopyWith<_$_Category> get copyWith =>
       throw _privateConstructorUsedError;
 }

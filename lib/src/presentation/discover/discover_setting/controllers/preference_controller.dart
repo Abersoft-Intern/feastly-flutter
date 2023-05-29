@@ -1,6 +1,7 @@
 import 'package:feastly/src/data/discover_repository.dart';
 import 'package:feastly/src/data/preference_repository.dart';
-import 'package:feastly/src/presentation/discover/discover_setting/preference_state.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/controllers/categories_state.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/controllers/preference_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'preference_controller.g.dart';
@@ -15,9 +16,9 @@ class PreferenceController extends _$PreferenceController {
     try {
       state = const AsyncLoading();
       await repository.changePreference(groupId);
-
       ref.read(preferenceStateProvider.notifier).changeActiveGroup(groupId);
       ref.invalidate(discoverRecipesProvider);
+      ref.invalidate(categoriesStateProvider);
       state = const AsyncData(null);
     } catch (e) {
       state = AsyncError('Error bro', StackTrace.current);

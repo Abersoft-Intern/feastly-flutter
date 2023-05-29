@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feastly/src/common_widgets/buttons/back_arrow_button.dart';
 import 'package:feastly/src/common_widgets/buttons/button.dart';
-import 'package:feastly/src/common_widgets/custom_chip.dart';
 import 'package:feastly/src/common_widgets/rating.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
@@ -10,7 +9,9 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_controller.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
+import 'package:feastly/src/utils/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +38,6 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
     final textTheme = theme.extension<CustomTextTheme>()!;
 
     final recipeVal = ref.watch(recipeDetailStateProvider(widget.recipeId));
-    final controller = ref.watch(recipeDetailControllerProvider);
 
     return Scaffold(
       body: recipeVal.when(
@@ -53,7 +53,14 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
-                      imageUrl: recipe.imageUrl,
+                      fadeInDuration: Duration.zero,
+                      fadeOutDuration: Duration.zero,
+                      placeholderFadeInDuration: Duration.zero,
+                      imageUrl: "${Env.baseUrl}${recipe.thumbnail}",
+                      placeholder: (context, url) => BlurHash(
+                        hash: recipe.blurhash,
+                        imageFit: BoxFit.cover,
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -90,25 +97,6 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       'Cook time: ${recipe.cookTime} min'.hardcoded,
                       style: textTheme.body16Bold,
                     ),
-                    gapH16,
-                    Wrap(
-                      spacing: Sizes.p12.h,
-                      runSpacing: Sizes.p16.h,
-                      children: const [
-                        CustomChip(
-                          label: 'American',
-                          selected: true,
-                        ),
-                        CustomChip(
-                          label: 'American',
-                          selected: true,
-                        ),
-                        CustomChip(
-                          label: 'American',
-                          selected: true,
-                        )
-                      ],
-                    ),
                     gapH24,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,6 +107,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                         ),
                         DropdownButtonHideUnderline(
                           child: DropdownButton(
+                            dropdownColor: Colors.white,
                             value: _selectedServing,
                             icon: Icon(
                               FeastlyIcon.button_arrow_down,
@@ -168,17 +157,17 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                     ),
                     gapH32,
                     // TODO Change saved status based on api
-                    if (!recipe.isSaved)
-                      Button(
-                        isLoading: controller.isLoading,
-                        text: 'Save'.hardcoded,
-                        onTap: () async {
-                          await ref
-                              .read(recipeDetailControllerProvider.notifier)
-                              .saveRecipe(recipe.id);
-                        },
-                      ),
-                    gapH24,
+                    // if (!recipe.isSaved)
+                    //   Button(
+                    //     isLoading: controller.isLoading,
+                    //     text: 'Save'.hardcoded,
+                    //     onTap: () async {
+                    //       await ref
+                    //           .read(recipeDetailControllerProvider.notifier)
+                    //           .saveRecipe(recipe.id);
+                    //     },
+                    //   ),
+                    // gapH24,
                     Button(
                       text: 'Share with friend'.hardcoded,
                       variant: ButtonVariant.outlined,
@@ -220,7 +209,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
             ],
           ),
         ),
-        error: (error, st) => const Center(child: Text('Error')),
+        error: (error, st) => Center(child: Text(error.toString())),
         loading: () => const Center(
           child: CircularProgressIndicator(),
         ),

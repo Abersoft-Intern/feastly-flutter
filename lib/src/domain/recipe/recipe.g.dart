@@ -10,34 +10,38 @@ _$_Recipe _$$_RecipeFromJson(Map<String, dynamic> json) => _$_Recipe(
       id: json['id'] as int,
       name: json['name'] as String,
       rating: json['rating'] as int,
-      imageUrl: json['image_url'] as String,
       cookTime: json['cook_time'] as int,
-      isSaved: json['is_saved'] as bool,
+      thumbnail: json['thumbnail'] as String,
       ingredients: (json['ingredients'] as List<dynamic>)
           .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
           .toList(),
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => Category.fromJson(e as Map<String, dynamic>))
+          .toList(),
       cookingMethod: json['cooking_method'] as String,
+      blurhash: json['blurhash'] as String,
     );
 
 Map<String, dynamic> _$$_RecipeToJson(_$_Recipe instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'rating': instance.rating,
-      'image_url': instance.imageUrl,
       'cook_time': instance.cookTime,
-      'is_saved': instance.isSaved,
+      'thumbnail': instance.thumbnail,
       'ingredients': instance.ingredients,
+      'categories': instance.categories,
       'cooking_method': instance.cookingMethod,
+      'blurhash': instance.blurhash,
     };
 
 _$_Ingredient _$$_IngredientFromJson(Map<String, dynamic> json) =>
     _$_Ingredient(
-      name: json['name'] as String,
+      name: json['item'] as String,
       qty: json['qty'] as int,
     );
 
 Map<String, dynamic> _$$_IngredientToJson(_$_Ingredient instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'item': instance.name,
       'qty': instance.qty,
     };

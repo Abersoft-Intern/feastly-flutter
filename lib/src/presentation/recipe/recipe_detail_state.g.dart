@@ -6,7 +6,7 @@ part of 'recipe_detail_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeDetailStateHash() => r'502427343d20af229e89b94889a149f4090c39ad';
+String _$recipeDetailStateHash() => r'aac64e039060aa46323cc25848273ba5facb0839';
 
 /// Copied from Dart SDK
 class _SystemHash {

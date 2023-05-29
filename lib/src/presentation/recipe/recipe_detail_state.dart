@@ -8,10 +8,6 @@ part 'recipe_detail_state.g.dart';
 class RecipeDetailState extends _$RecipeDetailState {
   @override
   FutureOr<Recipe> build(int recipeId) {
-    return ref.watch(recipeRepositoryProvider).getRecipe(recipeId);
-  }
-
-  void saveRecipe() {
-    update((state) => state.copyWith(isSaved: true));
+    return ref.watch(recipeRepositoryProvider).getRecipeDetail(recipeId);
   }
 }

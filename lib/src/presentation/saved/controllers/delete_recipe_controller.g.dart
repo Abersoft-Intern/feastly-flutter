@@ -7,7 +7,7 @@ part of 'delete_recipe_controller.dart';
 // **************************************************************************
 
 String _$deleteRecipeControllerHash() =>
-    r'1aff7f18c7c48beee667be0792953d4fd903d892';
+    r'4e3a6303b5657bc65b66a0fd513ca9bfdf09e05a';
 
 /// See also [DeleteRecipeController].
 @ProviderFor(DeleteRecipeController)
