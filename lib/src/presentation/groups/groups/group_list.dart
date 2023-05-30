@@ -1,5 +1,3 @@
-import 'package:feastly/src/common_widgets/buttons/button.dart';
-import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
@@ -7,17 +5,23 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/group_avatar.dart';
 import 'package:feastly/src/presentation/groups/group_avatar_loading.dart';
-import 'package:feastly/src/presentation/groups/groups/controllers/groups_state.dart';
+import 'package:feastly/src/presentation/groups/groups/group_prompt.dart';
+import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class GroupList extends ConsumerWidget {
+class GroupList extends ConsumerStatefulWidget {
   const GroupList({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<GroupList> createState() => _GroupListState();
+}
+
+class _GroupListState extends ConsumerState<GroupList> {
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
@@ -36,35 +40,7 @@ class GroupList extends ConsumerWidget {
               onTap: () {
                 showPrompt(
                   context,
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          'Create a new group'.hardcoded,
-                          style: textTheme.h3,
-                        ),
-                      ),
-                      gapH4,
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          'Create a new group to swipe with \nyour friends.'
-                              .hardcoded,
-                          style: textTheme.body16Regular,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      gapH20,
-                      const Input(keyboardType: TextInputType.text),
-                      gapH40,
-                      Button(
-                        text: 'Create group'.hardcoded,
-                        onTap: () {},
-                      ),
-                      gapH12
-                    ],
-                  ),
+                  child: const GroupPrompt(),
                 );
               },
               child: Column(

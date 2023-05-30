@@ -23,6 +23,10 @@ class GroupRepository {
     );
   }
 
+  Future<void> addGroup(String name) async {
+    await client.post('/api/groups', data: {'name': name});
+  }
+
   Future<Group> getGroupDetail(int id) async {
     final res = await client.get('/api/groups/$id');
     return Group.fromJson(res.data);

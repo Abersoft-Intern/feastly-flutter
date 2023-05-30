@@ -1,6 +1,6 @@
 import 'package:feastly/src/data/discover_repository.dart';
 import 'package:feastly/src/data/preference_repository.dart';
-import 'package:feastly/src/presentation/discover/discover_setting/controllers/categories_state.dart';
+import 'package:feastly/src/presentation/discover/discover_setting/state/categories_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'categories_controller.g.dart';
