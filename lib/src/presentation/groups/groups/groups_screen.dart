@@ -7,8 +7,8 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/groups/groups/controllers/groups_state.dart';
+import 'package:feastly/src/presentation/groups/groups/group_list.dart';
 import 'package:feastly/src/presentation/groups/groups/group_recipes.dart';
-import 'package:feastly/src/presentation/groups/groups/groups_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -101,7 +101,7 @@ class GroupsScreen extends ConsumerWidget {
                   ),
                 ),
                 gapH16,
-                const GroupsList(),
+                const GroupList(),
                 gapH24,
                 Divider(
                   color: colorTheme.lightGrey,

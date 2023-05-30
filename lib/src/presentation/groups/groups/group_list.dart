@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class GroupsList extends ConsumerWidget {
-  const GroupsList({super.key});
+class GroupList extends ConsumerWidget {
+  const GroupList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
