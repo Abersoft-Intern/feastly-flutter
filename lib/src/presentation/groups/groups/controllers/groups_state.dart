@@ -25,8 +25,10 @@ class GroupsState extends _$GroupsState {
     tempState[index] = tempState[index].copyWith(active: true);
     state = AsyncData(tempState);
   }
+}
 
-  // void changeList(List<SwipingCategory> categories) {
-  //   state = AsyncData(categories);
-  // }
+@riverpod
+GroupPreview? activeGroup(ActiveGroupRef ref) {
+  final groups = ref.watch(groupsStateProvider);
+  return groups.valueOrNull?.where((group) => group.active).first;
 }

@@ -6,20 +6,25 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
+import 'package:feastly/src/presentation/groups/groups/controllers/groups_state.dart';
 import 'package:feastly/src/presentation/groups/groups/group_recipes.dart';
 import 'package:feastly/src/presentation/groups/groups/groups_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class GroupsScreen extends StatelessWidget {
+class GroupsScreen extends ConsumerWidget {
   const GroupsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorTheme = theme.extension<CustomColor>()!;
     final textTheme = theme.extension<CustomTextTheme>()!;
+
+    final activeGroup = ref.watch(activeGroupProvider);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -73,15 +78,23 @@ class GroupsScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.pushNamed(
-                            RouteName.groupDetail.name,
-                            pathParameters: {'groupId': '1'},
-                          );
+                          if (activeGroup != null) {
+                            context.pushNamed(
+                              RouteName.groupDetail.name,
+                              pathParameters: {
+                                'groupId': activeGroup.id.toString()
+                              },
+                            );
+                          } else {
+                            null;
+                          }
                         },
                         child: Text(
                           'Edit Group'.hardcoded,
-                          style: textTheme.body16Bold!
-                              .copyWith(color: theme.primaryColor),
+                          style: textTheme.body16Bold!.copyWith(
+                              color: activeGroup != null
+                                  ? theme.primaryColor
+                                  : colorTheme.unselectedNav),
                         ),
                       ),
                     ],

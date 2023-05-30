@@ -6,7 +6,21 @@ part of 'groups_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$groupsStateHash() => r'560e35bbc49a56682a9f89b5e09c9df011041531';
+String _$activeGroupHash() => r'dd00545bfb0dc55eec3fbcc3c0dce0b9420e49a8';
+
+/// See also [activeGroup].
+@ProviderFor(activeGroup)
+final activeGroupProvider = AutoDisposeProvider<GroupPreview?>.internal(
+  activeGroup,
+  name: r'activeGroupProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$activeGroupHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ActiveGroupRef = AutoDisposeProviderRef<GroupPreview?>;
+String _$groupsStateHash() => r'499e3669a0f3486678a372458ddf834a6b10e995';
 
 /// See also [GroupsState].
 @ProviderFor(GroupsState)
