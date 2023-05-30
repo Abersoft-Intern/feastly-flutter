@@ -100,7 +100,10 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
         path: '/groups/:groupId',
         name: RouteName.groupDetail.name,
         builder: (context, state) {
-          return const GroupScreen();
+          final id = state.pathParameters['groupId']!;
+          return GroupScreen(
+            id: int.parse(id),
+          );
         },
       ),
       GoRoute(

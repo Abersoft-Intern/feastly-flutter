@@ -4,8 +4,10 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/utils/env.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: depend_on_referenced_packages
@@ -16,10 +18,18 @@ class MemberAvatar extends StatelessWidget {
     super.key,
     this.isActive = false,
     this.isDeleteable = false,
+    required this.name,
+    required this.id,
+    this.profilePicture,
+    this.blurhash,
   });
 
   final bool isActive;
   final bool isDeleteable;
+  final String name;
+  final String? profilePicture;
+  final String? blurhash;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +62,21 @@ class MemberAvatar extends StatelessWidget {
                 child: CachedNetworkImage(
                   width: 42.0.h,
                   height: 42.0.h,
-                  imageUrl:
-                      'https://img.taste.com.au/hMaiduT5/taste/2016/11/raspberry-and-coconut-pancakes-78984-1.jpeg',
+                  imageUrl: profilePicture != null
+                      ? "${Env.baseUrl}$profilePicture"
+                      : "https://ui-avatars.com/api/?name=$name",
                   imageBuilder: (context, imageProvider) {
                     return CircleAvatar(
                       foregroundImage: imageProvider,
                     );
+                  },
+                  placeholder: (context, url) {
+                    if (blurhash != null) {
+                      return CircleAvatar(
+                        foregroundImage: BlurHashImage(blurhash!),
+                      );
+                    }
+                    return Container();
                   },
                 ),
               )
@@ -66,7 +85,7 @@ class MemberAvatar extends StatelessWidget {
         ),
         gapW28,
         Text(
-          'Agnes Person',
+          name,
           style: textTheme.body16Bold,
         ),
         const Spacer(),
