@@ -74,19 +74,21 @@ class _GroupListState extends ConsumerState<GroupList> {
             ),
           ),
           groupsState.when(
-            data: (groups) => ListView.builder(
-              scrollDirection: Axis.horizontal,
-              primary: false,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: groups.length,
-              itemBuilder: (context, index) => GroupAvatar(
-                group: groups[index],
-                onTap: () => ref
-                    .read(groupsStateProvider.notifier)
-                    .changeActiveGroup(index),
-              ),
-            ),
+            data: (groups) => groups.isNotEmpty
+                ? ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: groups.length,
+                    itemBuilder: (context, index) => GroupAvatar(
+                      group: groups[index],
+                      onTap: () => ref
+                          .read(groupsStateProvider.notifier)
+                          .changeActiveGroup(index),
+                    ),
+                  )
+                : Container(),
             error: (error, stackTrace) => const Center(
               child: Text('Err'),
             ),

@@ -30,5 +30,5 @@ class GroupsState extends _$GroupsState {
 @riverpod
 GroupPreview? activeGroup(ActiveGroupRef ref) {
   final groups = ref.watch(groupsStateProvider);
-  return groups.valueOrNull?.where((group) => group.active).first;
+  return groups.valueOrNull?.where((group) => group.active).firstOrNull;
 }

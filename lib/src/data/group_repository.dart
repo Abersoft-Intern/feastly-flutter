@@ -31,6 +31,10 @@ class GroupRepository {
     final res = await client.get('/api/groups/$id');
     return Group.fromJson(res.data);
   }
+
+  Future<void> joinGroup(String groupCode) async {
+    await client.post('/api/groups/$groupCode/join');
+  }
 }
 
 @riverpod
