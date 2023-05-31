@@ -77,11 +77,13 @@ class ProfileScreen extends ConsumerWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(50.0),
                   onTap: () {
-                    showCustomBottomSheet(context,
-                        title: 'Choose image source',
-                        subtitle:
-                            'Choose the image source from where you want to upload image.',
-                        customButtons: [
+                    showCustomBottomSheet(
+                      context,
+                      title: 'Choose image source',
+                      subtitle:
+                          'Choose the image source from where you want to upload image.',
+                      customButtons: Column(
+                        children: [
                           gapH20,
                           Button(
                             text: 'Open Camera'.hardcoded,
@@ -110,7 +112,9 @@ class ProfileScreen extends ConsumerWidget {
                             variant: ButtonVariant.danger,
                           ),
                           gapH16
-                        ]);
+                        ],
+                      ),
+                    );
                   },
                   child: Ink(
                     decoration: BoxDecoration(

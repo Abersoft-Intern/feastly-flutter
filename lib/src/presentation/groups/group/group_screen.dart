@@ -7,6 +7,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/data/group_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/group/group_members.dart';
+import 'package:feastly/src/presentation/groups/group/group_sheet_buttons.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -86,14 +87,6 @@ class GroupScreen extends ConsumerWidget {
                     endIndent: 34,
                     indent: 34,
                   ),
-                  gapH16,
-
-                  // Text(
-                  //   'Stockholm'.hardcoded,
-                  //   style: textTheme.body16Bold,
-                  // ),
-                  gapH28,
-
                   gapH48,
                   Text(
                     'Group members'.hardcoded,
@@ -109,30 +102,23 @@ class GroupScreen extends ConsumerWidget {
                     },
                   ),
                   gapH24,
-                  if (group.isCreator)
-                    Button(
-                      text: 'Disband group'.hardcoded,
-                      variant: ButtonVariant.danger,
-                      onTap: () {
-                        showCustomBottomSheet(context,
-                            title: 'Disband Group'.hardcoded,
-                            subtitle:
-                                'Are you sure you want to disband this group?'
-                                    .hardcoded);
-                      },
-                    )
-                  else
-                    Button(
-                      text: 'Leave group'.hardcoded,
-                      variant: ButtonVariant.danger,
-                      onTap: () {
-                        showCustomBottomSheet(context,
-                            title: 'Leave group'.hardcoded,
-                            subtitle:
-                                'Are you sure you want to leave the group?'
-                                    .hardcoded);
-                      },
-                    )
+                  Button(
+                    text: group.isCreator
+                        ? 'Disband group'.hardcoded
+                        : 'Leave group'.hardcoded,
+                    variant: ButtonVariant.danger,
+                    onTap: () {
+                      showCustomBottomSheet(context,
+                          title: group.isCreator
+                              ? 'Disband Group'.hardcoded
+                              : 'Leave group'.hardcoded,
+                          customButtons: GroupSheetButtons(id),
+                          subtitle: group.isCreator
+                              ? 'Are you sure you want to disband this group?'
+                              : 'Are you sure you want to leave the group?'
+                                  .hardcoded);
+                    },
+                  )
                 ],
               ),
             ),

@@ -35,6 +35,10 @@ class GroupRepository {
   Future<void> joinGroup(String groupCode) async {
     await client.post('/api/groups/$groupCode/join');
   }
+
+  Future<void> leaveOrDisband(int id) async {
+    await client.delete('/api/groups/$id');
+  }
 }
 
 @riverpod

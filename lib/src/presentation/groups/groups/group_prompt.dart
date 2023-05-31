@@ -5,6 +5,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/groups/controllers/add_group_controller.dart';
 import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
+import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -39,14 +40,7 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
         ref.invalidate(groupsStateProvider);
       }
 
-      if (!state.isLoading && state.hasError) {
-        final message = state.error.toString();
-        context.pop();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          duration: const Duration(seconds: 2),
-          content: Text(message),
-        ));
-      }
+      state.showSnackbarOnError(context);
     });
     return Column(
       children: [

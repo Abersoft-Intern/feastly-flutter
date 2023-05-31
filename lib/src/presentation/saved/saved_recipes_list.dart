@@ -105,13 +105,11 @@ class SavedRecipesList extends ConsumerWidget {
                               onPressed: (context) {
                                 showCustomBottomSheet(
                                   context,
-                                  isLoading: controller.isLoading,
                                   title: 'Delete match'.hardcoded,
                                   subtitle:
                                       'Are you sure you want to delete this match?'
                                           .hardcoded,
                                   onYesTap: () {
-                                    debugPrint('test');
                                     ref
                                         .read(deleteRecipeControllerProvider
                                             .notifier)
