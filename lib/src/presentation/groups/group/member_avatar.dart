@@ -4,6 +4,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/presentation/groups/group/remove_member_sheet.dart';
 import 'package:feastly/src/utils/env.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class MemberAvatar extends StatelessWidget {
     required this.id,
     this.profilePicture,
     this.blurhash,
+    required this.groupId,
   });
 
   final bool isActive;
@@ -30,6 +32,7 @@ class MemberAvatar extends StatelessWidget {
   final String? profilePicture;
   final String? blurhash;
   final int id;
+  final int groupId;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,7 @@ class MemberAvatar extends StatelessWidget {
                   height: 42.0.h,
                   imageUrl: profilePicture != null
                       ? "${Env.baseUrl}$profilePicture"
-                      : "https://ui-avatars.com/api/?name=$name",
+                      : "https://ui-avatars.com/api/?format=png&name=$name",
                   imageBuilder: (context, imageProvider) {
                     return CircleAvatar(
                       foregroundImage: imageProvider,
@@ -97,6 +100,7 @@ class MemberAvatar extends StatelessWidget {
                 title: 'Remove member'.hardcoded,
                 subtitle:
                     'Are you sure you want to remove this\nmember?'.hardcoded,
+                customButtons: RemoveMemberSheet(groupId, id),
               );
             },
             borderRadius: BorderRadius.circular(25.0),

@@ -36,6 +36,10 @@ class GroupRepository {
     await client.post('/api/groups/$groupCode/join');
   }
 
+  Future<void> removeMember(int groupId, int memberId) async {
+    await client.delete('/api/groups/$groupId/members/$memberId');
+  }
+
   Future<void> leaveOrDisband(int id) async {
     await client.delete('/api/groups/$id');
   }

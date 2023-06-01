@@ -55,7 +55,7 @@ class GroupAvatar extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: group.creatorPhoto != null
                             ? "${Env.baseUrl}${group.creatorPhoto}"
-                            : "https://ui-avatars.com/api/?name=${group.creatorName}",
+                            : "https://ui-avatars.com/api/?format=png&name=${group.creatorName}",
                         imageBuilder: (context, imageProvider) {
                           return CircleAvatar(
                             foregroundImage: imageProvider,

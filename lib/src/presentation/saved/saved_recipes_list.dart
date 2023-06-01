@@ -30,8 +30,6 @@ class SavedRecipesList extends ConsumerWidget {
     final categoriesState = ref.watch(userCategoriesProvider);
     final savedRecipesState = ref.watch(savedRecipesProvider);
 
-    final controller = ref.watch(deleteRecipeControllerProvider);
-
     ref.listen(deleteRecipeControllerProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
         context.pop();
