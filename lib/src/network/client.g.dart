@@ -6,11 +6,11 @@ part of 'client.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clientHash() => r'70413e24eb8c84eefc1736ff8eadf5d30ef56bf7';
+String _$clientHash() => r'a3da7f64cb2dc5a9d8b62a55a039e0a6c9448ce2';
 
 /// See also [client].
 @ProviderFor(client)
-final clientProvider = AutoDisposeProvider<Dio>.internal(
+final clientProvider = Provider<Dio>.internal(
   client,
   name: r'clientProvider',
   debugGetCreateSourceHash:
@@ -19,5 +19,5 @@ final clientProvider = AutoDisposeProvider<Dio>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef ClientRef = AutoDisposeProviderRef<Dio>;
+typedef ClientRef = ProviderRef<Dio>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

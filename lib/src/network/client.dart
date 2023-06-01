@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'client.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Dio client(ClientRef ref) {
   final secureStorage = ref.watch(secureStorageProvider);
   final token = secureStorage.valueOrNull?['token'];

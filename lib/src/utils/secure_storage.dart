@@ -7,7 +7,7 @@ const storage = FlutterSecureStorage(
   aOptions: AndroidOptions(encryptedSharedPreferences: true),
 );
 
-@riverpod
+@Riverpod(keepAlive: true)
 class SecureStorage extends _$SecureStorage {
   @override
   Future<Map<String, String>> build() {
