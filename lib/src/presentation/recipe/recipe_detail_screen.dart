@@ -12,6 +12,7 @@ import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
 import 'package:feastly/src/utils/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -152,11 +153,10 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                       style: textTheme.h3,
                     ),
                     gapH8,
-                    Text(
-                      recipe.cookingMethod,
+                    MarkdownBody(
+                      data: recipe.cookingMethod,
                     ),
                     gapH32,
-                    // TODO Change saved status based on api
                     // if (!recipe.isSaved)
                     //   Button(
                     //     isLoading: controller.isLoading,
