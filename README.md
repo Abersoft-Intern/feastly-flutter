@@ -1,30 +1,17 @@
-# feastly
+# Feastly
 
-A new Flutter project.
+An app to explore and save recipe with your group/family.
 
-## Getting Started
+## Requirements
+- Dart 3.0.0 >=
+- Flutter 3.10 >=
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+## Installation
+1. Get all dependency using `flutter pub get`
+2. In the root directory, add `.env` file with the following content
+```
+BASE_URL=YOUR_SECRET_API_URL
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## Assets
-
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
-
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+```
+3. Finally, run this command `dart run build_runner build`
+4. Run the project as usual
