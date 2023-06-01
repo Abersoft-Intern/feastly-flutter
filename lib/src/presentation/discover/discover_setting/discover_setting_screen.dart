@@ -30,6 +30,7 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
     final preferenceController = ref.watch(preferenceControllerProvider);
 
     final categoriesState = ref.watch(categoriesStateProvider);
+    final categoryController = ref.watch(categoriesControllerProvider);
 
     ref.listen(preferenceStateProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
@@ -121,29 +122,48 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                       style: textTheme.body16Regular,
                     ),
                     gapH24,
-                    categoriesState.when(
-                      data: (categories) => Wrap(
-                        spacing: Sizes.p8,
-                        runSpacing: Sizes.p8,
-                        children: categories
-                            .map(
-                              (category) => CustomChip(
-                                id: category.id,
-                                label: category.name,
-                                selected: category.active,
-                                onTap: () {
-                                  ref
-                                      .read(
-                                          categoriesControllerProvider.notifier)
-                                      .changeCategory(category.id);
-                                },
+                    SizedBox(
+                      width: double.infinity,
+                      child: Stack(
+                        children: [
+                          categoriesState.when(
+                            data: (categories) => Wrap(
+                              spacing: Sizes.p8,
+                              runSpacing: Sizes.p8,
+                              children: categories
+                                  .map(
+                                    (category) => CustomChip(
+                                      id: category.id,
+                                      label: category.name,
+                                      selected: category.active,
+                                      onTap: () {
+                                        ref
+                                            .read(categoriesControllerProvider
+                                                .notifier)
+                                            .changeCategory(category.id);
+                                      },
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                            error: (error, st) => const Text('Error'),
+                            loading: () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                          if (categoryController.isLoading)
+                            Positioned.fill(
+                              child: Container(
+                                color: const Color.fromARGB(158, 255, 255, 255),
+                                child: Center(
+                                  child: SizedBox.square(
+                                    dimension: 35.0.h,
+                                    child: const CircularProgressIndicator(),
+                                  ),
+                                ),
                               ),
-                            )
-                            .toList(),
-                      ),
-                      error: (error, st) => const Text('Error'),
-                      loading: () => const Center(
-                        child: CircularProgressIndicator(),
+                            ),
+                        ],
                       ),
                     )
                   ],
