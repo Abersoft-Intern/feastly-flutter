@@ -5,10 +5,12 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/data/auth_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/presentation/profile/change_name_prompt.dart';
 import 'package:feastly/src/presentation/profile/controllers/profile_controller.dart';
 import 'package:feastly/src/presentation/profile/profile_buttons.dart';
 import 'package:feastly/src/presentation/profile/profile_tile_list.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
+import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,7 +50,9 @@ class ProfileScreen extends ConsumerWidget {
                       top: 0,
                       bottom: 0,
                       child: InkResponse(
-                        onTap: () {},
+                        onTap: () {
+                          showPrompt(context, child: const ChangeNamePrompt());
+                        },
                         radius: 25.0,
                         child: Icon(
                           FeastlyIcon.icon_edit,
