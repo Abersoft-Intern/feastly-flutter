@@ -128,9 +128,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         .login(email, password);
 
                     if (context.mounted && data != null) {
-                      if (!data.user.emailConfirmed) {
+                      if (!data.user.confirmed) {
                         context.pushNamed(RouteName.otp.name);
-                      } else if (data.user.emailConfirmed &&
+                      } else if (data.user.confirmed &&
                           data.user.name == null) {
                         context.pushNamed(RouteName.username.name);
                       } else {

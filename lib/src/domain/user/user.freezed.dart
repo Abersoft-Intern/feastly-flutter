@@ -28,8 +28,6 @@ mixin _$User {
   bool get blocked => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'email_confirmed')
-  bool get emailConfirmed => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +49,6 @@ abstract class $UserCopyWith<$Res> {
       bool blocked,
       DateTime createdAt,
       DateTime updatedAt,
-      @JsonKey(name: 'email_confirmed') bool emailConfirmed,
       String? name});
 }
 
@@ -76,7 +73,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? blocked = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? emailConfirmed = null,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -112,10 +108,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      emailConfirmed: null == emailConfirmed
-          ? _value.emailConfirmed
-          : emailConfirmed // ignore: cast_nullable_to_non_nullable
-              as bool,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -139,7 +131,6 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       bool blocked,
       DateTime createdAt,
       DateTime updatedAt,
-      @JsonKey(name: 'email_confirmed') bool emailConfirmed,
       String? name});
 }
 
@@ -160,7 +151,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? blocked = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? emailConfirmed = null,
     Object? name = freezed,
   }) {
     return _then(_$_User(
@@ -196,10 +186,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      emailConfirmed: null == emailConfirmed
-          ? _value.emailConfirmed
-          : emailConfirmed // ignore: cast_nullable_to_non_nullable
-              as bool,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -220,7 +206,6 @@ class _$_User implements _User {
       required this.blocked,
       required this.createdAt,
       required this.updatedAt,
-      @JsonKey(name: 'email_confirmed') required this.emailConfirmed,
       required this.name});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -242,14 +227,11 @@ class _$_User implements _User {
   @override
   final DateTime updatedAt;
   @override
-  @JsonKey(name: 'email_confirmed')
-  final bool emailConfirmed;
-  @override
   final String? name;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, emailConfirmed: $emailConfirmed, name: $name)';
+    return 'User(id: $id, username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, name: $name)';
   }
 
   @override
@@ -270,15 +252,13 @@ class _$_User implements _User {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.emailConfirmed, emailConfirmed) ||
-                other.emailConfirmed == emailConfirmed) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, username, email, provider,
-      confirmed, blocked, createdAt, updatedAt, emailConfirmed, name);
+      confirmed, blocked, createdAt, updatedAt, name);
 
   @JsonKey(ignore: true)
   @override
@@ -304,7 +284,6 @@ abstract class _User implements User {
       required final bool blocked,
       required final DateTime createdAt,
       required final DateTime updatedAt,
-      @JsonKey(name: 'email_confirmed') required final bool emailConfirmed,
       required final String? name}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -325,9 +304,6 @@ abstract class _User implements User {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
-  @override
-  @JsonKey(name: 'email_confirmed')
-  bool get emailConfirmed;
   @override
   String? get name;
   @override
