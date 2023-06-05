@@ -140,7 +140,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     if (_formKey.currentState!.validate()) {
                       final data = await ref
                           .read(loginControllerProvider.notifier)
-                          .login(email, password);
+                          .login(email.trim(), password.trim());
 
                       if (context.mounted && data != null) {
                         if (!data.user.confirmed) {

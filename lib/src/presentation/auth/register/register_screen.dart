@@ -153,7 +153,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     if (_formKey.currentState!.validate()) {
                       final registered = await ref
                           .read(registerControllerProvider.notifier)
-                          .register(email, password);
+                          .register(email.trim(), password.trim());
 
                       if (registered) {
                         if (context.mounted) {
