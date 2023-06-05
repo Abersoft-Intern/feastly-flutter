@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/saved/controllers/add_category_controll
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class SavedPrompt extends ConsumerStatefulWidget {
@@ -21,6 +22,8 @@ class _SavedPromptState extends ConsumerState<SavedPrompt> {
   final _nameController = TextEditingController();
 
   String get name => _nameController.text;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -67,9 +70,16 @@ class _SavedPromptState extends ConsumerState<SavedPrompt> {
           ),
         ),
         gapH20,
-        Input(
-          keyboardType: TextInputType.text,
-          controller: _nameController,
+        Form(
+          key: _formKey,
+          child: Input(
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+              FormBuilderValidators.maxLength(12)
+            ]),
+            keyboardType: TextInputType.text,
+            controller: _nameController,
+          ),
         ),
         gapH40,
         Button(
@@ -77,7 +87,11 @@ class _SavedPromptState extends ConsumerState<SavedPrompt> {
           isLoading: controller.isLoading,
           text: 'Save new list'.hardcoded,
           onTap: () {
-            ref.read(addCategoryControllerProvider.notifier).addCategory(name);
+            if (_formKey.currentState!.validate()) {
+              ref
+                  .read(addCategoryControllerProvider.notifier)
+                  .addCategory(name.trim());
+            }
           },
         ),
         gapH12
