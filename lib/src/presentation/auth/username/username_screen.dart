@@ -10,6 +10,7 @@ import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class UsernameScreen extends ConsumerStatefulWidget {
@@ -23,6 +24,8 @@ class UsernameScreen extends ConsumerStatefulWidget {
 
 class _UsernameScreenState extends ConsumerState<UsernameScreen> {
   var _name = '';
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -69,18 +72,25 @@ class _UsernameScreenState extends ConsumerState<UsernameScreen> {
               SizedBox(
                 height: 104.0.h,
               ),
-              Input(
-                key: UsernameScreen.usernameKey,
-                onChanged: (value) {
-                  setState(() {
-                    _name = value;
-                  });
-                },
-                keyboardType: TextInputType.name,
-                hintText: 'Username'.hardcoded,
-                icon: Icon(
-                  FeastlyIcon.icon_user,
-                  color: theme.primaryColor,
+              Form(
+                key: _formKey,
+                child: Input(
+                  key: UsernameScreen.usernameKey,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.maxLength(20),
+                  ]),
+                  onChanged: (value) {
+                    setState(() {
+                      _name = value;
+                    });
+                  },
+                  keyboardType: TextInputType.name,
+                  hintText: 'Username'.hardcoded,
+                  icon: Icon(
+                    FeastlyIcon.icon_user,
+                    color: theme.primaryColor,
+                  ),
                 ),
               ),
               SizedBox(
@@ -88,22 +98,24 @@ class _UsernameScreenState extends ConsumerState<UsernameScreen> {
               ),
               Button(
                 isLoading: controller.isLoading,
-                disabled: controller.isLoading,
+                disabled: controller.isLoading || _name.trim().isEmpty,
                 text: 'Continue'.hardcoded,
                 onTap: () async {
-                  final userUpdated = await ref
-                      .read(usernameControllerProvider.notifier)
-                      .submit(_name);
+                  if (_formKey.currentState!.validate()) {
+                    final userUpdated = await ref
+                        .read(usernameControllerProvider.notifier)
+                        .submit(_name.trim());
 
-                  if (userUpdated) {
-                    if (context.mounted) {
-                      context.pushNamed(
-                        RouteName.onboarding.name,
-                      );
+                    if (userUpdated) {
+                      if (context.mounted) {
+                        context.pushNamed(
+                          RouteName.onboarding.name,
+                        );
+                      }
                     }
                   }
                 },
-                variant: _name.isEmpty ? ButtonVariant.disabled : null,
+                variant: _name.trim().isEmpty ? ButtonVariant.disabled : null,
               ),
               gapH24,
             ],
