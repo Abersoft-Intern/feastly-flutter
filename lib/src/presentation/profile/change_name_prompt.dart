@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/profile/controllers/change_name_control
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class ChangeNamePrompt extends ConsumerStatefulWidget {
@@ -22,6 +23,8 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
   final _nameController = TextEditingController();
 
   String get name => _nameController.text;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -69,9 +72,16 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
           ),
         ),
         gapH20,
-        Input(
-          keyboardType: TextInputType.text,
-          controller: _nameController,
+        Form(
+          key: _formKey,
+          child: Input(
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+              FormBuilderValidators.maxLength(20)
+            ]),
+            keyboardType: TextInputType.text,
+            controller: _nameController,
+          ),
         ),
         gapH40,
         Button(
@@ -79,7 +89,9 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
           isLoading: controller.isLoading,
           text: 'Save'.hardcoded,
           onTap: () {
-            ref.read(changeNameControllerProvider.notifier).submit(name);
+            if (_formKey.currentState!.validate()) {
+              ref.read(changeNameControllerProvider.notifier).submit(name);
+            }
           },
         ),
         gapH12
