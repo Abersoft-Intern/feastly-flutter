@@ -124,4 +124,87 @@ class GroupDetailProvider extends AutoDisposeFutureProvider<Group> {
     return _SystemHash.finish(hash);
   }
 }
+
+String _$groupRecipesHash() => r'4775b8889700404c0fbd7fd391dc4ff7c9256bd2';
+typedef GroupRecipesRef = AutoDisposeFutureProviderRef<List<SavedRecipe>>;
+
+/// See also [groupRecipes].
+@ProviderFor(groupRecipes)
+const groupRecipesProvider = GroupRecipesFamily();
+
+/// See also [groupRecipes].
+class GroupRecipesFamily extends Family<AsyncValue<List<SavedRecipe>>> {
+  /// See also [groupRecipes].
+  const GroupRecipesFamily();
+
+  /// See also [groupRecipes].
+  GroupRecipesProvider call(
+    int? id,
+  ) {
+    return GroupRecipesProvider(
+      id,
+    );
+  }
+
+  @override
+  GroupRecipesProvider getProviderOverride(
+    covariant GroupRecipesProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'groupRecipesProvider';
+}
+
+/// See also [groupRecipes].
+class GroupRecipesProvider
+    extends AutoDisposeFutureProvider<List<SavedRecipe>> {
+  /// See also [groupRecipes].
+  GroupRecipesProvider(
+    this.id,
+  ) : super.internal(
+          (ref) => groupRecipes(
+            ref,
+            id,
+          ),
+          from: groupRecipesProvider,
+          name: r'groupRecipesProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$groupRecipesHash,
+          dependencies: GroupRecipesFamily._dependencies,
+          allTransitiveDependencies:
+              GroupRecipesFamily._allTransitiveDependencies,
+        );
+
+  final int? id;
+
+  @override
+  bool operator ==(Object other) {
+    return other is GroupRecipesProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -35,6 +35,9 @@ class SavedRecipeItem extends StatelessWidget {
         child: Row(
           children: [
             CachedNetworkImage(
+              fadeInDuration: Duration.zero,
+              fadeOutDuration: Duration.zero,
+              placeholderFadeInDuration: Duration.zero,
               imageUrl: "${Env.baseUrl}${recipe.thumbnail}",
               imageBuilder: (context, imageProvider) {
                 return Container(
