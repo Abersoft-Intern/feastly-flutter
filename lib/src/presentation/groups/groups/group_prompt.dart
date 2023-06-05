@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class GroupPrompt extends ConsumerStatefulWidget {
@@ -21,6 +22,7 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
   final _nameController = TextEditingController();
 
   String get name => _nameController.text;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -61,9 +63,15 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
           ),
         ),
         gapH20,
-        Input(
-          keyboardType: TextInputType.text,
-          controller: _nameController,
+        Form(
+          child: Input(
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+              FormBuilderValidators.maxLength(10)
+            ]),
+            keyboardType: TextInputType.text,
+            controller: _nameController,
+          ),
         ),
         gapH40,
         Button(
@@ -71,7 +79,9 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
           disabled: controller.isLoading,
           text: 'Create group'.hardcoded,
           onTap: () {
-            ref.read(addGroupControllerProvider.notifier).submit(name);
+            if (_formKey.currentState!.validate()) {
+              ref.read(addGroupControllerProvider.notifier).submit(name);
+            }
           },
         ),
         gapH12
