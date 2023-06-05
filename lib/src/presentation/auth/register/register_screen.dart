@@ -10,6 +10,7 @@ import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
@@ -25,6 +26,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   String get email => _emailController.text;
   String get password => _passwordController.text;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -75,34 +78,63 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 style: textTheme.body16Regular!,
               ),
               gapH64,
-              Input(
-                keyboardType: TextInputType.emailAddress,
-                hintText: 'email@email.com'.hardcoded,
-                controller: _emailController,
-                icon: Icon(
-                  FeastlyIcon.icon_email,
-                  color: theme.primaryColor,
-                ),
-              ),
-              gapH24,
-              Input(
-                keyboardType: TextInputType.text,
-                hintText: 'Password'.hardcoded,
-                controller: _passwordController,
-                isPassword: true,
-                icon: Icon(
-                  FeastlyIcon.icon_padlock,
-                  color: theme.primaryColor,
-                ),
-              ),
-              gapH24,
-              Input(
-                keyboardType: TextInputType.text,
-                hintText: 'Repeat Password'.hardcoded,
-                isPassword: true,
-                icon: Icon(
-                  FeastlyIcon.icon_padlock,
-                  color: theme.primaryColor,
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Input(
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: 'email@email.com'.hardcoded,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.email(),
+                        FormBuilderValidators.required(),
+                      ]),
+                      controller: _emailController,
+                      icon: Icon(
+                        FeastlyIcon.icon_email,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                    gapH24,
+                    Input(
+                      keyboardType: TextInputType.text,
+                      hintText: 'Password'.hardcoded,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.minLength(8),
+                        FormBuilderValidators.maxLength(20),
+                        FormBuilderValidators.required(),
+                      ]),
+                      controller: _passwordController,
+                      isPassword: true,
+                      icon: Icon(
+                        FeastlyIcon.icon_padlock,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                    gapH24,
+                    Input(
+                      keyboardType: TextInputType.text,
+                      hintText: 'Repeat Password'.hardcoded,
+                      isPassword: true,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.minLength(8),
+                        FormBuilderValidators.maxLength(20),
+                        FormBuilderValidators.required(),
+                        (val) {
+                          final password = val;
+                          if (password == null) return null;
+                          if (password != _passwordController.text) {
+                            return 'Password confirmation does not match';
+                          }
+                          return null;
+                        }
+                      ]),
+                      icon: Icon(
+                        FeastlyIcon.icon_padlock,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               gapH64,
@@ -118,13 +150,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   isLoading: state.isLoading,
                   text: 'Register'.hardcoded,
                   onTap: () async {
-                    final registered = await ref
-                        .read(registerControllerProvider.notifier)
-                        .register(email, password);
+                    if (_formKey.currentState!.validate()) {
+                      final registered = await ref
+                          .read(registerControllerProvider.notifier)
+                          .register(email, password);
 
-                    if (registered) {
-                      if (context.mounted) {
-                        context.pushNamed(RouteName.otp.name);
+                      if (registered) {
+                        if (context.mounted) {
+                          context.pushNamed(RouteName.otp.name);
+                        }
                       }
                     }
                   }),
