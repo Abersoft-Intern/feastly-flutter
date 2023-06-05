@@ -21,6 +21,7 @@ class AuthState extends _$AuthState {
   Future<void> persistToStorage() async {
     final secureStorage = ref.read(secureStorageProvider.notifier);
     await secureStorage.write('token', state.token);
+    state = state.copyWith(token: '');
   }
 }
 

@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_controller.dart';
+part of 'logout_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileControllerHash() => r'9326a1efbcbff99196a4716e15f510bf9440add8';
+String _$logoutControllerHash() => r'355a8bc60e4dbda0bc7925643c53f9cdbbe115ab';
 
-/// See also [ProfileController].
-@ProviderFor(ProfileController)
-final profileControllerProvider =
-    AutoDisposeNotifierProvider<ProfileController, void>.internal(
-  ProfileController.new,
-  name: r'profileControllerProvider',
+/// See also [LogoutController].
+@ProviderFor(LogoutController)
+final logoutControllerProvider =
+    AutoDisposeAsyncNotifierProvider<LogoutController, void>.internal(
+  LogoutController.new,
+  name: r'logoutControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$profileControllerHash,
+      : _$logoutControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileController = AutoDisposeNotifier<void>;
+typedef _$LogoutController = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

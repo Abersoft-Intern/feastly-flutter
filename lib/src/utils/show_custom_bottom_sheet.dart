@@ -4,6 +4,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -51,35 +52,39 @@ Future<dynamic> showCustomBottomSheet(
       ),
     ),
     builder: (_) {
-      return Padding(
-        padding: EdgeInsets.all(Sizes.p28.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 5.0.h,
-              width: 50.0.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50.0),
-                color: theme.primaryColor,
+      return ProviderScope(
+        parent: ProviderScope.containerOf(context),
+        child: Padding(
+          padding: EdgeInsets.all(Sizes.p28.h),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: 5.0.h,
+                width: 50.0.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  color: theme.primaryColor,
+                ),
               ),
-            ),
-            gapH16,
-            Text(
-              title,
-              style: textTheme.h3,
-            ),
-            gapH16,
-            Text(
-              subtitle,
-              style: textTheme.body16Regular,
-              textAlign: TextAlign.center,
-            ),
-            Column(
-              children: customButtons == null ? [...buttons] : [customButtons],
-            )
-          ],
+              gapH16,
+              Text(
+                title,
+                style: textTheme.h3,
+              ),
+              gapH16,
+              Text(
+                subtitle,
+                style: textTheme.body16Regular,
+                textAlign: TextAlign.center,
+              ),
+              Column(
+                children:
+                    customButtons == null ? [...buttons] : [customButtons],
+              )
+            ],
+          ),
         ),
       );
     },

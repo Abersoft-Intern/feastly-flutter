@@ -42,6 +42,10 @@ class AuthRepository {
     return User.fromJson(res.data);
   }
 
+  Future<void> removeAccount() async {
+    await client.delete('/api/users');
+  }
+
   Future<User> updateName(String name) async {
     final user = await getProfile();
     final res = await client.put('/api/users/${user.id}', data: {

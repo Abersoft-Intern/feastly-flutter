@@ -1,4 +1,3 @@
-import 'package:feastly/src/utils/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,9 +14,7 @@ class ProfileController extends _$ProfileController {
     return;
   }
 
-  Future<void> logout() async {
-    await ref.read(secureStorageProvider.notifier).remove('token');
-  }
+  Future<void> logout() async {}
 
   Future<void> getPhotoGallery() async {
     var file = await _imagePicker.pickImage(source: ImageSource.gallery);
