@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
@@ -7,14 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Input extends StatefulWidget {
   const Input({
-    super.key,
+    Key? key,
     this.icon,
     this.hintText,
     required this.keyboardType,
     this.isPassword = false,
     this.controller,
     this.onChanged,
-  });
+    this.validator,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+  }) : super(key: key);
 
   final Icon? icon;
   final String? hintText;
@@ -22,6 +25,8 @@ class Input extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
 
   @override
   State<Input> createState() => _InputState();
@@ -35,6 +40,8 @@ class _InputState extends State<Input> {
     final theme = Theme.of(context);
 
     return TextFormField(
+      autovalidateMode: widget.autovalidateMode,
+      validator: widget.validator,
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       onChanged: widget.onChanged,

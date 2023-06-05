@@ -11,6 +11,7 @@ import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -29,6 +30,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   String get email => _emailController.text;
   String get password => _passwordController.text;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -85,26 +87,38 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   style: textTheme.body16Regular!,
                 ),
                 gapH48,
-                Input(
-                  key: LoginScreen.emailKey,
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  hintText: 'email@email.com'.hardcoded,
-                  icon: Icon(
-                    FeastlyIcon.icon_email,
-                    color: theme.primaryColor,
-                  ),
-                ),
-                gapH20,
-                Input(
-                  key: LoginScreen.passwordKey,
-                  controller: _passwordController,
-                  keyboardType: TextInputType.text,
-                  hintText: 'Password'.hardcoded,
-                  isPassword: true,
-                  icon: Icon(
-                    FeastlyIcon.icon_padlock,
-                    color: theme.primaryColor,
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Input(
+                        key: LoginScreen.emailKey,
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        hintText: 'email@email.com'.hardcoded,
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ]),
+                        icon: Icon(
+                          FeastlyIcon.icon_email,
+                          color: theme.primaryColor,
+                        ),
+                      ),
+                      gapH20,
+                      Input(
+                        key: LoginScreen.passwordKey,
+                        controller: _passwordController,
+                        keyboardType: TextInputType.text,
+                        hintText: 'Password'.hardcoded,
+                        validator: FormBuilderValidators.required(),
+                        isPassword: true,
+                        icon: Icon(
+                          FeastlyIcon.icon_padlock,
+                          color: theme.primaryColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 gapH20,
@@ -123,18 +137,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   disabled: controller.isLoading,
                   text: 'Sign in'.hardcoded,
                   onTap: () async {
-                    final data = await ref
-                        .read(loginControllerProvider.notifier)
-                        .login(email, password);
+                    if (_formKey.currentState!.validate()) {
+                      final data = await ref
+                          .read(loginControllerProvider.notifier)
+                          .login(email, password);
 
-                    if (context.mounted && data != null) {
-                      if (!data.user.confirmed) {
-                        context.pushNamed(RouteName.otp.name);
-                      } else if (data.user.confirmed &&
-                          data.user.name == null) {
-                        context.pushNamed(RouteName.username.name);
-                      } else {
-                        context.pushNamed(RouteName.onboarding.name);
+                      if (context.mounted && data != null) {
+                        if (!data.user.confirmed) {
+                          context.pushNamed(RouteName.otp.name);
+                        } else if (data.user.confirmed &&
+                            data.user.name == null) {
+                          context.pushNamed(RouteName.username.name);
+                        } else {
+                          context.pushNamed(RouteName.onboarding.name);
+                        }
                       }
                     }
                   },
