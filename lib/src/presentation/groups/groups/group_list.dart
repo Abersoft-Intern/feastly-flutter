@@ -89,8 +89,8 @@ class _GroupListState extends ConsumerState<GroupList> {
                     ),
                   )
                 : Container(),
-            error: (error, stackTrace) => const Center(
-              child: Text('Err'),
+            error: (error, stackTrace) => Center(
+              child: Text(error.toString()),
             ),
             loading: () => const GroupAvatarLoading(),
           )

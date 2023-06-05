@@ -15,7 +15,7 @@ class GroupMembers extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) => MemberAvatar(
         groupId: group.id,
-        isDeleteable: !group.members[index].isCreator,
+        isDeleteable: !group.members[index].isCreator && group.isCreator,
         isActive: group.members[index].isCreator,
         name: group.members[index].name,
         id: group.members[index].id,
