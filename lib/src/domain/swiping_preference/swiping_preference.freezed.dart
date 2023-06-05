@@ -23,6 +23,8 @@ mixin _$SwipingPreference {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get active => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_creator')
+  bool get isCreator => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,11 @@ abstract class $SwipingPreferenceCopyWith<$Res> {
           SwipingPreference value, $Res Function(SwipingPreference) then) =
       _$SwipingPreferenceCopyWithImpl<$Res, SwipingPreference>;
   @useResult
-  $Res call({int id, String name, bool active});
+  $Res call(
+      {int id,
+      String name,
+      bool active,
+      @JsonKey(name: 'is_creator') bool isCreator});
 }
 
 /// @nodoc
@@ -55,6 +61,7 @@ class _$SwipingPreferenceCopyWithImpl<$Res, $Val extends SwipingPreference>
     Object? id = null,
     Object? name = null,
     Object? active = null,
+    Object? isCreator = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +76,10 @@ class _$SwipingPreferenceCopyWithImpl<$Res, $Val extends SwipingPreference>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCreator: null == isCreator
+          ? _value.isCreator
+          : isCreator // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -81,7 +92,11 @@ abstract class _$$_SwipingPreferenceCopyWith<$Res>
       __$$_SwipingPreferenceCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, bool active});
+  $Res call(
+      {int id,
+      String name,
+      bool active,
+      @JsonKey(name: 'is_creator') bool isCreator});
 }
 
 /// @nodoc
@@ -98,6 +113,7 @@ class __$$_SwipingPreferenceCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? active = null,
+    Object? isCreator = null,
   }) {
     return _then(_$_SwipingPreference(
       id: null == id
@@ -112,6 +128,10 @@ class __$$_SwipingPreferenceCopyWithImpl<$Res>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCreator: null == isCreator
+          ? _value.isCreator
+          : isCreator // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -120,7 +140,10 @@ class __$$_SwipingPreferenceCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SwipingPreference implements _SwipingPreference {
   const _$_SwipingPreference(
-      {required this.id, required this.name, required this.active});
+      {required this.id,
+      required this.name,
+      required this.active,
+      @JsonKey(name: 'is_creator') required this.isCreator});
 
   factory _$_SwipingPreference.fromJson(Map<String, dynamic> json) =>
       _$$_SwipingPreferenceFromJson(json);
@@ -131,10 +154,13 @@ class _$_SwipingPreference implements _SwipingPreference {
   final String name;
   @override
   final bool active;
+  @override
+  @JsonKey(name: 'is_creator')
+  final bool isCreator;
 
   @override
   String toString() {
-    return 'SwipingPreference(id: $id, name: $name, active: $active)';
+    return 'SwipingPreference(id: $id, name: $name, active: $active, isCreator: $isCreator)';
   }
 
   @override
@@ -144,12 +170,14 @@ class _$_SwipingPreference implements _SwipingPreference {
             other is _$_SwipingPreference &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.active, active) || other.active == active));
+            (identical(other.active, active) || other.active == active) &&
+            (identical(other.isCreator, isCreator) ||
+                other.isCreator == isCreator));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, active);
+  int get hashCode => Object.hash(runtimeType, id, name, active, isCreator);
 
   @JsonKey(ignore: true)
   @override
@@ -168,9 +196,11 @@ class _$_SwipingPreference implements _SwipingPreference {
 
 abstract class _SwipingPreference implements SwipingPreference {
   const factory _SwipingPreference(
-      {required final int id,
-      required final String name,
-      required final bool active}) = _$_SwipingPreference;
+          {required final int id,
+          required final String name,
+          required final bool active,
+          @JsonKey(name: 'is_creator') required final bool isCreator}) =
+      _$_SwipingPreference;
 
   factory _SwipingPreference.fromJson(Map<String, dynamic> json) =
       _$_SwipingPreference.fromJson;
@@ -181,6 +211,9 @@ abstract class _SwipingPreference implements SwipingPreference {
   String get name;
   @override
   bool get active;
+  @override
+  @JsonKey(name: 'is_creator')
+  bool get isCreator;
   @override
   @JsonKey(ignore: true)
   _$$_SwipingPreferenceCopyWith<_$_SwipingPreference> get copyWith =>

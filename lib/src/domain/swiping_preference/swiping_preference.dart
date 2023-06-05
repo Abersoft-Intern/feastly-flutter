@@ -9,6 +9,7 @@ class SwipingPreference with _$SwipingPreference {
     required int id,
     required String name,
     required bool active,
+    @JsonKey(name: 'is_creator') required bool isCreator,
   }) = _SwipingPreference;
 
   factory SwipingPreference.fromJson(Map<String, Object?> json) =>

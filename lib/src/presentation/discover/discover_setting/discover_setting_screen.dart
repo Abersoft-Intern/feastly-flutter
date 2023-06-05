@@ -136,12 +136,18 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                                       id: category.id,
                                       label: category.name,
                                       selected: category.active,
-                                      onTap: () {
-                                        ref
-                                            .read(categoriesControllerProvider
-                                                .notifier)
-                                            .changeCategory(category.id);
-                                      },
+                                      onTap: (preferenceState.value!
+                                              .firstWhere((group) =>
+                                                  group.id == _activeGroup)
+                                              .isCreator
+                                          ? () {
+                                              ref
+                                                  .read(
+                                                      categoriesControllerProvider
+                                                          .notifier)
+                                                  .changeCategory(category.id);
+                                            }
+                                          : null),
                                     ),
                                   )
                                   .toList(),

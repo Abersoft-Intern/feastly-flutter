@@ -11,6 +11,7 @@ _$_SwipingPreference _$$_SwipingPreferenceFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       name: json['name'] as String,
       active: json['active'] as bool,
+      isCreator: json['is_creator'] as bool,
     );
 
 Map<String, dynamic> _$$_SwipingPreferenceToJson(
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$_SwipingPreferenceToJson(
       'id': instance.id,
       'name': instance.name,
       'active': instance.active,
+      'is_creator': instance.isCreator,
     };
