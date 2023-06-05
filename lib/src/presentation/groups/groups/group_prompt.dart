@@ -80,7 +80,7 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
           text: 'Create group'.hardcoded,
           onTap: () {
             if (_formKey.currentState!.validate()) {
-              ref.read(addGroupControllerProvider.notifier).submit(name);
+              ref.read(addGroupControllerProvider.notifier).submit(name.trim());
             }
           },
         ),

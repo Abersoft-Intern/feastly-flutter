@@ -10,6 +10,7 @@ import 'package:feastly/src/presentation/groups/join/controllers/join_group_cont
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class JoinGroupScreen extends ConsumerStatefulWidget {
@@ -23,6 +24,8 @@ class _JoinGroupScreenState extends ConsumerState<JoinGroupScreen> {
   final _codeController = TextEditingController();
 
   String get code => _codeController.text;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -74,12 +77,20 @@ class _JoinGroupScreenState extends ConsumerState<JoinGroupScreen> {
               SizedBox(
                 height: 164.0.h,
               ),
-              Input(
-                controller: _codeController,
-                keyboardType: TextInputType.number,
-                icon: Icon(
-                  FeastlyIcon.icon_code,
-                  color: theme.primaryColor,
+              Form(
+                key: _formKey,
+                child: Input(
+                  controller: _codeController,
+                  keyboardType: TextInputType.number,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.maxLength(9),
+                    FormBuilderValidators.minLength(9)
+                  ]),
+                  icon: Icon(
+                    FeastlyIcon.icon_code,
+                    color: theme.primaryColor,
+                  ),
                 ),
               ),
               SizedBox(
@@ -90,7 +101,9 @@ class _JoinGroupScreenState extends ConsumerState<JoinGroupScreen> {
                 isLoading: controller.isLoading,
                 text: 'Join group'.hardcoded,
                 onTap: () {
-                  ref.read(joinGroupControllerProvider.notifier).submit(code);
+                  if (_formKey.currentState!.validate()) {
+                    ref.read(joinGroupControllerProvider.notifier).submit(code);
+                  }
                 },
               )
             ],
