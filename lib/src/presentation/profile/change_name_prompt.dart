@@ -30,10 +30,15 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _nameController.text = ref.read(profileProvider).value!.name!;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final controller = ref.watch(changeNameControllerProvider);
-
     final textTheme = theme.extension<CustomTextTheme>()!;
 
     ref.listen(changeNameControllerProvider, (_, state) {
