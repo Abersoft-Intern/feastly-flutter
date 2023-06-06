@@ -66,15 +66,20 @@ class AuthRepository {
 
   Future<void> updateProfilePicture(File image) async {
     final user = await getProfile();
+    String fileName = image.path.split('/').last;
 
     final data = FormData.fromMap({
       "refId": user.id,
       "ref": 'plugin::users-permissions.user',
       "field": 'profile_picture',
-      "files": image,
+      "files": MultipartFile.fromFile(image.path, filename: fileName),
     });
 
-    await client.post('/api/upload', data: data);
+    await client.post(
+      '/api/upload',
+      data: data,
+      options: Options(contentType: 'multipart/form-data'),
+    );
   }
 }
 

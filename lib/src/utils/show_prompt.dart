@@ -14,31 +14,38 @@ void showPrompt(BuildContext context, {required Widget child}) {
     builder: (context) {
       return ProviderScope(
         parent: ProviderScope.containerOf(context),
-        child: AlertDialog(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          insetPadding: const EdgeInsets.all(10),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          contentPadding: EdgeInsets.all(Sizes.p16.h),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InkResponse(
-                radius: 20.0,
-                onTap: () {
-                  context.pop();
-                },
-                child: Icon(
-                  FeastlyIcon.button_close,
-                  size: 24.0.h,
-                  color: theme.primaryColor,
+        child: ScaffoldMessenger(
+          child: Builder(
+            builder: (context) => Scaffold(
+              backgroundColor: Colors.transparent,
+              body: AlertDialog(
+                backgroundColor: Colors.white,
+                surfaceTintColor: Colors.white,
+                insetPadding: const EdgeInsets.all(10),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                contentPadding: EdgeInsets.all(Sizes.p16.h),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkResponse(
+                      radius: 20.0,
+                      onTap: () {
+                        context.pop();
+                      },
+                      child: Icon(
+                        FeastlyIcon.button_close,
+                        size: 24.0.h,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                    child
+                  ],
                 ),
               ),
-              child
-            ],
+            ),
           ),
         ),
       );

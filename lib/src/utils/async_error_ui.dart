@@ -19,4 +19,13 @@ extension AsyncValueUI on AsyncValue {
       ));
     }
   }
+
+  void showSnackbarOnSuccess(BuildContext context, String message) {
+    if (!isLoading && !hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: const Duration(seconds: 2),
+        content: Text(message),
+      ));
+    }
+  }
 }

@@ -1,8 +1,8 @@
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/profile/logout_sheet.dart';
-import 'package:feastly/src/presentation/profile/remove_account_sheet.dart';
+import 'package:feastly/src/presentation/profile/sheets/logout_sheet.dart';
+import 'package:feastly/src/presentation/profile/sheets/remove_account_sheet.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

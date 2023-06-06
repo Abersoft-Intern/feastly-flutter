@@ -1,9 +1,9 @@
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/profile/change_password_prompt.dart';
 import 'package:feastly/src/presentation/profile/profile_switch_tile.dart';
 import 'package:feastly/src/presentation/profile/profile_tile.dart';
+import 'package:feastly/src/presentation/profile/prompts/change_password_prompt.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +31,7 @@ class ProfileTileList extends StatelessWidget {
           onTap: () {
             showPrompt(
               context,
-              child: const ChangePasswordPrompt(),
+              child: ChangePasswordPrompt(context),
             );
           },
         ),

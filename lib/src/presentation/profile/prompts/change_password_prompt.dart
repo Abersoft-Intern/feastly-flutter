@@ -11,7 +11,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class ChangePasswordPrompt extends ConsumerStatefulWidget {
-  const ChangePasswordPrompt({super.key});
+  const ChangePasswordPrompt(this.rootContext, {super.key});
+
+  final BuildContext rootContext;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -48,6 +50,10 @@ class _ChangePasswordPromptState extends ConsumerState<ChangePasswordPrompt> {
         state.showSnackbarOnError(context);
       } else if (!state.isLoading && !state.hasError) {
         context.pop();
+        state.showSnackbarOnSuccess(
+          widget.rootContext,
+          'Your password succesfully changed',
+        );
       }
     });
 
