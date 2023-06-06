@@ -7,6 +7,7 @@ import 'package:feastly/src/presentation/profile/profile_tile.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileTileList extends StatelessWidget {
   const ProfileTileList({super.key});
@@ -19,9 +20,6 @@ class ProfileTileList extends StatelessWidget {
       children: [
         ProfileSwitchTile(
           label: 'Push Notifications'.hardcoded,
-        ),
-        ProfileSwitchTile(
-          label: 'User Location'.hardcoded,
         ),
         ProfileTile(
           label: 'Password'.hardcoded,
@@ -44,7 +42,20 @@ class ProfileTileList extends StatelessWidget {
             color: theme.primaryColor,
             size: 24.0.h,
           ),
-          onTap: () {},
+          onTap: () async {
+            if (!await launchUrl(
+                Uri.parse('https://appfeastly.com/terms-conditions'))) {
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(seconds: 2),
+                    content: Text(
+                        'An error occured while opening the url'.hardcoded),
+                  ),
+                );
+              }
+            }
+          },
         ),
         ProfileTile(
           label: 'Privacy Policy'.hardcoded,
@@ -53,7 +64,20 @@ class ProfileTileList extends StatelessWidget {
             color: theme.primaryColor,
             size: 24.0.h,
           ),
-          onTap: () {},
+          onTap: () async {
+            if (!await launchUrl(
+                Uri.parse('https://appfeastly.com/terms-conditions'))) {
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(seconds: 2),
+                    content: Text(
+                        'An error occured while opening the url'.hardcoded),
+                  ),
+                );
+              }
+            }
+          },
         ),
         ProfileTile(
           label: 'Logged in with'.hardcoded,
