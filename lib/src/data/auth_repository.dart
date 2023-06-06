@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:feastly/src/domain/user/user.dart';
 import 'package:feastly/src/network/client.dart';
@@ -43,7 +45,7 @@ class AuthRepository {
   }
 
   Future<void> removeAccount() async {
-    await client.delete('/api/users');
+    await client.delete('/api/users-permissions/users');
   }
 
   Future<User> updateName(String name) async {
@@ -53,6 +55,26 @@ class AuthRepository {
     });
 
     return User.fromJson(res.data);
+  }
+
+  Future<void> updatePassword(String oldPassword, String newPassword) async {
+    await client.put('/api/users-permissions/users/password', data: {
+      'password': oldPassword,
+      'newPassword': newPassword,
+    });
+  }
+
+  Future<void> updateProfilePicture(File image) async {
+    final user = await getProfile();
+
+    final data = FormData.fromMap({
+      "refId": user.id,
+      "ref": 'plugin::users-permissions.user',
+      "field": 'profile_picture',
+      "files": image,
+    });
+
+    await client.post('/api/upload', data: data);
   }
 }
 

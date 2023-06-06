@@ -21,14 +21,12 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   int get id => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get provider => throw _privateConstructorUsedError;
   bool get confirmed => throw _privateConstructorUsedError;
-  bool get blocked => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_picture')
+  String? get profilePicture => throw _privateConstructorUsedError;
+  String? get blurhash => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,14 +40,11 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String username,
       String email,
-      String provider,
       bool confirmed,
-      bool blocked,
-      DateTime createdAt,
-      DateTime updatedAt,
-      String? name});
+      String? name,
+      @JsonKey(name: 'profile_picture') String? profilePicture,
+      String? blurhash});
 }
 
 /// @nodoc
@@ -66,51 +61,36 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
     Object? email = null,
-    Object? provider = null,
     Object? confirmed = null,
-    Object? blocked = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
     Object? name = freezed,
+    Object? profilePicture = freezed,
+    Object? blurhash = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provider: null == provider
-          ? _value.provider
-          : provider // ignore: cast_nullable_to_non_nullable
               as String,
       confirmed: null == confirmed
           ? _value.confirmed
           : confirmed // ignore: cast_nullable_to_non_nullable
               as bool,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+      blurhash: freezed == blurhash
+          ? _value.blurhash
+          : blurhash // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -124,14 +104,11 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String username,
       String email,
-      String provider,
       bool confirmed,
-      bool blocked,
-      DateTime createdAt,
-      DateTime updatedAt,
-      String? name});
+      String? name,
+      @JsonKey(name: 'profile_picture') String? profilePicture,
+      String? blurhash});
 }
 
 /// @nodoc
@@ -144,51 +121,36 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
     Object? email = null,
-    Object? provider = null,
     Object? confirmed = null,
-    Object? blocked = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
     Object? name = freezed,
+    Object? profilePicture = freezed,
+    Object? blurhash = freezed,
   }) {
     return _then(_$_User(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      provider: null == provider
-          ? _value.provider
-          : provider // ignore: cast_nullable_to_non_nullable
               as String,
       confirmed: null == confirmed
           ? _value.confirmed
           : confirmed // ignore: cast_nullable_to_non_nullable
               as bool,
-      blocked: null == blocked
-          ? _value.blocked
-          : blocked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+      blurhash: freezed == blurhash
+          ? _value.blurhash
+          : blurhash // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -199,39 +161,31 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 class _$_User implements _User {
   const _$_User(
       {required this.id,
-      required this.username,
       required this.email,
-      required this.provider,
       required this.confirmed,
-      required this.blocked,
-      required this.createdAt,
-      required this.updatedAt,
-      required this.name});
+      required this.name,
+      @JsonKey(name: 'profile_picture') required this.profilePicture,
+      required this.blurhash});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
   final int id;
   @override
-  final String username;
-  @override
   final String email;
-  @override
-  final String provider;
   @override
   final bool confirmed;
   @override
-  final bool blocked;
-  @override
-  final DateTime createdAt;
-  @override
-  final DateTime updatedAt;
-  @override
   final String? name;
+  @override
+  @JsonKey(name: 'profile_picture')
+  final String? profilePicture;
+  @override
+  final String? blurhash;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, provider: $provider, confirmed: $confirmed, blocked: $blocked, createdAt: $createdAt, updatedAt: $updatedAt, name: $name)';
+    return 'User(id: $id, email: $email, confirmed: $confirmed, name: $name, profilePicture: $profilePicture, blurhash: $blurhash)';
   }
 
   @override
@@ -240,25 +194,20 @@ class _$_User implements _User {
         (other.runtimeType == runtimeType &&
             other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.provider, provider) ||
-                other.provider == provider) &&
             (identical(other.confirmed, confirmed) ||
                 other.confirmed == confirmed) &&
-            (identical(other.blocked, blocked) || other.blocked == blocked) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture) &&
+            (identical(other.blurhash, blurhash) ||
+                other.blurhash == blurhash));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, email, provider,
-      confirmed, blocked, createdAt, updatedAt, name);
+  int get hashCode => Object.hash(
+      runtimeType, id, email, confirmed, name, profilePicture, blurhash);
 
   @JsonKey(ignore: true)
   @override
@@ -277,35 +226,27 @@ class _$_User implements _User {
 abstract class _User implements User {
   const factory _User(
       {required final int id,
-      required final String username,
       required final String email,
-      required final String provider,
       required final bool confirmed,
-      required final bool blocked,
-      required final DateTime createdAt,
-      required final DateTime updatedAt,
-      required final String? name}) = _$_User;
+      required final String? name,
+      @JsonKey(name: 'profile_picture') required final String? profilePicture,
+      required final String? blurhash}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   int get id;
   @override
-  String get username;
-  @override
   String get email;
-  @override
-  String get provider;
   @override
   bool get confirmed;
   @override
-  bool get blocked;
-  @override
-  DateTime get createdAt;
-  @override
-  DateTime get updatedAt;
-  @override
   String? get name;
+  @override
+  @JsonKey(name: 'profile_picture')
+  String? get profilePicture;
+  @override
+  String? get blurhash;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

@@ -1,3 +1,4 @@
+import 'package:feastly/src/data/auth_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'change_password_controller.g.dart';
@@ -7,12 +8,11 @@ class ChangePasswordController extends _$ChangePasswordController {
   @override
   FutureOr<void> build() {}
 
-  Future<void> submit(String name) async {
-    // final authRepository = ref.watch(authRepositoryProvider);
+  Future<void> submit(String oldPassword, String newPassword) async {
+    final authRepository = ref.watch(authRepositoryProvider);
     try {
       state = const AsyncLoading();
-      await Future.delayed(const Duration(seconds: 2));
-      // await authRepository.updateName(name);
+      await authRepository.updatePassword(oldPassword, newPassword);
       state = const AsyncData(null);
     } catch (e) {
       state = AsyncError(

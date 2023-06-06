@@ -44,9 +44,9 @@ class _ChangePasswordPromptState extends ConsumerState<ChangePasswordPrompt> {
     final textTheme = theme.extension<CustomTextTheme>()!;
 
     ref.listen(changePasswordControllerProvider, (_, state) {
-      state.showSnackbarOnError(context);
-
-      if (!state.isLoading && !state.hasError) {
+      if (!state.isLoading && state.hasError) {
+        state.showSnackbarOnError(context);
+      } else if (!state.isLoading && !state.hasError) {
         context.pop();
       }
     });
@@ -125,10 +125,9 @@ class _ChangePasswordPromptState extends ConsumerState<ChangePasswordPrompt> {
           text: 'Save'.hardcoded,
           onTap: () {
             if (_formKey.currentState!.validate()) {
-              debugPrint('run');
               ref
                   .read(changePasswordControllerProvider.notifier)
-                  .submit('test');
+                  .submit(oldPassword, newPassword);
             }
           },
         ),
