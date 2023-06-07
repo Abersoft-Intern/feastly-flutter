@@ -46,9 +46,8 @@ class _ChangePasswordPromptState extends ConsumerState<ChangePasswordPrompt> {
     final textTheme = theme.extension<CustomTextTheme>()!;
 
     ref.listen(changePasswordControllerProvider, (_, state) {
-      if (!state.isLoading && state.hasError) {
-        state.showSnackbarOnError(context);
-      } else if (!state.isLoading && !state.hasError) {
+      state.showSnackbarOnError(context);
+      if (!state.isLoading && !state.hasError) {
         context.pop();
         state.showSnackbarOnSuccess(
           widget.rootContext,

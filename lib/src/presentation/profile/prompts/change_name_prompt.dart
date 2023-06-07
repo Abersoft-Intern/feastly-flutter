@@ -12,7 +12,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class ChangeNamePrompt extends ConsumerStatefulWidget {
-  const ChangeNamePrompt({super.key});
+  const ChangeNamePrompt(this.rootContext, {super.key});
+
+  final BuildContext rootContext;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -50,6 +52,10 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
       if (!state.isLoading && !state.hasError) {
         context.pop();
         ref.invalidate(profileProvider);
+        state.showSnackbarOnSuccess(
+          widget.rootContext,
+          'Your password succesfully changed',
+        );
         _nameController.clear();
       }
     });

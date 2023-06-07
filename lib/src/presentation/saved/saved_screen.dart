@@ -4,7 +4,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/saved/saved_prompt.dart';
+import 'package:feastly/src/presentation/saved/prompts/saved_prompt.dart';
 import 'package:feastly/src/presentation/saved/saved_recipes_list.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +60,7 @@ class _SavedScreenState extends ConsumerState<SavedScreen> {
                       onTap: () {
                         showPrompt(
                           context,
-                          child: const SavedPrompt(),
+                          child: SavedPrompt(context),
                         );
                       },
                       child: Row(

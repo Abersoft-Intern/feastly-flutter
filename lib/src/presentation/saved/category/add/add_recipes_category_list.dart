@@ -4,7 +4,7 @@ import 'package:feastly/src/common_widgets/shimmer.dart';
 import 'package:feastly/src/common_widgets/shimmer_loading.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/data/saved_repository.dart';
-import 'package:feastly/src/presentation/saved/category/add/add_recipes_controller.dart';
+import 'package:feastly/src/presentation/saved/category/add/controllers/add_recipes_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

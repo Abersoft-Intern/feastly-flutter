@@ -52,7 +52,7 @@ class ProfileScreen extends ConsumerWidget {
                       bottom: 0,
                       child: InkResponse(
                         onTap: () {
-                          showPrompt(context, child: const ChangeNamePrompt());
+                          showPrompt(context, child: ChangeNamePrompt(context));
                         },
                         radius: 25.0,
                         child: Icon(

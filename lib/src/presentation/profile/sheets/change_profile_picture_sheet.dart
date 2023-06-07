@@ -18,9 +18,9 @@ class ChangeProfilePictureSheet extends ConsumerWidget {
     final controller = ref.watch(changeProfilePictureControllerProvider);
 
     ref.listen(changeProfilePictureControllerProvider, (_, state) {
-      if (!state.isLoading && state.hasError) {
-        state.showSnackbarOnError(context);
-      } else if (!state.isLoading && !state.hasError) {
+      state.showSnackbarOnError(context);
+
+      if (!state.isLoading && !state.hasError) {
         context.pop();
         state.showSnackbarOnSuccess(
           rootContext,

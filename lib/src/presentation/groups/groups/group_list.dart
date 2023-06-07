@@ -5,7 +5,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/group_avatar.dart';
 import 'package:feastly/src/presentation/groups/group_avatar_loading.dart';
-import 'package:feastly/src/presentation/groups/groups/group_prompt.dart';
+import 'package:feastly/src/presentation/groups/groups/prompts/group_prompt.dart';
 import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
 import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,7 @@ class _GroupListState extends ConsumerState<GroupList> {
               onTap: () {
                 showPrompt(
                   context,
-                  child: const GroupPrompt(),
+                  child: GroupPrompt(context),
                 );
               },
               child: Column(

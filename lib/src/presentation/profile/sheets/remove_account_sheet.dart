@@ -15,10 +15,7 @@ class RemoveAccountSheet extends ConsumerWidget {
     final controller = ref.watch(removeAccountControllerProvider);
 
     ref.listen(removeAccountControllerProvider, (_, state) {
-      if (!state.isLoading && state.hasError) {
-        context.pop();
-        state.showSnackbarOnError(context);
-      }
+      state.showSnackbarOnError(context);
     });
     return Column(
       children: [

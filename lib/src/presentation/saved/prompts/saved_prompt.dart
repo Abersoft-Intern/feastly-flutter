@@ -2,26 +2,29 @@ import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
+import 'package:feastly/src/data/saved_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/groups/groups/controllers/add_group_controller.dart';
-import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
+import 'package:feastly/src/presentation/saved/controllers/add_category_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
-class GroupPrompt extends ConsumerStatefulWidget {
-  const GroupPrompt({super.key});
+class SavedPrompt extends ConsumerStatefulWidget {
+  const SavedPrompt(this.rootContext, {super.key});
+
+  final BuildContext rootContext;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _GroupPromptState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SavedPromptState();
 }
 
-class _GroupPromptState extends ConsumerState<GroupPrompt> {
+class _SavedPromptState extends ConsumerState<SavedPrompt> {
   final _nameController = TextEditingController();
 
   String get name => _nameController.text;
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -34,22 +37,26 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
-    final controller = ref.watch(addGroupControllerProvider);
 
-    ref.listen(addGroupControllerProvider, (_, state) {
+    final controller = ref.watch(addCategoryControllerProvider);
+
+    ref.listen(addCategoryControllerProvider, (_, state) {
+      state.showSnackbarOnError(context);
+
       if (!state.isLoading && !state.hasError) {
         context.pop();
-        ref.invalidate(groupsStateProvider);
+        ref.invalidate(userCategoriesProvider);
+        state.showSnackbarOnSuccess(
+            widget.rootContext, 'Category successfully saved'.hardcoded);
+        _nameController.clear();
       }
-
-      state.showSnackbarOnError(context);
     });
     return Column(
       children: [
         Align(
           alignment: Alignment.topCenter,
           child: Text(
-            'Create a new group'.hardcoded,
+            'Create a new list'.hardcoded,
             style: textTheme.h3,
           ),
         ),
@@ -57,17 +64,18 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
         Align(
           alignment: Alignment.topCenter,
           child: Text(
-            'Create a new group to swipe with \nyour friends.'.hardcoded,
+            'Create a new list so you can \norganize your foods.'.hardcoded,
             style: textTheme.body16Regular,
             textAlign: TextAlign.center,
           ),
         ),
         gapH20,
         Form(
+          key: _formKey,
           child: Input(
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
-              FormBuilderValidators.maxLength(10)
+              FormBuilderValidators.maxLength(12)
             ]),
             keyboardType: TextInputType.text,
             controller: _nameController,
@@ -75,12 +83,14 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
         ),
         gapH40,
         Button(
-          isLoading: controller.isLoading,
           disabled: controller.isLoading,
-          text: 'Create group'.hardcoded,
+          isLoading: controller.isLoading,
+          text: 'Save new list'.hardcoded,
           onTap: () {
             if (_formKey.currentState!.validate()) {
-              ref.read(addGroupControllerProvider.notifier).submit(name.trim());
+              ref
+                  .read(addCategoryControllerProvider.notifier)
+                  .addCategory(name.trim());
             }
           },
         ),
