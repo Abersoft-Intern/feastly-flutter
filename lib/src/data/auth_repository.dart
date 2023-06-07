@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:feastly/src/domain/user/user.dart';
 import 'package:feastly/src/network/client.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:path/path.dart' as path;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_repository.g.dart';
@@ -72,7 +74,14 @@ class AuthRepository {
       "refId": user.id,
       "ref": 'plugin::users-permissions.user',
       "field": 'profile_picture',
-      "files": MultipartFile.fromFile(image.path, filename: fileName),
+      "files": await MultipartFile.fromFile(
+        image.path,
+        filename: fileName,
+        contentType: MediaType(
+          'image',
+          path.extension(fileName),
+        ),
+      ),
     });
 
     await client.post(

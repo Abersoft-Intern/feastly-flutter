@@ -27,10 +27,13 @@ class ChangeProfilePictureController extends _$ChangeProfilePictureController {
       }
 
       final croppedFile = await _cropImage(file);
+
       if (croppedFile != null) {
         final processedFile = File(croppedFile.path);
         await authRepository.updateProfilePicture(processedFile);
+        ref.invalidate(profileProvider);
       }
+
       state = const AsyncData(null);
     } catch (e) {
       state = AsyncError('An error occured while changing profile picture',
