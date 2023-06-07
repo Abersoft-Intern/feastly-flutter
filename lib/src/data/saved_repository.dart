@@ -64,13 +64,13 @@ class SavedRepository {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 SavedRepository savedRepository(SavedRepositoryRef ref) {
   final client = ref.watch(clientProvider);
   return SavedRepository(client);
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<List<Category>> userCategories(UserCategoriesRef ref) {
   SavedRepository savedRepository = ref.watch(savedRepositoryProvider);
   return savedRepository.getCategories();
