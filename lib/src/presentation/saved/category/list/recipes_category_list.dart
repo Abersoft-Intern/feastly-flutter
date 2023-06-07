@@ -3,8 +3,10 @@ import 'package:feastly/src/common_widgets/saved_recipe_item_loading.dart';
 import 'package:feastly/src/common_widgets/shimmer.dart';
 import 'package:feastly/src/common_widgets/shimmer_loading.dart';
 import 'package:feastly/src/data/saved_repository.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class RecipesCategoryList extends ConsumerWidget {
   final int categoryId;
@@ -20,8 +22,14 @@ class RecipesCategoryList extends ConsumerWidget {
 
     return recipes.when(
       data: (recipes) => ListView.builder(
-        itemBuilder: (context, index) =>
-            SavedRecipeItem(recipe: recipes[index]),
+        itemBuilder: (context, index) => SavedRecipeItem(
+          recipe: recipes[index],
+          onTap: () {
+            context.pushNamed(RouteName.recipeDetail.name, pathParameters: {
+              'id': recipes[index].recipeId.toString(),
+            });
+          },
+        ),
         itemCount: recipes.length,
         shrinkWrap: true,
         primary: false,
