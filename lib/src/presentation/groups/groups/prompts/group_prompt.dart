@@ -71,6 +71,7 @@ class _GroupPromptState extends ConsumerState<GroupPrompt> {
         ),
         gapH20,
         Form(
+          key: _formKey,
           child: Input(
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
