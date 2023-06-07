@@ -14,13 +14,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 }
 
-void main() async {
-  usePathUrlStrategy();
-  GoogleFonts.config.allowRuntimeFetching = false;
-  WidgetsFlutterBinding.ensureInitialized();
-
+Future<void> _setupFirebaseNotification() async {
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
   flutterLocalNotificationsPlugin.initialize(const InitializationSettings(
     android: AndroidInitializationSettings('@mipmap/ic_launcher'),
     iOS: DarwinInitializationSettings(),
@@ -30,7 +25,7 @@ void main() async {
     'recipes_channel',
     'New Recipes Notification',
     description:
-        'This notifies whenever a new recipe has been added to the app',
+        'This notifies user whenever a new recipe has been added to the app',
     importance: Importance.max,
   );
 
@@ -46,7 +41,7 @@ void main() async {
     if (notification != null && android != null) {
       flutterLocalNotificationsPlugin.show(
         notification.hashCode,
-        notification.title,
+        'Title',
         notification.body,
         NotificationDetails(
           android: AndroidNotificationDetails(
@@ -60,10 +55,16 @@ void main() async {
     }
   });
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FirebaseMessaging.instance.subscribeToTopic('recipes');
+}
+
+void main() async {
+  usePathUrlStrategy();
+  GoogleFonts.config.allowRuntimeFetching = false;
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await _setupFirebaseNotification();
+
   runApp(const ProviderScope(child: MyApp()));
 }
