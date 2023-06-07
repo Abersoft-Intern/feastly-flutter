@@ -15,6 +15,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 Future<void> _setupFirebaseNotification() async {
+  // Firebase related stuff
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await FirebaseMessaging.instance.subscribeToTopic('recipes');
+
+  // Local notification stuff
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   flutterLocalNotificationsPlugin.initialize(const InitializationSettings(
     android: AndroidInitializationSettings('@mipmap/ic_launcher'),
@@ -54,9 +60,6 @@ Future<void> _setupFirebaseNotification() async {
       );
     }
   });
-
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await FirebaseMessaging.instance.subscribeToTopic('recipes');
 }
 
 void main() async {
