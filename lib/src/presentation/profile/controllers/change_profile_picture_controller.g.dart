@@ -7,7 +7,7 @@ part of 'change_profile_picture_controller.dart';
 // **************************************************************************
 
 String _$changeProfilePictureControllerHash() =>
-    r'5af849af8d0438e17787c575f1b9739e803b8929';
+    r'78ca4cb26f8f64d09411e081aab77755c025fd13';
 
 /// See also [ChangeProfilePictureController].
 @ProviderFor(ChangeProfilePictureController)

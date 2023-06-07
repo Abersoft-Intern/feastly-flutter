@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class GroupSheetButtons extends ConsumerWidget {
-  const GroupSheetButtons(this.id, {super.key});
+class GroupSheet extends ConsumerWidget {
+  const GroupSheet(this.id, {super.key});
 
   final int id;
 
@@ -20,8 +20,8 @@ class GroupSheetButtons extends ConsumerWidget {
 
     ref.listen(leaveGroupControllerProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
-        context.goNamed(RouteName.groups.name);
         ref.invalidate(groupsStateProvider);
+        context.goNamed(RouteName.groups.name);
       }
 
       state.showSnackbarOnError(context);

@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'groups_state.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class GroupsState extends _$GroupsState {
   @override
   FutureOr<List<GroupPreview>> build() async {

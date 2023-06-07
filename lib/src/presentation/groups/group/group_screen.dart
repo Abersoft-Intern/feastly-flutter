@@ -7,7 +7,7 @@ import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/data/group_repository.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/groups/group/group_members.dart';
-import 'package:feastly/src/presentation/groups/group/group_sheet_buttons.dart';
+import 'package:feastly/src/presentation/groups/group/sheets/group_sheet.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -112,7 +112,7 @@ class GroupScreen extends ConsumerWidget {
                           title: group.isCreator
                               ? 'Disband Group'.hardcoded
                               : 'Leave group'.hardcoded,
-                          customButtons: GroupSheetButtons(id),
+                          customButtons: GroupSheet(id),
                           subtitle: group.isCreator
                               ? 'Are you sure you want to disband this group?'
                               : 'Are you sure you want to leave the group?'

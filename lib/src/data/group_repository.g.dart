@@ -6,11 +6,11 @@ part of 'group_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$groupRepositoryHash() => r'413edca747beece90d28f54e9b392c273536b18a';
+String _$groupRepositoryHash() => r'3635f792f86b9c8e6e47e323df8a72c1c7c160be';
 
 /// See also [groupRepository].
 @ProviderFor(groupRepository)
-final groupRepositoryProvider = AutoDisposeProvider<GroupRepository>.internal(
+final groupRepositoryProvider = Provider<GroupRepository>.internal(
   groupRepository,
   name: r'groupRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -20,7 +20,7 @@ final groupRepositoryProvider = AutoDisposeProvider<GroupRepository>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef GroupRepositoryRef = AutoDisposeProviderRef<GroupRepository>;
+typedef GroupRepositoryRef = ProviderRef<GroupRepository>;
 String _$groupDetailHash() => r'425d8567e60f2a2f44ac1139a0ed6097b419de40';
 
 /// Copied from Dart SDK

@@ -48,7 +48,6 @@ class _SavedPromptState extends ConsumerState<SavedPrompt> {
         ref.invalidate(userCategoriesProvider);
         state.showSnackbarOnSuccess(
             widget.rootContext, 'Category successfully saved'.hardcoded);
-        _nameController.clear();
       }
     });
     return Column(

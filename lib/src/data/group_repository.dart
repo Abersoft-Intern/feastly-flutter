@@ -56,9 +56,8 @@ class GroupRepository {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 GroupRepository groupRepository(GroupRepositoryRef ref) {
-// ignore: avoid_manual_providers_as_generated_provider_dependency
   final client = ref.watch(clientProvider);
   return GroupRepository(client: client);
 }
