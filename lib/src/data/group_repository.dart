@@ -56,7 +56,7 @@ class GroupRepository {
   }
 }
 
-@Riverpod(keepAlive: true)
+@riverpod
 GroupRepository groupRepository(GroupRepositoryRef ref) {
   final client = ref.watch(clientProvider);
   return GroupRepository(client: client);
