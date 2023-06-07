@@ -19,6 +19,13 @@ void main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
   WidgetsFlutterBinding.ensureInitialized();
 
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  flutterLocalNotificationsPlugin.initialize(const InitializationSettings(
+    android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+    iOS: DarwinInitializationSettings(),
+  ));
+
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'recipes_channel',
     'New Recipes Notification',
@@ -26,9 +33,6 @@ void main() async {
         'This notifies whenever a new recipe has been added to the app',
     importance: Importance.max,
   );
-
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
