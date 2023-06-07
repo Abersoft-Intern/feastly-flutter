@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "259032342278",
+    "project_id": "feastly-3bba0",
+    "storage_bucket": "feastly-3bba0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259032342278:android:afcde7fd022c34e41cc887",
+        "android_client_info": {
+          "package_name": "abersoft.feastly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259032342278-o438juj8ql0d27ed2sle541v6ge03lla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRX_trh6p2AIiKE3tLPY0BW4fwG9YAXPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259032342278-o438juj8ql0d27ed2sle541v6ge03lla.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "259032342278-grrvkssdocsi4gb8r55muob1p19nkuem.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.feastly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
