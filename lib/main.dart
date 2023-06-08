@@ -2,13 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// ignore:depend_on_referenced_packages
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 import 'src/app.dart';
+
+late final SharedPreferences prefs;
+const pushKey = 'push_notification_enabled';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -18,7 +21,14 @@ Future<void> _setupFirebaseNotification() async {
   // Firebase related stuff
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await FirebaseMessaging.instance.subscribeToTopic('recipes');
+
+  final pushNotificationEnabled = prefs.getBool(pushKey);
+
+  if (pushNotificationEnabled != null && pushNotificationEnabled) {
+    await FirebaseMessaging.instance.subscribeToTopic('recipes');
+  } else {
+    await FirebaseMessaging.instance.unsubscribeFromTopic('recipes');
+  }
 
   // Local notification stuff
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -62,11 +72,14 @@ Future<void> _setupFirebaseNotification() async {
 }
 
 void main() async {
-  usePathUrlStrategy();
   GoogleFonts.config.allowRuntimeFetching = false;
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  prefs = await SharedPreferences.getInstance();
   await _setupFirebaseNotification();
+
+  FlutterNativeSplash.remove();
 
   runApp(const ProviderScope(child: MyApp()));
 }

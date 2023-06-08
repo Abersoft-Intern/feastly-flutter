@@ -7,6 +7,7 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/register/register_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
+import 'package:feastly/src/utils/push_notification_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -156,6 +157,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           .register(email.trim(), password.trim());
 
                       if (registered) {
+                        ref
+                            .read(pushNotificationPrefProvider.notifier)
+                            .enable();
                         if (context.mounted) {
                           context.pushNamed(RouteName.otp.name);
                         }

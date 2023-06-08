@@ -8,6 +8,7 @@ import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/login/login_controller.dart';
 import 'package:feastly/src/presentation/auth/login/login_header.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
+import 'package:feastly/src/utils/push_notification_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -149,6 +150,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             data.user.name == null) {
                           context.pushNamed(RouteName.username.name);
                         } else {
+                          ref
+                              .read(pushNotificationPrefProvider.notifier)
+                              .enable();
                           context.pushNamed(RouteName.onboarding.name);
                         }
                       }

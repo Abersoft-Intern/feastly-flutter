@@ -3,6 +3,7 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/profile/controllers/remove_account_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
+import 'package:feastly/src/utils/push_notification_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -21,12 +22,13 @@ class RemoveAccountSheet extends ConsumerWidget {
       children: [
         gapH48,
         Button(
-          disabled: controller.isLoading,
-          isLoading: controller.isLoading,
-          text: 'Yes'.hardcoded,
-          onTap: () =>
-              ref.read(removeAccountControllerProvider.notifier).submit(),
-        ),
+            disabled: controller.isLoading,
+            isLoading: controller.isLoading,
+            text: 'Yes'.hardcoded,
+            onTap: () {
+              ref.read(pushNotificationPrefProvider.notifier).disable();
+              ref.read(removeAccountControllerProvider.notifier).submit();
+            }),
         gapH32,
         Button(
           disabled: controller.isLoading,

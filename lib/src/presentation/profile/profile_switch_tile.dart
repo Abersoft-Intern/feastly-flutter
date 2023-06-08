@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
@@ -6,20 +7,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileSwitchTile extends StatefulWidget {
   const ProfileSwitchTile({
-    super.key,
+    Key? key,
     required this.label,
-    this.onTap,
-  });
+    required this.onTap,
+    this.enabled = false,
+  }) : super(key: key);
 
   final String label;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
+  final bool enabled;
 
   @override
   State<ProfileSwitchTile> createState() => _ProfileSwitchTileState();
 }
 
 class _ProfileSwitchTileState extends State<ProfileSwitchTile> {
-  var enabled = false;
+  var _enabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _enabled = widget.enabled;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,8 @@ class _ProfileSwitchTileState extends State<ProfileSwitchTile> {
     final colorTheme = theme.extension<CustomColor>()!;
     return InkWell(
       onTap: () {
-        setState(() => enabled = !enabled);
+        setState(() => _enabled = !_enabled);
+        widget.onTap();
       },
       child: Ink(
         padding: EdgeInsets.symmetric(
@@ -47,7 +57,7 @@ class _ProfileSwitchTileState extends State<ProfileSwitchTile> {
               curve: Curves.easeIn,
               width: 50.0.h,
               decoration: BoxDecoration(
-                color: enabled ? theme.primaryColor : colorTheme.unselectedNav,
+                color: _enabled ? theme.primaryColor : colorTheme.unselectedNav,
                 borderRadius: BorderRadius.circular(50.0),
               ),
               height: 30.0.h,
@@ -56,7 +66,7 @@ class _ProfileSwitchTileState extends State<ProfileSwitchTile> {
                 duration: const Duration(milliseconds: 150),
                 curve: Curves.easeIn,
                 alignment:
-                    enabled ? Alignment.centerRight : Alignment.centerLeft,
+                    _enabled ? Alignment.centerRight : Alignment.centerLeft,
                 child: Container(
                   width: 26.0.h,
                   height: 26.0.h,
