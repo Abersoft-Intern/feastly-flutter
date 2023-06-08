@@ -47,14 +47,13 @@ Future<void> _setupFirebaseNotification() async {
     if (notification != null && android != null) {
       flutterLocalNotificationsPlugin.show(
         notification.hashCode,
-        'Title',
+        notification.title,
         notification.body,
         NotificationDetails(
           android: AndroidNotificationDetails(
             channel.id,
             channel.name,
             channelDescription: channel.description,
-            icon: android.smallIcon,
           ),
         ),
       );
