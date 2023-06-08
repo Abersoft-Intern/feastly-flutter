@@ -54,7 +54,7 @@ class _ChangeNamePromptState extends ConsumerState<ChangeNamePrompt> {
         ref.invalidate(profileProvider);
         state.showSnackbarOnSuccess(
           widget.rootContext,
-          'Your password succesfully changed',
+          'Your name succesfully changed',
         );
         _nameController.clear();
       }
