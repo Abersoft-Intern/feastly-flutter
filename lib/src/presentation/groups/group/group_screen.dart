@@ -10,6 +10,7 @@ import 'package:feastly/src/presentation/groups/group/group_members.dart';
 import 'package:feastly/src/presentation/groups/group/sheets/group_sheet.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
@@ -62,8 +63,24 @@ class GroupScreen extends ConsumerWidget {
                         style: textTheme.h2,
                       ),
                       gapW16,
-                      GestureDetector(
-                        onTap: () {},
+                      InkResponse(
+                        onTap: () async {
+                          await Clipboard.setData(
+                            ClipboardData(text: group.code),
+                          );
+
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                duration: Duration(seconds: 2),
+                                content: Text(
+                                  'Group code copied to clipboard',
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        radius: 20,
                         child: Icon(
                           FeastlyIcon.button_copy,
                           color: theme.primaryColor,
