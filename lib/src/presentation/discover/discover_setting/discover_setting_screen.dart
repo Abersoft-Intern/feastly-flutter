@@ -8,6 +8,7 @@ import 'package:feastly/src/presentation/discover/discover_setting/controllers/p
 import 'package:feastly/src/presentation/discover/discover_setting/discover_setting_tile.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/state/categories_state.dart';
 import 'package:feastly/src/presentation/discover/discover_setting/state/preference_state.dart';
+import 'package:feastly/src/utils/show_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -147,7 +148,37 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                                                           .notifier)
                                                   .changeCategory(category.id);
                                             }
-                                          : null),
+                                          : () {
+                                              showPrompt(
+                                                context,
+                                                child: Column(
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          Alignment.topCenter,
+                                                      child: Text(
+                                                        'Ops!'.hardcoded,
+                                                        style: textTheme.h3,
+                                                      ),
+                                                    ),
+                                                    gapH4,
+                                                    Align(
+                                                      alignment:
+                                                          Alignment.topCenter,
+                                                      child: Text(
+                                                        'Only the Group Creator can change\nthe categories'
+                                                            .hardcoded,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: textTheme
+                                                            .body16Regular,
+                                                      ),
+                                                    ),
+                                                    gapH24
+                                                  ],
+                                                ),
+                                              );
+                                            }),
                                     ),
                                   )
                                   .toList(),
