@@ -65,30 +65,34 @@ class SavedRecipeItem extends StatelessWidget {
               ),
             ),
             gapW24,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  recipe.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: textTheme.body16Bold,
-                ),
-                gapH8,
-                Rating(
-                  rating: recipe.rating,
-                  emptyRatingIcon: Icon(
-                    FeastlyIcon.icon_star_unfilled,
-                    color: colorTheme.unselectedNav,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    recipe.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.body16Bold,
                   ),
-                ),
-                gapH4,
-                Text(
-                  'Cook time: ${recipe.cookTime}',
-                  style: textTheme.body16Regular,
-                ),
-              ],
+                  gapH8,
+                  SizedBox(
+                    width: 250,
+                    child: Rating(
+                      rating: recipe.rating,
+                      emptyRatingIcon: Icon(
+                        FeastlyIcon.icon_star_unfilled,
+                        color: colorTheme.unselectedNav,
+                      ),
+                    ),
+                  ),
+                  gapH4,
+                  Text(
+                    'Cook time: ${recipe.cookTime}',
+                    style: textTheme.body16Regular,
+                  ),
+                ],
+              ),
             ),
-            const Spacer(),
             Icon(
               rightIcon ?? FeastlyIcon.button_arrow_right,
               size: Sizes.p24.h,
