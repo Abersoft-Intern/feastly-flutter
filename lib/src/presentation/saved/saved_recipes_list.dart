@@ -12,6 +12,7 @@ import 'package:feastly/src/presentation/saved/controllers/delete_recipe_control
 import 'package:feastly/src/presentation/saved/saved_none.dart';
 import 'package:feastly/src/presentation/saved/saved_tile.dart';
 import 'package:feastly/src/presentation/saved/saved_tile_loading.dart';
+import 'package:feastly/src/presentation/saved/sheets/delete_match_sheet.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -94,6 +95,7 @@ class SavedRecipesList extends ConsumerWidget {
                     itemCount: recipes.length,
                     itemBuilder: (context, index) {
                       return Slidable(
+                        key: ValueKey(recipes[index].id),
                         endActionPane: ActionPane(
                           extentRatio: 0.3,
                           motion: const BehindMotion(),
@@ -107,12 +109,8 @@ class SavedRecipesList extends ConsumerWidget {
                                   subtitle:
                                       'Are you sure you want to delete this match?'
                                           .hardcoded,
-                                  onYesTap: () {
-                                    ref
-                                        .read(deleteRecipeControllerProvider
-                                            .notifier)
-                                        .delete(recipes[index].id);
-                                  },
+                                  customButtons: DeleteMatchSheet(
+                                      context, recipes[index].id),
                                 );
                               },
                               backgroundColor: colorTheme.red!,
