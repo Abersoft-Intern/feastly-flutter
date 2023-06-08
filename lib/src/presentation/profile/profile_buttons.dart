@@ -7,6 +7,7 @@ import 'package:feastly/src/utils/show_custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProfileButtons extends ConsumerWidget {
   const ProfileButtons({super.key});
@@ -19,7 +20,9 @@ class ProfileButtons extends ConsumerWidget {
         children: [
           Button(
             text: 'Invite friends to feastly'.hardcoded,
-            onTap: () {},
+            onTap: () {
+              Share.share('Join me on feastly');
+            },
             variant: ButtonVariant.inverted,
           ),
           gapH32,
