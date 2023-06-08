@@ -19,14 +19,6 @@ class ChangeProfilePictureSheet extends ConsumerWidget {
 
     ref.listen(changeProfilePictureControllerProvider, (_, state) {
       state.showSnackbarOnError(context);
-
-      if (!state.isLoading && !state.hasError) {
-        context.pop();
-        state.showSnackbarOnSuccess(
-          rootContext,
-          'Your profile picture succesfully changed',
-        );
-      }
     });
     return Column(
       children: [
@@ -45,10 +37,20 @@ class ChangeProfilePictureSheet extends ConsumerWidget {
         Button(
           isLoading: controller.isLoading,
           disabled: controller.isLoading,
-          onTap: () {
-            ref
+          onTap: () async {
+            final photoChanged = await ref
                 .read(changeProfilePictureControllerProvider.notifier)
                 .getPhoto(ImageSource.gallery);
+
+            if (photoChanged) {
+              if (context.mounted) {
+                context.pop();
+                ScaffoldMessenger.of(rootContext).showSnackBar(const SnackBar(
+                  duration: Duration(seconds: 2),
+                  content: Text('Your profile picture succesfully changed'),
+                ));
+              }
+            }
           },
           text: 'Choose from gallery'.hardcoded,
           variant: ButtonVariant.inverted,

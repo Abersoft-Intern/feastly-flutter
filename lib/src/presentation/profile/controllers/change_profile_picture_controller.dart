@@ -15,7 +15,7 @@ class ChangeProfilePictureController extends _$ChangeProfilePictureController {
   @override
   FutureOr<void> build() {}
 
-  Future<void> getPhoto(ImageSource imageSource) async {
+  Future<bool> getPhoto(ImageSource imageSource) async {
     final authRepository = ref.watch(authRepositoryProvider);
 
     try {
@@ -23,7 +23,7 @@ class ChangeProfilePictureController extends _$ChangeProfilePictureController {
       final file = await _imagePicker.pickImage(source: imageSource);
       if (file == null) {
         state = const AsyncData(null);
-        return;
+        return false;
       }
 
       final croppedFile = await _cropImage(file);
@@ -32,12 +32,16 @@ class ChangeProfilePictureController extends _$ChangeProfilePictureController {
         final processedFile = File(croppedFile.path);
         await authRepository.updateProfilePicture(processedFile);
         ref.invalidate(profileProvider);
+        state = const AsyncData(null);
+        return true;
+      } else {
+        state = const AsyncData(null);
+        return false;
       }
-
-      state = const AsyncData(null);
     } catch (e) {
       state = AsyncError('An error occured while changing profile picture',
           StackTrace.current);
+      return false;
     }
   }
 
