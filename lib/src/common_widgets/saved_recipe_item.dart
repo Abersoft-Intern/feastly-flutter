@@ -70,6 +70,7 @@ class SavedRecipeItem extends StatelessWidget {
               children: [
                 Text(
                   recipe.name,
+                  overflow: TextOverflow.ellipsis,
                   style: textTheme.body16Bold,
                 ),
                 gapH8,
