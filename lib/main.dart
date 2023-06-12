@@ -39,7 +39,7 @@ Future<void> _setupFirebaseNotification() async {
 
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'recipes_channel',
-    'New Recipes Notification',
+    'New recipe notification',
     description:
         'This notifies user whenever a new recipe has been added to the app',
     importance: Importance.max,
