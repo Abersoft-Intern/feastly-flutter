@@ -7,7 +7,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/presentation/recipe/recipe_detail_controller.dart';
+import 'package:feastly/src/presentation/recipe/controllers/recipe_detail_controller.dart';
 import 'package:feastly/src/presentation/recipe/recipe_detail_state.dart';
 import 'package:feastly/src/utils/env.dart';
 import 'package:flutter/material.dart';

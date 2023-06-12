@@ -5,7 +5,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/auth/register/register_controller.dart';
+import 'package:feastly/src/presentation/auth/register/controllers/register_controller.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:feastly/src/utils/push_notification_pref.dart';
 import 'package:flutter/material.dart';

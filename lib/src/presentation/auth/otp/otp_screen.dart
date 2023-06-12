@@ -5,7 +5,7 @@ import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/route_name.dart';
-import 'package:feastly/src/presentation/auth/otp/otp_controller.dart';
+import 'package:feastly/src/presentation/auth/otp/controllers/otp_controller.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
