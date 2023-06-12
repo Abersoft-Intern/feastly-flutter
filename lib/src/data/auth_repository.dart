@@ -92,13 +92,13 @@ class AuthRepository {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef ref) {
   final client = ref.watch(clientProvider);
   return AuthRepository(client: client);
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 FutureOr<User> profile(ProfileRef ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return authRepository.getProfile();
