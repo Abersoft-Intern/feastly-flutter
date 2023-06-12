@@ -1,3 +1,4 @@
+import 'package:feastly/src/common_widgets/error_component.dart';
 import 'package:feastly/src/common_widgets/saved_recipe_item.dart';
 import 'package:feastly/src/common_widgets/saved_recipe_item_loading.dart';
 import 'package:feastly/src/common_widgets/shimmer.dart';
@@ -36,8 +37,14 @@ class GroupRecipes extends ConsumerWidget {
               itemCount: recipes.length,
             )
           : const GroupsNone(),
-      error: (error, stackTrace) => Center(
-        child: Text(error.toString()),
+      error: (error, st) => Center(
+        child: ErrorComponent(
+          onRetry: () {
+            ref.invalidate(groupsStateProvider);
+            ref.invalidate(groupRecipesProvider);
+          },
+          isLoading: groupRecipes.isRefreshing,
+        ),
       ),
       loading: () => const Shimmer(
         child: ShimmerLoading(

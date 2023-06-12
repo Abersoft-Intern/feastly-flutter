@@ -16,7 +16,7 @@ class AddCategoryController extends _$AddCategoryController {
       state = const AsyncData(null);
     } catch (e) {
       state = AsyncError(
-        'Terjadi kesalahan saat menambahkan kategori',
+        'An error occured while adding category',
         StackTrace.current,
       );
     }

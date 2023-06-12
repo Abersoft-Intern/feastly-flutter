@@ -6,11 +6,11 @@ part of 'saved_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$savedRepositoryHash() => r'a016853f99ab35a1ccc35e4dc826192e7a7f9bb7';
+String _$savedRepositoryHash() => r'ab766a27d735523b399fff17bc80ab23277acd9e';
 
 /// See also [savedRepository].
 @ProviderFor(savedRepository)
-final savedRepositoryProvider = Provider<SavedRepository>.internal(
+final savedRepositoryProvider = AutoDisposeProvider<SavedRepository>.internal(
   savedRepository,
   name: r'savedRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -20,12 +20,13 @@ final savedRepositoryProvider = Provider<SavedRepository>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef SavedRepositoryRef = ProviderRef<SavedRepository>;
-String _$userCategoriesHash() => r'8c98554a3405b9d05c70a1aafe326bfdc3acef51';
+typedef SavedRepositoryRef = AutoDisposeProviderRef<SavedRepository>;
+String _$userCategoriesHash() => r'54a00b73f69fd71b0c0d34f400df50914b75c435';
 
 /// See also [userCategories].
 @ProviderFor(userCategories)
-final userCategoriesProvider = FutureProvider<List<Category>>.internal(
+final userCategoriesProvider =
+    AutoDisposeFutureProvider<List<Category>>.internal(
   userCategories,
   name: r'userCategoriesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -35,7 +36,7 @@ final userCategoriesProvider = FutureProvider<List<Category>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef UserCategoriesRef = FutureProviderRef<List<Category>>;
+typedef UserCategoriesRef = AutoDisposeFutureProviderRef<List<Category>>;
 String _$savedRecipesHash() => r'e37e329b83950a8d2458fcfd47e0f1fd9a2ee823';
 
 /// See also [savedRecipes].

@@ -1,3 +1,4 @@
+import 'package:feastly/src/common_widgets/error_component.dart';
 import 'package:feastly/src/common_widgets/saved_recipe_item.dart';
 import 'package:feastly/src/common_widgets/saved_recipe_item_loading.dart';
 import 'package:feastly/src/common_widgets/shimmer.dart';
@@ -71,9 +72,7 @@ class SavedRecipesList extends ConsumerWidget {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            error: (error, st) => const Center(
-              child: Text('ERRORR'),
-            ),
+            error: (error, st) => Container(),
             loading: () => const SavedTileLoading(),
           ),
           gapH28,
@@ -137,7 +136,16 @@ class SavedRecipesList extends ConsumerWidget {
                     height: 400.0.h,
                     child: const SavedNone(),
                   ),
-            error: (error, st) => Text(error.toString()),
+            error: (error, st) => Center(
+              child: ErrorComponent(
+                onRetry: () {
+                  ref.invalidate(savedRecipesProvider);
+                  ref.invalidate(userCategoriesProvider);
+                },
+                isLoading: categoriesState.isRefreshing ||
+                    savedRecipesState.isRefreshing,
+              ),
+            ),
             loading: () => const ShimmerLoading(
               isLoading: true,
               child: Column(

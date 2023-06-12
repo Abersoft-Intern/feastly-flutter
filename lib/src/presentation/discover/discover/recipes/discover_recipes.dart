@@ -1,4 +1,5 @@
 import 'package:feastly/src/common_widgets/buttons/action_button.dart';
+import 'package:feastly/src/common_widgets/error_component.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
@@ -133,7 +134,14 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
           ),
         ],
       ),
-      error: (error, st) => Text(error.toString()),
+      error: (error, st) => Center(
+        child: ErrorComponent(
+          onRetry: () {
+            ref.invalidate(discoverRecipesProvider);
+          },
+          isLoading: recipeList.isRefreshing,
+        ),
+      ),
       loading: () => const DiscoverRecipesLoading(),
     );
   }

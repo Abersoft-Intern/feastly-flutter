@@ -15,7 +15,8 @@ class AddGroupController extends _$AddGroupController {
       await groupRepository.addGroup(name);
       state = const AsyncData(null);
     } catch (e) {
-      state = AsyncError(e, StackTrace.current);
+      state = AsyncError(
+          'An error occured while creating the group', StackTrace.current);
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:feastly/src/common_widgets/error_component.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
@@ -162,7 +163,12 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ),
           error: (error, stackTrace) => Center(
-            child: Text(error.toString()),
+            child: ErrorComponent(
+              onRetry: () {
+                ref.invalidate(profileProvider);
+              },
+              isLoading: user.isRefreshing,
+            ),
           ),
           loading: () => const Center(
             child: CircularProgressIndicator(),

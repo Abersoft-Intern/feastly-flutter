@@ -88,7 +88,7 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                         },
                       ),
                     ),
-                    error: (e, st) => Text(e.toString()),
+                    error: (e, st) => Container(),
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
                   ),
@@ -183,7 +183,7 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
                                   )
                                   .toList(),
                             ),
-                            error: (error, st) => const Text('Error'),
+                            error: (error, st) => Container(),
                             loading: () => const Center(
                               child: CircularProgressIndicator(),
                             ),
