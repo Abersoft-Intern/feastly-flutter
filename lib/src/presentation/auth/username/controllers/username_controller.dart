@@ -1,4 +1,5 @@
 import 'package:feastly/src/data/auth_repository.dart';
+import 'package:feastly/src/navigation/auth_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'username_controller.g.dart';
@@ -8,16 +9,16 @@ class UsernameController extends _$UsernameController {
   @override
   FutureOr<void> build() {}
 
-  Future<bool> submit(String name) async {
+  Future<void> submit(String name) async {
     final authRepository = ref.watch(authRepositoryProvider);
     try {
       state = const AsyncLoading();
       await authRepository.updateName(name);
+      await ref.read(authStateProvider.notifier).persistToStorage();
       state = const AsyncValue.data(null);
-      return true;
     } catch (e) {
-      state = AsyncError('Errorrrr', StackTrace.current);
-      return false;
+      state = AsyncError(
+          'An error occured while submiting your name', StackTrace.current);
     }
   }
 }

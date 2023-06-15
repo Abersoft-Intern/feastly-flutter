@@ -252,36 +252,37 @@ abstract class _User implements User {
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }
 
-UserWithToken _$UserWithTokenFromJson(Map<String, dynamic> json) {
-  return _UserWithToken.fromJson(json);
+UserWithOtpToken _$UserWithOtpTokenFromJson(Map<String, dynamic> json) {
+  return _UserWithOtpToken.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserWithToken {
-  String get jwt => throw _privateConstructorUsedError;
+mixin _$UserWithOtpToken {
+  @JsonKey(name: 'otp_token')
+  String get otpToken => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserWithTokenCopyWith<UserWithToken> get copyWith =>
+  $UserWithOtpTokenCopyWith<UserWithOtpToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserWithTokenCopyWith<$Res> {
-  factory $UserWithTokenCopyWith(
-          UserWithToken value, $Res Function(UserWithToken) then) =
-      _$UserWithTokenCopyWithImpl<$Res, UserWithToken>;
+abstract class $UserWithOtpTokenCopyWith<$Res> {
+  factory $UserWithOtpTokenCopyWith(
+          UserWithOtpToken value, $Res Function(UserWithOtpToken) then) =
+      _$UserWithOtpTokenCopyWithImpl<$Res, UserWithOtpToken>;
   @useResult
-  $Res call({String jwt, User user});
+  $Res call({@JsonKey(name: 'otp_token') String otpToken, User user});
 
   $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class _$UserWithTokenCopyWithImpl<$Res, $Val extends UserWithToken>
-    implements $UserWithTokenCopyWith<$Res> {
-  _$UserWithTokenCopyWithImpl(this._value, this._then);
+class _$UserWithOtpTokenCopyWithImpl<$Res, $Val extends UserWithOtpToken>
+    implements $UserWithOtpTokenCopyWith<$Res> {
+  _$UserWithOtpTokenCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -291,13 +292,13 @@ class _$UserWithTokenCopyWithImpl<$Res, $Val extends UserWithToken>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? jwt = null,
+    Object? otpToken = null,
     Object? user = null,
   }) {
     return _then(_value.copyWith(
-      jwt: null == jwt
-          ? _value.jwt
-          : jwt // ignore: cast_nullable_to_non_nullable
+      otpToken: null == otpToken
+          ? _value.otpToken
+          : otpToken // ignore: cast_nullable_to_non_nullable
               as String,
       user: null == user
           ? _value.user
@@ -316,37 +317,37 @@ class _$UserWithTokenCopyWithImpl<$Res, $Val extends UserWithToken>
 }
 
 /// @nodoc
-abstract class _$$_UserWithTokenCopyWith<$Res>
-    implements $UserWithTokenCopyWith<$Res> {
-  factory _$$_UserWithTokenCopyWith(
-          _$_UserWithToken value, $Res Function(_$_UserWithToken) then) =
-      __$$_UserWithTokenCopyWithImpl<$Res>;
+abstract class _$$_UserWithOtpTokenCopyWith<$Res>
+    implements $UserWithOtpTokenCopyWith<$Res> {
+  factory _$$_UserWithOtpTokenCopyWith(
+          _$_UserWithOtpToken value, $Res Function(_$_UserWithOtpToken) then) =
+      __$$_UserWithOtpTokenCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String jwt, User user});
+  $Res call({@JsonKey(name: 'otp_token') String otpToken, User user});
 
   @override
   $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$$_UserWithTokenCopyWithImpl<$Res>
-    extends _$UserWithTokenCopyWithImpl<$Res, _$_UserWithToken>
-    implements _$$_UserWithTokenCopyWith<$Res> {
-  __$$_UserWithTokenCopyWithImpl(
-      _$_UserWithToken _value, $Res Function(_$_UserWithToken) _then)
+class __$$_UserWithOtpTokenCopyWithImpl<$Res>
+    extends _$UserWithOtpTokenCopyWithImpl<$Res, _$_UserWithOtpToken>
+    implements _$$_UserWithOtpTokenCopyWith<$Res> {
+  __$$_UserWithOtpTokenCopyWithImpl(
+      _$_UserWithOtpToken _value, $Res Function(_$_UserWithOtpToken) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? jwt = null,
+    Object? otpToken = null,
     Object? user = null,
   }) {
-    return _then(_$_UserWithToken(
-      jwt: null == jwt
-          ? _value.jwt
-          : jwt // ignore: cast_nullable_to_non_nullable
+    return _then(_$_UserWithOtpToken(
+      otpToken: null == otpToken
+          ? _value.otpToken
+          : otpToken // ignore: cast_nullable_to_non_nullable
               as String,
       user: null == user
           ? _value.user
@@ -358,62 +359,238 @@ class __$$_UserWithTokenCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserWithToken implements _UserWithToken {
-  const _$_UserWithToken({required this.jwt, required this.user});
+class _$_UserWithOtpToken implements _UserWithOtpToken {
+  const _$_UserWithOtpToken(
+      {@JsonKey(name: 'otp_token') required this.otpToken, required this.user});
 
-  factory _$_UserWithToken.fromJson(Map<String, dynamic> json) =>
-      _$$_UserWithTokenFromJson(json);
+  factory _$_UserWithOtpToken.fromJson(Map<String, dynamic> json) =>
+      _$$_UserWithOtpTokenFromJson(json);
 
   @override
-  final String jwt;
+  @JsonKey(name: 'otp_token')
+  final String otpToken;
   @override
   final User user;
 
   @override
   String toString() {
-    return 'UserWithToken(jwt: $jwt, user: $user)';
+    return 'UserWithOtpToken(otpToken: $otpToken, user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserWithToken &&
-            (identical(other.jwt, jwt) || other.jwt == jwt) &&
+            other is _$_UserWithOtpToken &&
+            (identical(other.otpToken, otpToken) ||
+                other.otpToken == otpToken) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, jwt, user);
+  int get hashCode => Object.hash(runtimeType, otpToken, user);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserWithTokenCopyWith<_$_UserWithToken> get copyWith =>
-      __$$_UserWithTokenCopyWithImpl<_$_UserWithToken>(this, _$identity);
+  _$$_UserWithOtpTokenCopyWith<_$_UserWithOtpToken> get copyWith =>
+      __$$_UserWithOtpTokenCopyWithImpl<_$_UserWithOtpToken>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserWithTokenToJson(
+    return _$$_UserWithOtpTokenToJson(
       this,
     );
   }
 }
 
-abstract class _UserWithToken implements UserWithToken {
-  const factory _UserWithToken(
-      {required final String jwt, required final User user}) = _$_UserWithToken;
+abstract class _UserWithOtpToken implements UserWithOtpToken {
+  const factory _UserWithOtpToken(
+      {@JsonKey(name: 'otp_token') required final String otpToken,
+      required final User user}) = _$_UserWithOtpToken;
 
-  factory _UserWithToken.fromJson(Map<String, dynamic> json) =
-      _$_UserWithToken.fromJson;
+  factory _UserWithOtpToken.fromJson(Map<String, dynamic> json) =
+      _$_UserWithOtpToken.fromJson;
 
   @override
-  String get jwt;
+  @JsonKey(name: 'otp_token')
+  String get otpToken;
   @override
   User get user;
   @override
   @JsonKey(ignore: true)
-  _$$_UserWithTokenCopyWith<_$_UserWithToken> get copyWith =>
+  _$$_UserWithOtpTokenCopyWith<_$_UserWithOtpToken> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserWithJwt _$UserWithJwtFromJson(Map<String, dynamic> json) {
+  return _UserWithJwt.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserWithJwt {
+  @JsonKey(name: 'jwt')
+  String get token => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserWithJwtCopyWith<UserWithJwt> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserWithJwtCopyWith<$Res> {
+  factory $UserWithJwtCopyWith(
+          UserWithJwt value, $Res Function(UserWithJwt) then) =
+      _$UserWithJwtCopyWithImpl<$Res, UserWithJwt>;
+  @useResult
+  $Res call({@JsonKey(name: 'jwt') String token, User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$UserWithJwtCopyWithImpl<$Res, $Val extends UserWithJwt>
+    implements $UserWithJwtCopyWith<$Res> {
+  _$UserWithJwtCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? user = null,
+  }) {
+    return _then(_value.copyWith(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserWithJwtCopyWith<$Res>
+    implements $UserWithJwtCopyWith<$Res> {
+  factory _$$_UserWithJwtCopyWith(
+          _$_UserWithJwt value, $Res Function(_$_UserWithJwt) then) =
+      __$$_UserWithJwtCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'jwt') String token, User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$_UserWithJwtCopyWithImpl<$Res>
+    extends _$UserWithJwtCopyWithImpl<$Res, _$_UserWithJwt>
+    implements _$$_UserWithJwtCopyWith<$Res> {
+  __$$_UserWithJwtCopyWithImpl(
+      _$_UserWithJwt _value, $Res Function(_$_UserWithJwt) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? user = null,
+  }) {
+    return _then(_$_UserWithJwt(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_UserWithJwt implements _UserWithJwt {
+  const _$_UserWithJwt(
+      {@JsonKey(name: 'jwt') required this.token, required this.user});
+
+  factory _$_UserWithJwt.fromJson(Map<String, dynamic> json) =>
+      _$$_UserWithJwtFromJson(json);
+
+  @override
+  @JsonKey(name: 'jwt')
+  final String token;
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'UserWithJwt(token: $token, user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserWithJwt &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, token, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserWithJwtCopyWith<_$_UserWithJwt> get copyWith =>
+      __$$_UserWithJwtCopyWithImpl<_$_UserWithJwt>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserWithJwtToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserWithJwt implements UserWithJwt {
+  const factory _UserWithJwt(
+      {@JsonKey(name: 'jwt') required final String token,
+      required final User user}) = _$_UserWithJwt;
+
+  factory _UserWithJwt.fromJson(Map<String, dynamic> json) =
+      _$_UserWithJwt.fromJson;
+
+  @override
+  @JsonKey(name: 'jwt')
+  String get token;
+  @override
+  User get user;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserWithJwtCopyWith<_$_UserWithJwt> get copyWith =>
       throw _privateConstructorUsedError;
 }

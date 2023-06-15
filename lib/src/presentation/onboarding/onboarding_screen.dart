@@ -3,17 +3,18 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_buttons.dart';
 import 'package:feastly/src/presentation/onboarding/onboarding_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _introKey = GlobalKey<IntroductionScreenState>();
   var _isFirstItem = true;
 

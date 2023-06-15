@@ -4,6 +4,7 @@ import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_color.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/auth_state.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/otp/controllers/otp_controller.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_texts.dart';
@@ -39,8 +40,17 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     final textTheme = theme.extension<CustomTextTheme>()!;
     final colorTheme = theme.extension<CustomColor>()!;
 
-    final state = ref.watch(otpControllerProvider);
-    final controller = ref.read(otpControllerProvider.notifier);
+    final controller = ref.watch(otpControllerProvider);
+    final authState = ref.watch(authStateProvider);
+
+    ref.listen(otpControllerProvider, (_, state) {
+      if (!state.isLoading && !state.hasError) {
+        if (authState.hasUsername) {
+          ref.read(authStateProvider.notifier).persistToStorage();
+        }
+        context.pushNamed(RouteName.otpSuccess.name);
+      }
+    });
 
     return Scaffold(
       body: SafeArea(
@@ -64,7 +74,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               SizedBox(
                 height: 99.0.h,
               ),
-              OtpTexts(isWrong: state.hasError),
+              OtpTexts(isWrong: controller.hasError),
               SizedBox(
                 height: 95.0.h,
               ),
@@ -116,12 +126,10 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               ),
               Button(
                 text: 'Continue'.hardcoded,
+                isLoading: controller.isLoading,
+                disabled: controller.isLoading,
                 onTap: () async {
-                  if (await controller.submit(pin)) {
-                    if (context.mounted) {
-                      context.pushNamed(RouteName.otpSuccess.name);
-                    }
-                  }
+                  ref.read(otpControllerProvider.notifier).submit(pin);
                 },
               ),
             ],

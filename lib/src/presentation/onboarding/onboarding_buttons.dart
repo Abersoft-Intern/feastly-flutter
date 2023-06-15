@@ -2,7 +2,7 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
-import 'package:feastly/src/navigation/auth_state.dart';
+import 'package:feastly/src/utils/secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -53,7 +53,7 @@ class OnboardingButtons extends ConsumerWidget {
           child: TextButton(
             onPressed: () {
               if (_introKey.currentState?.getCurrentPageNumber() == 4) {
-                ref.read(authStateProvider.notifier).persistToStorage();
+                ref.invalidate(secureStorageProvider);
               } else {
                 _introKey.currentState?.next();
               }

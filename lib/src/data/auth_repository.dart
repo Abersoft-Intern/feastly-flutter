@@ -16,7 +16,7 @@ class AuthRepository {
 
   Dio client;
 
-  Future<UserWithToken> register({
+  Future<UserWithOtpToken> register({
     required String email,
     required String password,
   }) async {
@@ -26,10 +26,10 @@ class AuthRepository {
       'username': email,
     });
 
-    return UserWithToken.fromJson(res.data);
+    return UserWithOtpToken.fromJson(res.data);
   }
 
-  Future<UserWithToken> login({
+  Future<UserWithOtpToken> login({
     required String email,
     required String password,
   }) async {
@@ -38,7 +38,15 @@ class AuthRepository {
       'password': password,
     });
 
-    return UserWithToken.fromJson(res.data);
+    return UserWithOtpToken.fromJson(res.data);
+  }
+
+  Future<UserWithJwt> verifyOTP({
+    required String otpToken,
+    required String pin,
+  }) async {
+    final res = await client.get('/api/otp/verify?token=$otpToken&code=$pin');
+    return UserWithJwt.fromJson(res.data);
   }
 
   Future<User> getProfile() async {

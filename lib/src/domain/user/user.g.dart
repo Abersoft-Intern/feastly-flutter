@@ -24,14 +24,26 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'blurhash': instance.blurhash,
     };
 
-_$_UserWithToken _$$_UserWithTokenFromJson(Map<String, dynamic> json) =>
-    _$_UserWithToken(
-      jwt: json['jwt'] as String,
+_$_UserWithOtpToken _$$_UserWithOtpTokenFromJson(Map<String, dynamic> json) =>
+    _$_UserWithOtpToken(
+      otpToken: json['otp_token'] as String,
       user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserWithTokenToJson(_$_UserWithToken instance) =>
+Map<String, dynamic> _$$_UserWithOtpTokenToJson(_$_UserWithOtpToken instance) =>
     <String, dynamic>{
-      'jwt': instance.jwt,
+      'otp_token': instance.otpToken,
+      'user': instance.user,
+    };
+
+_$_UserWithJwt _$$_UserWithJwtFromJson(Map<String, dynamic> json) =>
+    _$_UserWithJwt(
+      token: json['jwt'] as String,
+      user: User.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_UserWithJwtToJson(_$_UserWithJwt instance) =>
+    <String, dynamic>{
+      'jwt': instance.token,
       'user': instance.user,
     };

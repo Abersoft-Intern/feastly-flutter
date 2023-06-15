@@ -18,12 +18,23 @@ class User with _$User {
 }
 
 @freezed
-class UserWithToken with _$UserWithToken {
-  const factory UserWithToken({
-    required String jwt,
+class UserWithOtpToken with _$UserWithOtpToken {
+  const factory UserWithOtpToken({
+    @JsonKey(name: 'otp_token') required String otpToken,
     required User user,
-  }) = _UserWithToken;
+  }) = _UserWithOtpToken;
 
-  factory UserWithToken.fromJson(Map<String, Object?> json) =>
-      _$UserWithTokenFromJson(json);
+  factory UserWithOtpToken.fromJson(Map<String, Object?> json) =>
+      _$UserWithOtpTokenFromJson(json);
+}
+
+@freezed
+class UserWithJwt with _$UserWithJwt {
+  const factory UserWithJwt({
+    @JsonKey(name: 'jwt') required String token,
+    required User user,
+  }) = _UserWithJwt;
+
+  factory UserWithJwt.fromJson(Map<String, Object?> json) =>
+      _$UserWithJwtFromJson(json);
 }

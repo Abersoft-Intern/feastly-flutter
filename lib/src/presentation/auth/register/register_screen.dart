@@ -45,6 +45,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
     ref.listen(registerControllerProvider, (_, state) {
       state.showAlertDialogOnError(context);
+
+      if (!state.isLoading && !state.hasError) {
+        ref.read(pushNotificationPrefProvider.notifier).enable();
+        context.pushNamed(RouteName.otp.name);
+      }
     });
 
     return Scaffold(
@@ -152,18 +157,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   text: 'Register'.hardcoded,
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
-                      final registered = await ref
+                      ref
                           .read(registerControllerProvider.notifier)
-                          .register(email.trim(), password.trim());
-
-                      if (registered) {
-                        ref
-                            .read(pushNotificationPrefProvider.notifier)
-                            .enable();
-                        if (context.mounted) {
-                          context.pushNamed(RouteName.otp.name);
-                        }
-                      }
+                          .submit(email.trim(), password.trim());
                     }
                   }),
             ],

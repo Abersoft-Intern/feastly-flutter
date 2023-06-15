@@ -3,18 +3,22 @@ import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/auth_state.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class OtpSucceesScreen extends StatelessWidget {
+class OtpSucceesScreen extends ConsumerWidget {
   const OtpSucceesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.extension<CustomTextTheme>()!;
+
+    final authState = ref.watch(authStateProvider);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -53,8 +57,12 @@ class OtpSucceesScreen extends StatelessWidget {
               ),
               Button(
                 text: 'Continue'.hardcoded,
-                onTap: () {
-                  context.pushNamed(RouteName.username.name);
+                onTap: () async {
+                  if (authState.hasUsername) {
+                    context.goNamed(RouteName.onboarding.name);
+                  } else {
+                    context.pushNamed(RouteName.username.name);
+                  }
                 },
               ),
               gapH24,

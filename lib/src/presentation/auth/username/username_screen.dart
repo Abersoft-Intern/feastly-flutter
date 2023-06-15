@@ -35,6 +35,12 @@ class _UsernameScreenState extends ConsumerState<UsernameScreen> {
 
     ref.listen(usernameControllerProvider, (_, state) {
       state.showAlertDialogOnError(context);
+
+      if (!state.isLoading && !state.hasError) {
+        context.pushNamed(
+          RouteName.onboarding.name,
+        );
+      }
     });
 
     return Scaffold(
@@ -100,19 +106,11 @@ class _UsernameScreenState extends ConsumerState<UsernameScreen> {
                 isLoading: controller.isLoading,
                 disabled: controller.isLoading || _name.trim().isEmpty,
                 text: 'Continue'.hardcoded,
-                onTap: () async {
+                onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    final userUpdated = await ref
+                    ref
                         .read(usernameControllerProvider.notifier)
                         .submit(_name.trim());
-
-                    if (userUpdated) {
-                      if (context.mounted) {
-                        context.pushNamed(
-                          RouteName.onboarding.name,
-                        );
-                      }
-                    }
                   }
                 },
                 variant: _name.trim().isEmpty ? ButtonVariant.disabled : null,

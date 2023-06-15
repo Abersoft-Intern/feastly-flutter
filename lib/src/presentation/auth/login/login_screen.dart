@@ -8,7 +8,6 @@ import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/login/controllers/login_controller.dart';
 import 'package:feastly/src/presentation/auth/login/login_header.dart';
 import 'package:feastly/src/utils/async_error_ui.dart';
-import 'package:feastly/src/utils/push_notification_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,6 +47,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     ref.listen(loginControllerProvider, (_, state) {
       state.showAlertDialogOnError(context);
+
+      if (!state.isLoading && !state.hasError) {
+        context.pushNamed(RouteName.otp.name);
+      }
     });
 
     final textTheme = theme.extension<CustomTextTheme>()!;
@@ -139,23 +142,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   text: 'Sign in'.hardcoded,
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
-                      final data = await ref
+                      ref
                           .read(loginControllerProvider.notifier)
-                          .login(email.trim(), password.trim());
-
-                      if (context.mounted && data != null) {
-                        if (!data.user.confirmed) {
-                          context.pushNamed(RouteName.otp.name);
-                        } else if (data.user.confirmed &&
-                            data.user.name == null) {
-                          context.pushNamed(RouteName.username.name);
-                        } else {
-                          ref
-                              .read(pushNotificationPrefProvider.notifier)
-                              .enable();
-                          context.pushNamed(RouteName.onboarding.name);
-                        }
-                      }
+                          .submit(email.trim(), password.trim());
                     }
                   },
                   variant: ButtonVariant.outlined,
