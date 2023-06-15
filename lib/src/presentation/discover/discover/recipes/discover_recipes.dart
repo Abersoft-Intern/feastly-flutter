@@ -105,17 +105,6 @@ class _DiscoverRecipesState extends ConsumerState<DiscoverRecipes> {
                   isLoading: controller.isLoading,
                   variant: ActionButtonVariant.danger,
                 ),
-                gapW8,
-                ActionButton(
-                  icon: Icon(
-                    FeastlyIcon.icon_go_back,
-                    color: colorTheme.yellow,
-                    size: Sizes.p24.h,
-                  ),
-                  variant: ActionButtonVariant.neutral,
-                  onTap: () {},
-                ),
-                gapW8,
                 ActionButton(
                   isLoading: controller.isLoading,
                   icon: Icon(
