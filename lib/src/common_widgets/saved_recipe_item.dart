@@ -87,7 +87,7 @@ class SavedRecipeItem extends StatelessWidget {
                   ),
                   gapH4,
                   Text(
-                    'Cook time: ${recipe.cookTime}',
+                    'Cook time: ${recipe.cookTime} mins',
                     style: textTheme.body16Regular,
                   ),
                 ],
