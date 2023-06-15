@@ -65,7 +65,6 @@ class ChangeProfilePictureSheet extends ConsumerWidget {
           text: 'Close'.hardcoded,
           variant: ButtonVariant.danger,
         ),
-        gapH16
       ],
     );
   }
