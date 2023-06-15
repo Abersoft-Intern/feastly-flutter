@@ -7,7 +7,7 @@ part of 'remove_account_controller.dart';
 // **************************************************************************
 
 String _$removeAccountControllerHash() =>
-    r'8a218bda6994fb3eba80d6cc94219f14728cd9a7';
+    r'b459e50d93794d015881634220909e5fe3dfdb40';
 
 /// See also [RemoveAccountController].
 @ProviderFor(RemoveAccountController)

@@ -12,10 +12,10 @@ class LogoutController extends _$LogoutController {
   Future<void> submit() async {
     try {
       state = const AsyncLoading();
-      await ref.read(secureStorageProvider.notifier).remove('token');
       ref
           .read(authStateProvider.notifier)
           .update(token: null, otpToken: null, hasUsername: false);
+      await ref.read(secureStorageProvider.notifier).remove('token');
       state = const AsyncData(null);
     } catch (e) {
       state = AsyncError(
