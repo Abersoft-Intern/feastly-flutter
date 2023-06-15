@@ -36,8 +36,7 @@ class _DiscoverSettingState extends ConsumerState<DiscoverSettingScreen> {
     ref.listen(preferenceStateProvider, (_, state) {
       if (!state.isLoading && !state.hasError) {
         setState(() {
-          _activeGroup =
-              state.asData!.value.firstWhere((group) => group.active).id;
+          _activeGroup = state.value!.firstWhere((group) => group.active).id;
         });
       }
     });
