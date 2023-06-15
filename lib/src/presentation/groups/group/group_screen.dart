@@ -115,7 +115,8 @@ class GroupScreen extends ConsumerWidget {
                   Button(
                     text: 'Invite friends'.hardcoded,
                     onTap: () {
-                      Share.share('Join me on feastly');
+                      Share.share(
+                          'Join me on feastly! Here\'s the group code ${group.code}');
                     },
                   ),
                   gapH24,
