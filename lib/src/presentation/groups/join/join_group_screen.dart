@@ -1,10 +1,10 @@
-import 'package:feastly/src/common_widgets/buttons/back_arrow_button.dart';
 import 'package:feastly/src/common_widgets/buttons/button.dart';
 import 'package:feastly/src/common_widgets/input.dart';
 import 'package:feastly/src/constants/app_sizes.dart';
 import 'package:feastly/src/constants/icons/feastly_icons.dart';
 import 'package:feastly/src/constants/theme/custom_text_theme.dart';
 import 'package:feastly/src/localization/string_hardcoded.dart';
+import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/groups/groups/state/groups_state.dart';
 import 'package:feastly/src/presentation/groups/join/controllers/join_group_controller.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class JoinGroupScreen extends ConsumerStatefulWidget {
-  const JoinGroupScreen({super.key});
+  const JoinGroupScreen(this.groupCode, {super.key});
+
+  final String? groupCode;
 
   @override
   ConsumerState<JoinGroupScreen> createState() => _JoinGroupScreenState();
@@ -26,6 +28,15 @@ class _JoinGroupScreenState extends ConsumerState<JoinGroupScreen> {
   String get code => _codeController.text;
 
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    final groupCode = widget.groupCode;
+    if (groupCode != null) {
+      _codeController.text = groupCode;
+    }
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -62,7 +73,21 @@ class _JoinGroupScreenState extends ConsumerState<JoinGroupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const BackArrowButton(),
+              InkResponse(
+                radius: 20.0,
+                child: Icon(
+                  FeastlyIcon.arrow_back_green,
+                  size: 26.0,
+                  color: theme.primaryColor,
+                ),
+                onTap: () {
+                  if (widget.groupCode != null) {
+                    context.goNamed(RouteName.discover.name);
+                  } else {
+                    context.pop();
+                  }
+                },
+              ),
               gapH16,
               Text(
                 'Enter code'.hardcoded,

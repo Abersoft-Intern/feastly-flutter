@@ -27,24 +27,36 @@ part 'app_route.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
+GoRouter? _previousRouter;
+
+final _publicRoutes = [
+  '/',
+  '/login',
+  '/register',
+  '/otp',
+  '/otp/success',
+  '/username',
+  '/onboarding',
+];
 
 @riverpod
 Raw<GoRouter> goRouter(GoRouterRef ref) {
   final secureStorage = ref.watch(secureStorageProvider);
-  final token = secureStorage.valueOrNull?['token'];
+  final token = secureStorage.value?['token'];
 
-  return GoRouter(
+  return _previousRouter = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     // Change default url here
-    initialLocation: '/',
+    initialLocation: _previousRouter?.location,
     redirect: (context, state) {
       final isLoggedIn = token != null;
-
-      if (state.location == '/') {
-        if (isLoggedIn) {
-          return '/discover';
-        }
+      if (_publicRoutes.contains(state.location) && isLoggedIn) {
+        return '/discover';
+      } else if (state.matchedLocation == '/groups/join') {
+        return null;
+      } else if (!_publicRoutes.contains(state.location) && !isLoggedIn) {
+        return '/';
       }
       return null;
     },
@@ -92,7 +104,8 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
         path: '/groups/join',
         name: RouteName.joinGroup.name,
         builder: (context, state) {
-          return const JoinGroupScreen();
+          final groupCode = state.queryParameters['code'];
+          return JoinGroupScreen(groupCode);
         },
       ),
       GoRoute(
