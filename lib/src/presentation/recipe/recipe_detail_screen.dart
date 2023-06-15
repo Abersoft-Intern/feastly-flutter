@@ -177,32 +177,7 @@ class _RecipeDetailScreenState extends ConsumerState<RecipeDetailScreen> {
                             .shareRecipe(recipe);
                       },
                     ),
-                    gapH28,
-                    Padding(
-                      padding: EdgeInsets.only(left: Sizes.p16.h),
-                      child: Text(
-                        'Recipe credits'.hardcoded,
-                        style: textTheme.body16Bold,
-                      ),
-                    ),
-                    gapH16,
-                    Padding(
-                      padding: EdgeInsets.only(left: Sizes.p16.h),
-                      child: Row(
-                        children: [
-                          Icon(
-                            FeastlyIcon.instagram_filled,
-                            color: colorTheme.blue,
-                            size: 26.0,
-                          ),
-                          gapW12,
-                          Text(
-                            'foodbydidizz'.hardcoded,
-                            style: textTheme.body16Bold,
-                          )
-                        ],
-                      ),
-                    )
+                    gapH28
                   ],
                 ),
               )
