@@ -47,10 +47,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     ref.listen(loginControllerProvider, (_, state) {
       state.showAlertDialogOnError(context);
-
-      if (!state.isLoading && !state.hasError) {
-        context.pushNamed(RouteName.otp.name);
-      }
     });
 
     final textTheme = theme.extension<CustomTextTheme>()!;
@@ -142,9 +138,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   text: 'Sign in'.hardcoded,
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
-                      ref
+                      final loginSuccessful = await ref
                           .read(loginControllerProvider.notifier)
                           .submit(email.trim(), password.trim());
+                      if (loginSuccessful) {
+                        if (context.mounted) {
+                          context.pushNamed(RouteName.otp.name);
+                        }
+                      }
                     }
                   },
                   variant: ButtonVariant.outlined,

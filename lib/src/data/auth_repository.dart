@@ -49,6 +49,12 @@ class AuthRepository {
     return UserWithJwt.fromJson(res.data);
   }
 
+  Future<void> resendOTP({
+    required String otpToken,
+  }) async {
+    await client.get('/api/otp/resend?token=$otpToken');
+  }
+
   Future<User> getProfile() async {
     final res = await client.get('/api/users/me');
     return User.fromJson(res.data);

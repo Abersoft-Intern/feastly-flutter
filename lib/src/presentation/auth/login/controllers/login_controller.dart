@@ -10,7 +10,7 @@ class LoginController extends _$LoginController {
   @override
   FutureOr<void> build() {}
 
-  Future<void> submit(String email, String password) async {
+  Future<bool> submit(String email, String password) async {
     final authRepository = ref.watch(authRepositoryProvider);
     try {
       state = const AsyncLoading();
@@ -21,11 +21,13 @@ class LoginController extends _$LoginController {
           token: '');
       ref.read(pushNotificationPrefProvider.notifier).enable();
       state = const AsyncData(null);
+      return true;
     } catch (e) {
       state = AsyncError(
         'The password or email is wrong,\nplease try again.',
         StackTrace.current,
       );
+      return false;
     }
   }
 }

@@ -7,7 +7,9 @@ import 'package:feastly/src/localization/string_hardcoded.dart';
 import 'package:feastly/src/navigation/auth_state.dart';
 import 'package:feastly/src/navigation/route_name.dart';
 import 'package:feastly/src/presentation/auth/otp/controllers/otp_controller.dart';
+import 'package:feastly/src/presentation/auth/otp/controllers/resend_otp_controller.dart';
 import 'package:feastly/src/presentation/auth/otp/otp_texts.dart';
+import 'package:feastly/src/utils/async_error_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,6 +43,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     final colorTheme = theme.extension<CustomColor>()!;
 
     final controller = ref.watch(otpControllerProvider);
+    final resendOtpController = ref.watch(resendOtpControllerProvider);
     final authState = ref.watch(authStateProvider);
 
     ref.listen(otpControllerProvider, (_, state) {
@@ -50,6 +53,12 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
         }
         context.pushNamed(RouteName.otpSuccess.name);
       }
+    });
+
+    ref.listen(resendOtpControllerProvider, (_, state) {
+      state.showSnackbarOnError(context);
+      state.showSnackbarOnSuccess(
+          context, 'New OTP code has been sent to your email');
     });
 
     return Scaffold(
@@ -113,11 +122,21 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 width: double.infinity,
                 child: Center(
                   child: TextButton(
+                    onPressed: resendOtpController.isLoading
+                        ? null
+                        : () {
+                            ref
+                                .read(resendOtpControllerProvider.notifier)
+                                .submit();
+                          },
                     child: Text(
                       'Send again.'.hardcoded,
-                      style: textTheme.body16Bold,
+                      style: textTheme.body16Bold!.copyWith(
+                        color: resendOtpController.isLoading
+                            ? colorTheme.mediumGrey
+                            : colorTheme.textColor,
+                      ),
                     ),
-                    onPressed: () {},
                   ),
                 ),
               ),
